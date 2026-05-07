@@ -160,6 +160,7 @@ export default function App() {
   const [activeService, setActiveService] = useState(null);
   const [formData, setFormData] = useState({ name: "", phone: "", service: "", comment: "" });
   const [submitted, setSubmitted] = useState(false);
+  const [sending, setSending] = useState(false);
   const [activeTab, setActiveTab] = useState(0);
 
   useEffect(() => {
@@ -168,8 +169,19 @@ export default function App() {
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
 
-  const handleSubmit = () => {
-    if (formData.name && formData.phone) setSubmitted(true);
+  const handleSubmit = async () => {
+    if (!formData.name || !formData.phone) return;
+    setSending(true);
+    try {
+      await fetch("https://script.google.com/macros/s/AKfycbzQeqSJyeq9ZjhrjsyBpEjP14g356nhvFP3Vv_9ji49lE7EZ_lQyn6DbtJ0RsEXMk5dNg/exec", {
+        method: "POST",
+        mode: "no-cors",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(formData),
+      });
+    } catch (_) {}
+    setSending(false);
+    setSubmitted(true);
   };
 
   const scrollTo = (id) => {
@@ -663,8 +675,8 @@ export default function App() {
                 <label style={{ fontSize: 13, color: "rgba(255,255,255,.4)", display: "block", marginBottom: 8, letterSpacing: .5 }}>Комментарий (необязательно)</label>
                 <textarea className="input-field" rows={3} placeholder="Опишите задачу, марку авто, размер дисков..." value={formData.comment} onChange={e => setFormData({ ...formData, comment: e.target.value })} style={{ resize: "vertical" }} />
               </div>
-              <button className="btn btn-grad" onClick={handleSubmit} style={{ width: "100%", justifyContent: "center", marginTop: 8, padding: "18px", fontSize: 18 }}>
-                🚀 Отправить заявку
+              <button className="btn btn-grad" onClick={handleSubmit} disabled={sending} style={{ width: "100%", justifyContent: "center", marginTop: 8, padding: "18px", fontSize: 18, opacity: sending ? 0.7 : 1 }}>
+                {sending ? "⏳ Отправка…" : "🚀 Отправить заявку"}
               </button>
               <p style={{ fontSize: 12, color: "rgba(255,255,255,.25)", textAlign: "center" }}>
                 Нажимая кнопку, вы соглашаетесь с обработкой персональных данных
