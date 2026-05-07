@@ -714,7 +714,7 @@ export default function App() {
             </div>
           </div>
           <div style={{ borderTop: "1px solid rgba(255,255,255,.05)", paddingTop: 24, display: "flex", justifyContent: "space-between", flexWrap: "wrap", gap: 12 }}>
-            <div style={{ fontSize: 13, color: "rgba(255,255,255,.2)" }}>© 2025 WheelCraft. Все права защищены.</div>
+            <div style={{ fontSize: 13, color: "rgba(255,255,255,.2)" }}>© 2026 WheelCraft. Все права защищены.</div>
             <div style={{ fontSize: 13, color: "rgba(255,255,255,.2)" }}>Политика конфиденциальности</div>
           </div>
         </div>
