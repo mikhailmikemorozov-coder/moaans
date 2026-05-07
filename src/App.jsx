@@ -56,9 +56,9 @@ const ServiceIllustration = ({ color, variant, icon }) => (
       <div key={i} style={{ position: "absolute", top: `${y}%`, left: 0, right: 0,
         height: 1, background: `${color}`, opacity: 0.06 }} />
     ))}
-    {/* Big emoji center-left */}
+    {/* Service icon center-left */}
     <div style={{ position: "absolute", left: 20, top: "50%", transform: "translateY(-50%)",
-      fontSize: 52, filter: "drop-shadow(0 0 12px " + color + "88)" }}>
+      color: color, filter: "drop-shadow(0 0 16px " + color + "99)" }}>
       {icon}
     </div>
   </div>
@@ -166,6 +166,25 @@ const ADVANTAGE_ICONS = [
   <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" width="20" height="20"><circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="3"/><line x1="12" y1="2" x2="12" y2="9"/><line x1="12" y1="15" x2="12" y2="22"/><line x1="2" y1="12" x2="9" y2="12"/><line x1="15" y1="12" x2="22" y2="12"/></svg>,
   <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" width="20" height="20"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>,
   <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" width="20" height="20"><path d="M23 19a2 2 0 01-2 2H3a2 2 0 01-2-2V8a2 2 0 012-2h4l2-3h6l2 3h4a2 2 0 012 2z"/><circle cx="12" cy="13" r="4"/></svg>,
+];
+
+const SERVICE_ICONS = [
+  /* 1. Покраска дисков — paintbrush */
+  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" width="48" height="48"><path d="M3 17.25V21h3.75L17.81 9.94l-3.75-3.75L3 17.25z"/><path d="M20.71 7.04a1 1 0 000-1.41l-2.34-2.34a1 1 0 00-1.41 0l-1.83 1.83 3.75 3.75 1.83-1.83z"/></svg>,
+  /* 2. Алмазная проточка — diamond gem */
+  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" width="48" height="48"><path d="M6 3h12l3.3 5-9.3 13-9.3-13z"/><line x1="3" y1="8" x2="21" y2="8"/><path d="M6 3l6 5 6-5"/></svg>,
+  /* 3. Ремонт — wrench */
+  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" width="48" height="48"><path d="M14.7 6.3a1 1 0 000 1.4l1.6 1.6a1 1 0 001.4 0l3.77-3.77a6 6 0 01-7.94 7.94l-6.91 6.91a2.12 2.12 0 01-3-3l6.91-6.91a6 6 0 017.94-7.94l-3.76 3.76z"/></svg>,
+  /* 4. Полировка — rotating arrows */
+  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" width="48" height="48"><polyline points="23 4 23 10 17 10"/><polyline points="1 20 1 14 7 14"/><path d="M3.51 9a9 9 0 0114.85-3.36L23 10M1 14l4.64 4.36A9 9 0 0020.49 15"/></svg>,
+  /* 5. Антикоррозийная — shield + droplet */
+  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" width="48" height="48"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><path d="M9.5 13c0 1.38 1.12 2.5 2.5 2.5s2.5-1.12 2.5-2.5c0-1.5-2.5-4.5-2.5-4.5S9.5 11.5 9.5 13z"/></svg>,
+  /* 6. Кастомный дизайн — pen/edit */
+  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" width="48" height="48"><path d="M12 20h9"/><path d="M16.5 3.5a2.121 2.121 0 013 3L7 19l-4 1 1-4L16.5 3.5z"/></svg>,
+  /* 7. Покраска суппортов — flame */
+  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" width="48" height="48"><path d="M12 2C9.5 6.5 7 9 7 13a5 5 0 0010 0c0-3.5-1.5-5.5-3-7 0 1.5-.5 2.5-1 3C12.5 7 12.5 4 12 2z"/></svg>,
+  /* 8. Шиномонтаж — tire/wheel */
+  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" width="48" height="48"><circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="3"/><line x1="12" y1="2" x2="12" y2="9"/><line x1="12" y1="15" x2="12" y2="22"/><line x1="2" y1="12" x2="9" y2="12"/><line x1="15" y1="12" x2="22" y2="12"/></svg>,
 ];
 
 /* ─── COMPONENT ─────────────────────────────────────── */
@@ -586,7 +605,7 @@ export default function App() {
                 onClick={() => setActiveService(s)}>
                 {/* Illustration */}
                 <div style={{ position: "relative", height: 160, overflow: "hidden" }}>
-                  <ServiceIllustration color={s.color} variant={s.variant} icon={s.emoji} />
+                  <ServiceIllustration color={s.color} variant={s.variant} icon={SERVICE_ICONS[s.id - 1]} />
                   {s.tag && (
                     <div style={{ position: "absolute", top: 10, right: 10 }}>
                       <span className="tag" style={{ background: "rgba(255,107,0,.9)", color: "#fff", fontSize: 10, padding: "3px 10px" }}>{s.tag}</span>
@@ -611,7 +630,7 @@ export default function App() {
           <div className="modal" style={{ padding: 0, overflow: "hidden", maxWidth: 500 }} onClick={(e) => e.stopPropagation()}>
             {/* Illustration header */}
             <div style={{ position: "relative", height: 200, overflow: "hidden" }}>
-              {activeService && <ServiceIllustration color={activeService.color} variant={activeService.variant} icon={activeService.emoji} />}
+              {activeService && <ServiceIllustration color={activeService.color} variant={activeService.variant} icon={SERVICE_ICONS[activeService.id - 1]} />}
               <div style={{ position: "absolute", inset: 0, background: `linear-gradient(to top, #0f1015 0%, transparent 60%)` }} />
               <button onClick={() => setActiveService(null)} style={{ position: "absolute", top: 16, right: 16, background: "rgba(0,0,0,.6)", backdropFilter: "blur(8px)", border: "none", color: "#fff", width: 36, height: 36, borderRadius: "50%", fontSize: 18, cursor: "pointer", display: "flex", alignItems: "center", justifyContent: "center" }}>✕</button>
             </div>
