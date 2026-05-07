@@ -176,7 +176,7 @@ export default function App() {
       await fetch("https://script.google.com/macros/s/AKfycbzQeqSJyeq9ZjhrjsyBpEjP14g356nhvFP3Vv_9ji49lE7EZ_lQyn6DbtJ0RsEXMk5dNg/exec", {
         method: "POST",
         mode: "no-cors",
-        headers: { "Content-Type": "application/json" },
+        headers: { "Content-Type": "text/plain" },
         body: JSON.stringify(formData),
       });
     } catch (_) {}
