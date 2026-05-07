@@ -317,6 +317,7 @@ export default function App() {
           .hero-btns { flex-direction: column; }
           .nav-desktop { display: none !important; }
           .stats-row { grid-template-columns: repeat(2,1fr) !important; }
+          .timeline-line { display: none; }
         }
 
         .ticker-wrap {
@@ -602,22 +603,40 @@ export default function App() {
       {/* ── HOW IT WORKS ── */}
       <section style={{ padding: "80px 40px", background: "rgba(255,107,0,.03)", borderTop: "1px solid rgba(255,107,0,.08)", borderBottom: "1px solid rgba(255,107,0,.08)" }}>
         <div style={{ maxWidth: 1200, margin: "0 auto" }}>
-          <p className="section-kicker" style={{ textAlign: "center" }}>Как это работает</p>
-          <h2 className="section-title" style={{ textAlign: "center" }}>Всего <span className="grad-text">4 шага</span></h2>
-          <div className="grid-4" style={{ marginTop: 40 }}>
-            {[
-              { n: "01", icon: "📞", title: "Позвоните или оставьте заявку", desc: "Обсудим задачу, назовём цену и назначим удобное время." },
-              { n: "02", icon: "🚗", title: "Привезите диски", desc: "Сдаёте диски — мы выдаём подменный комплект бесплатно." },
-              { n: "03", icon: "⚙️", title: "Мы работаем", desc: "Фото-отчёт в процессе. Срок — 1–2 рабочих дня." },
-              { n: "04", icon: "✅", title: "Забираете результат", desc: "Принимаете работу, убеждаетесь в качестве и уезжаете довольным." },
-            ].map((step, i) => (
-              <div key={i} style={{ textAlign: "center", padding: "28px 20px" }}>
-                <div style={{ fontFamily: "'Rajdhani'", fontSize: 64, fontWeight: 700, lineHeight: 1, color: "rgba(255,107,0,.12)", marginBottom: -16 }}>{step.n}</div>
-                <div style={{ fontSize: 40, marginBottom: 16 }}>{step.icon}</div>
-                <h4 style={{ fontFamily: "'Rajdhani'", fontSize: 17, fontWeight: 700, marginBottom: 10 }}>{step.title}</h4>
-                <p style={{ fontSize: 13, color: "rgba(255,255,255,.45)", lineHeight: 1.65 }}>{step.desc}</p>
-              </div>
-            ))}
+          <p className="section-kicker" style={{ textAlign: "center" }}>Процесс работы</p>
+          <h2 className="section-title" style={{ textAlign: "center", marginBottom: 64 }}>От звонка до <span className="grad-text">результата</span></h2>
+
+          <div style={{ position: "relative" }}>
+            {/* Connector line — desktop only */}
+            <div className="timeline-line" style={{
+              position: "absolute", top: 31, left: "calc(12.5% + 8px)", right: "calc(12.5% + 8px)", height: 1,
+              backgroundImage: "repeating-linear-gradient(90deg, rgba(255,107,0,.4) 0, rgba(255,107,0,.4) 6px, transparent 6px, transparent 14px)",
+            }} />
+
+            <div className="grid-4">
+              {[
+                { n: "01", label: "Заявка",  title: "Позвоните или оставьте заявку", desc: "Обсудим задачу, назовём цену и назначим удобное время." },
+                { n: "02", label: "Приёмка", title: "Привезите диски",               desc: "Сдаёте диски — мы выдаём подменный комплект бесплатно." },
+                { n: "03", label: "Работа",  title: "Мы работаем",                   desc: "Фото-отчёт в процессе. Срок — 1–2 рабочих дня." },
+                { n: "04", label: "Выдача",  title: "Забираете результат",           desc: "Принимаете работу, убеждаетесь в качестве и уезжаете довольным." },
+              ].map((step, i) => (
+                <div key={i} style={{ display: "flex", flexDirection: "column", alignItems: "center", textAlign: "center" }}>
+                  <div style={{
+                    width: 64, height: 64, borderRadius: "50%", flexShrink: 0,
+                    background: "linear-gradient(135deg, rgba(255,107,0,.14), rgba(255,0,128,.08))",
+                    border: "1.5px solid rgba(255,107,0,.5)",
+                    display: "flex", alignItems: "center", justifyContent: "center",
+                    marginBottom: 24, position: "relative", zIndex: 1,
+                    boxShadow: "0 0 28px rgba(255,107,0,.12)",
+                  }}>
+                    <span style={{ fontFamily: "'Rajdhani'", fontSize: 22, fontWeight: 700, background: "var(--grad)", WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent" }}>{step.n}</span>
+                  </div>
+                  <span className="tag" style={{ background: "rgba(255,107,0,.1)", color: "var(--orange)", border: "1px solid rgba(255,107,0,.22)", marginBottom: 14, fontSize: 10, letterSpacing: 2 }}>{step.label}</span>
+                  <h4 style={{ fontFamily: "'Rajdhani'", fontSize: 18, fontWeight: 700, marginBottom: 10, letterSpacing: .5 }}>{step.title}</h4>
+                  <p style={{ fontSize: 13, color: "rgba(255,255,255,.42)", lineHeight: 1.7 }}>{step.desc}</p>
+                </div>
+              ))}
+            </div>
           </div>
         </div>
       </section>
