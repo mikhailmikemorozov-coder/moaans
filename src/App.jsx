@@ -349,8 +349,8 @@ export default function App() {
         position: "fixed", top: 0, left: 0, right: 0, zIndex: 200,
         padding: "0 40px", height: 70,
         display: "flex", alignItems: "center", justifyContent: "space-between",
-        background: scrolled ? "rgba(8,9,12,.95)" : "transparent",
-        backdropFilter: scrolled ? "blur(24px)" : "none",
+        background: scrolled ? "rgba(8,9,12,.95)" : "rgba(8,9,12,.7)",
+        backdropFilter: "blur(24px)",
         borderBottom: scrolled ? "1px solid rgba(255,107,0,.12)" : "none",
         transition: "all .4s ease",
       }}>
