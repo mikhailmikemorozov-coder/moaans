@@ -355,13 +355,12 @@ export default function App() {
         transition: "all .4s ease",
       }}>
         {/* Logo */}
-        <div style={{ display: "flex", alignItems: "center", gap: 12, cursor: "pointer" }} onClick={() => scrollTo("hero")}>
-          <div style={{ width: 36, height: 36, borderRadius: "50%", background: "var(--grad)", display: "flex", alignItems: "center", justifyContent: "center", fontSize: 18 }}>⚙️</div>
+        <div style={{ display: "flex", alignItems: "center", gap: 12, cursor: "pointer", whiteSpace: "nowrap" }} onClick={() => scrollTo("hero")}>
           <div>
-            <div style={{ fontFamily: "'Rajdhani'", fontSize: 20, fontWeight: 700, letterSpacing: 2, lineHeight: 1 }}>
-              WHEEL<span className="grad-text">CRAFT</span>
+            <div style={{ fontFamily: "'Rajdhani'", fontSize: 20, fontWeight: 700, letterSpacing: 2, lineHeight: 1, whiteSpace: "nowrap" }}>
+              WHEEL<span style={{ display: "inline-block", margin: "0 5px", color: "#ff6b00", fontWeight: 500, transform: "translateY(-1px)" }}>/</span><span className="grad-text">CRAFT</span>
             </div>
-            <div style={{ fontSize: 10, color: "rgba(255,255,255,.35)", letterSpacing: 2, textTransform: "uppercase" }}>Сервис дисков</div>
+            <div style={{ fontSize: 10, color: "rgba(255,255,255,.35)", letterSpacing: 2, textTransform: "uppercase", whiteSpace: "nowrap" }}>Сервис дисков</div>
           </div>
         </div>
 
@@ -691,9 +690,8 @@ export default function App() {
           <div style={{ display: "flex", justifyContent: "space-between", alignItems: "flex-start", flexWrap: "wrap", gap: 40, marginBottom: 40 }}>
             <div style={{ maxWidth: 280 }}>
               <div style={{ display: "flex", alignItems: "center", gap: 12, marginBottom: 16 }}>
-                <div style={{ width: 36, height: 36, borderRadius: "50%", background: "var(--grad)", display: "flex", alignItems: "center", justifyContent: "center", fontSize: 18 }}>⚙️</div>
-                <div style={{ fontFamily: "'Rajdhani'", fontSize: 20, fontWeight: 700, letterSpacing: 2 }}>
-                  WHEEL<span className="grad-text">CRAFT</span>
+                <div style={{ fontFamily: "'Rajdhani'", fontSize: 20, fontWeight: 700, letterSpacing: 2, whiteSpace: "nowrap" }}>
+                  WHEEL<span style={{ display: "inline-block", margin: "0 5px", color: "#ff6b00", fontWeight: 500, transform: "translateY(-1px)" }}>/</span><span className="grad-text">CRAFT</span>
                 </div>
               </div>
               <p style={{ fontSize: 13, color: "rgba(255,255,255,.35)", lineHeight: 1.7 }}>
