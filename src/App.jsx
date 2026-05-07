@@ -155,6 +155,7 @@ const STATS = [
 
 /* ─── COMPONENT ─────────────────────────────────────── */
 export default function App() {
+  const [cookieAccepted, setCookieAccepted] = useState(() => !!localStorage.getItem("cookie_ok"));
   const [scrolled, setScrolled] = useState(false);
   const [mobileMenu, setMobileMenu] = useState(false);
   const [activeService, setActiveService] = useState(null);
@@ -709,6 +710,30 @@ export default function App() {
           </div>
         </div>
       </section>
+
+      {/* ── COOKIE BANNER ── */}
+      {!cookieAccepted && (
+        <div style={{
+          position: "fixed", bottom: 0, left: 0, right: 0, zIndex: 600,
+          background: "rgba(10,11,15,.97)", backdropFilter: "blur(16px)",
+          borderTop: "1px solid rgba(255,107,0,.2)",
+          padding: "16px 40px", display: "flex", alignItems: "center",
+          justifyContent: "space-between", gap: 20, flexWrap: "wrap",
+        }}>
+          <p style={{ fontSize: 13, color: "rgba(255,255,255,.55)", margin: 0, maxWidth: 680, lineHeight: 1.6 }}>
+            Мы используем файлы cookie и аналитику для улучшения работы сайта.
+            Продолжая использовать сайт, вы соглашаетесь с их использованием.
+          </p>
+          <div style={{ display: "flex", gap: 12, flexShrink: 0 }}>
+            <button className="btn btn-outline btn-sm" onClick={() => setCookieAccepted(true)}>
+              Отклонить
+            </button>
+            <button className="btn btn-grad btn-sm" onClick={() => { localStorage.setItem("cookie_ok", "1"); setCookieAccepted(true); }}>
+              Принять
+            </button>
+          </div>
+        </div>
+      )}
 
       {/* ── FOOTER ── */}
       <footer style={{ padding: "48px 40px", background: "#050508", borderTop: "1px solid rgba(255,255,255,.05)" }}>
