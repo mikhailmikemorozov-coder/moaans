@@ -165,6 +165,7 @@ const ADVANTAGE_ICONS = [
 /* ─── COMPONENT ─────────────────────────────────────── */
 export default function App() {
   const [cookieAccepted, setCookieAccepted] = useState(() => !!localStorage.getItem("cookie_ok"));
+  const [privacyOpen, setPrivacyOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
   const [mobileMenu, setMobileMenu] = useState(false);
   const [activeService, setActiveService] = useState(null);
@@ -737,6 +738,42 @@ export default function App() {
         </div>
       </section>
 
+      {/* ── PRIVACY MODAL ── */}
+      {privacyOpen && (
+        <div className="modal-overlay" onClick={() => setPrivacyOpen(false)}>
+          <div className="modal" onClick={e => e.stopPropagation()} style={{
+            maxWidth: 640, maxHeight: "80vh", display: "flex", flexDirection: "column", padding: 0, overflow: "hidden"
+          }}>
+            {/* Header */}
+            <div style={{ padding: "28px 36px 20px", borderBottom: "1px solid rgba(255,255,255,.07)", display: "flex", justifyContent: "space-between", alignItems: "center", flexShrink: 0 }}>
+              <div>
+                <div style={{ fontFamily: "'Rajdhani'", fontSize: 22, fontWeight: 700, letterSpacing: 1 }}>Политика конфиденциальности</div>
+                <div style={{ fontSize: 12, color: "rgba(255,255,255,.3)", marginTop: 4 }}>Последнее обновление: май 2026</div>
+              </div>
+              <button onClick={() => setPrivacyOpen(false)} style={{ background: "none", border: "none", color: "rgba(255,255,255,.4)", fontSize: 22, cursor: "pointer", lineHeight: 1 }}>✕</button>
+            </div>
+            {/* Scrollable content */}
+            <div style={{ padding: "24px 36px 32px", overflowY: "auto", fontSize: 14, color: "rgba(255,255,255,.55)", lineHeight: 1.8 }}>
+              {[
+                ["1. Общие положения", "Настоящая политика конфиденциальности определяет порядок обработки и защиты персональных данных пользователей сайта WheelCraft (далее — Сайт). Используя Сайт и заполняя форму заявки, вы соглашаетесь с условиями настоящей политики."],
+                ["2. Какие данные мы собираем", "При отправке заявки через форму на Сайте мы собираем следующие данные:\n• Имя\n• Номер телефона\n• Выбранная услуга\n• Комментарий (если указан)\n\nДанные передаются через защищённое соединение и сохраняются в сервисе Google Sheets."],
+                ["3. Цели обработки данных", "Собранные данные используются исключительно для:\n• Связи с вами по вопросу оставленной заявки\n• Записи на услугу и согласования удобного времени\n\nМы не используем ваши данные для маркетинговых рассылок без вашего согласия."],
+                ["4. Передача данных третьим лицам", "Ваши персональные данные не передаются третьим лицам, за исключением сервиса Google LLC (Google Sheets), который используется для хранения заявок. Google обрабатывает данные в соответствии со своей политикой конфиденциальности."],
+                ["5. Файлы cookie и аналитика", "Сайт использует файлы cookie и инструменты веб-аналитики для улучшения качества обслуживания и анализа посещаемости. Вы можете отказаться от использования cookie в настройках браузера или через баннер на сайте."],
+                ["6. Хранение и удаление данных", "Данные хранятся в течение срока, необходимого для обработки заявки. По вашему запросу мы удалим ваши персональные данные в течение 5 рабочих дней."],
+                ["7. Ваши права", "Вы имеете право:\n• Запросить информацию о хранящихся данных\n• Потребовать исправления или удаления данных\n• Отозвать согласие на обработку данных\n\nДля реализации прав свяжитесь с нами по телефону +7 (999) 123-45-67."],
+                ["8. Контакты", "По всем вопросам, связанным с обработкой персональных данных:\nТелефон: +7 (999) 123-45-67\nАдрес: г. Москва, ул. Примерная, д. 1"],
+              ].map(([title, text], i) => (
+                <div key={i} style={{ marginBottom: 24 }}>
+                  <div style={{ fontFamily: "'Rajdhani'", fontSize: 16, fontWeight: 700, color: "#fff", marginBottom: 8, letterSpacing: .5 }}>{title}</div>
+                  <div style={{ whiteSpace: "pre-line" }}>{text}</div>
+                </div>
+              ))}
+            </div>
+          </div>
+        </div>
+      )}
+
       {/* ── COOKIE BANNER ── */}
       {!cookieAccepted && (
         <div style={{
@@ -790,7 +827,7 @@ export default function App() {
           </div>
           <div style={{ borderTop: "1px solid rgba(255,255,255,.05)", paddingTop: 24, display: "flex", justifyContent: "space-between", flexWrap: "wrap", gap: 12 }}>
             <div style={{ fontSize: 13, color: "rgba(255,255,255,.2)" }}>© 2026 WheelCraft. Все права защищены.</div>
-            <div style={{ fontSize: 13, color: "rgba(255,255,255,.2)" }}>Политика конфиденциальности</div>
+            <div style={{ fontSize: 13, color: "rgba(255,255,255,.2)", cursor: "pointer", textDecoration: "underline", textUnderlineOffset: 3 }} onClick={() => setPrivacyOpen(true)}>Политика конфиденциальности</div>
           </div>
         </div>
       </footer>
