@@ -322,12 +322,40 @@ export default function App() {
         @media (max-width:900px) {
           .grid-3, .grid-4 { grid-template-columns: repeat(2,1fr); }
         }
+
+        /* ── Hamburger ── */
+        .hamburger { display: none; flex-direction: column; justify-content: center; gap: 5px; cursor: pointer; padding: 6px; background: none; border: none; }
+        .hamburger span { display: block; width: 22px; height: 2px; background: #fff; border-radius: 2px; transition: all .3s ease; }
+
+        /* ── Mobile menu ── */
+        .mobile-menu {
+          position: fixed; inset: 0; z-index: 400;
+          background: rgba(8,9,12,.98); backdrop-filter: blur(24px);
+          display: flex; flex-direction: column;
+          animation: slideInRight .3s cubic-bezier(.4,0,.2,1);
+        }
+        @keyframes slideInRight { from { transform: translateX(100%); } to { transform: translateX(0); } }
+
+        @media (max-width:768px) {
+          .nav-phone { display: none !important; }
+          .nav-cta-btn { display: none !important; }
+          .nav-desktop { display: none !important; }
+          .hamburger { display: flex !important; }
+          .about-grid { grid-template-columns: 1fr !important; gap: 48px !important; }
+          .hero-section { padding: 100px 20px 60px !important; }
+          .section-pad { padding: 60px 20px !important; }
+          .section-pad-center { padding: 60px 20px !important; max-width: 100% !important; }
+          .nav-bar { padding: 0 20px !important; }
+          .footer-inner { padding: 40px 20px !important; }
+          .ticker-wrap { display: none; }
+        }
         @media (max-width:600px) {
           .grid-3, .grid-4, .grid-2 { grid-template-columns: 1fr; }
           .hero-btns { flex-direction: column; }
-          .nav-desktop { display: none !important; }
           .stats-row { grid-template-columns: repeat(2,1fr) !important; }
           .timeline-line { display: none; }
+          .about-stats-grid { grid-template-columns: 1fr 1fr !important; gap: 12px !important; }
+          .cookie-banner { padding: 16px 20px !important; }
         }
 
         .ticker-wrap {
@@ -378,8 +406,35 @@ export default function App() {
         }
       `}</style>
 
+      {/* ── MOBILE MENU ── */}
+      {mobileMenu && (
+        <div className="mobile-menu">
+          <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between", padding: "0 20px", height: 70, borderBottom: "1px solid rgba(255,255,255,.06)", flexShrink: 0 }}>
+            <div style={{ fontFamily: "'Rajdhani'", fontSize: 20, fontWeight: 700, letterSpacing: 2 }}>
+              WHEEL<span style={{ margin: "0 5px", color: "#ff6b00", fontWeight: 500 }}>/</span><span className="grad-text">CRAFT</span>
+            </div>
+            <button onClick={() => setMobileMenu(false)} style={{ background: "none", border: "none", color: "rgba(255,255,255,.6)", cursor: "pointer", padding: 8 }}>
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" width="24" height="24"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+            </button>
+          </div>
+          <div style={{ flex: 1, display: "flex", flexDirection: "column", justifyContent: "center", padding: "0 32px", gap: 8 }}>
+            {[["Услуги", "services"], ["Акции", "promos"], ["О нас", "about"], ["Отзывы", "reviews"], ["Контакты", "contact"]].map(([label, id]) => (
+              <div key={id} onClick={() => scrollTo(id)} style={{ fontFamily: "'Rajdhani'", fontSize: 36, fontWeight: 700, letterSpacing: 2, color: "rgba(255,255,255,.7)", cursor: "pointer", padding: "12px 0", borderBottom: "1px solid rgba(255,255,255,.05)", transition: "color .2s" }}
+                onMouseEnter={e => e.currentTarget.style.color = "#ff6b00"}
+                onMouseLeave={e => e.currentTarget.style.color = "rgba(255,255,255,.7)"}>
+                {label}
+              </div>
+            ))}
+          </div>
+          <div style={{ padding: "24px 32px 48px", borderTop: "1px solid rgba(255,255,255,.06)", display: "flex", flexDirection: "column", gap: 16 }}>
+            <a href="tel:+79991234567" style={{ fontFamily: "'Rajdhani'", fontSize: 22, fontWeight: 700, color: "rgba(255,255,255,.6)", letterSpacing: 1 }}>+7 (999) 123-45-67</a>
+            <button className="btn btn-grad" onClick={() => scrollTo("contact")} style={{ justifyContent: "center" }}>Записаться</button>
+          </div>
+        </div>
+      )}
+
       {/* ── NAVBAR ── */}
-      <nav style={{
+      <nav className="nav-bar" style={{
         position: "fixed", top: 0, left: 0, right: 0, zIndex: 200,
         padding: "0 40px", height: 70,
         display: "flex", alignItems: "center", justifyContent: "space-between",
@@ -388,7 +443,6 @@ export default function App() {
         borderBottom: scrolled ? "1px solid rgba(255,107,0,.12)" : "none",
         transition: "all .4s ease",
       }}>
-        {/* Logo */}
         <div style={{ display: "flex", alignItems: "center", gap: 12, cursor: "pointer", whiteSpace: "nowrap" }} onClick={() => scrollTo("hero")}>
           <div>
             <div style={{ fontFamily: "'Rajdhani'", fontSize: 20, fontWeight: 700, letterSpacing: 2, lineHeight: 1, whiteSpace: "nowrap" }}>
@@ -398,24 +452,25 @@ export default function App() {
           </div>
         </div>
 
-        {/* Desktop nav */}
         <div className="nav-desktop" style={{ display: "flex", gap: 36, alignItems: "center" }}>
           {[["Услуги", "services"], ["Акции", "promos"], ["О нас", "about"], ["Отзывы", "reviews"], ["Контакты", "contact"]].map(([label, id]) => (
             <span key={id} className="nav-item" onClick={() => scrollTo(id)}>{label}</span>
           ))}
         </div>
 
-        {/* CTA + phone */}
         <div style={{ display: "flex", alignItems: "center", gap: 20 }}>
-          <a href="tel:+79991234567" style={{ fontFamily: "'Rajdhani'", fontSize: 17, fontWeight: 700, color: "rgba(255,255,255,.8)", letterSpacing: 0.5 }}>
+          <a className="nav-phone" href="tel:+79991234567" style={{ fontFamily: "'Rajdhani'", fontSize: 17, fontWeight: 700, color: "rgba(255,255,255,.8)", letterSpacing: 0.5 }}>
             +7 (999) 123-45-67
           </a>
-          <button className="btn btn-grad btn-sm" onClick={() => scrollTo("contact")}>Записаться</button>
+          <button className="btn btn-grad btn-sm nav-cta-btn" onClick={() => scrollTo("contact")}>Записаться</button>
+          <button className="hamburger" onClick={() => setMobileMenu(true)} aria-label="Меню">
+            <span /><span /><span />
+          </button>
         </div>
       </nav>
 
       {/* ── HERO ── */}
-      <section id="hero" style={{ minHeight: "100vh", display: "flex", alignItems: "center", position: "relative", padding: "100px 40px 60px" }}>
+      <section id="hero" className="hero-section" style={{ minHeight: "100vh", display: "flex", alignItems: "center", position: "relative", padding: "100px 40px 60px" }}>
         <div className="hero-bg">
           {/* Background SVG wheel pattern */}
           <div style={{ position: "absolute", inset: 0, overflow: "hidden" }}>
@@ -483,7 +538,7 @@ export default function App() {
       </div>
 
       {/* ── PROMOS ── */}
-      <section id="promos" style={{ padding: "80px 40px", maxWidth: 1200, margin: "0 auto" }}>
+      <section id="promos" className="section-pad" style={{ padding: "80px 40px", maxWidth: 1200, margin: "0 auto" }}>
         <p className="section-kicker">Актуальные предложения</p>
         <h2 className="section-title">Акции и <span className="grad-text">спецпредложения</span></h2>
 
@@ -509,7 +564,7 @@ export default function App() {
       </section>
 
       {/* ── SERVICES ── */}
-      <section id="services" style={{ padding: "80px 40px", background: "rgba(255,255,255,.015)" }}>
+      <section id="services" className="section-pad" style={{ padding: "80px 40px", background: "rgba(255,255,255,.015)" }}>
         <div style={{ maxWidth: 1200, margin: "0 auto" }}>
           <p className="section-kicker">Что мы делаем</p>
           <div style={{ display: "flex", justifyContent: "space-between", alignItems: "flex-end", flexWrap: "wrap", gap: 20, marginBottom: 40 }}>
@@ -566,8 +621,8 @@ export default function App() {
       )}
 
       {/* ── ABOUT ── */}
-      <section id="about" style={{ padding: "80px 40px", maxWidth: 1200, margin: "0 auto" }}>
-        <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 80, alignItems: "center" }}>
+      <section id="about" className="section-pad" style={{ padding: "80px 40px", maxWidth: 1200, margin: "0 auto" }}>
+        <div className="about-grid" style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 80, alignItems: "center" }}>
           <div>
             <p className="section-kicker">Почему выбирают нас</p>
             <h2 className="section-title">Качество,<br />которое <span className="grad-text">говорит само</span></h2>
@@ -590,7 +645,7 @@ export default function App() {
           </div>
 
           {/* Stats cards */}
-          <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 20 }}>
+          <div className="about-stats-grid" style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 20 }}>
             {STATS.map((s, i) => (
               <div key={i} style={{
                 background: i % 2 === 0 ? "linear-gradient(135deg, rgba(255,107,0,.12), rgba(255,0,128,.08))" : "rgba(255,255,255,.04)",
@@ -654,7 +709,7 @@ export default function App() {
       </section>
 
       {/* ── REVIEWS ── */}
-      <section id="reviews" style={{ padding: "80px 40px", maxWidth: 1200, margin: "0 auto" }}>
+      <section id="reviews" className="section-pad" style={{ padding: "80px 40px", maxWidth: 1200, margin: "0 auto" }}>
         <p className="section-kicker">Клиенты о нас</p>
         <h2 className="section-title">Что говорят <span className="grad-text">наши клиенты</span></h2>
 
@@ -680,7 +735,7 @@ export default function App() {
       </section>
 
       {/* ── CONTACT FORM ── */}
-      <section id="contact" style={{ padding: "80px 40px", background: "linear-gradient(135deg, rgba(255,107,0,.06) 0%, rgba(255,0,128,.04) 100%)", borderTop: "1px solid rgba(255,107,0,.1)" }}>
+      <section id="contact" className="section-pad" style={{ padding: "80px 40px", background: "linear-gradient(135deg, rgba(255,107,0,.06) 0%, rgba(255,0,128,.04) 100%)", borderTop: "1px solid rgba(255,107,0,.1)" }}>
         <div style={{ maxWidth: 680, margin: "0 auto", textAlign: "center" }}>
           <p className="section-kicker">Записаться</p>
           <h2 className="section-title">Оставьте заявку —<br /><span className="grad-text">перезвоним за 30 минут</span></h2>
@@ -776,7 +831,7 @@ export default function App() {
 
       {/* ── COOKIE BANNER ── */}
       {!cookieAccepted && (
-        <div style={{
+        <div className="cookie-banner" style={{
           position: "fixed", bottom: 0, left: 0, right: 0, zIndex: 600,
           background: "rgba(10,11,15,.97)", backdropFilter: "blur(16px)",
           borderTop: "1px solid rgba(255,107,0,.2)",
@@ -799,8 +854,8 @@ export default function App() {
       )}
 
       {/* ── FOOTER ── */}
-      <footer style={{ padding: "48px 40px", background: "#050508", borderTop: "1px solid rgba(255,255,255,.05)" }}>
-        <div style={{ maxWidth: 1200, margin: "0 auto" }}>
+      <footer style={{ background: "#050508", borderTop: "1px solid rgba(255,255,255,.05)" }}>
+        <div className="footer-inner" style={{ maxWidth: 1200, margin: "0 auto", padding: "48px 40px" }}>
           <div style={{ display: "flex", justifyContent: "space-between", alignItems: "flex-start", flexWrap: "wrap", gap: 40, marginBottom: 40 }}>
             <div style={{ maxWidth: 280 }}>
               <div style={{ display: "flex", alignItems: "center", gap: 12, marginBottom: 16 }}>
