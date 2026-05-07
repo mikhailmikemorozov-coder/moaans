@@ -1,78 +1,109 @@
 import { useState, useEffect, useRef } from "react";
 
 /* ─── DATA ─────────────────────────────────────────── */
+/* ── SVG illustrations for each service card ── */
+const WheelSVG = ({ color, variant = 0 }) => {
+  const spokes = variant === 0 ? 5 : variant === 1 ? 6 : variant === 2 ? 8 : 10;
+  const angleStep = (Math.PI * 2) / spokes;
+  const spokeLines = Array.from({ length: spokes }, (_, i) => {
+    const a = i * angleStep - Math.PI / 2;
+    return { x1: 50, y1: 50, x2: 50 + Math.cos(a) * 38, y2: 50 + Math.sin(a) * 38 };
+  });
+  return (
+    <svg viewBox="0 0 100 100" width="100%" height="100%">
+      <defs>
+        <radialGradient id={`rg${variant}`} cx="50%" cy="50%" r="50%">
+          <stop offset="0%" stopColor={color} stopOpacity="0.25" />
+          <stop offset="100%" stopColor={color} stopOpacity="0.05" />
+        </radialGradient>
+      </defs>
+      <rect width="100" height="100" fill={`url(#rg${variant})`} />
+      {/* Outer ring */}
+      <circle cx="50" cy="50" r="42" fill="none" stroke={color} strokeWidth="5" strokeOpacity="0.6" />
+      {/* Middle ring */}
+      <circle cx="50" cy="50" r="28" fill="none" stroke={color} strokeWidth="2" strokeOpacity="0.35" />
+      {/* Inner hub */}
+      <circle cx="50" cy="50" r="8" fill={color} fillOpacity="0.5" />
+      <circle cx="50" cy="50" r="4" fill={color} fillOpacity="0.9" />
+      {/* Spokes */}
+      {spokeLines.map((s, i) => (
+        <line key={i} x1={s.x1} y1={s.y1} x2={s.x2} y2={s.y2}
+          stroke={color} strokeWidth="3.5" strokeOpacity="0.55" strokeLinecap="round" />
+      ))}
+      {/* Bolt holes */}
+      {spokeLines.map((s, i) => {
+        const a = i * angleStep - Math.PI / 2;
+        return <circle key={i} cx={50 + Math.cos(a) * 28} cy={50 + Math.sin(a) * 28}
+          r="2.5" fill={color} fillOpacity="0.7" />;
+      })}
+    </svg>
+  );
+};
+
+const ServiceIllustration = ({ color, variant, icon }) => (
+  <div style={{ width: "100%", height: "100%", position: "relative", overflow: "hidden",
+    background: `radial-gradient(ellipse at 60% 50%, ${color}18 0%, #0d0d10 70%)` }}>
+    {/* Big wheel */}
+    <div style={{ position: "absolute", right: -20, top: -20, width: 180, height: 180, opacity: 0.6 }}>
+      <WheelSVG color={color} variant={variant} />
+    </div>
+    {/* Small wheel bottom-left */}
+    <div style={{ position: "absolute", left: -15, bottom: -15, width: 90, height: 90, opacity: 0.25 }}>
+      <WheelSVG color={color} variant={(variant + 1) % 4} />
+    </div>
+    {/* Horizontal lines */}
+    {[20, 35, 50, 65, 80].map((y, i) => (
+      <div key={i} style={{ position: "absolute", top: `${y}%`, left: 0, right: 0,
+        height: 1, background: `${color}`, opacity: 0.06 }} />
+    ))}
+    {/* Big emoji center-left */}
+    <div style={{ position: "absolute", left: 20, top: "50%", transform: "translateY(-50%)",
+      fontSize: 52, filter: "drop-shadow(0 0 12px " + color + "88)" }}>
+      {icon}
+    </div>
+  </div>
+);
+
 const SERVICES = [
   {
-    id: 1,
-    emoji: "🎨",
-    title: "Покраска дисков",
+    id: 1, emoji: "🎨", title: "Покраска дисков",
     short: "Любой цвет, матовый или глянцевый, порошок или жидкая краска.",
-    price: "от 2 500 ₽",
-    tag: "Хит",
-    color: "#ff6b00",
+    price: "от 2 500 ₽", tag: "Хит", color: "#ff6b00", variant: 0,
   },
   {
-    id: 2,
-    emoji: "💎",
-    title: "Алмазная проточка",
+    id: 2, emoji: "💎", title: "Алмазная проточка",
     short: "Токарный станок с ЧПУ — восстанавливаем заводской блеск и геометрию.",
-    price: "от 1 800 ₽",
-    tag: "Популярно",
-    color: "#00d4ff",
+    price: "от 1 800 ₽", tag: "Популярно", color: "#00d4ff", variant: 1,
   },
   {
-    id: 3,
-    emoji: "🔧",
-    title: "Ремонт и восстановление",
+    id: 3, emoji: "🔧", title: "Ремонт и восстановление",
     short: "Правка, сварка TIG/аргон, устранение трещин, сколов и деформаций.",
-    price: "от 1 500 ₽",
-    tag: null,
-    color: "#ff0080",
+    price: "от 1 500 ₽", tag: null, color: "#ff0080", variant: 2,
   },
   {
-    id: 4,
-    emoji: "✨",
-    title: "Полировка",
+    id: 4, emoji: "✨", title: "Полировка",
     short: "Зеркальная полировка вручную и машинным способом. Защитный лак.",
-    price: "от 800 ₽",
-    tag: null,
-    color: "#ffd700",
+    price: "от 800 ₽", tag: null, color: "#ffd700", variant: 3,
   },
   {
-    id: 5,
-    emoji: "🛡️",
-    title: "Антикоррозийная обработка",
+    id: 5, emoji: "🛡️", title: "Антикоррозийная обработка",
     short: "Грунтование и защитное покрытие — результат на годы вперёд.",
-    price: "от 600 ₽",
-    tag: null,
-    color: "#39ff14",
+    price: "от 600 ₽", tag: null, color: "#39ff14", variant: 0,
   },
   {
-    id: 6,
-    emoji: "🎯",
-    title: "Кастомный дизайн",
+    id: 6, emoji: "🎯", title: "Кастомный дизайн",
     short: "Двухцветные схемы, хром, карбон-эффект, брендирование под ваш стиль.",
-    price: "от 4 000 ₽",
-    tag: "Эксклюзив",
-    color: "#bf00ff",
+    price: "от 4 000 ₽", tag: "Эксклюзив", color: "#bf00ff", variant: 1,
   },
   {
-    id: 7,
-    emoji: "🏎️",
-    title: "Покраска суппортов",
+    id: 7, emoji: "🏎️", title: "Покраска суппортов",
     short: "Яркие цвета, термостойкая краска — выглядит мощно сквозь спицы.",
-    price: "от 2 000 ₽",
-    tag: null,
-    color: "#ff6b00",
+    price: "от 2 000 ₽", tag: null, color: "#ff6b00", variant: 2,
   },
   {
-    id: 8,
-    emoji: "🔩",
-    title: "Шиномонтаж",
+    id: 8, emoji: "🔩", title: "Шиномонтаж",
     short: "Монтаж, демонтаж, балансировка. Работаем с любыми размерами.",
-    price: "от 300 ₽",
-    tag: null,
-    color: "#00d4ff",
+    price: "от 300 ₽", tag: null, color: "#00d4ff", variant: 3,
   },
 ];
 
@@ -353,9 +384,23 @@ export default function App() {
       {/* ── HERO ── */}
       <section id="hero" style={{ minHeight: "100vh", display: "flex", alignItems: "center", position: "relative", padding: "100px 40px 60px" }}>
         <div className="hero-bg">
+          {/* Background SVG wheel pattern */}
+          <div style={{ position: "absolute", inset: 0, overflow: "hidden" }}>
+            {/* Giant faded wheel right side */}
+            <div style={{ position: "absolute", right: "-8%", top: "50%", transform: "translateY(-50%)", width: "55vh", height: "55vh", opacity: 0.12 }}>
+              <WheelSVG color="#ff6b00" variant={1} />
+            </div>
+            <div style={{ position: "absolute", right: "20%", bottom: "-10%", width: "25vh", height: "25vh", opacity: 0.07 }}>
+              <WheelSVG color="#ff0080" variant={2} />
+            </div>
+          </div>
+          {/* Gradient overlay left-to-right so text stays readable */}
+          <div style={{
+            position: "absolute", inset: 0,
+            background: "linear-gradient(90deg, #08090c 40%, rgba(8,9,12,0.55) 70%, rgba(8,9,12,0.2) 100%)",
+          }} />
           <div className="orb" style={{ width: 600, height: 600, top: "-10%", right: "-5%", background: "rgba(255,107,0,.18)", animation: "pulse 6s ease-in-out infinite" }} />
           <div className="orb" style={{ width: 400, height: 400, bottom: "-5%", left: "-5%", background: "rgba(255,0,128,.12)", animation: "pulse 8s ease-in-out infinite 2s" }} />
-          <div className="orb" style={{ width: 300, height: 300, top: "40%", left: "40%", background: "rgba(0,212,255,.08)", animation: "pulse 10s ease-in-out infinite 1s" }} />
           {/* Grid overlay */}
           <div style={{ position: "absolute", inset: 0, backgroundImage: "linear-gradient(rgba(255,107,0,.04) 1px,transparent 1px),linear-gradient(90deg,rgba(255,107,0,.04) 1px,transparent 1px)", backgroundSize: "60px 60px" }} />
         </div>
@@ -443,19 +488,23 @@ export default function App() {
 
           <div className="grid-4">
             {SERVICES.map((s) => (
-              <div key={s.id} className="card" style={{ cursor: "pointer", padding: "28px 24px" }}
+              <div key={s.id} className="card" style={{ cursor: "pointer", padding: 0, overflow: "hidden" }}
                 onClick={() => setActiveService(s)}>
-                <div className="service-icon-wrap" style={{ background: s.color + "22", border: `1px solid ${s.color}44` }}>
-                  {s.emoji}
+                {/* Illustration */}
+                <div style={{ position: "relative", height: 160, overflow: "hidden" }}>
+                  <ServiceIllustration color={s.color} variant={s.variant} icon={s.emoji} />
+                  {s.tag && (
+                    <div style={{ position: "absolute", top: 10, right: 10 }}>
+                      <span className="tag" style={{ background: "rgba(255,107,0,.9)", color: "#fff", fontSize: 10, padding: "3px 10px" }}>{s.tag}</span>
+                    </div>
+                  )}
                 </div>
-                {s.tag && (
-                  <span className="tag" style={{ background: "rgba(255,107,0,.15)", color: "var(--orange)", border: "1px solid rgba(255,107,0,.25)", marginBottom: 10, display: "inline-block" }}>
-                    {s.tag}
-                  </span>
-                )}
-                <h3 style={{ fontFamily: "'Rajdhani'", fontSize: 19, fontWeight: 700, letterSpacing: .5, marginBottom: 10 }}>{s.title}</h3>
-                <p style={{ fontSize: 13, color: "rgba(255,255,255,.5)", lineHeight: 1.65, marginBottom: 20 }}>{s.short}</p>
-                <div style={{ fontFamily: "'Rajdhani'", fontSize: 22, fontWeight: 700, color: s.color }}>{s.price}</div>
+                {/* Text */}
+                <div style={{ padding: "18px 20px 22px" }}>
+                  <h3 style={{ fontFamily: "'Rajdhani'", fontSize: 18, fontWeight: 700, letterSpacing: .4, marginBottom: 8 }}>{s.title}</h3>
+                  <p style={{ fontSize: 13, color: "rgba(255,255,255,.48)", lineHeight: 1.6, marginBottom: 14 }}>{s.short}</p>
+                  <div style={{ fontFamily: "'Rajdhani'", fontSize: 21, fontWeight: 700, color: s.color }}>{s.price}</div>
+                </div>
               </div>
             ))}
           </div>
@@ -465,13 +514,20 @@ export default function App() {
       {/* Service detail modal */}
       {activeService && (
         <div className="modal-overlay" onClick={() => setActiveService(null)}>
-          <div className="modal" onClick={(e) => e.stopPropagation()}>
-            <button onClick={() => setActiveService(null)} style={{ position: "absolute", top: 20, right: 20, background: "none", border: "none", color: "rgba(255,255,255,.5)", fontSize: 24, cursor: "pointer" }}>✕</button>
-            <div style={{ fontSize: 52, marginBottom: 20 }}>{activeService.emoji}</div>
-            <h3 style={{ fontFamily: "'Rajdhani'", fontSize: 28, fontWeight: 700, marginBottom: 12 }}>{activeService.title}</h3>
-            <p style={{ color: "rgba(255,255,255,.6)", lineHeight: 1.7, marginBottom: 24 }}>{activeService.short}</p>
-            <div style={{ fontFamily: "'Rajdhani'", fontSize: 32, fontWeight: 700, color: activeService.color, marginBottom: 28 }}>{activeService.price}</div>
-            <button className="btn btn-grad" onClick={() => { setActiveService(null); scrollTo("contact"); }}>Записаться на эту услугу</button>
+          <div className="modal" style={{ padding: 0, overflow: "hidden", maxWidth: 500 }} onClick={(e) => e.stopPropagation()}>
+            {/* Illustration header */}
+            <div style={{ position: "relative", height: 200, overflow: "hidden" }}>
+              {activeService && <ServiceIllustration color={activeService.color} variant={activeService.variant} icon={activeService.emoji} />}
+              <div style={{ position: "absolute", inset: 0, background: `linear-gradient(to top, #0f1015 0%, transparent 60%)` }} />
+              <button onClick={() => setActiveService(null)} style={{ position: "absolute", top: 16, right: 16, background: "rgba(0,0,0,.6)", backdropFilter: "blur(8px)", border: "none", color: "#fff", width: 36, height: 36, borderRadius: "50%", fontSize: 18, cursor: "pointer", display: "flex", alignItems: "center", justifyContent: "center" }}>✕</button>
+            </div>
+            {/* Content */}
+            <div style={{ padding: "24px 32px 32px" }}>
+              <h3 style={{ fontFamily: "'Rajdhani'", fontSize: 28, fontWeight: 700, marginBottom: 10 }}>{activeService.title}</h3>
+              <p style={{ color: "rgba(255,255,255,.6)", lineHeight: 1.7, marginBottom: 20 }}>{activeService.short}</p>
+              <div style={{ fontFamily: "'Rajdhani'", fontSize: 32, fontWeight: 700, color: activeService.color, marginBottom: 24 }}>{activeService.price}</div>
+              <button className="btn btn-grad" style={{ width: "100%", justifyContent: "center" }} onClick={() => { setActiveService(null); scrollTo("contact"); }}>Записаться на эту услугу</button>
+            </div>
           </div>
         </div>
       )}
