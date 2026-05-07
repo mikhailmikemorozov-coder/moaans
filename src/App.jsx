@@ -367,13 +367,6 @@ export default function App() {
         }
       `}</style>
 
-      {/* ── FLOATING CTA ── */}
-      <div className="floating-cta">
-        <button className="btn btn-grad btn-sm" onClick={() => scrollTo("contact")} style={{ borderRadius: 50, boxShadow: "0 8px 32px rgba(255,107,0,.5)" }}>
-          📞 Записаться
-        </button>
-      </div>
-
       {/* ── NAVBAR ── */}
       <nav style={{
         position: "fixed", top: 0, left: 0, right: 0, zIndex: 200,
