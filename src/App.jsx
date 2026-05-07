@@ -552,7 +552,7 @@ export default function App() {
               <h3 style={{ fontFamily: "'Rajdhani'", fontSize: 28, fontWeight: 700, marginBottom: 10 }}>{activeService.title}</h3>
               <p style={{ color: "rgba(255,255,255,.6)", lineHeight: 1.7, marginBottom: 20 }}>{activeService.short}</p>
               <div style={{ fontFamily: "'Rajdhani'", fontSize: 32, fontWeight: 700, color: activeService.color, marginBottom: 24 }}>{activeService.price}</div>
-              <button className="btn btn-grad" style={{ width: "100%", justifyContent: "center" }} onClick={() => { setActiveService(null); scrollTo("contact"); }}>Записаться на эту услугу</button>
+              <button className="btn btn-grad" style={{ width: "100%", justifyContent: "center" }} onClick={() => { setFormData(f => ({ ...f, service: activeService.title })); setActiveService(null); scrollTo("contact"); }}>Записаться на эту услугу</button>
             </div>
           </div>
         </div>
