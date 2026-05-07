@@ -328,11 +328,14 @@ export default function App() {
           animation: ticker 18s linear infinite;
         }
         @keyframes ticker { from { transform: translateX(0); } to { transform: translateX(-50%); } }
+        .ticker:hover { animation-play-state: paused; }
         .ticker-item {
           font-family: 'Rajdhani', sans-serif; font-size: 15px; font-weight: 600;
           letter-spacing: 1.5px; text-transform: uppercase; color: rgba(255,255,255,.5);
           display: flex; align-items: center; gap: 12px; flex-shrink: 0;
+          cursor: pointer; transition: color .2s;
         }
+        .ticker-item:hover { color: #fff; }
         .ticker-dot { width: 6px; height: 6px; border-radius: 50%; background: var(--orange); flex-shrink: 0; }
 
         .modal-overlay {
@@ -466,9 +469,9 @@ export default function App() {
       <div className="ticker-wrap">
         <div className="ticker">
           {[...Array(2)].map((_, rep) =>
-            ["Покраска дисков", "Алмазная проточка", "Ремонт и восстановление", "Полировка", "Кастомный дизайн", "Покраска суппортов", "Шиномонтаж", "Антикоррозийная защита"].map((item, i) => (
-              <span key={`${rep}-${i}`} className="ticker-item">
-                <span className="ticker-dot" /> {item}
+            SERVICES.map((s) => (
+              <span key={`${rep}-${s.id}`} className="ticker-item" onClick={() => setActiveService(s)}>
+                <span className="ticker-dot" style={{ background: s.color }} /> {s.title}
               </span>
             ))
           )}
