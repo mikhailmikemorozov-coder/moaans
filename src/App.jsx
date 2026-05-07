@@ -169,6 +169,20 @@ export default function App() {
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
 
+  const handlePhoneChange = (e) => {
+    let digits = e.target.value.replace(/\D/g, '');
+    if (digits.startsWith('7') || digits.startsWith('8')) digits = digits.slice(1);
+    digits = digits.slice(0, 10);
+    let formatted = '+7';
+    if (digits.length > 0) formatted += ' ' + digits.slice(0, 3);
+    if (digits.length > 3) formatted += ' ' + digits.slice(3, 6);
+    if (digits.length > 6) formatted += ' ' + digits.slice(6, 8);
+    if (digits.length > 8) formatted += ' ' + digits.slice(8, 10);
+    setFormData({ ...formData, phone: formatted });
+  };
+
+  const phoneComplete = formData.phone.replace(/\D/g, '').length === 11;
+
   const handleSubmit = async () => {
     if (!formData.name || !formData.phone) return;
     setSending(true);
@@ -661,7 +675,7 @@ export default function App() {
                 </div>
                 <div>
                   <label style={{ fontSize: 13, color: "rgba(255,255,255,.4)", display: "block", marginBottom: 8, letterSpacing: .5 }}>Телефон</label>
-                  <input className="input-field" placeholder="+7 (___) ___-__-__" value={formData.phone} onChange={e => setFormData({ ...formData, phone: e.target.value })} />
+                  <input className="input-field" placeholder="+7 XXX XXX XX XX" value={formData.phone} onChange={handlePhoneChange} inputMode="tel" />
                 </div>
               </div>
               <div>
@@ -675,7 +689,7 @@ export default function App() {
                 <label style={{ fontSize: 13, color: "rgba(255,255,255,.4)", display: "block", marginBottom: 8, letterSpacing: .5 }}>Комментарий (необязательно)</label>
                 <textarea className="input-field" rows={3} placeholder="Опишите задачу, марку авто, размер дисков..." value={formData.comment} onChange={e => setFormData({ ...formData, comment: e.target.value })} style={{ resize: "vertical" }} />
               </div>
-              <button className="btn btn-grad" onClick={handleSubmit} disabled={sending} style={{ width: "100%", justifyContent: "center", marginTop: 8, padding: "18px", fontSize: 18, opacity: sending ? 0.7 : 1 }}>
+              <button className="btn btn-grad" onClick={handleSubmit} disabled={sending || !formData.name || !phoneComplete} style={{ width: "100%", justifyContent: "center", marginTop: 8, padding: "18px", fontSize: 18, opacity: (sending || !formData.name || !phoneComplete) ? 0.5 : 1, cursor: (!formData.name || !phoneComplete) ? "not-allowed" : "pointer" }}>
                 {sending ? "⏳ Отправка…" : "🚀 Отправить заявку"}
               </button>
               <p style={{ fontSize: 12, color: "rgba(255,255,255,.25)", textAlign: "center" }}>
