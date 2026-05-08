@@ -192,18 +192,20 @@ const Logo = () => {
   return (
     <div style={{ display: "flex", alignItems: "center", gap: 10 }}>
       <svg viewBox="0 0 40 40" width="36" height="36" style={{ flexShrink: 0 }}>
-        {/* Rainbow paint ring — 6 brushstrokes tangential around the tire, drawn first so tire overlaps */}
-        {[[0,"#00d4ff"],[60,"#7fd400"],[120,"#ffd700"],[180,"#ff0080"],[240,"#bf00ff"],[300,"#ff6b00"]].map(([a, color]) => {
-          const rad = a * Math.PI / 180;
-          const cx = +(20 + 14 * Math.cos(rad)).toFixed(1);
-          const cy = +(20 + 14 * Math.sin(rad)).toFixed(1);
-          return <ellipse key={a} cx={cx} cy={cy} rx="5.5" ry="2.2" fill={color} transform={`rotate(${a + 90} ${cx} ${cy})`}/>;
-        })}
-        {/* Tire — visible orange ring defines the wheel shape */}
-        <circle cx="20" cy="20" r="13" fill="#1a1a2a"/>
-        <circle cx="20" cy="20" r="13" fill="none" stroke="#ff6b00" strokeWidth="2.5"/>
+        {/* Rainbow arc ring — 6 arcs × 60° each = full 360° colored halo
+            r=15, strokeWidth=5 → inner edge r=12.5 (under tire), outer edge r=17.5 (visible)
+            C=94.25, each arc=15.71, gap=78.54; rotate(-90) starts at 12 o'clock */}
+        {["#00d4ff","#ffd700","#7fd400","#ff0080","#bf00ff","#00eaff"].map((color, i) => (
+          <circle key={i} cx="20" cy="20" r="15" fill="none"
+            stroke={color} strokeWidth="5" strokeLinecap="round"
+            strokeDasharray="15.71 78.54"
+            strokeDashoffset={-(i * 15.71)}
+            transform="rotate(-90 20 20)"/>
+        ))}
+        {/* Tire — solid black on top, hides inner portion of halo */}
+        <circle cx="20" cy="20" r="12.8" fill="#090910"/>
         {/* Rim */}
-        <circle cx="20" cy="20" r="10" fill="#0d0d1a"/>
+        <circle cx="20" cy="20" r="9.8" fill="#080810"/>
         {/* Spokes */}
         {spokes.map(([x, y], i) => (
           <line key={i} x1="20" y1="20" x2={x} y2={y} stroke="#8b5cf6" strokeWidth="2.2" strokeLinecap="round"/>
@@ -212,8 +214,6 @@ const Logo = () => {
         {spokes.map(([x, y], i) => (
           <circle key={`b${i}`} cx={x} cy={y} r="1.2" fill="#8b5cf6" fillOpacity="0.8"/>
         ))}
-        {/* Inner ring */}
-        <circle cx="20" cy="20" r="10" fill="none" stroke="#1a1a2a" strokeWidth="1"/>
         {/* Hub */}
         <circle cx="20" cy="20" r="3" fill="#bf00ff"/>
         <circle cx="20" cy="20" r="1.5" fill="rgba(255,255,255,0.7)"/>
