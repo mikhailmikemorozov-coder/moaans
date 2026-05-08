@@ -492,7 +492,8 @@ export default function App() {
             ))}
           </div>
           <div style={{ padding: "24px 32px 48px", borderTop: "1px solid rgba(255,255,255,.06)", display: "flex", flexDirection: "column", gap: 16 }}>
-            <a href="tel:+79991234567" style={{ fontFamily: "'Rajdhani'", fontSize: 22, fontWeight: 700, color: "rgba(255,255,255,.6)", letterSpacing: 1 }}>+7 (999) 123-45-67</a>
+            <a href="tel:+74951365500" style={{ fontFamily: "'Rajdhani'", fontSize: 22, fontWeight: 700, color: "rgba(255,255,255,.6)", letterSpacing: 1 }}>+7 (495) 136-55-00</a>
+            <a href="tel:+79251101052" style={{ fontFamily: "'Rajdhani'", fontSize: 20, fontWeight: 700, color: "rgba(255,255,255,.45)", letterSpacing: 1 }}>+7 (925) 110-10-52</a>
             <button className="btn btn-grad" onClick={() => scrollTo("contact")} style={{ justifyContent: "center" }}>Записаться</button>
           </div>
         </div>
@@ -519,8 +520,8 @@ export default function App() {
         </div>
 
         <div style={{ display: "flex", alignItems: "center", gap: 20 }}>
-          <a className="nav-phone" href="tel:+79991234567" style={{ fontFamily: "'Rajdhani'", fontSize: 17, fontWeight: 700, color: "rgba(255,255,255,.8)", letterSpacing: 0.5 }}>
-            +7 (999) 123-45-67
+          <a className="nav-phone" href="tel:+74951365500" style={{ fontFamily: "'Rajdhani'", fontSize: 17, fontWeight: 700, color: "rgba(255,255,255,.8)", letterSpacing: 0.5 }}>
+            +7 (495) 136-55-00
           </a>
           <button className="btn btn-grad btn-sm nav-cta-btn" onClick={() => scrollTo("contact")}>Записаться</button>
           <button className="hamburger" onClick={() => setMobileMenu(true)} aria-label="Меню">
@@ -855,21 +856,29 @@ export default function App() {
             {[
               {
                 icon: <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" width="20" height="20"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 9.81a19.79 19.79 0 01-3.07-8.7A2 2 0 012.18 0h3a2 2 0 012 1.72 12.84 12.84 0 00.7 2.81 2 2 0 01-.45 2.11L6.91 7.09a16 16 0 006 6l.56-.56a2 2 0 012.11-.45 12.84 12.84 0 002.81.7A2 2 0 0122 14.92v2z"/></svg>,
-                label: "+7 (999) 123-45-67", color: "#ff6b00",
+                label: "+7 (495) 136-55-00", color: "#ff6b00", href: "tel:+74951365500",
+              },
+              {
+                icon: <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" width="20" height="20"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 9.81a19.79 19.79 0 01-3.07-8.7A2 2 0 012.18 0h3a2 2 0 012 1.72 12.84 12.84 0 00.7 2.81 2 2 0 01-.45 2.11L6.91 7.09a16 16 0 006 6l.56-.56a2 2 0 012.11-.45 12.84 12.84 0 002.81.7A2 2 0 0122 14.92v2z"/></svg>,
+                label: "+7 (925) 110-10-52", color: "#ff6b00", href: "tel:+79251101052",
               },
               {
                 icon: <svg viewBox="0 0 24 24" fill="currentColor" width="20" height="20"><path d="M11.944 0A12 12 0 000 12a12 12 0 0012 12 12 12 0 0012-12A12 12 0 0012 0a12 12 0 00-.056 0zm4.962 7.224c.1-.002.321.023.465.14a.506.506 0 01.171.325c.016.093.036.306.02.472-.18 1.898-.962 6.502-1.36 8.627-.168.9-.499 1.201-.82 1.23-.696.065-1.225-.46-1.9-.902-1.056-.693-1.653-1.124-2.678-1.8-1.185-.78-.417-1.21.258-1.91.177-.184 3.247-2.977 3.307-3.23.007-.032.014-.15-.056-.212s-.174-.041-.249-.024c-.106.024-1.793 1.14-5.061 3.345-.48.33-.913.49-1.302.48-.428-.008-1.252-.241-1.865-.44-.752-.245-1.349-.374-1.297-.789.027-.216.325-.437.893-.663 3.498-1.524 5.83-2.529 6.998-3.014 3.332-1.386 4.025-1.627 4.476-1.635z"/></svg>,
-                label: "Написать в Telegram", color: "#00d4ff",
+                label: "Telegram", color: "#00d4ff", href: "https://t.me/+79652130999",
               },
               {
                 icon: <svg viewBox="0 0 24 24" fill="currentColor" width="20" height="20"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>,
-                label: "WhatsApp", color: "#39ff14",
+                label: "WhatsApp", color: "#39ff14", href: "https://wa.me/79652130999",
               },
-            ].map(({ icon, label, color }, i) => (
-              <div key={i} style={{ display: "flex", alignItems: "center", gap: 8, padding: "12px 20px", background: color + "0f", border: `1px solid ${color}33`, borderRadius: 50, cursor: "pointer", transition: "all .2s" }}>
+              {
+                icon: <svg viewBox="0 0 24 24" fill="currentColor" width="20" height="20"><path d="M2 3h20v2H2zm0 16h20v2H2zM2 11h20v2H2zM12 3l8 8-8 8V3z" opacity="0"/><path d="M20 4H4C2.9 4 2 4.9 2 6v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm-5.12 13H13v-6.24l-2 2.57-2-2.57V17H7.12V7H9l3 3.88L15 7h1.88v10H14.88z"/></svg>,
+                label: "MAX", color: "#5b8af5", href: "https://vk.me/+79251101052",
+              },
+            ].map(({ icon, label, color, href }, i) => (
+              <a key={i} href={href} target={href.startsWith("tel:") ? "_self" : "_blank"} rel="noopener noreferrer" style={{ textDecoration: "none", display: "flex", alignItems: "center", gap: 8, padding: "12px 20px", background: color + "0f", border: `1px solid ${color}33`, borderRadius: 50, cursor: "pointer", transition: "all .2s" }}>
                 <span style={{ color, display: "flex", alignItems: "center" }}>{icon}</span>
                 <span style={{ fontFamily: "'Rajdhani'", fontSize: 15, fontWeight: 600, color }}>{label}</span>
-              </div>
+              </a>
             ))}
           </div>
         </div>
@@ -898,8 +907,8 @@ export default function App() {
                 ["4. Передача данных третьим лицам", "Ваши персональные данные не передаются и не продаются третьим лицам. Данные используются исключительно сотрудниками BI Color для обработки вашей заявки."],
                 ["5. Файлы cookie и аналитика", "Сайт использует файлы cookie и инструменты веб-аналитики для улучшения качества обслуживания и анализа посещаемости. Вы можете отказаться от использования cookie в настройках браузера или через баннер на сайте."],
                 ["6. Хранение и удаление данных", "Данные хранятся в течение срока, необходимого для обработки заявки. По вашему запросу мы удалим ваши персональные данные в течение 5 рабочих дней."],
-                ["7. Ваши права", "Вы имеете право:\n• Запросить информацию о хранящихся данных\n• Потребовать исправления или удаления данных\n• Отозвать согласие на обработку данных\n\nДля реализации прав свяжитесь с нами по телефону +7 (999) 123-45-67."],
-                ["8. Контакты", "По всем вопросам, связанным с обработкой персональных данных:\nТелефон: +7 (999) 123-45-67\nАдрес: г. Москва, ул. Примерная, д. 1"],
+                ["7. Ваши права", "Вы имеете право:\n• Запросить информацию о хранящихся данных\n• Потребовать исправления или удаления данных\n• Отозвать согласие на обработку данных\n\nДля реализации прав свяжитесь с нами по телефону +7 (495) 136-55-00."],
+                ["8. Контакты", "По всем вопросам, связанным с обработкой персональных данных:\nТелефон: +7 (495) 136-55-00\nАдрес: г. Москва, ул. Примерная, д. 1"],
               ].map(([title, text], i) => (
                 <div key={i} style={{ marginBottom: 24 }}>
                   <div style={{ fontFamily: "'Rajdhani'", fontSize: 16, fontWeight: 700, color: "#fff", marginBottom: 8, letterSpacing: .5 }}>{title}</div>
@@ -955,7 +964,7 @@ export default function App() {
             </div>
             <div>
               <div style={{ fontFamily: "'Rajdhani'", fontSize: 13, fontWeight: 600, letterSpacing: 2, color: "rgba(255,255,255,.3)", marginBottom: 16, textTransform: "uppercase" }}>Контакты</div>
-              <div style={{ fontSize: 14, color: "rgba(255,255,255,.45)", marginBottom: 10 }}>+7 (999) 123-45-67</div>
+              <div style={{ fontSize: 14, color: "rgba(255,255,255,.45)", marginBottom: 10 }}>+7 (495) 136-55-00</div>
               <div style={{ fontSize: 14, color: "rgba(255,255,255,.45)", marginBottom: 10 }}>Ежедневно с 8:00 до 22:00</div>
               <div style={{ fontSize: 14, color: "rgba(255,255,255,.45)" }}>г. Москва, ул. Примерная, д. 1</div>
             </div>
