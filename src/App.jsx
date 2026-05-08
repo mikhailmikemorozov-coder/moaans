@@ -197,11 +197,11 @@ const Logo = () => {
         <ellipse cx="33" cy="8"  rx="7" ry="3"   fill="#ffd700" transform="rotate(40 33 8)"/>
         <ellipse cx="7"  cy="32" rx="6" ry="2.5" fill="#ff0080" transform="rotate(40 7 32)"/>
         <ellipse cx="33" cy="32" rx="6" ry="2.5" fill="#7fd400" transform="rotate(-40 33 32)"/>
-        {/* Tire */}
-        <circle cx="20" cy="20" r="13" fill="#0a0a14"/>
-        <circle cx="20" cy="20" r="13" fill="none" stroke="#1e1e2e" strokeWidth="1.5"/>
+        {/* Tire — dark navy so it reads against #08090c background, orange border */}
+        <circle cx="20" cy="20" r="13" fill="#1c1c2e"/>
+        <circle cx="20" cy="20" r="13" fill="none" stroke="rgba(255,107,0,0.6)" strokeWidth="1.5"/>
         {/* Rim */}
-        <circle cx="20" cy="20" r="10" fill="#13131e"/>
+        <circle cx="20" cy="20" r="10" fill="#0f0f1c"/>
         {/* Spokes */}
         {spokes.map(([x, y], i) => (
           <line key={i} x1="20" y1="20" x2={x} y2={y} stroke="#8b5cf6" strokeWidth="2.2" strokeLinecap="round"/>
