@@ -988,7 +988,7 @@ export default function App() {
               <div style={{ fontFamily: "'Rajdhani'", fontSize: 13, fontWeight: 600, letterSpacing: 2, color: "rgba(255,255,255,.3)", marginBottom: 16, textTransform: "uppercase" }}>Контакты</div>
               <div style={{ fontSize: 14, color: "rgba(255,255,255,.45)", marginBottom: 10 }}>+7 (495) 136-55-00</div>
               <div style={{ fontSize: 14, color: "rgba(255,255,255,.45)", marginBottom: 10 }}>Ежедневно с 8:00 до 22:00</div>
-              <div style={{ fontSize: 14, color: "rgba(255,255,255,.45)" }}>г. Москва, ул. Примерная, д. 1</div>
+              <div style={{ fontSize: 14, color: "rgba(255,255,255,.45)" }}>г. Москва, пос. Внуково, Центральная ул., 18с5</div>
             </div>
           </div>
           <div style={{ borderTop: "1px solid rgba(255,255,255,.05)", paddingTop: 24, display: "flex", justifyContent: "space-between", flexWrap: "wrap", gap: 12 }}>
