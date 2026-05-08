@@ -239,6 +239,7 @@ export default function App() {
   const [submitted, setSubmitted] = useState(false);
   const [sending, setSending] = useState(false);
   const [activeTab, setActiveTab] = useState(0);
+  const nameInputRef = useRef(null);
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 60);
@@ -278,6 +279,7 @@ export default function App() {
   const scrollTo = (id) => {
     document.getElementById(id)?.scrollIntoView({ behavior: "smooth" });
     setMobileMenu(false);
+    if (id === "contact") setTimeout(() => nameInputRef.current?.focus(), 600);
   };
 
   return (
@@ -820,7 +822,7 @@ export default function App() {
               <div className="grid-2">
                 <div>
                   <label style={{ fontSize: 13, color: "rgba(255,255,255,.4)", display: "block", marginBottom: 8, letterSpacing: .5 }}>Ваше имя</label>
-                  <input autoFocus className="input-field" placeholder="Александр" value={formData.name} onChange={e => setFormData({ ...formData, name: e.target.value })} />
+                  <input ref={nameInputRef} className="input-field" placeholder="Александр" value={formData.name} onChange={e => setFormData({ ...formData, name: e.target.value })} />
                 </div>
                 <div>
                   <label style={{ fontSize: 13, color: "rgba(255,255,255,.4)", display: "block", marginBottom: 8, letterSpacing: .5 }}>Телефон</label>
