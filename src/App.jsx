@@ -887,7 +887,7 @@ export default function App() {
           {/* Address */}
           <div style={{ marginTop: 24, display: "flex", justifyContent: "center" }}>
             <a
-              href="https://yandex.ru/maps/?text=Москва+посёлок+Внуково+Центральная+улица+18с2&z=16"
+              href="https://yandex.ru/maps/org/beautiful_iron/229939060915/"
               target="_blank"
               rel="noopener noreferrer"
               style={{ textDecoration: "none", display: "flex", alignItems: "center", gap: 14, padding: "16px 28px", background: "rgba(255,107,0,0.06)", border: "1px solid rgba(255,107,0,0.15)", borderRadius: 16, maxWidth: 460 }}
