@@ -881,6 +881,28 @@ export default function App() {
               </a>
             ))}
           </div>
+
+          {/* Address */}
+          <div style={{ marginTop: 24, display: "flex", justifyContent: "center" }}>
+            <a
+              href="https://yandex.ru/maps/?pt=37.274970,55.618200&z=16&l=map"
+              target="_blank"
+              rel="noopener noreferrer"
+              style={{ textDecoration: "none", display: "flex", alignItems: "center", gap: 14, padding: "16px 28px", background: "rgba(255,107,0,0.06)", border: "1px solid rgba(255,107,0,0.15)", borderRadius: 16, maxWidth: 460 }}
+            >
+              <span style={{ color: "#ff6b00", flexShrink: 0, display: "flex" }}>
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" width="22" height="22"><path d="M21 10c0 7-9 13-9 13S3 17 3 10a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
+              </span>
+              <div style={{ textAlign: "left" }}>
+                <div style={{ fontFamily: "'Rajdhani'", fontSize: 16, fontWeight: 600, color: "rgba(255,255,255,.8)", letterSpacing: 0.3 }}>
+                  Москва, пос. Внуково, Центральная ул., 18с5
+                </div>
+                <div style={{ fontSize: 12, color: "rgba(255,107,0,.5)", marginTop: 3, letterSpacing: 0.3 }}>
+                  Открыть на Яндекс Картах →
+                </div>
+              </div>
+            </a>
+          </div>
         </div>
       </section>
 
@@ -908,7 +930,7 @@ export default function App() {
                 ["5. Файлы cookie и аналитика", "Сайт использует файлы cookie и инструменты веб-аналитики для улучшения качества обслуживания и анализа посещаемости. Вы можете отказаться от использования cookie в настройках браузера или через баннер на сайте."],
                 ["6. Хранение и удаление данных", "Данные хранятся в течение срока, необходимого для обработки заявки. По вашему запросу мы удалим ваши персональные данные в течение 5 рабочих дней."],
                 ["7. Ваши права", "Вы имеете право:\n• Запросить информацию о хранящихся данных\n• Потребовать исправления или удаления данных\n• Отозвать согласие на обработку данных\n\nДля реализации прав свяжитесь с нами по телефону +7 (495) 136-55-00."],
-                ["8. Контакты", "По всем вопросам, связанным с обработкой персональных данных:\nТелефон: +7 (495) 136-55-00\nАдрес: г. Москва, ул. Примерная, д. 1"],
+                ["8. Контакты", "По всем вопросам, связанным с обработкой персональных данных:\nТелефон: +7 (495) 136-55-00\nАдрес: г. Москва, пос. Внуково, Центральная ул., 18с5"],
               ].map(([title, text], i) => (
                 <div key={i} style={{ marginBottom: 24 }}>
                   <div style={{ fontFamily: "'Rajdhani'", fontSize: 16, fontWeight: 700, color: "#fff", marginBottom: 8, letterSpacing: .5 }}>{title}</div>
