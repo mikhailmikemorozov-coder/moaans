@@ -187,22 +187,44 @@ const SERVICE_ICONS = [
   <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" width="48" height="48"><circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="3"/><line x1="12" y1="2" x2="12" y2="9"/><line x1="12" y1="15" x2="12" y2="22"/><line x1="2" y1="12" x2="9" y2="12"/><line x1="15" y1="12" x2="22" y2="12"/></svg>,
 ];
 
-const Logo = () => (
-  <div style={{ display: "flex", alignItems: "center", gap: 10 }}>
-    <div style={{
-      background: "linear-gradient(135deg, #ff6b00 0%, #ff0080 100%)",
-      width: 34, height: 34, borderRadius: 9,
-      display: "flex", alignItems: "center", justifyContent: "center",
-      flexShrink: 0, boxShadow: "0 2px 14px rgba(255,107,0,.35)",
-    }}>
-      <span style={{ fontFamily: "'Rajdhani', sans-serif", fontSize: 15, fontWeight: 700, color: "#fff", letterSpacing: 0.5, lineHeight: 1 }}>BI</span>
+const Logo = () => {
+  const spokes = [[20,10],[29.5,16.9],[25.9,28.1],[14.1,28.1],[10.5,16.9]];
+  return (
+    <div style={{ display: "flex", alignItems: "center", gap: 10 }}>
+      <svg viewBox="0 0 40 40" width="36" height="36" style={{ flexShrink: 0 }}>
+        {/* Paint splashes — cyan, yellow, magenta, lime */}
+        <ellipse cx="7"  cy="8"  rx="7" ry="3"   fill="#00d4ff" transform="rotate(-40 7 8)"/>
+        <ellipse cx="33" cy="8"  rx="7" ry="3"   fill="#ffd700" transform="rotate(40 33 8)"/>
+        <ellipse cx="7"  cy="32" rx="6" ry="2.5" fill="#ff0080" transform="rotate(40 7 32)"/>
+        <ellipse cx="33" cy="32" rx="6" ry="2.5" fill="#7fd400" transform="rotate(-40 33 32)"/>
+        {/* Tire */}
+        <circle cx="20" cy="20" r="13" fill="#0a0a14"/>
+        <circle cx="20" cy="20" r="13" fill="none" stroke="#1e1e2e" strokeWidth="1.5"/>
+        {/* Rim */}
+        <circle cx="20" cy="20" r="10" fill="#13131e"/>
+        {/* Spokes */}
+        {spokes.map(([x, y], i) => (
+          <line key={i} x1="20" y1="20" x2={x} y2={y} stroke="#8b5cf6" strokeWidth="2.2" strokeLinecap="round"/>
+        ))}
+        {/* Bolt holes */}
+        {spokes.map(([x, y], i) => (
+          <circle key={`b${i}`} cx={x} cy={y} r="1.2" fill="#8b5cf6" fillOpacity="0.8"/>
+        ))}
+        {/* Inner ring */}
+        <circle cx="20" cy="20" r="10" fill="none" stroke="#1a1a2a" strokeWidth="1"/>
+        {/* Hub */}
+        <circle cx="20" cy="20" r="3" fill="#bf00ff"/>
+        <circle cx="20" cy="20" r="1.5" fill="rgba(255,255,255,0.7)"/>
+      </svg>
+      <div>
+        <div style={{ fontFamily: "'Rajdhani', sans-serif", fontSize: 20, fontWeight: 700, letterSpacing: 2.5, lineHeight: 1, color: "#fff", whiteSpace: "nowrap" }}>
+          BI <span className="grad-text">COLOR</span>
+        </div>
+        <div style={{ fontSize: 9, color: "rgba(255,255,255,.35)", letterSpacing: 2.5, textTransform: "uppercase", whiteSpace: "nowrap", marginTop: 2 }}>BEAUTIFUL IRON</div>
+      </div>
     </div>
-    <div>
-      <div style={{ fontFamily: "'Rajdhani', sans-serif", fontSize: 20, fontWeight: 700, letterSpacing: 2.5, lineHeight: 1, color: "#fff", whiteSpace: "nowrap" }}>COLOR</div>
-      <div style={{ fontSize: 9, color: "rgba(255,255,255,.35)", letterSpacing: 2.5, textTransform: "uppercase", whiteSpace: "nowrap", marginTop: 2 }}>BEAUTIFUL IRON</div>
-    </div>
-  </div>
-);
+  );
+};
 
 /* ─── COMPONENT ─────────────────────────────────────── */
 export default function App() {
