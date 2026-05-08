@@ -192,13 +192,13 @@ const Logo = () => {
   return (
     <div style={{ display: "flex", alignItems: "center", gap: 10 }}>
       <svg viewBox="0 0 40 40" width="36" height="36" style={{ flexShrink: 0 }}>
-        {/* Paint splashes — cyan, yellow, magenta, lime */}
-        <ellipse cx="7"  cy="8"  rx="7" ry="3"   fill="#00d4ff" transform="rotate(-40 7 8)"/>
-        <ellipse cx="33" cy="8"  rx="7" ry="3"   fill="#ffd700" transform="rotate(40 33 8)"/>
-        <ellipse cx="7"  cy="32" rx="6" ry="2.5" fill="#ff0080" transform="rotate(40 7 32)"/>
-        <ellipse cx="33" cy="32" rx="6" ry="2.5" fill="#7fd400" transform="rotate(-40 33 32)"/>
-        {/* Glow halo behind tire */}
-        <circle cx="20" cy="20" r="15" fill="none" stroke="rgba(255,107,0,0.18)" strokeWidth="4"/>
+        {/* Rainbow paint ring — 6 brushstrokes tangential around the tire, drawn first so tire overlaps */}
+        {[[0,"#00d4ff"],[60,"#7fd400"],[120,"#ffd700"],[180,"#ff0080"],[240,"#bf00ff"],[300,"#ff6b00"]].map(([a, color]) => {
+          const rad = a * Math.PI / 180;
+          const cx = +(20 + 14 * Math.cos(rad)).toFixed(1);
+          const cy = +(20 + 14 * Math.sin(rad)).toFixed(1);
+          return <ellipse key={a} cx={cx} cy={cy} rx="5.5" ry="2.2" fill={color} transform={`rotate(${a + 90} ${cx} ${cy})`}/>;
+        })}
         {/* Tire — visible orange ring defines the wheel shape */}
         <circle cx="20" cy="20" r="13" fill="#1a1a2a"/>
         <circle cx="20" cy="20" r="13" fill="none" stroke="#ff6b00" strokeWidth="2.5"/>
