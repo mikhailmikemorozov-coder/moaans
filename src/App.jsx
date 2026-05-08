@@ -871,7 +871,7 @@ export default function App() {
                 label: "WhatsApp", color: "#39ff14", href: "https://wa.me/79652130999",
               },
               {
-                icon: <svg viewBox="0 0 24 24" fill="currentColor" width="20" height="20"><path d="M2 3h20v2H2zm0 16h20v2H2zM2 11h20v2H2zM12 3l8 8-8 8V3z" opacity="0"/><path d="M20 4H4C2.9 4 2 4.9 2 6v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm-5.12 13H13v-6.24l-2 2.57-2-2.57V17H7.12V7H9l3 3.88L15 7h1.88v10H14.88z"/></svg>,
+                icon: <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round" width="20" height="20"><path d="M3 18V6l9 8 9-8v12"/></svg>,
                 label: "MAX", color: "#5b8af5", href: "https://vk.me/+79251101052",
               },
             ].map(({ icon, label, color, href }, i) => (
