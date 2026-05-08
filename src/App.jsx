@@ -187,6 +187,23 @@ const SERVICE_ICONS = [
   <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" width="48" height="48"><circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="3"/><line x1="12" y1="2" x2="12" y2="9"/><line x1="12" y1="15" x2="12" y2="22"/><line x1="2" y1="12" x2="9" y2="12"/><line x1="15" y1="12" x2="22" y2="12"/></svg>,
 ];
 
+const Logo = () => (
+  <div style={{ display: "flex", alignItems: "center", gap: 10 }}>
+    <div style={{
+      background: "linear-gradient(135deg, #ff6b00 0%, #ff0080 100%)",
+      width: 34, height: 34, borderRadius: 9,
+      display: "flex", alignItems: "center", justifyContent: "center",
+      flexShrink: 0, boxShadow: "0 2px 14px rgba(255,107,0,.35)",
+    }}>
+      <span style={{ fontFamily: "'Rajdhani', sans-serif", fontSize: 15, fontWeight: 700, color: "#fff", letterSpacing: 0.5, lineHeight: 1 }}>BI</span>
+    </div>
+    <div>
+      <div style={{ fontFamily: "'Rajdhani', sans-serif", fontSize: 20, fontWeight: 700, letterSpacing: 2.5, lineHeight: 1, color: "#fff", whiteSpace: "nowrap" }}>COLOR</div>
+      <div style={{ fontSize: 9, color: "rgba(255,255,255,.35)", letterSpacing: 2.5, textTransform: "uppercase", whiteSpace: "nowrap", marginTop: 2 }}>BEAUTIFUL IRON</div>
+    </div>
+  </div>
+);
+
 /* ─── COMPONENT ─────────────────────────────────────── */
 export default function App() {
   const [cookieAccepted, setCookieAccepted] = useState(() => !!localStorage.getItem("cookie_ok"));
@@ -436,9 +453,7 @@ export default function App() {
       {mobileMenu && (
         <div className="mobile-menu">
           <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between", padding: "0 20px", height: 70, borderBottom: "1px solid rgba(255,255,255,.06)", flexShrink: 0 }}>
-            <div style={{ fontFamily: "'Rajdhani'", fontSize: 20, fontWeight: 700, letterSpacing: 2 }}>
-              WHEEL<span style={{ margin: "0 5px", color: "#ff6b00", fontWeight: 500 }}>/</span><span className="grad-text">CRAFT</span>
-            </div>
+            <Logo />
             <button onClick={() => setMobileMenu(false)} style={{ background: "none", border: "none", color: "rgba(255,255,255,.6)", cursor: "pointer", padding: 8 }}>
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" width="24" height="24"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
             </button>
@@ -469,13 +484,8 @@ export default function App() {
         borderBottom: scrolled ? "1px solid rgba(255,107,0,.12)" : "none",
         transition: "all .4s ease",
       }}>
-        <div style={{ display: "flex", alignItems: "center", gap: 12, cursor: "pointer", whiteSpace: "nowrap" }} onClick={() => scrollTo("hero")}>
-          <div>
-            <div style={{ fontFamily: "'Rajdhani'", fontSize: 20, fontWeight: 700, letterSpacing: 2, lineHeight: 1, whiteSpace: "nowrap" }}>
-              WHEEL<span style={{ display: "inline-block", margin: "0 5px", color: "#ff6b00", fontWeight: 500, transform: "translateY(-1px)" }}>/</span><span className="grad-text">CRAFT</span>
-            </div>
-            <div style={{ fontSize: 10, color: "rgba(255,255,255,.35)", letterSpacing: 2, textTransform: "uppercase", whiteSpace: "nowrap" }}>Сервис дисков</div>
-          </div>
+        <div style={{ cursor: "pointer" }} onClick={() => scrollTo("hero")}>
+          <Logo />
         </div>
 
         <div className="nav-desktop" style={{ display: "flex", gap: 36, alignItems: "center" }}>
@@ -858,10 +868,10 @@ export default function App() {
             {/* Scrollable content */}
             <div style={{ padding: "24px 36px 32px", overflowY: "auto", fontSize: 14, color: "rgba(255,255,255,.55)", lineHeight: 1.8 }}>
               {[
-                ["1. Общие положения", "Настоящая политика конфиденциальности определяет порядок обработки и защиты персональных данных пользователей сайта WheelCraft (далее — Сайт). Используя Сайт и заполняя форму заявки, вы соглашаетесь с условиями настоящей политики."],
+                ["1. Общие положения", "Настоящая политика конфиденциальности определяет порядок обработки и защиты персональных данных пользователей сайта BI Color (далее — Сайт). Используя Сайт и заполняя форму заявки, вы соглашаетесь с условиями настоящей политики."],
                 ["2. Какие данные мы собираем", "При отправке заявки через форму на Сайте мы собираем следующие данные:\n• Имя\n• Номер телефона\n• Выбранная услуга\n• Комментарий (если указан)\n\nДанные передаются через защищённое соединение."],
                 ["3. Цели обработки данных", "Собранные данные используются исключительно для:\n• Связи с вами по вопросу оставленной заявки\n• Записи на услугу и согласования удобного времени\n\nМы не используем ваши данные для маркетинговых рассылок без вашего согласия."],
-                ["4. Передача данных третьим лицам", "Ваши персональные данные не передаются и не продаются третьим лицам. Данные используются исключительно сотрудниками WheelCraft для обработки вашей заявки."],
+                ["4. Передача данных третьим лицам", "Ваши персональные данные не передаются и не продаются третьим лицам. Данные используются исключительно сотрудниками BI Color для обработки вашей заявки."],
                 ["5. Файлы cookie и аналитика", "Сайт использует файлы cookie и инструменты веб-аналитики для улучшения качества обслуживания и анализа посещаемости. Вы можете отказаться от использования cookie в настройках браузера или через баннер на сайте."],
                 ["6. Хранение и удаление данных", "Данные хранятся в течение срока, необходимого для обработки заявки. По вашему запросу мы удалим ваши персональные данные в течение 5 рабочих дней."],
                 ["7. Ваши права", "Вы имеете право:\n• Запросить информацию о хранящихся данных\n• Потребовать исправления или удаления данных\n• Отозвать согласие на обработку данных\n\nДля реализации прав свяжитесь с нами по телефону +7 (999) 123-45-67."],
@@ -906,10 +916,8 @@ export default function App() {
         <div className="footer-inner" style={{ maxWidth: 1200, margin: "0 auto", padding: "48px 40px" }}>
           <div style={{ display: "flex", justifyContent: "space-between", alignItems: "flex-start", flexWrap: "wrap", gap: 40, marginBottom: 40 }}>
             <div style={{ maxWidth: 280 }}>
-              <div style={{ display: "flex", alignItems: "center", gap: 12, marginBottom: 16 }}>
-                <div style={{ fontFamily: "'Rajdhani'", fontSize: 20, fontWeight: 700, letterSpacing: 2, whiteSpace: "nowrap" }}>
-                  WHEEL<span style={{ display: "inline-block", margin: "0 5px", color: "#ff6b00", fontWeight: 500, transform: "translateY(-1px)" }}>/</span><span className="grad-text">CRAFT</span>
-                </div>
+              <div style={{ marginBottom: 16 }}>
+                <Logo />
               </div>
               <p style={{ fontSize: 13, color: "rgba(255,255,255,.35)", lineHeight: 1.7 }}>
                 Профессиональный сервис по покраске, проточке и восстановлению литых дисков.
@@ -929,7 +937,7 @@ export default function App() {
             </div>
           </div>
           <div style={{ borderTop: "1px solid rgba(255,255,255,.05)", paddingTop: 24, display: "flex", justifyContent: "space-between", flexWrap: "wrap", gap: 12 }}>
-            <div style={{ fontSize: 13, color: "rgba(255,255,255,.2)" }}>© 2026 WheelCraft. Все права защищены.</div>
+            <div style={{ fontSize: 13, color: "rgba(255,255,255,.2)" }}>© 2026 BI Color. Все права защищены.</div>
             <div style={{ fontSize: 13, color: "rgba(255,255,255,.2)", cursor: "pointer", textDecoration: "underline", textUnderlineOffset: 3 }} onClick={() => setPrivacyOpen(true)}>Политика конфиденциальности</div>
           </div>
         </div>
