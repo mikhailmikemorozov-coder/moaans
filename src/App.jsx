@@ -820,7 +820,7 @@ export default function App() {
               <div className="grid-2">
                 <div>
                   <label style={{ fontSize: 13, color: "rgba(255,255,255,.4)", display: "block", marginBottom: 8, letterSpacing: .5 }}>Ваше имя</label>
-                  <input className="input-field" placeholder="Александр" value={formData.name} onChange={e => setFormData({ ...formData, name: e.target.value })} />
+                  <input autoFocus className="input-field" placeholder="Александр" value={formData.name} onChange={e => setFormData({ ...formData, name: e.target.value })} />
                 </div>
                 <div>
                   <label style={{ fontSize: 13, color: "rgba(255,255,255,.4)", display: "block", marginBottom: 8, letterSpacing: .5 }}>Телефон</label>
