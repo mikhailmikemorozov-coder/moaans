@@ -1,4 +1,5 @@
 import { useState, useEffect, useRef } from "react";
+import { useNavigate } from "react-router-dom";
 
 /* ─── DATA ─────────────────────────────────────────── */
 /* ── SVG illustrations for each service card ── */
@@ -69,18 +70,18 @@ const SERVICES = [
     id: 1, emoji: "🎨", title: "Порошковая покраска дисков",
     short: "Порошковая покраска любого цвета — матовый или глянцевый финиш.",
     long: "Трёхслойное нанесение: грунт — краска — лак. Каждый слой запекается в печи при высокой температуре, что даёт покрытие прочнее заводского. Устойчиво к сколам, реагентам и мойке высокого давления.",
-    price: "от 2 500 ₽", tag: "Хит", color: "#ff6b00", variant: 0,
+    price: "от 2 500 ₽", tag: "Хит", color: "#ff6b00", variant: 0, url: "/pokraska-diskov-moskva",
   },
   {
     id: 2, emoji: "💎", title: "Алмазная проточка",
     short: "Токарный станок с ЧПУ — восстанавливаем заводской блеск и геометрию.",
-    price: "от 5 000 ₽", tag: "Популярно", color: "#00d4ff", variant: 1,
+    price: "от 5 000 ₽", tag: "Популярно", color: "#00d4ff", variant: 1, url: "/almaznaya-prochka-diskov",
   },
   {
     id: 3, emoji: "🔧", title: "Ремонт и восстановление",
     short: "Восстановление технологией Димет, правка, сварка TIG/аргон, устранение трещин, сколов и деформаций.",
     long: "Технология Димет (динамическое металлизирование) позволяет восстановить диск без нагрева — металлический порошок наносится холодным способом, сохраняя структуру сплава. Итог: прочность как у нового диска.",
-    price: "от 1 500 ₽", tag: null, color: "#ff0080", variant: 2,
+    price: "от 1 500 ₽", tag: null, color: "#ff0080", variant: 2, url: "/remont-diskov-moskva",
   },
   {
     id: 4, emoji: "✨", title: "Полировка",
@@ -100,7 +101,7 @@ const SERVICES = [
   {
     id: 7, emoji: "🏎️", title: "Покраска суппортов",
     short: "Яркие цвета, термостойкая краска — выглядит мощно сквозь спицы.",
-    price: "от 2 000 ₽", tag: null, color: "#ff6b00", variant: 2,
+    price: "от 2 000 ₽", tag: null, color: "#ff6b00", variant: 2, url: "/pokraska-supportov-moskva",
   },
   {
     id: 8, emoji: "🔩", title: "Шиномонтаж",
@@ -249,6 +250,7 @@ const getMoscowIsOpen = () => {
 
 /* ─── COMPONENT ─────────────────────────────────────── */
 export default function App() {
+  const navigate = useNavigate();
   const [cookieAccepted, setCookieAccepted] = useState(() => !!localStorage.getItem("cookie_ok"));
   const [privacyOpen, setPrivacyOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
@@ -717,7 +719,7 @@ export default function App() {
           <div className="grid-4">
             {SERVICES.map((s) => (
               <div key={s.id} className="card" style={{ cursor: "pointer", padding: 0, overflow: "hidden", display: "flex", flexDirection: "column" }}
-                onClick={() => setActiveService(s)}>
+                onClick={() => s.url ? navigate(s.url) : setActiveService(s)}>
                 {/* Illustration */}
                 <div style={{ position: "relative", height: 160, overflow: "hidden" }}>
                   <ServiceIllustration color={s.color} variant={s.variant} icon={SERVICE_ICONS[s.id - 1]} />
@@ -731,7 +733,10 @@ export default function App() {
                 <div style={{ padding: "18px 20px 22px", display: "flex", flexDirection: "column", flex: 1 }}>
                   <h3 style={{ fontFamily: "'Rajdhani'", fontSize: 18, fontWeight: 700, letterSpacing: .4, marginBottom: 8 }}>{s.title}</h3>
                   <p style={{ fontSize: 13, color: "rgba(255,255,255,.48)", lineHeight: 1.6, marginBottom: 14, flex: 1 }}>{s.short}</p>
-                  <div style={{ fontFamily: "'Rajdhani'", fontSize: 21, fontWeight: 700, color: s.color }}>{s.price}</div>
+                  <div style={{ display: "flex", justifyContent: "space-between", alignItems: "baseline" }}>
+                    <div style={{ fontFamily: "'Rajdhani'", fontSize: 21, fontWeight: 700, color: s.color }}>{s.price}</div>
+                    {s.url && <span style={{ fontFamily: "'Rajdhani'", fontSize: 13, fontWeight: 600, color: "rgba(255,255,255,.35)", letterSpacing: 0.5 }}>Подробнее →</span>}
+                  </div>
                 </div>
               </div>
             ))}
