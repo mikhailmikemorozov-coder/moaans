@@ -134,7 +134,7 @@ const PROMOS = [
 const ADVANTAGES = [
   { icon: "🏆", title: "7 лет на рынке", desc: "Сотни довольных клиентов и тысячи восстановленных дисков." },
   { icon: "⚙️", title: "ЧПУ оборудование", desc: "Токарные станки с числовым управлением — точность до микрона." },
-  { icon: "📋", title: "Гарантия 12 месяцев", desc: "Выдаём письменную гарантию на все виды работ." },
+  { icon: "🏆", title: "Гарантия 4 года", desc: "Выдаём письменную гарантию на все виды работ. Редкость на рынке.", highlight: true },
   { icon: "🚗", title: "Подменный комплект", desc: "Не останетесь без колёс — дадим подменный комплект бесплатно." },
   { icon: "⏱️", title: "Сроки не срываем", desc: "Назвали дату — сдали в срок. Без «ещё пару дней»." },
   { icon: "💬", title: "Фото-отчёт", desc: "Присылаем фото процесса и результата в мессенджер." },
@@ -697,12 +697,12 @@ export default function App() {
             </p>
             <div style={{ display: "flex", flexDirection: "column", gap: 20 }}>
               {ADVANTAGES.map((a, i) => (
-                <div key={i} style={{ display: "flex", gap: 16, alignItems: "flex-start" }}>
-                  <div style={{ width: 44, height: 44, borderRadius: 12, background: "rgba(255,107,0,.08)", border: "1px solid rgba(255,107,0,.18)", display: "flex", alignItems: "center", justifyContent: "center", flexShrink: 0, color: "#ff6b00" }}>
+                <div key={i} style={{ display: "flex", gap: 16, alignItems: "flex-start", ...(a.highlight ? { background: "linear-gradient(135deg, rgba(255,215,0,.07), rgba(255,165,0,.04))", border: "1px solid rgba(255,215,0,.25)", borderRadius: 14, padding: "12px 14px", margin: "-12px -14px" } : {}) }}>
+                  <div style={{ width: 44, height: 44, borderRadius: 12, background: a.highlight ? "rgba(255,215,0,.12)" : "rgba(255,107,0,.08)", border: `1px solid ${a.highlight ? "rgba(255,215,0,.35)" : "rgba(255,107,0,.18)"}`, display: "flex", alignItems: "center", justifyContent: "center", flexShrink: 0, color: a.highlight ? "#ffd700" : "#ff6b00" }}>
                     {ADVANTAGE_ICONS[i]}
                   </div>
                   <div>
-                    <div style={{ fontFamily: "'Rajdhani'", fontSize: 17, fontWeight: 700, marginBottom: 3 }}>{a.title}</div>
+                    <div style={{ fontFamily: "'Rajdhani'", fontSize: 17, fontWeight: 700, marginBottom: 3, color: a.highlight ? "#ffd700" : "inherit" }}>{a.title}</div>
                     <div style={{ fontSize: 13, color: "rgba(255,255,255,.45)", lineHeight: 1.6 }}>{a.desc}</div>
                   </div>
                 </div>
