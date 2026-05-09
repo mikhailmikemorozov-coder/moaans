@@ -251,6 +251,10 @@ export default function App() {
   const [sending, setSending] = useState(false);
   const [activeTab, setActiveTab] = useState(0);
   const nameInputRef = useRef(null);
+  const [calcSize, setCalcSize] = useState('R17-18');
+  const [calcService, setCalcService] = useState('paint');
+  const [calcCount, setCalcCount] = useState(4);
+  const [calcSpecial, setCalcSpecial] = useState(false);
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 60);
@@ -405,6 +409,10 @@ export default function App() {
         @media (max-width:600px) {
           .promos-grid { grid-template-columns: 1fr !important; }
         }
+        .calc-grid { grid-template-columns: 1fr !important; }
+        @media (min-width:900px) {
+          .calc-grid { grid-template-columns: 1fr auto !important; }
+        }
         @media (max-width:900px) {
           .grid-3, .grid-4 { grid-template-columns: repeat(2,1fr); }
         }
@@ -502,7 +510,7 @@ export default function App() {
             </button>
           </div>
           <div style={{ flex: 1, display: "flex", flexDirection: "column", justifyContent: "center", padding: "0 32px", gap: 8 }}>
-            {[["Услуги", "services"], ["Акции", "promos"], ["О нас", "about"], ["Отзывы", "reviews"], ["Контакты", "contact"]].map(([label, id]) => (
+            {[["Услуги", "services"], ["Акции", "promos"], ["Цены", "prices"], ["О нас", "about"], ["Отзывы", "reviews"], ["Контакты", "contact"]].map(([label, id]) => (
               <div key={id} onClick={() => scrollTo(id)} style={{ fontFamily: "'Rajdhani'", fontSize: 36, fontWeight: 700, letterSpacing: 2, color: "rgba(255,255,255,.7)", cursor: "pointer", padding: "12px 0", borderBottom: "1px solid rgba(255,255,255,.05)", transition: "color .2s" }}
                 onMouseEnter={e => e.currentTarget.style.color = "#ff6b00"}
                 onMouseLeave={e => e.currentTarget.style.color = "rgba(255,255,255,.7)"}>
@@ -533,7 +541,7 @@ export default function App() {
         </div>
 
         <div className="nav-desktop" style={{ display: "flex", gap: 36, alignItems: "center" }}>
-          {[["Услуги", "services"], ["Акции", "promos"], ["О нас", "about"], ["Отзывы", "reviews"], ["Контакты", "contact"]].map(([label, id]) => (
+          {[["Услуги", "services"], ["Акции", "promos"], ["Цены", "prices"], ["О нас", "about"], ["Отзывы", "reviews"], ["Контакты", "contact"]].map(([label, id]) => (
             <span key={id} className="nav-item" onClick={() => scrollTo(id)}>{label}</span>
           ))}
         </div>
@@ -703,6 +711,110 @@ export default function App() {
           </div>
         </div>
       )}
+
+      {/* ── PRICE CALCULATOR ── */}
+      {(() => {
+        const CALC_PRICES = {
+          'R13–16': { paint: 11000, paintLathe: 20000 },
+          'R17–18': { paint: 13000, paintLathe: 22000 },
+          'R19':    { paint: 14000, paintLathe: 24000 },
+          'R20':    { paint: 16000, paintLathe: 26000 },
+          'R21–22': { paint: 18000, paintLathe: 30000 },
+        };
+        const sizes = Object.keys(CALC_PRICES);
+        const priceSet = CALC_PRICES[calcSize][calcService === 'paint' ? 'paint' : 'paintLathe'];
+        const perDisk = priceSet / 4;
+        const specialAdd = calcSpecial ? 2000 * calcCount : 0;
+        const total = Math.round(perDisk * calcCount + specialAdd);
+        const btnBase = { border: "none", borderRadius: 50, cursor: "pointer", fontFamily: "'Rajdhani'", fontWeight: 700, fontSize: 15, transition: "all .2s", padding: "10px 20px" };
+        return (
+          <section id="prices" style={{ padding: "80px 40px", background: "rgba(255,255,255,.015)", borderTop: "1px solid rgba(255,255,255,.06)", borderBottom: "1px solid rgba(255,255,255,.06)" }}>
+            <div style={{ maxWidth: 1100, margin: "0 auto" }}>
+              <p className="section-kicker">Прозрачные цены</p>
+              <h2 className="section-title">Рассчитайте <span className="grad-text">стоимость</span></h2>
+
+              <div style={{ display: "grid", gridTemplateColumns: "1fr auto", gap: 48, alignItems: "start", marginTop: 48 }} className="calc-grid">
+
+                {/* Controls */}
+                <div style={{ display: "flex", flexDirection: "column", gap: 32 }}>
+
+                  {/* Size */}
+                  <div>
+                    <div style={{ fontSize: 13, color: "rgba(255,255,255,.4)", letterSpacing: 1.5, textTransform: "uppercase", marginBottom: 14 }}>Размер дисков</div>
+                    <div style={{ display: "flex", gap: 10, flexWrap: "wrap" }}>
+                      {sizes.map(s => (
+                        <button key={s} onClick={() => setCalcSize(s)} style={{ ...btnBase, background: calcSize === s ? "#ff6b00" : "rgba(255,255,255,.06)", color: calcSize === s ? "#fff" : "rgba(255,255,255,.6)", border: calcSize === s ? "1px solid #ff6b00" : "1px solid rgba(255,255,255,.1)" }}>{s}</button>
+                      ))}
+                    </div>
+                  </div>
+
+                  {/* Service */}
+                  <div>
+                    <div style={{ fontSize: 13, color: "rgba(255,255,255,.4)", letterSpacing: 1.5, textTransform: "uppercase", marginBottom: 14 }}>Услуга</div>
+                    <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 12 }}>
+                      {[
+                        { key: 'paint', label: 'Порошковая покраска', sub: 'Грунт · Краска · Лак', icon: '🎨' },
+                        { key: 'paintLathe', label: 'Покраска + Проточка', sub: 'Алмазная проточка в комплекте', icon: '💎' },
+                      ].map(opt => (
+                        <button key={opt.key} onClick={() => setCalcService(opt.key)} style={{ background: calcService === opt.key ? "linear-gradient(135deg,rgba(255,107,0,.18),rgba(255,0,128,.1))" : "rgba(255,255,255,.04)", border: `1px solid ${calcService === opt.key ? "rgba(255,107,0,.5)" : "rgba(255,255,255,.1)"}`, borderRadius: 16, padding: "16px 20px", cursor: "pointer", textAlign: "left", transition: "all .2s" }}>
+                          <div style={{ fontSize: 22, marginBottom: 6 }}>{opt.icon}</div>
+                          <div style={{ fontFamily: "'Rajdhani'", fontWeight: 700, fontSize: 16, color: "#fff", marginBottom: 4 }}>{opt.label}</div>
+                          <div style={{ fontSize: 12, color: "rgba(255,255,255,.4)" }}>{opt.sub}</div>
+                        </button>
+                      ))}
+                    </div>
+                  </div>
+
+                  {/* Count */}
+                  <div>
+                    <div style={{ fontSize: 13, color: "rgba(255,255,255,.4)", letterSpacing: 1.5, textTransform: "uppercase", marginBottom: 14 }}>Количество дисков</div>
+                    <div style={{ display: "flex", gap: 10 }}>
+                      {[1, 2, 3, 4].map(n => (
+                        <button key={n} onClick={() => setCalcCount(n)} style={{ ...btnBase, width: 52, height: 52, padding: 0, background: calcCount === n ? "#ff6b00" : "rgba(255,255,255,.06)", color: calcCount === n ? "#fff" : "rgba(255,255,255,.6)", border: calcCount === n ? "1px solid #ff6b00" : "1px solid rgba(255,255,255,.1)", borderRadius: 14, fontSize: 18 }}>{n}</button>
+                      ))}
+                    </div>
+                  </div>
+
+                  {/* Special color */}
+                  <div>
+                    <div style={{ fontSize: 13, color: "rgba(255,255,255,.4)", letterSpacing: 1.5, textTransform: "uppercase", marginBottom: 14 }}>Цвет</div>
+                    <div style={{ display: "flex", gap: 10, flexWrap: "wrap" }}>
+                      {[
+                        { key: false, label: 'Стандартный', sub: 'Любой цвет RAL' },
+                        { key: true,  label: 'Графит / Алюмохром', sub: '+2 000 ₽ за диск' },
+                      ].map(opt => (
+                        <button key={String(opt.key)} onClick={() => setCalcSpecial(opt.key)} style={{ ...btnBase, borderRadius: 14, padding: "12px 20px", textAlign: "left", background: calcSpecial === opt.key ? "rgba(191,0,255,.15)" : "rgba(255,255,255,.04)", border: `1px solid ${calcSpecial === opt.key ? "rgba(191,0,255,.5)" : "rgba(255,255,255,.1)"}`, color: "#fff" }}>
+                          <div style={{ fontSize: 14, fontWeight: 700 }}>{opt.label}</div>
+                          <div style={{ fontSize: 12, color: "rgba(255,255,255,.4)", marginTop: 2 }}>{opt.sub}</div>
+                        </button>
+                      ))}
+                    </div>
+                  </div>
+                </div>
+
+                {/* Result card */}
+                <div style={{ background: "linear-gradient(135deg, rgba(255,107,0,.1), rgba(255,0,128,.06))", border: "1px solid rgba(255,107,0,.25)", borderRadius: 28, padding: "40px 36px", minWidth: 300, textAlign: "center", position: "sticky", top: 100 }}>
+                  <div style={{ fontSize: 13, color: "rgba(255,255,255,.4)", letterSpacing: 2, textTransform: "uppercase", marginBottom: 16 }}>Итоговая стоимость</div>
+                  <div style={{ fontFamily: "'Rajdhani'", fontSize: 58, fontWeight: 700, color: "#ff6b00", lineHeight: 1, marginBottom: 8 }}>
+                    {total.toLocaleString('ru-RU')} <span style={{ fontSize: 28 }}>₽</span>
+                  </div>
+                  <div style={{ fontSize: 13, color: "rgba(255,255,255,.35)", marginBottom: 28 }}>
+                    {calcCount} диск{calcCount === 1 ? '' : calcCount < 5 ? 'а' : 'ов'} · {calcSize} · {calcService === 'paint' ? 'Покраска' : 'Покраска + Проточка'}{calcSpecial ? ' · Алюмохром' : ''}
+                  </div>
+                  <button className="btn btn-grad" style={{ width: "100%", justifyContent: "center", fontSize: 16, padding: "16px 24px" }}
+                    onClick={() => { setFormData(f => ({ ...f, service: `${calcService === 'paint' ? 'Порошковая покраска' : 'Покраска + Проточка'}, ${calcSize}, ${calcCount} дисков${calcSpecial ? ', Алюмохром' : ''}` })); scrollTo("contact"); }}>
+                    Записаться по этой цене
+                  </button>
+                  <div style={{ marginTop: 20, padding: "14px 16px", background: "rgba(255,255,255,.04)", borderRadius: 12, fontSize: 13, color: "rgba(255,255,255,.4)", textAlign: "left" }}>
+                    💡 Ремонт бордюрки — <b style={{ color: "rgba(255,255,255,.6)" }}>250 ₽/см</b>, рассчитывается при осмотре
+                  </div>
+                </div>
+
+              </div>
+            </div>
+          </section>
+        );
+      })()}
 
       {/* ── ABOUT ── */}
       <section id="about" className="section-pad" style={{ padding: "80px 40px", maxWidth: 1200, margin: "0 auto" }}>
