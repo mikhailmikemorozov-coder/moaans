@@ -265,7 +265,7 @@ export default function App() {
     if (!formData.name || !formData.phone) return;
     setSending(true);
     try {
-      await fetch("https://script.google.com/macros/s/AKfycbxnu85yoUwZBFlcfccHXGkhcQpnIDH4nwDDX3cTG9VfgQ1ArOvgl05o_tVBb8bBLl8RSg/exec", {
+      await fetch("https://script.google.com/macros/s/AKfycbySBq271s3uAjtSQQApJnRHVt3fHu3UTcABr7ZGJq4FndK8LHtpr1FTKZgvpi0a4Q1Vyg/exec", {
         method: "POST",
         mode: "no-cors",
         headers: { "Content-Type": "text/plain" },
