@@ -36,7 +36,7 @@ export default function ServicePage({ meta, color = "#ff6b00", h1, h1Accent, int
         *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
         a { color: inherit; text-decoration: none; }
         .sp-grad { background: linear-gradient(135deg,#ff6b00,#ff0080); -webkit-background-clip:text; -webkit-text-fill-color:transparent; }
-        .sp-btn { display:inline-flex; align-items:center; justify-content:center; padding:14px 32px; border:none; border-radius:50px; font-family:'Rajdhani',sans-serif; font-size:16px; font-weight:700; letter-spacing:1.5px; text-transform:uppercase; cursor:pointer; transition:all .25s; text-decoration:none; }
+        .sp-btn { display:inline-flex; align-items:center; justify-content:center; gap:8px; padding:14px 32px; border:none; border-radius:50px; font-family:'Rajdhani',sans-serif; font-size:16px; font-weight:700; letter-spacing:1.5px; text-transform:uppercase; cursor:pointer; transition:all .25s; text-decoration:none; }
         .sp-btn-grad { background:linear-gradient(135deg,#ff6b00,#ff0080); color:#fff; box-shadow:0 6px 28px rgba(255,107,0,.35); }
         .sp-btn-grad:hover { transform:translateY(-2px); box-shadow:0 12px 40px rgba(255,107,0,.5); }
         .sp-btn-outline { background:transparent; color:#fff; border:1.5px solid rgba(255,107,0,.5); }
