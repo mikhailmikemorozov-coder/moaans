@@ -253,6 +253,7 @@ export default function App() {
   const [activeTab, setActiveTab] = useState(0);
   const nameInputRef = useRef(null);
   const [calcSize, setCalcSize] = useState('R17–18');
+  const [openFaq, setOpenFaq] = useState(null);
   const [calcService, setCalcService] = useState('paint');
   const [calcCount, setCalcCount] = useState(4);
   const [calcSpecial, setCalcSpecial] = useState(false);
@@ -511,7 +512,7 @@ export default function App() {
             </button>
           </div>
           <div style={{ flex: 1, display: "flex", flexDirection: "column", justifyContent: "center", padding: "0 32px", gap: 8 }}>
-            {[["Услуги", "services"], ["Акции", "promos"], ["Цены", "prices"], ["О нас", "about"], ["Отзывы", "reviews"], ["Контакты", "contact"]].map(([label, id]) => (
+            {[["Услуги", "services"], ["Акции", "promos"], ["Цены", "prices"], ["О нас", "about"], ["Отзывы", "reviews"], ["FAQ", "faq"], ["Контакты", "contact"]].map(([label, id]) => (
               <div key={id} onClick={() => scrollTo(id)} style={{ fontFamily: "'Rajdhani'", fontSize: 36, fontWeight: 700, letterSpacing: 2, color: "rgba(255,255,255,.7)", cursor: "pointer", padding: "12px 0", borderBottom: "1px solid rgba(255,255,255,.05)", transition: "color .2s" }}
                 onMouseEnter={e => e.currentTarget.style.color = "#ff6b00"}
                 onMouseLeave={e => e.currentTarget.style.color = "rgba(255,255,255,.7)"}>
@@ -542,7 +543,7 @@ export default function App() {
         </div>
 
         <div className="nav-desktop" style={{ display: "flex", gap: 36, alignItems: "center" }}>
-          {[["Услуги", "services"], ["Акции", "promos"], ["Цены", "prices"], ["О нас", "about"], ["Отзывы", "reviews"], ["Контакты", "contact"]].map(([label, id]) => (
+          {[["Услуги", "services"], ["Акции", "promos"], ["Цены", "prices"], ["О нас", "about"], ["Отзывы", "reviews"], ["FAQ", "faq"], ["Контакты", "contact"]].map(([label, id]) => (
             <span key={id} className="nav-item" onClick={() => scrollTo(id)}>{label}</span>
           ))}
         </div>
@@ -937,6 +938,58 @@ export default function App() {
             <svg viewBox="0 0 24 24" fill="currentColor" width="18" height="18"><path d="M12 2L2 22h4.5l2-4.5h7l2 4.5H22L12 2zm0 6l2.5 6.5h-5L12 8z"/></svg>
             Все отзывы на Авито
           </a>
+        </div>
+      </section>
+
+      {/* ── FAQ ── */}
+      <section id="faq" style={{ padding: "80px 40px", maxWidth: 860, margin: "0 auto" }}>
+        <p className="section-kicker">Вопросы и ответы</p>
+        <h2 className="section-title">Часто <span className="grad-text">спрашивают</span></h2>
+        <div style={{ marginTop: 48, display: "flex", flexDirection: "column", gap: 12 }}>
+          {[
+            {
+              q: "Что такое технология Димет?",
+              a: "Димет (динамическое металлизирование) — это холодное газодинамическое напыление металлического порошка. В отличие от сварки, диск не нагревается, структура алюминиевого сплава полностью сохраняется. Итог: восстановленное место прочнее заводского литья и не боится повторных нагрузок."
+            },
+            {
+              q: "Что такое алмазная проточка дисков?",
+              a: "Это обработка лицевой поверхности диска на токарном станке с ЧПУ. Алмазный резец снимает тончайший слой металла, открывая зеркальный блеск. Результат — заводской «бриллиантовый» эффект, который не достичь полировкой. Особенно эффектно смотрится в сочетании с покраской обода в контрастный цвет."
+            },
+            {
+              q: "Чем отличается цвет Графит от Алюмохрома?",
+              a: "Графит — тёмно-серый насыщенный цвет с лёгким металлическим отблеском, смотрится строго и спортивно. Алюмохром (Aluma) — имитирует полированный алюминий или хром: светло-серебристый, почти зеркальный. Оба варианта наносятся порошком в три слоя: грунт, краска, лак."
+            },
+            {
+              q: "Почему порошковая покраска лучше жидкой краски?",
+              a: "Порошковое покрытие наносится в три слоя — грунт, краска, лак — и запекается в печи при высокой температуре. Это даёт покрытие прочнее заводского: устойчивое к сколам, реагентам, мойке высокого давления и перепадам температур. На жидкую краску мы не даём гарантию 4 года — на порошковую даём."
+            },
+            {
+              q: "Можно ли покрасить один диск, а не весь комплект?",
+              a: "Да, красим любое количество — от одного диска. Но если важен одинаковый оттенок на всех четырёх, рекомендуем сдавать комплектом: цвет порошка подбирается под партию, и даже одна и та же формула может чуть отличаться при разных замесах."
+            },
+            {
+              q: "Сколько времени занимает работа?",
+              a: "Стандартный срок — 1–2 рабочих дня. Если диски нужны срочно, берём в работу вне очереди и сдаём за 24 часа. Точные сроки называем при приёмке после осмотра."
+            },
+            {
+              q: "Можно ли восстановить диск с трещиной?",
+              a: "Зависит от характера и места трещины. Небольшие трещины в теле диска устраняем аргонной сваркой или технологией Димет. Трещины в зоне крепёжных отверстий или сквозные повреждения обода — повод для замены: такой диск небезопасен даже после ремонта. Оцениваем бесплатно при осмотре."
+            },
+            {
+              q: "Вы забираете диски на дому?",
+              a: "Да. Если вы находитесь во Внуково или близлежащих районах — заберём диски сами и привезём обратно бесплатно. Уточнить зону доставки и договориться о времени можно по телефону или в мессенджере."
+            },
+          ].map((item, i) => (
+            <div key={i} style={{ border: `1px solid ${openFaq === i ? "rgba(255,107,0,.35)" : "rgba(255,255,255,.08)"}`, borderRadius: 16, overflow: "hidden", transition: "border-color .2s" }}>
+              <button onClick={() => setOpenFaq(openFaq === i ? null : i)} style={{ width: "100%", background: openFaq === i ? "rgba(255,107,0,.06)" : "rgba(255,255,255,.02)", border: "none", padding: "20px 24px", display: "flex", justifyContent: "space-between", alignItems: "center", cursor: "pointer", gap: 16, textAlign: "left", transition: "background .2s" }}>
+                <span style={{ fontFamily: "'Rajdhani'", fontSize: 17, fontWeight: 700, color: "#fff" }}>{item.q}</span>
+                <span style={{ color: "#ff6b00", fontSize: 20, flexShrink: 0, transition: "transform .2s", transform: openFaq === i ? "rotate(45deg)" : "rotate(0deg)" }}>+</span>
+              </button>
+              {openFaq === i && (
+                <div style={{ padding: "0 24px 20px", fontSize: 15, color: "rgba(255,255,255,.55)", lineHeight: 1.75 }}>{item.a}</div>
+              )}
+            </div>
+          ))}
         </div>
       </section>
 
