@@ -66,8 +66,9 @@ const ServiceIllustration = ({ color, variant, icon }) => (
 
 const SERVICES = [
   {
-    id: 1, emoji: "🎨", title: "Покраска дисков",
-    short: "Любой цвет, матовый или глянцевый, порошок или жидкая краска.",
+    id: 1, emoji: "🎨", title: "Порошковая покраска дисков",
+    short: "Порошковая покраска любого цвета — матовый или глянцевый финиш.",
+    long: "Трёхслойное нанесение: грунт — краска — лак. Каждый слой запекается в печи при высокой температуре, что даёт покрытие прочнее заводского. Устойчиво к сколам, реагентам и мойке высокого давления.",
     price: "от 2 500 ₽", tag: "Хит", color: "#ff6b00", variant: 0,
   },
   {
@@ -694,7 +695,8 @@ export default function App() {
             {/* Content */}
             <div style={{ padding: "24px 32px 32px" }}>
               <h3 style={{ fontFamily: "'Rajdhani'", fontSize: 28, fontWeight: 700, marginBottom: 10 }}>{activeService.title}</h3>
-              <p style={{ color: "rgba(255,255,255,.6)", lineHeight: 1.7, marginBottom: 20 }}>{activeService.short}</p>
+              <p style={{ color: "rgba(255,255,255,.6)", lineHeight: 1.7, marginBottom: activeService.long ? 12 : 20 }}>{activeService.short}</p>
+              {activeService.long && <p style={{ color: "rgba(255,255,255,.45)", fontSize: 14, lineHeight: 1.75, marginBottom: 20 }}>{activeService.long}</p>}
               <div style={{ fontFamily: "'Rajdhani'", fontSize: 32, fontWeight: 700, color: activeService.color, marginBottom: 24 }}>{activeService.price}</div>
               <button className="btn btn-grad" style={{ width: "100%", justifyContent: "center" }} onClick={() => { setFormData(f => ({ ...f, service: activeService.title })); setActiveService(null); scrollTo("contact"); }}>Записаться на эту услугу</button>
             </div>
