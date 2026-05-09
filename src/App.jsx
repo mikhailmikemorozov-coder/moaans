@@ -583,7 +583,7 @@ export default function App() {
             </h1>
 
             <p className="fade-up d3" style={{ fontSize: 18, color: "rgba(255,255,255,.55)", lineHeight: 1.75, maxWidth: 520, marginBottom: 44 }}>
-              Покраска, алмазная проточка, восстановление и кастомизация литых дисков. Профессиональное оборудование, гарантия результата и чёткие сроки.
+              Порошковая покраска, алмазная проточка, восстановление и кастомизация литых дисков. Профессиональное оборудование, гарантия результата и чёткие сроки.
             </p>
 
             <div className="hero-btns fade-up d4" style={{ display: "flex", gap: 16, flexWrap: "wrap", marginBottom: 64 }}>
