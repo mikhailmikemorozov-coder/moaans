@@ -244,7 +244,7 @@ const getMoscowIsOpen = () => {
   const now = new Date();
   const moscow = new Date(now.toLocaleString('en-US', { timeZone: 'Europe/Moscow' }));
   const h = moscow.getHours();
-  return h >= 9 && h < 19;
+  return h >= 10 && h < 19;
 };
 
 /* ─── COMPONENT ─────────────────────────────────────── */
@@ -509,9 +509,12 @@ export default function App() {
         }
 
         .top-info-bar { display: flex; }
+        .info-bar-address { display: flex; }
         @media (max-width: 768px) {
-          .top-info-bar { display: none !important; }
-          .hero-section { padding: 100px 20px 60px !important; }
+          .top-info-bar { justify-content: flex-end; padding: 0 20px !important; }
+          .info-bar-address { display: none !important; }
+          .info-bar-hours { display: none !important; }
+          .hero-section { padding: 116px 20px 60px !important; }
         }
       `}</style>
 
@@ -551,20 +554,20 @@ export default function App() {
           borderBottom: "1px solid rgba(255,255,255,.05)",
           alignItems: "center", justifyContent: "space-between",
         }}>
-          <a href="https://yandex.ru/maps/org/beautiful_iron/229939060915/" target="_blank" rel="noopener noreferrer"
-            style={{ display: "flex", alignItems: "center", gap: 6, textDecoration: "none", color: "rgba(255,255,255,.4)", fontSize: 12, fontFamily: "'Rajdhani', sans-serif", letterSpacing: 0.5 }}>
+          <a className="info-bar-address" href="https://yandex.ru/maps/org/beautiful_iron/229939060915/" target="_blank" rel="noopener noreferrer"
+            style={{ alignItems: "center", gap: 6, textDecoration: "none", color: "rgba(255,255,255,.4)", fontSize: 12, fontFamily: "'Rajdhani', sans-serif", letterSpacing: 0.5 }}>
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" width="11" height="11"><path d="M21 10c0 7-9 13-9 13S3 17 3 10a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
             Внуково, Центральная ул., 18с2
           </a>
           <div style={{ display: "flex", alignItems: "center", gap: 16 }}>
-            <div style={{ display: "flex", alignItems: "center", gap: 5, fontSize: 12, color: "rgba(255,255,255,.35)", fontFamily: "'Rajdhani', sans-serif", letterSpacing: 0.5 }}>
+            <div className="info-bar-hours" style={{ alignItems: "center", gap: 5, fontSize: 12, color: "rgba(255,255,255,.35)", fontFamily: "'Rajdhani', sans-serif", letterSpacing: 0.5 }}>
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" width="11" height="11"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
-              09:00 – 19:00, ежедневно
+              10:00 – 19:00, ежедневно
             </div>
             <div style={{ display: "flex", alignItems: "center", gap: 6 }}>
               <div style={{ width: 6, height: 6, borderRadius: "50%", background: shopOpen ? "#39ff14" : "#ff5555", flexShrink: 0, ...(shopOpen ? { boxShadow: "0 0 5px #39ff14" } : {}) }} />
               <span style={{ fontSize: 12, fontFamily: "'Rajdhani', sans-serif", fontWeight: 600, letterSpacing: 0.5, color: shopOpen ? "#39ff14" : "#ff8080" }}>
-                {shopOpen ? "Открыто" : "Закрыто — открываемся в 9:00"}
+                {shopOpen ? "Открыто" : "Закрыто — открываемся в 10:00"}
               </span>
             </div>
           </div>
@@ -1233,7 +1236,7 @@ export default function App() {
             <div>
               <div style={{ fontFamily: "'Rajdhani'", fontSize: 13, fontWeight: 600, letterSpacing: 2, color: "rgba(255,255,255,.3)", marginBottom: 16, textTransform: "uppercase" }}>Контакты</div>
               <div style={{ fontSize: 14, color: "rgba(255,255,255,.45)", marginBottom: 10 }}>+7 (499) 136-55-00</div>
-              <div style={{ fontSize: 14, color: "rgba(255,255,255,.45)", marginBottom: 10 }}>Ежедневно с 9:00 до 19:00</div>
+              <div style={{ fontSize: 14, color: "rgba(255,255,255,.45)", marginBottom: 10 }}>Ежедневно с 10:00 до 19:00</div>
               <div style={{ fontSize: 14, color: "rgba(255,255,255,.45)" }}>г. Москва, пос. Внуково, Центральная ул., 18с2</div>
             </div>
           </div>
