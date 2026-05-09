@@ -147,7 +147,7 @@ const REVIEWS = [
 ];
 
 const STATS = [
-  { value: "2 000+", label: "дисков в месяц" },
+  { value: "500+", label: "дисков в месяц" },
   { value: "7", label: "лет опыта" },
   { value: "98%", label: "довольных клиентов" },
   { value: "1–2", label: "дня срок работы" },
