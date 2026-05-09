@@ -509,7 +509,8 @@ export default function App() {
         }
 
         .top-info-bar { display: flex; }
-        .info-bar-address { display: flex; }
+        .info-bar-address { display: flex; align-items: center; }
+        .info-bar-hours { display: flex; align-items: center; }
         @media (max-width: 768px) {
           .top-info-bar { justify-content: flex-end; padding: 0 20px !important; }
           .info-bar-address { display: none !important; }
