@@ -78,7 +78,8 @@ const SERVICES = [
   },
   {
     id: 3, emoji: "🔧", title: "Ремонт и восстановление",
-    short: "Правка, сварка TIG/аргон, устранение трещин, сколов и деформаций.",
+    short: "Восстановление технологией Димет, правка, сварка TIG/аргон, устранение трещин, сколов и деформаций.",
+    long: "Технология Димет (динамическое металлизирование) позволяет восстановить диск без нагрева — металлический порошок наносится холодным способом, сохраняя структуру сплава. Итог: прочность как у нового диска.",
     price: "от 1 500 ₽", tag: null, color: "#ff0080", variant: 2,
   },
   {
@@ -724,7 +725,7 @@ export default function App() {
         const sizes = Object.keys(CALC_PRICES);
         const priceSet = CALC_PRICES[calcSize][calcService === 'paint' ? 'paint' : 'paintLathe'];
         const perDisk = priceSet / 4;
-        const specialAdd = calcSpecial ? 2000 * calcCount : 0;
+        const specialAdd = calcSpecial ? 3000 : 0;
         const total = Math.round(perDisk * calcCount + specialAdd);
         const btnBase = { border: "none", borderRadius: 50, cursor: "pointer", fontFamily: "'Rajdhani'", fontWeight: 700, fontSize: 15, transition: "all .2s", padding: "10px 20px" };
         return (
@@ -781,7 +782,7 @@ export default function App() {
                     <div style={{ display: "flex", gap: 10, flexWrap: "wrap" }}>
                       {[
                         { key: false, label: 'Стандартный', sub: 'Любой цвет RAL' },
-                        { key: true,  label: 'Графит / Алюмохром', sub: '+2 000 ₽ за диск' },
+                        { key: true,  label: 'Графит / Алюмохром', sub: '+3 000 ₽ за комплект' },
                       ].map(opt => (
                         <button key={String(opt.key)} onClick={() => setCalcSpecial(opt.key)} style={{ ...btnBase, borderRadius: 14, padding: "12px 20px", textAlign: "left", background: calcSpecial === opt.key ? "rgba(191,0,255,.15)" : "rgba(255,255,255,.04)", border: `1px solid ${calcSpecial === opt.key ? "rgba(191,0,255,.5)" : "rgba(255,255,255,.1)"}`, color: "#fff" }}>
                           <div style={{ fontSize: 14, fontWeight: 700 }}>{opt.label}</div>
