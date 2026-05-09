@@ -1,8 +1,16 @@
 import { defineConfig } from 'vite'
 import react from '@vitejs/plugin-react'
+import { copyFileSync } from 'fs'
 
-// https://vite.dev/config/
 export default defineConfig({
-  plugins: [react()],
+  plugins: [
+    react(),
+    {
+      name: 'generate-404',
+      closeBundle() {
+        copyFileSync('dist/index.html', 'dist/404.html')
+      },
+    },
+  ],
   base: process.env.VITE_BASE_PATH ?? '/',
 })
