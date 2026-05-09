@@ -141,9 +141,9 @@ const ADVANTAGES = [
 ];
 
 const REVIEWS = [
-  { name: "Алексей К.", car: "BMW X5", text: "Сдал 4 диска на алмазную проточку — результат как с завода. Сделали за 1 день, всё по времени. Однозначно рекомендую!", stars: 5 },
-  { name: "Мария В.", car: "Audi A4", text: "Делала кастомную покраску в чёрный матовый с оранжевыми спицами. Выглядит просто бомбически! Мастера профессионалы.", stars: 5 },
-  { name: "Игорь Н.", car: "Mercedes C200", text: "Восстанавливали диск после встречи с ямой. Правка + покраска, не отличишь от нового. Цена адекватная, работа качественная.", stars: 5 },
+  { name: "DGS", date: "7 мая 2026", text: "Связались, обговорили нюансы, привёз детали на покраску, всё объяснили, покраску произвели очень качественно. От новых из магазина не отличить. Спасибо большое ещё раз. Рекомендую 👍", stars: 5 },
+  { name: "Евгений", date: "2 мая 2026", text: "Красил диски 19 радиуса с алмазной проточкой. Покрасили отлично, без нареканий. В ходе работ была выполнена правка диска и сезонный шиномонтаж. Работа выполнена раньше оговоренного срока. Однозначно рекомендую.", stars: 5 },
+  { name: "SapogMl", date: "25 апреля 2026", text: "Выправили и покрасили комплект поеденных коррозией дисков за более чем божеские деньги. Цвет порошка подобрали удачно, покрасили хорошо, диски стали как новые. Мастера дружелюбные и внимательные, впечатление исключительно положительное, в следующий раз поеду сюда же.", stars: 5 },
 ];
 
 const STATS = [
@@ -789,10 +789,13 @@ export default function App() {
               <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center" }}>
                 <div>
                   <div style={{ fontFamily: "'Rajdhani'", fontSize: 17, fontWeight: 700 }}>{r.name}</div>
-                  <div style={{ fontSize: 13, color: "rgba(255,255,255,.35)" }}>{r.car}</div>
+                  <div style={{ fontSize: 13, color: "rgba(255,255,255,.35)" }}>{r.date}</div>
                 </div>
-                <div style={{ width: 40, height: 40, borderRadius: "50%", background: "var(--grad)", display: "flex", alignItems: "center", justifyContent: "center", fontSize: 16 }}>
-                  {r.name[0]}
+                <div style={{ display: "flex", flexDirection: "column", alignItems: "flex-end", gap: 6 }}>
+                  <div style={{ width: 36, height: 36, borderRadius: "50%", background: "var(--grad)", display: "flex", alignItems: "center", justifyContent: "center", fontSize: 15 }}>
+                    {r.name[0]}
+                  </div>
+                  <span style={{ fontSize: 11, color: "rgba(255,255,255,.3)", letterSpacing: .5 }}>Авито</span>
                 </div>
               </div>
             </div>
