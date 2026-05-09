@@ -642,7 +642,7 @@ export default function App() {
 
           <div className="grid-4">
             {SERVICES.map((s) => (
-              <div key={s.id} className="card" style={{ cursor: "pointer", padding: 0, overflow: "hidden" }}
+              <div key={s.id} className="card" style={{ cursor: "pointer", padding: 0, overflow: "hidden", display: "flex", flexDirection: "column" }}
                 onClick={() => setActiveService(s)}>
                 {/* Illustration */}
                 <div style={{ position: "relative", height: 160, overflow: "hidden" }}>
@@ -654,9 +654,9 @@ export default function App() {
                   )}
                 </div>
                 {/* Text */}
-                <div style={{ padding: "18px 20px 22px" }}>
+                <div style={{ padding: "18px 20px 22px", display: "flex", flexDirection: "column", flex: 1 }}>
                   <h3 style={{ fontFamily: "'Rajdhani'", fontSize: 18, fontWeight: 700, letterSpacing: .4, marginBottom: 8 }}>{s.title}</h3>
-                  <p style={{ fontSize: 13, color: "rgba(255,255,255,.48)", lineHeight: 1.6, marginBottom: 14 }}>{s.short}</p>
+                  <p style={{ fontSize: 13, color: "rgba(255,255,255,.48)", lineHeight: 1.6, marginBottom: 14, flex: 1 }}>{s.short}</p>
                   <div style={{ fontFamily: "'Rajdhani'", fontSize: 21, fontWeight: 700, color: s.color }}>{s.price}</div>
                 </div>
               </div>
