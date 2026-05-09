@@ -398,6 +398,12 @@ export default function App() {
 
         .star { color: #ffd700; font-size: 14px; }
 
+        @media (max-width:1100px) {
+          .promos-grid { grid-template-columns: repeat(2, 1fr) !important; }
+        }
+        @media (max-width:600px) {
+          .promos-grid { grid-template-columns: 1fr !important; }
+        }
         @media (max-width:900px) {
           .grid-3, .grid-4 { grid-template-columns: repeat(2,1fr); }
         }
@@ -618,7 +624,7 @@ export default function App() {
         <p className="section-kicker">Актуальные предложения</p>
         <h2 className="section-title">Акции и <span className="grad-text">спецпредложения</span></h2>
 
-        <div className="grid-3">
+        <div style={{ display: "grid", gridTemplateColumns: "repeat(4, 1fr)", gap: 24 }} className="promos-grid">
           {PROMOS.map((p, i) => (
             <div key={i} style={{
               background: "linear-gradient(135deg, rgba(255,107,0,.08) 0%, rgba(255,0,128,.06) 100%)",
