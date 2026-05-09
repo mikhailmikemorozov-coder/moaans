@@ -240,6 +240,13 @@ const Logo = () => {
   );
 };
 
+const getMoscowIsOpen = () => {
+  const now = new Date();
+  const moscow = new Date(now.toLocaleString('en-US', { timeZone: 'Europe/Moscow' }));
+  const h = moscow.getHours();
+  return h >= 9 && h < 19;
+};
+
 /* ─── COMPONENT ─────────────────────────────────────── */
 export default function App() {
   const [cookieAccepted, setCookieAccepted] = useState(() => !!localStorage.getItem("cookie_ok"));
@@ -254,6 +261,7 @@ export default function App() {
   const nameInputRef = useRef(null);
   const [calcSize, setCalcSize] = useState('R17–18');
   const [openFaq, setOpenFaq] = useState(null);
+  const [shopOpen] = useState(getMoscowIsOpen);
   const [calcService, setCalcService] = useState('paint');
   const [calcCount, setCalcCount] = useState(4);
   const [calcSpecial, setCalcSpecial] = useState(false);
@@ -438,7 +446,6 @@ export default function App() {
           .nav-desktop { display: none !important; }
           .hamburger { display: flex !important; }
           .about-grid { grid-template-columns: 1fr !important; gap: 48px !important; }
-          .hero-section { padding: 100px 20px 60px !important; }
           .section-pad { padding: 60px 20px !important; }
           .section-pad-center { padding: 60px 20px !important; max-width: 100% !important; }
           .nav-bar { padding: 0 20px !important; }
@@ -500,6 +507,12 @@ export default function App() {
           position: fixed; bottom: 28px; right: 28px; z-index: 500;
           animation: fadeUp .5s ease .8s both;
         }
+
+        .top-info-bar { display: flex; }
+        @media (max-width: 768px) {
+          .top-info-bar { display: none !important; }
+          .hero-section { padding: 100px 20px 60px !important; }
+        }
       `}</style>
 
       {/* ── MOBILE MENU ── */}
@@ -528,16 +541,44 @@ export default function App() {
         </div>
       )}
 
-      {/* ── NAVBAR ── */}
-      <nav className="nav-bar" style={{
-        position: "fixed", top: 0, left: 0, right: 0, zIndex: 200,
-        padding: "0 40px", height: 70,
-        display: "flex", alignItems: "center", justifyContent: "space-between",
-        background: scrolled ? "rgba(8,9,12,.95)" : "rgba(8,9,12,.7)",
-        backdropFilter: "blur(24px)",
-        borderBottom: scrolled ? "1px solid rgba(255,107,0,.12)" : "none",
-        transition: "all .4s ease",
-      }}>
+      {/* ── HEADER ── */}
+      <div style={{ position: "fixed", top: 0, left: 0, right: 0, zIndex: 200 }}>
+
+        {/* Top info bar */}
+        <div className="top-info-bar" style={{
+          height: 36, padding: "0 40px",
+          background: "rgba(6,7,10,.98)", backdropFilter: "blur(12px)",
+          borderBottom: "1px solid rgba(255,255,255,.05)",
+          alignItems: "center", justifyContent: "space-between",
+        }}>
+          <a href="https://yandex.ru/maps/org/beautiful_iron/229939060915/" target="_blank" rel="noopener noreferrer"
+            style={{ display: "flex", alignItems: "center", gap: 6, textDecoration: "none", color: "rgba(255,255,255,.4)", fontSize: 12, fontFamily: "'Rajdhani', sans-serif", letterSpacing: 0.5 }}>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" width="11" height="11"><path d="M21 10c0 7-9 13-9 13S3 17 3 10a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
+            Внуково, Центральная ул., 18с2
+          </a>
+          <div style={{ display: "flex", alignItems: "center", gap: 16 }}>
+            <div style={{ display: "flex", alignItems: "center", gap: 5, fontSize: 12, color: "rgba(255,255,255,.35)", fontFamily: "'Rajdhani', sans-serif", letterSpacing: 0.5 }}>
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" width="11" height="11"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+              09:00 – 19:00, ежедневно
+            </div>
+            <div style={{ display: "flex", alignItems: "center", gap: 6 }}>
+              <div style={{ width: 6, height: 6, borderRadius: "50%", background: shopOpen ? "#39ff14" : "#ff5555", flexShrink: 0, ...(shopOpen ? { boxShadow: "0 0 5px #39ff14" } : {}) }} />
+              <span style={{ fontSize: 12, fontFamily: "'Rajdhani', sans-serif", fontWeight: 600, letterSpacing: 0.5, color: shopOpen ? "#39ff14" : "#ff8080" }}>
+                {shopOpen ? "Открыто" : "Закрыто — открываемся в 9:00"}
+              </span>
+            </div>
+          </div>
+        </div>
+
+        {/* Navbar */}
+        <nav className="nav-bar" style={{
+          padding: "0 40px", height: 70,
+          display: "flex", alignItems: "center", justifyContent: "space-between",
+          background: scrolled ? "rgba(8,9,12,.95)" : "rgba(8,9,12,.8)",
+          backdropFilter: "blur(24px)",
+          borderBottom: scrolled ? "1px solid rgba(255,107,0,.12)" : "none",
+          transition: "all .4s ease",
+        }}>
         <div style={{ cursor: "pointer" }} onClick={() => scrollTo("hero")}>
           <Logo />
         </div>
@@ -557,10 +598,12 @@ export default function App() {
             <span /><span /><span />
           </button>
         </div>
-      </nav>
+        </nav>
+
+      </div>{/* end fixed header wrapper */}
 
       {/* ── HERO ── */}
-      <section id="hero" className="hero-section" style={{ minHeight: "100vh", display: "flex", alignItems: "center", position: "relative", padding: "100px 40px 60px" }}>
+      <section id="hero" className="hero-section" style={{ minHeight: "100vh", display: "flex", alignItems: "center", position: "relative", padding: "136px 40px 60px" }}>
         <div className="hero-bg">
           {/* Background SVG wheel pattern */}
           <div style={{ position: "absolute", inset: 0, overflow: "hidden" }}>
@@ -944,7 +987,7 @@ export default function App() {
       {/* ── FAQ ── */}
       <section id="faq" style={{ padding: "80px 40px", maxWidth: 860, margin: "0 auto" }}>
         <p className="section-kicker">Вопросы и ответы</p>
-        <h2 className="section-title">Часто <span className="grad-text">спрашивают</span></h2>
+        <h2 className="section-title" style={{ fontFamily: "'Rajdhani', sans-serif" }}>Часто <span className="grad-text">спрашивают</span></h2>
         <div style={{ marginTop: 48, display: "flex", flexDirection: "column", gap: 12 }}>
           {[
             {
