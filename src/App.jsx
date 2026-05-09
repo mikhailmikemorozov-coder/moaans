@@ -138,6 +138,7 @@ const ADVANTAGES = [
   { icon: "🔍", title: "Бесплатная диагностика", desc: "Осмотрим диски и оценим объём работ бесплатно, без обязательств." },
   { icon: "⏱️", title: "Сроки не срываем", desc: "Назвали дату — сдали в срок. Без «ещё пару дней»." },
   { icon: "💬", title: "Фото-отчёт", desc: "Присылаем фото процесса и результата в мессенджер." },
+  { icon: "🚚", title: "Бесплатный вывоз и доставка", desc: "Заберём диски сами и привезём обратно — бесплатно в пределах района Внуково." },
 ];
 
 const REVIEWS = [
@@ -166,6 +167,7 @@ const ADVANTAGE_ICONS = [
   <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" width="20" height="20"><circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="3"/><line x1="12" y1="2" x2="12" y2="9"/><line x1="12" y1="15" x2="12" y2="22"/><line x1="2" y1="12" x2="9" y2="12"/><line x1="15" y1="12" x2="22" y2="12"/></svg>,
   <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" width="20" height="20"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>,
   <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" width="20" height="20"><path d="M23 19a2 2 0 01-2 2H3a2 2 0 01-2-2V8a2 2 0 012-2h4l2-3h6l2 3h4a2 2 0 012 2z"/><circle cx="12" cy="13" r="4"/></svg>,
+  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" width="20" height="20"><rect x="1" y="3" width="15" height="13" rx="1"/><path d="M16 8h4l3 3v5h-7V8z"/><circle cx="5.5" cy="18.5" r="2.5"/><circle cx="18.5" cy="18.5" r="2.5"/></svg>,
 ];
 
 const SERVICE_ICONS = [
