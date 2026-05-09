@@ -252,7 +252,7 @@ export default function App() {
   const [sending, setSending] = useState(false);
   const [activeTab, setActiveTab] = useState(0);
   const nameInputRef = useRef(null);
-  const [calcSize, setCalcSize] = useState('R17-18');
+  const [calcSize, setCalcSize] = useState('R17–18');
   const [calcService, setCalcService] = useState('paint');
   const [calcCount, setCalcCount] = useState(4);
   const [calcSpecial, setCalcSpecial] = useState(false);
