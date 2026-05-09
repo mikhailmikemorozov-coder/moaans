@@ -84,7 +84,7 @@ export default function ServicePage({ meta, color = "#ff6b00", h1, h1Accent, int
           <div style={{ display: "flex", gap: 8, marginBottom: 20, flexWrap: "wrap" }}>
             <Link to="/" style={{ fontFamily: "'Rajdhani'", fontSize: 13, color: "rgba(255,255,255,.35)", letterSpacing: 1 }}>Главная</Link>
             <span style={{ color: "rgba(255,255,255,.2)" }}>›</span>
-            <span style={{ fontFamily: "'Rajdhani'", fontSize: 13, color: "rgba(255,107,0,.7)", letterSpacing: 1 }}>{h1Accent || h1}</span>
+            <span style={{ fontFamily: "'Rajdhani'", fontSize: 13, color: "rgba(255,107,0,.7)", letterSpacing: 1 }}>{h1Accent ? `${h1} ${h1Accent}` : h1}</span>
           </div>
           <h1 style={{ fontFamily: "'Rajdhani'", fontWeight: 700, fontSize: "clamp(40px, 6vw, 76px)", lineHeight: 1, letterSpacing: 1, marginBottom: 28 }}>
             {h1}{" "}
