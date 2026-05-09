@@ -802,8 +802,8 @@ export default function App() {
           ))}
         </div>
         <div style={{ textAlign: "center", marginTop: 40 }}>
-          <a href="https://www.avito.ru/odintsovo/predlozheniya_uslug/poroshkovaya_pokraska_diskov_restavratsiya_oshipovka_4511357658" target="_blank" rel="noopener noreferrer" style={{ display: "inline-flex", alignItems: "center", gap: 10, padding: "14px 32px", background: "rgba(255,255,255,0.04)", border: "1px solid rgba(255,255,255,0.12)", borderRadius: 50, color: "rgba(255,255,255,0.7)", textDecoration: "none", fontSize: 15, transition: "all .2s" }}>
-            <svg viewBox="0 0 24 24" fill="currentColor" width="18" height="18"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 14H9V8h2v8zm4 0h-2V8h2v8z" opacity=".3"/><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8zm-1-6h2v2h-2zm0-8h2v6h-2z"/></svg>
+          <a href="https://www.avito.ru/odintsovo/predlozheniya_uslug/poroshkovaya_pokraska_diskov_restavratsiya_oshipovka_4511357658" target="_blank" rel="noopener noreferrer" style={{ display: "inline-flex", alignItems: "center", gap: 10, padding: "14px 32px", background: "rgba(0,170,255,0.06)", border: "1px solid rgba(0,170,255,0.2)", borderRadius: 50, color: "rgba(255,255,255,0.75)", textDecoration: "none", fontSize: 15, transition: "all .2s" }}>
+            <svg viewBox="0 0 24 24" fill="currentColor" width="18" height="18"><path d="M12 2L2 22h4.5l2-4.5h7l2 4.5H22L12 2zm0 6l2.5 6.5h-5L12 8z"/></svg>
             Все отзывы на Авито
           </a>
         </div>
@@ -884,6 +884,10 @@ export default function App() {
               {
                 icon: <svg viewBox="0 0 720 720" fill="currentColor" fillRule="evenodd" width="20" height="20"><path d="M350.4,9.6C141.8,20.5,4.1,184.1,12.8,390.4c3.8,90.3,40.1,168,48.7,253.7,2.2,22.2-4.2,49.6,21.4,59.3,31.5,11.9,79.8-8.1,106.2-26.4,9-6.1,17.6-13.2,24.2-22,27.3,18.1,53.2,35.6,85.7,43.4,143.1,34.3,299.9-44.2,369.6-170.3C799.6,291.2,622.5-4.6,350.4,9.6h0ZM269.4,504c-11.3,8.8-22.2,20.8-34.7,27.7-18.1,9.7-23.7-.4-30.5-16.4-21.4-50.9-24-137.6-11.5-190.9,16.8-72.5,72.9-136.3,150-143.1,78-6.9,150.4,32.7,183.1,104.2,72.4,159.1-112.9,316.2-256.4,218.6h0Z"/></svg>,
                 label: "MAX", color: "#5b8af5", href: "https://max.ru/u/f9LHodD0cOJYTxRVH7UNrYX5gEvGuAuZmHCZvWv-gAKZxJ9uqv1t6BtCeY8",
+              },
+              {
+                icon: <svg viewBox="0 0 24 24" fill="currentColor" width="20" height="20"><path d="M12 2L2 22h4.5l2-4.5h7l2 4.5H22L12 2zm0 6l2.5 6.5h-5L12 8z"/></svg>,
+                label: "Авито", color: "#00aaff", href: "https://www.avito.ru/odintsovo/predlozheniya_uslug/poroshkovaya_pokraska_diskov_restavratsiya_oshipovka_4511357658",
               },
             ].map(({ icon, label, color, href }, i) => (
               <a key={i} href={href} target={href.startsWith("tel:") ? "_self" : "_blank"} rel="noopener noreferrer" style={{ textDecoration: "none", display: "flex", alignItems: "center", gap: 8, padding: "12px 20px", background: color + "0f", border: `1px solid ${color}33`, borderRadius: 50, cursor: "pointer", transition: "all .2s" }}>
