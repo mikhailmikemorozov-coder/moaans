@@ -987,7 +987,7 @@ export default function App() {
       {/* ── FAQ ── */}
       <section id="faq" style={{ padding: "80px 40px", maxWidth: 860, margin: "0 auto" }}>
         <p className="section-kicker">Вопросы и ответы</p>
-        <h2 className="section-title" style={{ fontFamily: "'Rajdhani', sans-serif" }}>Часто <span className="grad-text">спрашивают</span></h2>
+        <h2 style={{ fontFamily: "'Rajdhani', sans-serif", fontWeight: 700, fontSize: "clamp(32px, 5vw, 56px)", lineHeight: 1.05, letterSpacing: 1, marginBottom: 20 }}>Часто <span className="grad-text">спрашивают</span></h2>
         <div style={{ marginTop: 48, display: "flex", flexDirection: "column", gap: 12 }}>
           {[
             {
