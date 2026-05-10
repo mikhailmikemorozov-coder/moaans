@@ -304,9 +304,11 @@ export default function App() {
   };
 
   const scrollTo = (id) => {
-    document.getElementById(id)?.scrollIntoView({ behavior: "smooth" });
     setMobileMenu(false);
-    if (id === "contact") setTimeout(() => nameInputRef.current?.focus(), 600);
+    setTimeout(() => {
+      document.getElementById(id)?.scrollIntoView({ behavior: "smooth" });
+      if (id === "contact") setTimeout(() => nameInputRef.current?.focus(), 600);
+    }, 350);
   };
 
   return (
@@ -351,8 +353,8 @@ export default function App() {
         .btn-sm { padding: 10px 24px; font-size: 14px; }
 
         .nav-item {
-          font-family: 'Rajdhani', sans-serif; font-size: 15px; font-weight: 600;
-          letter-spacing: 1px; text-transform: uppercase; color: rgba(255,255,255,.65);
+          font-family: 'Nunito', sans-serif; font-size: 13px; font-weight: 700;
+          letter-spacing: 2px; text-transform: uppercase; color: rgba(255,255,255,.65);
           cursor: pointer; transition: color .2s; padding: 4px 0;
           border-bottom: 2px solid transparent;
         }
@@ -532,7 +534,7 @@ export default function App() {
           </div>
           <div style={{ flex: 1, display: "flex", flexDirection: "column", justifyContent: "center", padding: "0 32px", gap: 8 }}>
             {[["Услуги", "services"], ["Акции", "promos"], ["Цены", "prices"], ["О нас", "about"], ["Отзывы", "reviews"], ["FAQ", "faq"], ["Контакты", "contact"]].map(([label, id]) => (
-              <div key={id} onClick={() => scrollTo(id)} style={{ fontFamily: "'Rajdhani'", fontSize: 36, fontWeight: 700, letterSpacing: 2, color: "rgba(255,255,255,.7)", cursor: "pointer", padding: "12px 0", borderBottom: "1px solid rgba(255,255,255,.05)", transition: "color .2s" }}
+              <div key={id} onClick={() => scrollTo(id)} style={{ fontFamily: "'Nunito', sans-serif", fontSize: 32, fontWeight: 700, letterSpacing: 2, textTransform: "uppercase", color: "rgba(255,255,255,.7)", cursor: "pointer", padding: "12px 0", borderBottom: "1px solid rgba(255,255,255,.05)", transition: "color .2s" }}
                 onMouseEnter={e => e.currentTarget.style.color = "#ff6b00"}
                 onMouseLeave={e => e.currentTarget.style.color = "rgba(255,255,255,.7)"}>
                 {label}
@@ -1139,24 +1141,35 @@ export default function App() {
 
           {/* Address */}
           <div style={{ marginTop: 24, display: "flex", justifyContent: "center" }}>
-            <a
-              href="https://yandex.ru/maps/org/beautiful_iron/229939060915/"
-              target="_blank"
-              rel="noopener noreferrer"
-              style={{ textDecoration: "none", display: "flex", alignItems: "center", gap: 14, padding: "16px 28px", background: "rgba(255,107,0,0.06)", border: "1px solid rgba(255,107,0,0.15)", borderRadius: 16, maxWidth: 460 }}
-            >
-              <span style={{ color: "#ff6b00", flexShrink: 0, display: "flex" }}>
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" width="22" height="22"><path d="M21 10c0 7-9 13-9 13S3 17 3 10a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
-              </span>
-              <div style={{ textAlign: "left" }}>
-                <div style={{ fontFamily: "'Rajdhani'", fontSize: 16, fontWeight: 600, color: "rgba(255,255,255,.8)", letterSpacing: 0.3 }}>
-                  Москва, пос. Внуково, Центральная ул., 18с2
-                </div>
-                <div style={{ fontSize: 12, color: "rgba(255,107,0,.5)", marginTop: 3, letterSpacing: 0.3 }}>
-                  Открыть на Яндекс Картах →
-                </div>
+            <div style={{ textAlign: "left" }}>
+              <div style={{ fontFamily: "'Rajdhani'", fontSize: 16, fontWeight: 600, color: "rgba(255,255,255,.5)", letterSpacing: 0.3, marginBottom: 12, textAlign: "center" }}>
+                Москва, пос. Внуково, Центральная ул., 18с2
               </div>
-            </a>
+              <div style={{ display: "flex", gap: 12, flexWrap: "wrap", justifyContent: "center" }}>
+                <a
+                  href="https://yandex.ru/maps/org/beautiful_iron/229939060915/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  style={{ textDecoration: "none", display: "flex", alignItems: "center", gap: 10, padding: "12px 20px", background: "rgba(255,107,0,0.06)", border: "1px solid rgba(255,107,0,0.15)", borderRadius: 50, transition: "all .2s" }}
+                >
+                  <span style={{ color: "#ff6b00", flexShrink: 0, display: "flex" }}>
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" width="18" height="18"><path d="M21 10c0 7-9 13-9 13S3 17 3 10a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
+                  </span>
+                  <span style={{ fontFamily: "'Rajdhani'", fontSize: 15, fontWeight: 600, color: "#ff6b00" }}>Яндекс Карты</span>
+                </a>
+                <a
+                  href="https://maps.app.goo.gl/5FAiYuqtT4qZs4dm6"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  style={{ textDecoration: "none", display: "flex", alignItems: "center", gap: 10, padding: "12px 20px", background: "rgba(66,133,244,0.06)", border: "1px solid rgba(66,133,244,0.2)", borderRadius: 50, transition: "all .2s" }}
+                >
+                  <span style={{ flexShrink: 0, display: "flex" }}>
+                    <svg viewBox="0 0 24 24" width="18" height="18" fill="none"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7z" fill="#4285F4"/><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7z" fill="url(#gm)" opacity=".15"/><circle cx="12" cy="9" r="2.5" fill="#fff"/><defs><linearGradient id="gm" x1="5" y1="2" x2="19" y2="22" gradientUnits="userSpaceOnUse"><stop stopColor="#34A853"/><stop offset=".5" stopColor="#FBBC05"/><stop offset="1" stopColor="#EA4335"/></linearGradient></defs></svg>
+                  </span>
+                  <span style={{ fontFamily: "'Rajdhani'", fontSize: 15, fontWeight: 600, color: "#4285F4" }}>Google Maps</span>
+                </a>
+              </div>
+            </div>
           </div>
         </div>
       </section>
