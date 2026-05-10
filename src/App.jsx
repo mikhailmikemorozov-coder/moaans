@@ -152,9 +152,12 @@ const ADVANTAGES = [
 ];
 
 const REVIEWS = [
-  { name: "DGS", date: "7 мая 2026", text: "Связались, обговорили нюансы, привёз детали на покраску, всё объяснили, покраску произвели очень качественно. От новых из магазина не отличить. Спасибо большое ещё раз. Рекомендую 👍", stars: 5 },
-  { name: "Евгений", date: "2 мая 2026", text: "Красил диски 19 радиуса с алмазной проточкой. Покрасили отлично, без нареканий. В ходе работ была выполнена правка диска и сезонный шиномонтаж. Работа выполнена раньше оговоренного срока. Однозначно рекомендую.", stars: 5 },
-  { name: "SapogMl", date: "25 апреля 2026", text: "Выправили и покрасили комплект поеденных коррозией дисков за более чем божеские деньги. Цвет порошка подобрали удачно, покрасили хорошо, диски стали как новые. Мастера дружелюбные и внимательные, впечатление исключительно положительное, в следующий раз поеду сюда же.", stars: 5 },
+  { name: "Павел Ж.", date: "9 мая 2026", text: "Красил литые диски R17. Покрасили на 5+, никаких подтёков и сколов. Параллельно сделали правку двух дисков и балансировку. Сделали даже быстрее, чем обещали. Однозначно рекомендую!", stars: 5, source: "yandex" },
+  { name: "Dav Co", date: "9 мая 2026", text: "Отличный сервис! Парни молодцы! Весь комплекс по колёсам в одном месте! Покраска топчик, уже несколько комплектов себе покрасил и знакомых привёл. Ценник гуманный! Молодцы! Продолжайте в том же духе!", stars: 5, source: "yandex" },
+  { name: "Mixa Morozov", date: "9 мая 2026", text: "Бомбический сервис, ребята топчик, покрасили диски как будто с завода вышли только что. По ценам всё понятно — сколько договорились, столько и было по итогам.", stars: 5, source: "yandex" },
+  { name: "DGS", date: "7 мая 2026", text: "Связались, обговорили нюансы, привёз детали на покраску, всё объяснили, покраску произвели очень качественно. От новых из магазина не отличить. Спасибо большое ещё раз. Рекомендую 👍", stars: 5, source: "avito" },
+  { name: "Евгений", date: "2 мая 2026", text: "Красил диски 19 радиуса с алмазной проточкой. Покрасили отлично, без нареканий. В ходе работ была выполнена правка диска и сезонный шиномонтаж. Работа выполнена раньше оговоренного срока. Однозначно рекомендую.", stars: 5, source: "avito" },
+  { name: "SapogMl", date: "25 апреля 2026", text: "Выправили и покрасили комплект поеденных коррозией дисков за более чем божеские деньги. Цвет порошка подобрали удачно, покрасили хорошо, диски стали как новые. Мастера дружелюбные и внимательные, впечатление исключительно положительное, в следующий раз поеду сюда же.", stars: 5, source: "avito" },
 ];
 
 const STATS = [
@@ -965,11 +968,24 @@ export default function App() {
         <p className="section-kicker">Клиенты о нас</p>
         <h2 className="section-title">Что говорят <span className="grad-text">наши клиенты</span></h2>
 
-        <div className="grid-3" style={{ marginTop: 40 }}>
+        <div className="grid-2" style={{ marginTop: 40 }}>
           {REVIEWS.map((r, i) => (
             <div key={i} className="review-card">
-              <div style={{ display: "flex", gap: 4, marginBottom: 16 }}>
-                {[...Array(r.stars)].map((_, j) => <span key={j} className="star">★</span>)}
+              <div style={{ display: "flex", justifyContent: "space-between", alignItems: "flex-start", marginBottom: 14 }}>
+                <div style={{ display: "flex", gap: 3 }}>
+                  {[...Array(r.stars)].map((_, j) => <span key={j} className="star">★</span>)}
+                </div>
+                {r.source === "yandex" ? (
+                  <span style={{ display: "inline-flex", alignItems: "center", gap: 5, padding: "3px 10px", background: "rgba(255,51,51,0.08)", border: "1px solid rgba(255,51,51,0.2)", borderRadius: 50 }}>
+                    <svg viewBox="0 0 24 24" fill="#ff3333" width="12" height="12"><path d="M12.244 0C5.494 0 0 5.373 0 12s5.494 12 12.244 12C18.994 24 24 18.627 24 12S18.994 0 12.244 0zm1.02 18.316h-2.02v-7.02l-2.897 7.02H6.204l-2.694-6.735v6.735H1.49V5.684h2.84l3.061 7.633 2.856-7.633h3.02v12.632zm4.49 0h-1.939V9.98h-1.98V8.204h5.9V9.98h-1.98v8.337z"/></svg>
+                    <span style={{ fontSize: 11, fontWeight: 700, color: "#ff3333", letterSpacing: .5 }}>Яндекс</span>
+                  </span>
+                ) : (
+                  <span style={{ display: "inline-flex", alignItems: "center", gap: 5, padding: "3px 10px", background: "rgba(0,170,255,0.08)", border: "1px solid rgba(0,170,255,0.2)", borderRadius: 50 }}>
+                    <svg viewBox="0 0 24 24" fill="#00aaff" width="12" height="12"><path d="M12 2L2 22h4.5l2-4.5h7l2 4.5H22L12 2zm0 6l2.5 6.5h-5L12 8z"/></svg>
+                    <span style={{ fontSize: 11, fontWeight: 700, color: "#00aaff", letterSpacing: .5 }}>Авито</span>
+                  </span>
+                )}
               </div>
               <p style={{ fontSize: 15, color: "rgba(255,255,255,.65)", lineHeight: 1.7, marginBottom: 20, fontStyle: "italic" }}>«{r.text}»</p>
               <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center" }}>
@@ -977,20 +993,21 @@ export default function App() {
                   <div style={{ fontFamily: "'Rajdhani'", fontSize: 17, fontWeight: 700 }}>{r.name}</div>
                   <div style={{ fontSize: 13, color: "rgba(255,255,255,.35)" }}>{r.date}</div>
                 </div>
-                <div style={{ display: "flex", flexDirection: "column", alignItems: "flex-end", gap: 6 }}>
-                  <div style={{ width: 36, height: 36, borderRadius: "50%", background: "var(--grad)", display: "flex", alignItems: "center", justifyContent: "center", fontSize: 15 }}>
-                    {r.name[0]}
-                  </div>
-                  <span style={{ fontSize: 11, color: "rgba(255,255,255,.3)", letterSpacing: .5 }}>Авито</span>
+                <div style={{ width: 36, height: 36, borderRadius: "50%", background: "var(--grad)", display: "flex", alignItems: "center", justifyContent: "center", fontSize: 15, flexShrink: 0 }}>
+                  {r.name[0]}
                 </div>
               </div>
             </div>
           ))}
         </div>
-        <div style={{ textAlign: "center", marginTop: 40 }}>
-          <a href="https://www.avito.ru/odintsovo/predlozheniya_uslug/poroshkovaya_pokraska_diskov_restavratsiya_oshipovka_4511357658" target="_blank" rel="noopener noreferrer" style={{ display: "inline-flex", alignItems: "center", gap: 10, padding: "14px 32px", background: "rgba(0,170,255,0.06)", border: "1px solid rgba(0,170,255,0.2)", borderRadius: 50, color: "rgba(255,255,255,0.75)", textDecoration: "none", fontSize: 15, transition: "all .2s" }}>
-            <svg viewBox="0 0 24 24" fill="currentColor" width="18" height="18"><path d="M12 2L2 22h4.5l2-4.5h7l2 4.5H22L12 2zm0 6l2.5 6.5h-5L12 8z"/></svg>
-            Все отзывы на Авито
+        <div style={{ display: "flex", gap: 12, justifyContent: "center", flexWrap: "wrap", marginTop: 40 }}>
+          <a href="https://yandex.ru/maps/org/beautiful_iron/229939060915/reviews/" target="_blank" rel="noopener noreferrer" style={{ display: "inline-flex", alignItems: "center", gap: 8, padding: "12px 24px", background: "rgba(255,51,51,0.06)", border: "1px solid rgba(255,51,51,0.2)", borderRadius: 50, color: "rgba(255,255,255,0.75)", textDecoration: "none", fontSize: 14, transition: "all .2s" }}>
+            <svg viewBox="0 0 24 24" fill="#ff3333" width="16" height="16"><path d="M12.244 0C5.494 0 0 5.373 0 12s5.494 12 12.244 12C18.994 24 24 18.627 24 12S18.994 0 12.244 0zm1.02 18.316h-2.02v-7.02l-2.897 7.02H6.204l-2.694-6.735v6.735H1.49V5.684h2.84l3.061 7.633 2.856-7.633h3.02v12.632zm4.49 0h-1.939V9.98h-1.98V8.204h5.9V9.98h-1.98v8.337z"/></svg>
+            Отзывы на Яндексе
+          </a>
+          <a href="https://www.avito.ru/odintsovo/predlozheniya_uslug/poroshkovaya_pokraska_diskov_restavratsiya_oshipovka_4511357658" target="_blank" rel="noopener noreferrer" style={{ display: "inline-flex", alignItems: "center", gap: 8, padding: "12px 24px", background: "rgba(0,170,255,0.06)", border: "1px solid rgba(0,170,255,0.2)", borderRadius: 50, color: "rgba(255,255,255,0.75)", textDecoration: "none", fontSize: 14, transition: "all .2s" }}>
+            <svg viewBox="0 0 24 24" fill="#00aaff" width="16" height="16"><path d="M12 2L2 22h4.5l2-4.5h7l2 4.5H22L12 2zm0 6l2.5 6.5h-5L12 8z"/></svg>
+            Отзывы на Авито
           </a>
         </div>
       </section>
