@@ -15,7 +15,7 @@ const GUARANTEE_ITEMS = [
   { icon: "📸", text: "Фото-отчёт" },
 ];
 
-export default function ServicePage({ meta, color = "#ff6b00", h1, h1Accent, intro, price, benefits, faqItems }) {
+export default function ServicePage({ meta, color = "#ff6b00", h1, h1Accent, intro, price, benefits, faqItems, gallery }) {
   const [openFaq, setOpenFaq] = useState(null);
 
   return (
@@ -146,6 +146,31 @@ export default function ServicePage({ meta, color = "#ff6b00", h1, h1Accent, int
           ))}
         </div>
       </section>
+
+      {/* ── GALLERY ── */}
+      {gallery?.length > 0 && (
+        <section className="sp-section" style={{ padding: "80px 40px" }}>
+          <div style={{ maxWidth: 1200, margin: "0 auto" }}>
+            <p style={{ fontFamily: "'Rajdhani'", fontSize: 13, fontWeight: 600, letterSpacing: 3, textTransform: "uppercase", color: "#ff6b00", marginBottom: 12 }}>Наши работы</p>
+            <h2 style={{ fontFamily: "'Rajdhani'", fontWeight: 700, fontSize: "clamp(28px, 4vw, 48px)", lineHeight: 1.05, marginBottom: 40 }}>
+              Примеры <span style={{ background: "linear-gradient(135deg,#ff6b00,#ff0080)", WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent" }}>выполненных заказов</span>
+            </h2>
+            <div style={{ columns: "2 320px", gap: 16 }}>
+              {gallery.map((item, i) => (
+                <div key={i} style={{ breakInside: "avoid", marginBottom: 16, borderRadius: 16, overflow: "hidden", position: "relative" }}>
+                  <img src={item.src} alt={item.alt || "Работа BI Color"} loading="lazy"
+                    style={{ width: "100%", display: "block", objectFit: "cover" }} />
+                  {item.caption && (
+                    <div style={{ position: "absolute", bottom: 0, left: 0, right: 0, padding: "20px 16px 14px", background: "linear-gradient(transparent,rgba(0,0,0,.7))", fontSize: 13, color: "rgba(255,255,255,.8)" }}>
+                      {item.caption}
+                    </div>
+                  )}
+                </div>
+              ))}
+            </div>
+          </div>
+        </section>
+      )}
 
       {/* ── FAQ ── */}
       {faqItems?.length > 0 && (
