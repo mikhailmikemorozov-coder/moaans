@@ -1,16 +1,14 @@
-export async function onRequest({ request, env }) {
-  const url = new URL(request.url);
+export async function onRequest(context) {
+  // Try to serve existing static asset (JS, CSS, images, etc.)
+  try {
+    const response = await context.env.ASSETS.fetch(context.request);
+    if (response.ok || response.redirected) {
+      return response;
+    }
+  } catch (_) {}
 
-  // Try to serve existing static asset first
-  const assetResponse = await env.ASSETS.fetch(request);
-  if (assetResponse.status !== 404) {
-    return assetResponse;
-  }
-
-  // For unknown paths — serve index.html with 200 (SPA routing)
-  const indexResponse = await env.ASSETS.fetch(new URL('/', url));
-  return new Response(indexResponse.body, {
-    status: 200,
-    headers: indexResponse.headers,
-  });
+  // SPA fallback: serve index.html with 200 for all unknown routes
+  return context.env.ASSETS.fetch(
+    new Request(new URL('/', context.request.url))
+  );
 }
