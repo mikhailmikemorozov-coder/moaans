@@ -963,6 +963,35 @@ export default function App() {
         </div>
       </section>
 
+      {/* ── BEFORE / AFTER ── */}
+      <section style={{ padding: "80px 40px", maxWidth: 1200, margin: "0 auto" }}>
+        <p className="section-kicker" style={{ textAlign: "center" }}>Результат работы</p>
+        <h2 className="section-title" style={{ textAlign: "center", marginBottom: 48 }}>До и <span className="grad-text">после</span></h2>
+
+        <div style={{ position: "relative", maxWidth: 860, margin: "0 auto", borderRadius: 24, overflow: "hidden", border: "1px solid rgba(255,107,0,.2)", boxShadow: "0 24px 80px rgba(255,107,0,.12)" }}>
+          <img src="/before-after.jpg" alt="Покраска дисков до и после — BI Color" style={{ width: "100%", display: "block" }} />
+
+          {/* До label */}
+          <div style={{ position: "absolute", top: 20, left: 20, display: "flex", alignItems: "center", gap: 8, padding: "6px 16px", background: "rgba(0,0,0,.6)", backdropFilter: "blur(8px)", borderRadius: 50, border: "1px solid rgba(255,255,255,.15)" }}>
+            <div style={{ width: 8, height: 8, borderRadius: "50%", background: "#ff5555", flexShrink: 0 }} />
+            <span style={{ fontFamily: "'Rajdhani', sans-serif", fontSize: 14, fontWeight: 700, letterSpacing: 2, textTransform: "uppercase", color: "#fff" }}>До</span>
+          </div>
+
+          {/* После label */}
+          <div style={{ position: "absolute", bottom: 20, left: 20, display: "flex", alignItems: "center", gap: 8, padding: "6px 16px", background: "rgba(0,0,0,.6)", backdropFilter: "blur(8px)", borderRadius: 50, border: "1px solid rgba(255,107,0,.4)" }}>
+            <div style={{ width: 8, height: 8, borderRadius: "50%", background: "#39ff14", flexShrink: 0, boxShadow: "0 0 6px #39ff14" }} />
+            <span style={{ fontFamily: "'Rajdhani', sans-serif", fontSize: 14, fontWeight: 700, letterSpacing: 2, textTransform: "uppercase", color: "#ff6b00" }}>После</span>
+          </div>
+
+          {/* Divider line */}
+          <div style={{ position: "absolute", left: 0, right: 0, top: "50%", height: 1, background: "linear-gradient(90deg, transparent, rgba(255,107,0,.6), transparent)" }} />
+        </div>
+
+        <p style={{ textAlign: "center", marginTop: 24, fontSize: 14, color: "rgba(255,255,255,.35)" }}>
+          Порошковая покраска литых дисков — Внуково, 2026
+        </p>
+      </section>
+
       {/* ── REVIEWS ── */}
       <section id="reviews" className="section-pad" style={{ padding: "80px 40px", maxWidth: 1200, margin: "0 auto" }}>
         <p className="section-kicker">Клиенты о нас</p>
