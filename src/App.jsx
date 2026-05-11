@@ -1187,6 +1187,10 @@ export default function App() {
                 label: "WhatsApp", color: "#39ff14", href: "https://wa.me/+79652130999",
               },
               {
+                icon: <svg viewBox="0 0 24 24" fill="currentColor" width="20" height="20"><path d="M15.684 0H8.316C1.592 0 0 1.592 0 8.316v7.368C0 22.408 1.592 24 8.316 24h7.368C22.408 24 24 22.408 24 15.684V8.316C24 1.592 22.391 0 15.684 0zm3.692 17.123h-1.744c-.66 0-.862-.525-2.049-1.713-1.033-1.01-1.49-1.135-1.744-1.135-.356 0-.458.102-.458.593v1.558c0 .424-.135.678-1.253.678-1.846 0-3.896-1.118-5.335-3.202C4.624 10.857 4 8.408 4 7.932c0-.254.102-.491.593-.491h1.744c.44 0 .61.203.78.677.863 2.49 2.303 4.675 2.896 4.675.22 0 .322-.102.322-.66V9.467c-.068-1.185-.695-1.287-.695-1.71 0-.203.17-.407.44-.407h2.744c.373 0 .508.203.508.643v3.473c0 .372.17.508.271.508.22 0 .407-.136.813-.542 1.253-1.406 2.151-3.574 2.151-3.574.119-.254.322-.491.763-.491h1.744c.525 0 .643.27.525.643-.22 1.017-2.354 4.031-2.354 4.031-.186.305-.254.44 0 .78.186.254.796.779 1.203 1.253.745.847 1.32 1.558 1.473 2.049.17.474-.085.712-.609.712z"/></svg>,
+                label: "ВКонтакте", color: "#4680c2", href: "https://vk.ru/club41751380",
+              },
+              {
                 icon: <svg viewBox="0 0 720 720" fill="currentColor" fillRule="evenodd" width="20" height="20"><path d="M350.4,9.6C141.8,20.5,4.1,184.1,12.8,390.4c3.8,90.3,40.1,168,48.7,253.7,2.2,22.2-4.2,49.6,21.4,59.3,31.5,11.9,79.8-8.1,106.2-26.4,9-6.1,17.6-13.2,24.2-22,27.3,18.1,53.2,35.6,85.7,43.4,143.1,34.3,299.9-44.2,369.6-170.3C799.6,291.2,622.5-4.6,350.4,9.6h0ZM269.4,504c-11.3,8.8-22.2,20.8-34.7,27.7-18.1,9.7-23.7-.4-30.5-16.4-21.4-50.9-24-137.6-11.5-190.9,16.8-72.5,72.9-136.3,150-143.1,78-6.9,150.4,32.7,183.1,104.2,72.4,159.1-112.9,316.2-256.4,218.6h0Z"/></svg>,
                 label: "MAX", color: "#5b8af5", href: "https://max.ru/u/f9LHodD0cOJYTxRVH7UNrYX5gEvGuAuZmHCZvWv-gAKZxJ9uqv1t6BtCeY8",
               },
@@ -1319,7 +1323,16 @@ export default function App() {
               <div style={{ fontFamily: "'Rajdhani'", fontSize: 13, fontWeight: 600, letterSpacing: 2, color: "rgba(255,255,255,.3)", marginBottom: 16, textTransform: "uppercase" }}>Контакты</div>
               <div style={{ fontSize: 14, color: "rgba(255,255,255,.45)", marginBottom: 10 }}>+7 (499) 136-55-00</div>
               <div style={{ fontSize: 14, color: "rgba(255,255,255,.45)", marginBottom: 10 }}>Ежедневно с 10:00 до 19:00</div>
-              <div style={{ fontSize: 14, color: "rgba(255,255,255,.45)" }}>г. Москва, пос. Внуково, Центральная ул., 18с2</div>
+              <div style={{ fontSize: 14, color: "rgba(255,255,255,.45)", marginBottom: 16 }}>г. Москва, пос. Внуково, Центральная ул., 18с2</div>
+              <div style={{ display: "flex", gap: 10, flexWrap: "wrap" }}>
+                {[
+                  { label: "ВКонтакте", color: "#4680c2", href: "https://vk.ru/club41751380" },
+                  { label: "Telegram", color: "#00d4ff", href: "https://t.me/+79652130999" },
+                  { label: "Авито", color: "#00aaff", href: "https://www.avito.ru/odintsovo/predlozheniya_uslug/poroshkovaya_pokraska_diskov_restavratsiya_oshipovka_4511357658" },
+                ].map(({ label, color, href }) => (
+                  <a key={label} href={href} target="_blank" rel="noopener noreferrer" style={{ fontSize: 13, fontFamily: "'Rajdhani'", fontWeight: 600, color, letterSpacing: 0.5, textDecoration: "none", padding: "4px 12px", border: `1px solid ${color}33`, borderRadius: 50 }}>{label}</a>
+                ))}
+              </div>
             </div>
           </div>
           <div style={{ borderTop: "1px solid rgba(255,255,255,.05)", paddingTop: 24, display: "flex", justifyContent: "space-between", flexWrap: "wrap", gap: 12 }}>
