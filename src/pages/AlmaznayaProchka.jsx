@@ -22,22 +22,20 @@ export default function AlmaznayaProchka() {
       ]}
       gallery={[
         {
-          src: "https://downloader.disk.yandex.ru/preview/dcf79945066046f811c6e7809b3124690ec01432289b9f53b5e71e445db90cac/6a02227b/QC1Hrw8yPaYwGVlXnfKqwM1zLZY9eggiyboOSMjmbcfP7Az3U-WYj_dZJ_ZN-ELGpgYtedl_Ozt8nAR3rAeqjw%3D%3D?uid=0&filename=2026-04-24%2000-52-54_71868404.JPG&disposition=inline&hash=&limit=0&content_type=image%2Fjpeg&owner_uid=0&tknv=v3&size=3456x1810",
+          src: "/prochka-1.jpg",
           alt: "Алмазная проточка литых дисков — результат работы BI Color",
           caption: "Алмазная проточка — восстановление заводского блеска",
         },
         {
-          src: "https://downloader.disk.yandex.ru/preview/0cbb7289c7ace1edfa35b552d95862f32137213337ba0cc812966a13d4cae62e/6a02227b/7r3_tb5WXHd45Bd59_ObOt4KnkAd8un_TOS4EeUcuo80Nz-D1LIlei6keo49BOIZHkmDdrmvvlYVfoovSsA40A%3D%3D?uid=0&filename=2026-04-24%2000-53-03_1776982392985.JPG&disposition=inline&hash=&limit=0&content_type=image%2Fjpeg&owner_uid=0&tknv=v3&size=3456x1810",
+          src: "/prochka-2.jpg",
           alt: "Проточка диска на станке с ЧПУ в Москве",
           caption: "Станок с ЧПУ — точность до микрона",
         },
         {
-          src: "https://downloader.disk.yandex.ru/preview/4bba5875bf941db5500edee01af3d3b0a7c4248b0ad9d0b7d025c6d25ddf93a8/6a02227c/TQNXUZiAn1UMkb3XSCifmQkarck5c9e_m30KyoDqMDosmaC5Waq_1QnbjJB7tBzKjTwk684xjuApsJOa-dg-lw%3D%3D?uid=0&filename=2026-04-24%2000-53-07_1776982184691.JPG&disposition=inline&hash=&limit=0&content_type=image%2Fjpeg&owner_uid=0&tknv=v3&size=3456x1810",
+          src: "/prochka-3.jpg",
           alt: "Diamond cut диск после алмазной проточки",
           caption: "Diamond cut — зеркальный блеск после обработки",
         },
-        // 4-е фото: добавьте URL после загрузки на хостинг
-        // { src: "https://...", alt: "...", caption: "..." },
       ]}
       faqItems={[
         { q: "Что такое алмазная проточка?", a: "Это обработка лицевой (видимой) части диска на токарном станке с ЧПУ. Алмазный резец снимает тончайший слой металла, открывая зеркальную поверхность — тот самый diamond cut, который ставят на дорогих дисках с завода." },
