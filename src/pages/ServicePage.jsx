@@ -15,7 +15,7 @@ const GUARANTEE_ITEMS = [
   { icon: "📸", text: "Фото-отчёт" },
 ];
 
-export default function ServicePage({ meta, color = "#ff6b00", h1, h1Accent, intro, price, benefits, faqItems, gallery }) {
+export default function ServicePage({ meta, color = "#ff6b00", h1, h1Accent, intro, price, benefits, faqItems, gallery, relatedServices }) {
   const [openFaq, setOpenFaq] = useState(null);
 
   return (
@@ -28,7 +28,7 @@ export default function ServicePage({ meta, color = "#ff6b00", h1, h1Accent, int
         <meta property="og:title" content={meta.title} />
         <meta property="og:description" content={meta.description} />
         <meta property="og:url" content={`https://bi-color.ru${meta.path}`} />
-        <meta property="og:image" content="https://bi-color.ru/og-image.png" />
+        <meta property="og:image" content={`https://bi-color.ru${meta.ogImage || "/og-image.png"}`} />
         {faqItems?.length > 0 && (
           <script type="application/ld+json">{JSON.stringify({
             "@context": "https://schema.org",
@@ -172,6 +172,32 @@ export default function ServicePage({ meta, color = "#ff6b00", h1, h1Accent, int
         </section>
       )}
 
+      {/* ── RELATED SERVICES ── */}
+      {relatedServices?.length > 0 && (
+        <section className="sp-section" style={{ padding: "80px 40px", background: "rgba(255,255,255,.015)", borderTop: "1px solid rgba(255,255,255,.06)" }}>
+          <div style={{ maxWidth: 1200, margin: "0 auto" }}>
+            <p style={{ fontFamily: "'Rajdhani'", fontSize: 13, fontWeight: 600, letterSpacing: 3, textTransform: "uppercase", color: "#ff6b00", marginBottom: 12 }}>Также у нас</p>
+            <h2 style={{ fontFamily: "'Rajdhani'", fontWeight: 700, fontSize: "clamp(28px, 4vw, 48px)", lineHeight: 1.05, marginBottom: 40 }}>
+              Другие <span style={{ background: "linear-gradient(135deg,#ff6b00,#ff0080)", WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent" }}>услуги</span>
+            </h2>
+            <div style={{ display: "grid", gridTemplateColumns: "repeat(3,1fr)", gap: 20 }}>
+              {relatedServices.map((s, i) => (
+                <Link key={i} to={s.href} style={{
+                  display: "block", padding: "28px 24px", borderRadius: 20,
+                  background: `${s.color}08`, border: `1px solid ${s.color}22`,
+                  transition: "all .25s", textDecoration: "none",
+                }}>
+                  <div style={{ fontSize: 36, marginBottom: 14 }}>{s.icon}</div>
+                  <div style={{ fontFamily: "'Rajdhani'", fontSize: 20, fontWeight: 700, marginBottom: 8 }}>{s.title}</div>
+                  <div style={{ fontSize: 13, color: "rgba(255,255,255,.45)", lineHeight: 1.6, marginBottom: 16 }}>{s.desc}</div>
+                  <div style={{ fontFamily: "'Rajdhani'", fontSize: 22, fontWeight: 700, color: s.color }}>{s.price}</div>
+                </Link>
+              ))}
+            </div>
+          </div>
+        </section>
+      )}
+
       {/* ── FAQ ── */}
       {faqItems?.length > 0 && (
         <section className="sp-section" style={{ padding: "80px 40px", maxWidth: 860, margin: "0 auto" }}>
@@ -212,8 +238,11 @@ export default function ServicePage({ meta, color = "#ff6b00", h1, h1Accent, int
       <footer style={{ background: "#050508", borderTop: "1px solid rgba(255,255,255,.05)", padding: "32px 40px" }}>
         <div className="sp-footer-inner" style={{ maxWidth: 1200, margin: "0 auto", display: "flex", justifyContent: "space-between", alignItems: "center", flexWrap: "wrap", gap: 20 }}>
           <Link to="/"><Logo /></Link>
-          <div style={{ fontSize: 13, color: "rgba(255,255,255,.3)", textAlign: "center", lineHeight: 1.7 }}>
-            г. Москва, пос. Внуково, Центральная ул., 18с2<br />Ежедневно 10:00–19:00
+          <div style={{ display: "flex", flexDirection: "column", gap: 8, alignItems: "center" }}>
+            <div style={{ fontSize: 13, color: "rgba(255,255,255,.3)", textAlign: "center", lineHeight: 1.7 }}>
+              г. Москва, пос. Внуково, Центральная ул., 18с2<br />Ежедневно 10:00–19:00
+            </div>
+            <Link to="/tseny" style={{ fontFamily: "'Rajdhani'", fontSize: 14, fontWeight: 600, color: "rgba(255,107,0,.6)", letterSpacing: 1 }}>Прайс-лист →</Link>
           </div>
           <div style={{ display: "flex", flexDirection: "column", gap: 6 }}>
             {PHONES.map(p => (

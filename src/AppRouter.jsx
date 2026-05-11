@@ -5,6 +5,7 @@ import PokraskaDisk from "./pages/PokraskaDisk";
 import AlmaznayaProchka from "./pages/AlmaznayaProchka";
 import RemontDiskov from "./pages/RemontDiskov";
 import PokraskaSupportov from "./pages/PokraskaSupportov";
+import Tseny from "./pages/Tseny";
 
 function ScrollToTop() {
   const { pathname } = useLocation();
@@ -22,6 +23,7 @@ export default function AppRouter() {
         <Route path="/almaznaya-prochka-diskov" element={<AlmaznayaProchka />} />
         <Route path="/remont-diskov-moskva" element={<RemontDiskov />} />
         <Route path="/pokraska-supportov-moskva" element={<PokraskaSupportov />} />
+        <Route path="/tseny" element={<Tseny />} />
       </Routes>
     </>
   );
