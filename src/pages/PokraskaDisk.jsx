@@ -16,10 +16,10 @@ export default function PokraskaDisk() {
       intro="Трёхслойное нанесение: грунт — краска — лак. Каждый слой запекается в печи. Покрытие прочнее заводского: устойчиво к сколам, реагентам и мойке высокого давления."
       price="от 2 500 ₽"
       benefits={[
-        { icon: "🎨", title: "Любой цвет RAL", desc: "Матовый, глянец или сатин — более 200 оттенков. Подбираем цвет по образцу кузова или каталогу RAL." },
-        { icon: "🔥", title: "Трёхслойное нанесение", desc: "Грунт — краска — лак, каждый слой запекается в печи при высокой температуре. Монолитное покрытие без пор." },
-        { icon: "🏆", title: "Гарантия 4 года", desc: "Выдаём письменную гарантию на каждый заказ. Покрытие не трескается, не шелушится и не выгорает." },
-        { icon: "💰", title: "Скидка за комплект", desc: "При сдаче 4 дисков комплектом — скидка 15% на весь заказ. Срочно? Сделаем за 24 часа." },
+        { icon: <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" width="24" height="24"><circle cx="13.5" cy="6.5" r="3.5"/><path d="M3 19v-1a6 6 0 016-6h5a6 6 0 016 6v1"/><path d="M9.5 9.5L3 3M14.5 9.5L21 3"/></svg>, title: "Любой цвет RAL", desc: "Матовый, глянец или сатин — более 200 оттенков. Подбираем цвет по образцу кузова или каталогу RAL." },
+        { icon: <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" width="24" height="24"><path d="M12 2C9.5 6.5 7 9 7 13a5 5 0 0010 0c0-3.5-1.5-5.5-3-7 0 1.5-.5 2.5-1 3C12.5 7 12.5 4 12 2z"/></svg>, title: "Трёхслойное нанесение", desc: "Грунт — краска — лак, каждый слой запекается в печи при высокой температуре. Монолитное покрытие без пор." },
+        { icon: <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" width="24" height="24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><polyline points="9 12 11 14 15 10"/></svg>, title: "Гарантия 4 года", desc: "Выдаём письменную гарантию на каждый заказ. Покрытие не трескается, не шелушится и не выгорает." },
+        { icon: <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" width="24" height="24"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 000 7h5a3.5 3.5 0 010 7H6"/></svg>, title: "Скидка за комплект", desc: "При сдаче 4 дисков комплектом — скидка 15% на весь заказ. Срочно? Сделаем за 24 часа." },
       ]}
       gallery={[
         { src: "/pokraska-6.jpg", alt: "Порошковая покраска дисков в золотом цвете RAL", caption: "Золотой металлик, матовый финиш" },
@@ -35,9 +35,9 @@ export default function PokraskaDisk() {
         { q: "Чем порошковая покраска лучше жидкой?", a: "Порошковое покрытие запекается в печи при высокой температуре и даёт монолитный слой без пор. Стойкость к сколам, реагентам и мойке значительно выше жидкой краски — поэтому мы даём гарантию 4 года." },
       ]}
       relatedServices={[
-        { icon: "💎", title: "Алмазная проточка", desc: "Восстанавливаем заводской блеск diamond cut на станке с ЧПУ.", price: "от 5 000 ₽", color: "#00d4ff", href: "/almaznaya-prochka-diskov" },
-        { icon: "🔧", title: "Ремонт дисков", desc: "Правка, сварка TIG/аргон, устранение трещин и деформаций.", price: "от 1 500 ₽", color: "#ff0080", href: "/remont-diskov-moskva" },
-        { icon: "🏎️", title: "Покраска суппортов", desc: "Термостойкая краска до 300°C, любой цвет RAL.", price: "от 2 000 ₽", color: "#39ff14", href: "/pokraska-supportov-moskva" },
+        { icon: <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" width="32" height="32"><path d="M6 3h12l3.3 5-9.3 13-9.3-13z"/><line x1="3" y1="8" x2="21" y2="8"/><path d="M6 3l6 5 6-5"/></svg>, title: "Алмазная проточка", desc: "Восстанавливаем заводской блеск diamond cut на станке с ЧПУ.", price: "от 5 000 ₽", color: "#00d4ff", href: "/almaznaya-prochka-diskov" },
+        { icon: <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" width="32" height="32"><path d="M14.7 6.3a1 1 0 000 1.4l1.6 1.6a1 1 0 001.4 0l3.77-3.77a6 6 0 01-7.94 7.94l-6.91 6.91a2.12 2.12 0 01-3-3l6.91-6.91a6 6 0 017.94-7.94l-3.76 3.76z"/></svg>, title: "Ремонт дисков", desc: "Правка, сварка TIG/аргон, устранение трещин и деформаций.", price: "от 1 500 ₽", color: "#ff0080", href: "/remont-diskov-moskva" },
+        { icon: <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" width="32" height="32"><path d="M12 2C9.5 6.5 7 9 7 13a5 5 0 0010 0c0-3.5-1.5-5.5-3-7 0 1.5-.5 2.5-1 3C12.5 7 12.5 4 12 2z"/></svg>, title: "Покраска суппортов", desc: "Термостойкая краска до 300°C, любой цвет RAL.", price: "от 2 000 ₽", color: "#39ff14", href: "/pokraska-supportov-moskva" },
       ]}
     />
   );

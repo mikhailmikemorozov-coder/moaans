@@ -9,10 +9,10 @@ const PHONES = [
 ];
 
 const GUARANTEE_ITEMS = [
-  { icon: "🏆", text: "Гарантия 4 года" },
-  { icon: "🔍", text: "Бесплатная диагностика" },
-  { icon: "⏱️", text: "Срок 1–2 дня" },
-  { icon: "📸", text: "Фото-отчёт" },
+  { icon: <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" width="20" height="20"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><polyline points="9 12 11 14 15 10"/></svg>, text: "Гарантия 4 года" },
+  { icon: <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" width="20" height="20"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>, text: "Бесплатная диагностика" },
+  { icon: <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" width="20" height="20"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>, text: "Срок 1–2 дня" },
+  { icon: <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" width="20" height="20"><path d="M23 19a2 2 0 01-2 2H3a2 2 0 01-2-2V8a2 2 0 012-2h4l2-3h6l2 3h4a2 2 0 012 2z"/><circle cx="12" cy="13" r="4"/></svg>, text: "Фото-отчёт" },
 ];
 
 export default function ServicePage({ meta, color = "#ff6b00", h1, h1Accent, intro, price, benefits, faqItems, gallery, relatedServices }) {
@@ -187,7 +187,7 @@ export default function ServicePage({ meta, color = "#ff6b00", h1, h1Accent, int
                   background: `${s.color}08`, border: `1px solid ${s.color}22`,
                   transition: "all .25s", textDecoration: "none",
                 }}>
-                  <div style={{ fontSize: 36, marginBottom: 14 }}>{s.icon}</div>
+                  <div style={{ marginBottom: 14, color: s.color }}>{s.icon}</div>
                   <div style={{ fontFamily: "'Rajdhani'", fontSize: 20, fontWeight: 700, marginBottom: 8 }}>{s.title}</div>
                   <div style={{ fontSize: 13, color: "rgba(255,255,255,.45)", lineHeight: 1.6, marginBottom: 16 }}>{s.desc}</div>
                   <div style={{ fontFamily: "'Rajdhani'", fontSize: 22, fontWeight: 700, color: s.color }}>{s.price}</div>

@@ -16,10 +16,10 @@ export default function AlmaznayaProchka() {
       intro="Обработка лицевой поверхности на токарном станке с ЧПУ. Алмазный резец снимает тончайший слой металла — открывается зеркальный блеск, который не достичь полировкой."
       price="от 5 000 ₽"
       benefits={[
-        { icon: "💎", title: "Станок с ЧПУ", desc: "Числовое программное управление обеспечивает точность до микрона. Геометрия диска восстанавливается идеально." },
-        { icon: "✨", title: "Эффект «бриллианта»", desc: "Характерный заводской блеск с diamond cut — серебристая поверхность с мельчайшими бороздками под светом." },
-        { icon: "🎨", title: "Лучше с покраской", desc: "Максимально эффектно смотрится в сочетании с покраской обода в контрастный цвет. Предлагаем оба варианта." },
-        { icon: "🏆", title: "Гарантия 4 года", desc: "На все виды работ, включая алмазную проточку, выдаём письменную гарантию на 4 года." },
+        { icon: <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" width="24" height="24"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 00.33 1.82l.06.06a2 2 0 010 2.83 2 2 0 01-2.83 0l-.06-.06a1.65 1.65 0 00-1.82-.33 1.65 1.65 0 00-1 1.51V21a2 2 0 01-4 0v-.09A1.65 1.65 0 009 19.4a1.65 1.65 0 00-1.82.33l-.06.06a2 2 0 01-2.83-2.83l.06-.06A1.65 1.65 0 004.68 15a1.65 1.65 0 00-1.51-1H3a2 2 0 010-4h.09A1.65 1.65 0 004.6 9a1.65 1.65 0 00-.33-1.82l-.06-.06a2 2 0 012.83-2.83l.06.06A1.65 1.65 0 009 4.68a1.65 1.65 0 001-1.51V3a2 2 0 014 0v.09a1.65 1.65 0 001 1.51 1.65 1.65 0 001.82-.33l.06-.06a2 2 0 012.83 2.83l-.06.06A1.65 1.65 0 0019.4 9a1.65 1.65 0 001.51 1H21a2 2 0 010 4h-.09a1.65 1.65 0 00-1.51 1z"/></svg>, title: "Станок с ЧПУ", desc: "Числовое программное управление обеспечивает точность до микрона. Геометрия диска восстанавливается идеально." },
+        { icon: <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" width="24" height="24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>, title: "Эффект «бриллианта»", desc: "Характерный заводской блеск с diamond cut — серебристая поверхность с мельчайшими бороздками под светом." },
+        { icon: <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" width="24" height="24"><path d="M3 17.25V21h3.75L17.81 9.94l-3.75-3.75L3 17.25z"/><path d="M20.71 7.04a1 1 0 000-1.41l-2.34-2.34a1 1 0 00-1.41 0l-1.83 1.83 3.75 3.75 1.83-1.83z"/></svg>, title: "Лучше с покраской", desc: "Максимально эффектно смотрится в сочетании с покраской обода в контрастный цвет. Предлагаем оба варианта." },
+        { icon: <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" width="24" height="24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><polyline points="9 12 11 14 15 10"/></svg>, title: "Гарантия 4 года", desc: "На все виды работ, включая алмазную проточку, выдаём письменную гарантию на 4 года." },
       ]}
       gallery={[
         {
@@ -50,9 +50,9 @@ export default function AlmaznayaProchka() {
         { q: "Можно ли совместить проточку с покраской?", a: "Да, и это один из самых популярных заказов. Обод красим в выбранный цвет (часто чёрный или антрацит), лицевую часть протачиваем. Контраст металла и цвета смотрится очень эффектно." },
       ]}
       relatedServices={[
-        { icon: "🎨", title: "Покраска дисков", desc: "Порошковая покраска в любой цвет RAL. Отлично сочетается с проточкой.", price: "от 2 500 ₽", color: "#ff6b00", href: "/pokraska-diskov-moskva" },
-        { icon: "🔧", title: "Ремонт дисков", desc: "Правка, сварка TIG/аргон, устранение трещин и деформаций.", price: "от 1 500 ₽", color: "#ff0080", href: "/remont-diskov-moskva" },
-        { icon: "🏎️", title: "Покраска суппортов", desc: "Термостойкая краска до 300°C, любой цвет RAL.", price: "от 2 000 ₽", color: "#39ff14", href: "/pokraska-supportov-moskva" },
+        { icon: <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" width="32" height="32"><path d="M3 17.25V21h3.75L17.81 9.94l-3.75-3.75L3 17.25z"/><path d="M20.71 7.04a1 1 0 000-1.41l-2.34-2.34a1 1 0 00-1.41 0l-1.83 1.83 3.75 3.75 1.83-1.83z"/></svg>, title: "Покраска дисков", desc: "Порошковая покраска в любой цвет RAL. Отлично сочетается с проточкой.", price: "от 2 500 ₽", color: "#ff6b00", href: "/pokraska-diskov-moskva" },
+        { icon: <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" width="32" height="32"><path d="M14.7 6.3a1 1 0 000 1.4l1.6 1.6a1 1 0 001.4 0l3.77-3.77a6 6 0 01-7.94 7.94l-6.91 6.91a2.12 2.12 0 01-3-3l6.91-6.91a6 6 0 017.94-7.94l-3.76 3.76z"/></svg>, title: "Ремонт дисков", desc: "Правка, сварка TIG/аргон, устранение трещин и деформаций.", price: "от 1 500 ₽", color: "#ff0080", href: "/remont-diskov-moskva" },
+        { icon: <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" width="32" height="32"><path d="M12 2C9.5 6.5 7 9 7 13a5 5 0 0010 0c0-3.5-1.5-5.5-3-7 0 1.5-.5 2.5-1 3C12.5 7 12.5 4 12 2z"/></svg>, title: "Покраска суппортов", desc: "Термостойкая краска до 300°C, любой цвет RAL.", price: "от 2 000 ₽", color: "#39ff14", href: "/pokraska-supportov-moskva" },
       ]}
     />
   );

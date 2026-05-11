@@ -16,10 +16,10 @@ export default function RemontDiskov() {
       intro="Восстанавливаем диски после бордюров, ям и аварий. Технология Димет, аргонная сварка TIG, правка геометрии — диск снова как новый."
       price="от 1 500 ₽"
       benefits={[
-        { icon: "🔧", title: "Технология Димет", desc: "Динамическое металлизирование — холодное нанесение металлического порошка без нагрева. Структура алюминиевого сплава полностью сохраняется, прочность как у нового диска." },
-        { icon: "⚡", title: "Аргонная сварка TIG", desc: "Устраняем трещины и сквозные повреждения аргонодуговой сваркой. Шов зачищается и вышлифовывается — визуально незаметен." },
-        { icon: "📐", title: "Правка геометрии", desc: "Восстанавливаем биение и восьмёрку на специальном стенде. После правки диск проходит балансировку." },
-        { icon: "🔍", title: "Бесплатная диагностика", desc: "Оцениваем ремонтопригодность бесплатно. Если восстановление опасно — честно скажем и не возьмёмся за заказ." },
+        { icon: <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" width="24" height="24"><path d="M14.7 6.3a1 1 0 000 1.4l1.6 1.6a1 1 0 001.4 0l3.77-3.77a6 6 0 01-7.94 7.94l-6.91 6.91a2.12 2.12 0 01-3-3l6.91-6.91a6 6 0 017.94-7.94l-3.76 3.76z"/></svg>, title: "Технология Димет", desc: "Динамическое металлизирование — холодное нанесение металлического порошка без нагрева. Структура алюминиевого сплава полностью сохраняется, прочность как у нового диска." },
+        { icon: <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" width="24" height="24"><polyline points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>, title: "Аргонная сварка TIG", desc: "Устраняем трещины и сквозные повреждения аргонодуговой сваркой. Шов зачищается и вышлифовывается — визуально незаметен." },
+        { icon: <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" width="24" height="24"><polyline points="23 4 23 10 17 10"/><polyline points="1 20 1 14 7 14"/><path d="M3.51 9a9 9 0 0114.85-3.36L23 10M1 14l4.64 4.36A9 9 0 0020.49 15"/></svg>, title: "Правка геометрии", desc: "Восстанавливаем биение и восьмёрку на специальном стенде. После правки диск проходит балансировку." },
+        { icon: <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" width="24" height="24"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>, title: "Бесплатная диагностика", desc: "Оцениваем ремонтопригодность бесплатно. Если восстановление опасно — честно скажем и не возьмёмся за заказ." },
       ]}
       faqItems={[
         { q: "Что такое технология Димет?", a: "Димет (динамическое металлизирование) — холодное газодинамическое напыление металлического порошка. В отличие от сварки, диск не нагревается, структура алюминиевого сплава полностью сохраняется. Восстановленное место прочнее заводского литья." },
@@ -28,9 +28,9 @@ export default function RemontDiskov() {
         { q: "Что делать, если диск сильно погнут?", a: "Привезите — оценим. Большинство деформаций устраняется правкой на стенде. Критическое биение или явные разрывы металла — диагностируем и сразу скажем, стоит ли ремонт." },
       ]}
       relatedServices={[
-        { icon: "🎨", title: "Покраска дисков", desc: "Порошковая покраска в любой цвет RAL. Часто делаем сразу после ремонта.", price: "от 2 500 ₽", color: "#ff6b00", href: "/pokraska-diskov-moskva" },
-        { icon: "💎", title: "Алмазная проточка", desc: "Восстанавливаем заводской блеск diamond cut на станке с ЧПУ.", price: "от 5 000 ₽", color: "#00d4ff", href: "/almaznaya-prochka-diskov" },
-        { icon: "🏎️", title: "Покраска суппортов", desc: "Термостойкая краска до 300°C, любой цвет RAL.", price: "от 2 000 ₽", color: "#39ff14", href: "/pokraska-supportov-moskva" },
+        { icon: <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" width="32" height="32"><path d="M3 17.25V21h3.75L17.81 9.94l-3.75-3.75L3 17.25z"/><path d="M20.71 7.04a1 1 0 000-1.41l-2.34-2.34a1 1 0 00-1.41 0l-1.83 1.83 3.75 3.75 1.83-1.83z"/></svg>, title: "Покраска дисков", desc: "Порошковая покраска в любой цвет RAL. Часто делаем сразу после ремонта.", price: "от 2 500 ₽", color: "#ff6b00", href: "/pokraska-diskov-moskva" },
+        { icon: <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" width="32" height="32"><path d="M6 3h12l3.3 5-9.3 13-9.3-13z"/><line x1="3" y1="8" x2="21" y2="8"/><path d="M6 3l6 5 6-5"/></svg>, title: "Алмазная проточка", desc: "Восстанавливаем заводской блеск diamond cut на станке с ЧПУ.", price: "от 5 000 ₽", color: "#00d4ff", href: "/almaznaya-prochka-diskov" },
+        { icon: <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" width="32" height="32"><path d="M12 2C9.5 6.5 7 9 7 13a5 5 0 0010 0c0-3.5-1.5-5.5-3-7 0 1.5-.5 2.5-1 3C12.5 7 12.5 4 12 2z"/></svg>, title: "Покраска суппортов", desc: "Термостойкая краска до 300°C, любой цвет RAL.", price: "от 2 000 ₽", color: "#39ff14", href: "/pokraska-supportov-moskva" },
       ]}
     />
   );
