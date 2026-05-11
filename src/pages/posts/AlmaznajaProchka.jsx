@@ -12,6 +12,7 @@ export default function AlmaznajaProchkaPost() {
         <meta name="description" content="Алмазная проточка литых дисков — как работает технология diamond cut, чем отличается от полировки, когда стоит делать и сколько это стоит в Москве. Ответы от мастеров BI Color." />
         <meta name="keywords" content="алмазная проточка дисков что это, diamond cut диски, алмазная проточка или полировка, алмазная проточка цена москва" />
         <link rel="canonical" href="https://bi-color.ru/blog/almaznaya-prochka-diskov-chto-eto" />
+        <link rel="alternate" type="application/rss+xml" title="BI Color — блог о дисках (Яндекс.Турбо)" href="https://bi-color.ru/turbo.rss" />
         <meta property="og:title" content="Алмазная проточка дисков: что это и сколько стоит" />
         <meta property="og:description" content="Разбираем технологию diamond cut по шагам: как работает, чем отличается от полировки и сколько стоит в Москве." />
         <meta property="og:image" content="https://bi-color.ru/prochka-1.jpg" />

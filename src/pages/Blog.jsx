@@ -24,6 +24,7 @@ export default function Blog() {
         <title>Блог о дисках — советы, технологии, цены | BI Color</title>
         <meta name="description" content="Статьи об алмазной проточке, покраске и восстановлении дисков. Советы от мастеров BI Color в Москве." />
         <link rel="canonical" href="https://bi-color.ru/blog" />
+        <link rel="alternate" type="application/rss+xml" title="BI Color — блог о дисках (Яндекс.Турбо)" href="https://bi-color.ru/turbo.rss" />
         <meta property="og:title" content="Блог BI Color — о дисках и покрытиях" />
         <meta property="og:image" content="https://bi-color.ru/og-image.png" />
       </Helmet>
