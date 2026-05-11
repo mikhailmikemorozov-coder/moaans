@@ -37,7 +37,7 @@ export default function AlmaznayaProchka() {
           caption: "Diamond cut — зеркальный блеск после обработки",
         },
         {
-          src: "/prochka-4.jpg",
+          src: "/prochka-4.png",
           alt: "Алмазная проточка диска — чёрный глянец и серебристые спицы",
           caption: "Чёрный глянец + алмазная проточка спиц",
         },
