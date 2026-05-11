@@ -29,6 +29,17 @@ export default function ServicePage({ meta, color = "#ff6b00", h1, h1Accent, int
         <meta property="og:description" content={meta.description} />
         <meta property="og:url" content={`https://bi-color.ru${meta.path}`} />
         <meta property="og:image" content="https://bi-color.ru/og-image.png" />
+        {faqItems?.length > 0 && (
+          <script type="application/ld+json">{JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "FAQPage",
+            "mainEntity": faqItems.map(item => ({
+              "@type": "Question",
+              "name": item.q,
+              "acceptedAnswer": { "@type": "Answer", "text": item.a },
+            })),
+          })}</script>
+        )}
       </Helmet>
 
       <style>{`
