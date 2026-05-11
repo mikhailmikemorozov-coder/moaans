@@ -7,6 +7,7 @@ const routes = [
   'almaznaya-prochka-diskov',
   'remont-diskov-moskva',
   'pokraska-supportov-moskva',
+  'tseny',
 ]
 
 export default defineConfig({
