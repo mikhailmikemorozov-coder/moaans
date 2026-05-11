@@ -990,6 +990,18 @@ export default function App() {
         <p style={{ textAlign: "center", marginTop: 24, fontSize: 14, color: "rgba(255,255,255,.35)" }}>
           Порошковая покраска литых дисков — Внуково, 2026
         </p>
+
+        {/* Gallery grid */}
+        <div className="grid-2" style={{ marginTop: 32 }}>
+          {["/work-1.jpg", "/work-2.jpg", "/work-3.jpg", "/work-4.jpg"].map((src, i) => (
+            <div key={i} style={{ borderRadius: 16, overflow: "hidden", border: "1px solid rgba(255,255,255,.07)", aspectRatio: "16/9" }}>
+              <img src={src} alt={`Пример работы ${i + 1} — покраска дисков BI Color`} style={{ width: "100%", height: "100%", objectFit: "cover", display: "block", transition: "transform .4s ease" }}
+                onMouseEnter={e => e.currentTarget.style.transform = "scale(1.04)"}
+                onMouseLeave={e => e.currentTarget.style.transform = "scale(1)"}
+              />
+            </div>
+          ))}
+        </div>
       </section>
 
       {/* ── REVIEWS ── */}
