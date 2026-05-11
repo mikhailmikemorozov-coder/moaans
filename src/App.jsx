@@ -1,5 +1,5 @@
 import { useState, useEffect, useRef } from "react";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, Link } from "react-router-dom";
 
 /* ─── DATA ─────────────────────────────────────────── */
 /* ── SVG illustrations for each service card ── */
@@ -543,6 +543,11 @@ export default function App() {
                 {label}
               </div>
             ))}
+            <Link to="/blog" onClick={() => setMobileMenu(false)} style={{ fontFamily: "'Nunito', sans-serif", fontSize: 32, fontWeight: 700, letterSpacing: 2, textTransform: "uppercase", color: "rgba(255,255,255,.7)", cursor: "pointer", padding: "12px 0", borderBottom: "1px solid rgba(255,255,255,.05)", display: "block" }}
+              onMouseEnter={e => e.currentTarget.style.color = "#ff6b00"}
+              onMouseLeave={e => e.currentTarget.style.color = "rgba(255,255,255,.7)"}>
+              Блог
+            </Link>
           </div>
           <div style={{ padding: "24px 32px 48px", borderTop: "1px solid rgba(255,255,255,.06)", display: "flex", flexDirection: "column", gap: 16 }}>
             <a href="tel:+74991365500" style={{ fontFamily: "'Rajdhani'", fontSize: 22, fontWeight: 700, color: "rgba(255,255,255,.6)", letterSpacing: 1 }}>+7 (499) 136-55-00</a>
@@ -598,6 +603,7 @@ export default function App() {
           {[["Услуги", "services"], ["Акции", "promos"], ["Цены", "prices"], ["О нас", "about"], ["Отзывы", "reviews"], ["FAQ", "faq"], ["Контакты", "contact"]].map(([label, id]) => (
             <span key={id} className="nav-item" onClick={() => scrollTo(id)}>{label}</span>
           ))}
+          <Link to="/blog" className="nav-item" style={{ textDecoration: "none" }}>Блог</Link>
         </div>
 
         <div style={{ display: "flex", alignItems: "center", gap: 20 }}>

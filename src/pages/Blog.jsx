@@ -38,6 +38,7 @@ export default function Blog() {
           .blog-header { padding: 0 20px !important; }
           .blog-hero { padding: 110px 20px 50px !important; }
           .blog-grid { padding: 0 20px 80px !important; grid-template-columns: 1fr !important; }
+          .blog-nav { display: none !important; }
         }
       `}</style>
 
@@ -49,6 +50,12 @@ export default function Blog() {
         borderBottom: "1px solid rgba(255,107,0,.15)",
       }}>
         <Link to="/"><Logo /></Link>
+        <div className="blog-nav" style={{ display: "flex", gap: 28, alignItems: "center" }}>
+          {[["Главная", "/"], ["Цены", "/tseny"], ["Покраска дисков", "/pokraska-diskov-moskva"], ["Алмазная проточка", "/almaznaya-prochka-diskov"]].map(([label, href]) => (
+            <Link key={href} to={href} style={{ fontFamily: "'Rajdhani'", fontSize: 13, fontWeight: 600, letterSpacing: 2, textTransform: "uppercase", color: "rgba(255,255,255,.45)", transition: "color .2s" }}
+              onMouseEnter={e => e.currentTarget.style.color="#fff"} onMouseLeave={e => e.currentTarget.style.color="rgba(255,255,255,.45)"}>{label}</Link>
+          ))}
+        </div>
         <a href={PHONES[0].href} style={{ fontFamily: "'Rajdhani'", fontSize: 16, fontWeight: 700, color: "rgba(255,255,255,.75)" }}>
           {PHONES[0].label}
         </a>

@@ -47,6 +47,7 @@ export default function AlmaznajaProchkaPost() {
           .post-hero { padding: 110px 20px 40px !important; }
           .post-body { padding: 0 20px 80px !important; }
           .post-img-grid { grid-template-columns: 1fr !important; }
+          .post-nav { display: none !important; }
         }
       `}</style>
 
@@ -58,6 +59,12 @@ export default function AlmaznajaProchkaPost() {
         borderBottom: "1px solid rgba(255,107,0,.15)",
       }}>
         <Link to="/"><Logo /></Link>
+        <div className="post-nav" style={{ display: "flex", gap: 28, alignItems: "center" }}>
+          {[["Главная", "/"], ["Блог", "/blog"], ["Цены", "/tseny"], ["Алмазная проточка", "/almaznaya-prochka-diskov"]].map(([label, href]) => (
+            <Link key={href} to={href} style={{ fontFamily: "'Rajdhani'", fontSize: 13, fontWeight: 600, letterSpacing: 2, textTransform: "uppercase", color: "rgba(255,255,255,.45)", transition: "color .2s" }}
+              onMouseEnter={e => e.currentTarget.style.color="#fff"} onMouseLeave={e => e.currentTarget.style.color="rgba(255,255,255,.45)"}>{label}</Link>
+          ))}
+        </div>
         <div style={{ display: "flex", gap: 16, alignItems: "center" }}>
           <a href={PHONES[0].href} style={{ fontFamily: "'Rajdhani'", fontSize: 16, fontWeight: 700, color: "rgba(255,255,255,.75)" }}>{PHONES[0].label}</a>
           <Link to="/almaznaya-prochka-diskov" style={{ display: "inline-flex", alignItems: "center", padding: "10px 24px", background: "linear-gradient(135deg,#ff6b00,#ff0080)", color: "#fff", borderRadius: 50, fontFamily: "'Rajdhani'", fontSize: 14, fontWeight: 700, letterSpacing: 1.5, textTransform: "uppercase" }}>Записаться</Link>
