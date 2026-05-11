@@ -155,11 +155,11 @@ export default function ServicePage({ meta, color = "#ff6b00", h1, h1Accent, int
             <h2 style={{ fontFamily: "'Rajdhani'", fontWeight: 700, fontSize: "clamp(28px, 4vw, 48px)", lineHeight: 1.05, marginBottom: 40 }}>
               Примеры <span style={{ background: "linear-gradient(135deg,#ff6b00,#ff0080)", WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent" }}>выполненных заказов</span>
             </h2>
-            <div style={{ columns: "2 320px", gap: 16 }}>
+            <div style={{ display: "grid", gridTemplateColumns: "repeat(2, 1fr)", gap: 16 }}>
               {gallery.map((item, i) => (
-                <div key={i} style={{ breakInside: "avoid", marginBottom: 16, borderRadius: 16, overflow: "hidden", position: "relative" }}>
+                <div key={i} style={{ borderRadius: 16, overflow: "hidden", position: "relative", aspectRatio: "4/3" }}>
                   <img src={item.src} alt={item.alt || "Работа BI Color"} loading="lazy"
-                    style={{ width: "100%", display: "block", objectFit: "cover" }} />
+                    style={{ width: "100%", height: "100%", display: "block", objectFit: "cover" }} />
                   {item.caption && (
                     <div style={{ position: "absolute", bottom: 0, left: 0, right: 0, padding: "20px 16px 14px", background: "linear-gradient(transparent,rgba(0,0,0,.7))", fontSize: 13, color: "rgba(255,255,255,.8)" }}>
                       {item.caption}
