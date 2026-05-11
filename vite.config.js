@@ -8,6 +8,8 @@ const routes = [
   'remont-diskov-moskva',
   'pokraska-supportov-moskva',
   'tseny',
+  'blog',
+  'blog/almaznaya-prochka-diskov-chto-eto',
 ]
 
 export default defineConfig({

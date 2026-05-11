@@ -6,6 +6,8 @@ import AlmaznayaProchka from "./pages/AlmaznayaProchka";
 import RemontDiskov from "./pages/RemontDiskov";
 import PokraskaSupportov from "./pages/PokraskaSupportov";
 import Tseny from "./pages/Tseny";
+import Blog from "./pages/Blog";
+import AlmaznajaProchkaPost from "./pages/posts/AlmaznajaProchka";
 
 function ScrollToTop() {
   const { pathname } = useLocation();
@@ -24,6 +26,8 @@ export default function AppRouter() {
         <Route path="/remont-diskov-moskva" element={<RemontDiskov />} />
         <Route path="/pokraska-supportov-moskva" element={<PokraskaSupportov />} />
         <Route path="/tseny" element={<Tseny />} />
+        <Route path="/blog" element={<Blog />} />
+        <Route path="/blog/almaznaya-prochka-diskov-chto-eto" element={<AlmaznajaProchkaPost />} />
       </Routes>
     </>
   );
