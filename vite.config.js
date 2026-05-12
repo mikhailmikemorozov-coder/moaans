@@ -10,6 +10,8 @@ const routes = [
   'tseny',
   'blog',
   'blog/almaznaya-prochka-diskov-chto-eto',
+  'blog/pokraska-diskov-v-chernyy',
+  'blog/remont-litogo-diska-tsena',
 ]
 
 export default defineConfig({

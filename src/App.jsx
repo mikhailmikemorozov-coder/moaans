@@ -1,5 +1,6 @@
 import { useState, useEffect, useRef } from "react";
 import { useNavigate, Link } from "react-router-dom";
+import { Helmet } from "react-helmet-async";
 
 /* ─── DATA ─────────────────────────────────────────── */
 /* ── SVG illustrations for each service card ── */
@@ -316,6 +317,61 @@ export default function App() {
 
   return (
     <div style={{ fontFamily: "'Nunito', sans-serif", background: "#08090c", color: "#fff", overflowX: "hidden" }}>
+      <Helmet>
+        <title>Покраска и ремонт дисков в Москве — BI Color | Внуково</title>
+        <meta name="description" content="Порошковая покраска, алмазная проточка, ремонт литых дисков в Москве. Гарантия 4 года. Сервис BI Color — пос. Внуково, ежедневно 10:00–19:00. Звоните: +7 (499) 136-55-00." />
+        <link rel="canonical" href="https://bi-color.ru/" />
+        <meta property="og:title" content="BI Color — покраска и ремонт дисков в Москве" />
+        <meta property="og:description" content="Порошковая покраска, алмазная проточка, ремонт литых дисков. Гарантия 4 года. Москва, Внуково." />
+        <meta property="og:image" content="https://bi-color.ru/og-image.png" />
+        <meta property="og:url" content="https://bi-color.ru/" />
+        <meta property="og:type" content="website" />
+        <script type="application/ld+json">{JSON.stringify({
+          "@context": "https://schema.org",
+          "@type": "AutoRepair",
+          "name": "BI Color",
+          "alternateName": "Beautiful Iron Color",
+          "url": "https://bi-color.ru",
+          "logo": "https://bi-color.ru/favicon-192.png",
+          "image": "https://bi-color.ru/og-image.png",
+          "description": "Порошковая покраска, алмазная проточка и ремонт литых дисков в Москве. Гарантия 4 года.",
+          "telephone": "+74991365500",
+          "address": {
+            "@type": "PostalAddress",
+            "streetAddress": "Центральная ул., 18с2",
+            "addressLocality": "Москва",
+            "addressRegion": "Новомосковский административный округ, пос. Внуково",
+            "postalCode": "143350",
+            "addressCountry": "RU"
+          },
+          "geo": {
+            "@type": "GeoCoordinates",
+            "latitude": 55.5965,
+            "longitude": 37.2714
+          },
+          "openingHoursSpecification": {
+            "@type": "OpeningHoursSpecification",
+            "dayOfWeek": ["Monday","Tuesday","Wednesday","Thursday","Friday","Saturday","Sunday"],
+            "opens": "10:00",
+            "closes": "19:00"
+          },
+          "priceRange": "₽₽",
+          "sameAs": [
+            "https://vk.ru/club41751380",
+            "https://yandex.ru/maps/org/beautiful_iron/229939060915/"
+          ],
+          "hasOfferCatalog": {
+            "@type": "OfferCatalog",
+            "name": "Услуги по восстановлению дисков",
+            "itemListElement": [
+              { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Порошковая покраска дисков" }, "price": "2500", "priceCurrency": "RUB" },
+              { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Алмазная проточка дисков" }, "price": "5000", "priceCurrency": "RUB" },
+              { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Ремонт литых дисков" }, "price": "1500", "priceCurrency": "RUB" },
+              { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Покраска суппортов" }, "price": "2000", "priceCurrency": "RUB" }
+            ]
+          }
+        })}</script>
+      </Helmet>
       <style>{`
         @import url('https://fonts.googleapis.com/css2?family=Nunito:wght@300;400;600;700;900&family=Rajdhani:wght@500;600;700&display=swap');
         *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
@@ -975,7 +1031,7 @@ export default function App() {
         <h2 className="section-title" style={{ textAlign: "center", marginBottom: 48 }}>До и <span className="grad-text">после</span></h2>
 
         <div style={{ position: "relative", maxWidth: 860, margin: "0 auto", borderRadius: 24, overflow: "hidden", border: "1px solid rgba(255,107,0,.2)", boxShadow: "0 24px 80px rgba(255,107,0,.12)" }}>
-          <img src="/before-after.jpg" alt="Покраска дисков до и после — BI Color" style={{ width: "100%", display: "block" }} />
+          <img src="/before-after.webp" alt="Покраска дисков до и после — BI Color" style={{ width: "100%", display: "block" }} />
 
           {/* До label */}
           <div style={{ position: "absolute", top: 20, left: 20, display: "flex", alignItems: "center", gap: 8, padding: "6px 16px", background: "rgba(0,0,0,.6)", backdropFilter: "blur(8px)", borderRadius: 50, border: "1px solid rgba(255,255,255,.15)" }}>
@@ -999,12 +1055,12 @@ export default function App() {
 
         {/* Full-width work-1 */}
         <div style={{ marginTop: 32, borderRadius: 16, overflow: "hidden", border: "1px solid rgba(255,255,255,.07)" }}>
-          <img src="/work-1.jpg" alt="Примеры работ — покраска дисков BI Color" style={{ width: "100%", display: "block" }} />
+          <img src="/work-1.webp" alt="Примеры работ — покраска дисков BI Color" style={{ width: "100%", display: "block" }} />
         </div>
 
         {/* Gallery grid */}
         <div className="grid-2" style={{ marginTop: 16 }}>
-          {["/work-5.jpg", "/work-2.jpg", "/work-3.jpg", "/work-4.jpg"].map((src, i) => (
+          {["/work-5.webp", "/work-2.webp", "/work-3.webp", "/work-4.webp"].map((src, i) => (
             <div key={i} style={{ borderRadius: 16, overflow: "hidden", border: "1px solid rgba(255,255,255,.07)", aspectRatio: "16/9" }}>
               <img src={src} alt={`Пример работы ${i + 1} — покраска дисков BI Color`} style={{ width: "100%", height: "100%", objectFit: "cover", display: "block", transition: "transform .4s ease" }}
                 onMouseEnter={e => e.currentTarget.style.transform = "scale(1.04)"}

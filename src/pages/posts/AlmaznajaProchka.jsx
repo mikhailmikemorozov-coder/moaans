@@ -98,7 +98,7 @@ export default function AlmaznajaProchkaPost() {
       {/* HERO IMAGE */}
       <div style={{ maxWidth: 780, margin: "0 auto", padding: "0 40px 48px" }}>
         <div style={{ borderRadius: 20, overflow: "hidden", aspectRatio: "16/9" }}>
-          <img src="/prochka-1.jpg" alt="Алмазная проточка литого диска — результат diamond cut" loading="eager"
+          <img src="/prochka-1.webp" alt="Алмазная проточка литого диска — результат diamond cut" loading="eager"
             style={{ width: "100%", height: "100%", objectFit: "cover", display: "block" }} />
         </div>
         <div style={{ marginTop: 10, fontSize: 12, color: "rgba(255,255,255,.2)", textAlign: "center" }}>
@@ -128,7 +128,7 @@ export default function AlmaznajaProchkaPost() {
 
         {/* inline image */}
         <div style={{ margin: "36px 0", borderRadius: 16, overflow: "hidden", aspectRatio: "16/9" }}>
-          <img src="/prochka-2.jpg" alt="Станок с ЧПУ для алмазной проточки дисков" loading="lazy"
+          <img src="/prochka-2.webp" alt="Станок с ЧПУ для алмазной проточки дисков" loading="lazy"
             style={{ width: "100%", height: "100%", objectFit: "cover", display: "block" }} />
         </div>
         <div style={{ marginBottom: 36, fontSize: 12, color: "rgba(255,255,255,.2)", textAlign: "center" }}>Токарный станок с ЧПУ — именно он даёт точность до микрона</div>
@@ -160,11 +160,11 @@ export default function AlmaznajaProchkaPost() {
         {/* 2-column images */}
         <div className="post-img-grid" style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 16, margin: "36px 0" }}>
           <div style={{ borderRadius: 16, overflow: "hidden", aspectRatio: "4/3" }}>
-            <img src="/prochka-3.jpg" alt="Diamond cut диск после алмазной проточки — зеркальный блеск" loading="lazy"
+            <img src="/prochka-3.webp" alt="Diamond cut диск после алмазной проточки — зеркальный блеск" loading="lazy"
               style={{ width: "100%", height: "100%", objectFit: "cover", display: "block" }} />
           </div>
           <div style={{ borderRadius: 16, overflow: "hidden", aspectRatio: "4/3" }}>
-            <img src="/prochka-4.jpg" alt="Алмазная проточка — чёрный диск с серебристыми спицами" loading="lazy"
+            <img src="/prochka-4.webp" alt="Алмазная проточка — чёрный диск с серебристыми спицами" loading="lazy"
               style={{ width: "100%", height: "100%", objectFit: "cover", display: "block" }} />
           </div>
         </div>

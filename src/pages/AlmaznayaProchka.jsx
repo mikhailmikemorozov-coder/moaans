@@ -23,22 +23,22 @@ export default function AlmaznayaProchka() {
       ]}
       gallery={[
         {
-          src: "/prochka-1.jpg",
+          src: "/prochka-1.webp",
           alt: "Алмазная проточка литых дисков — результат работы BI Color",
           caption: "Алмазная проточка — восстановление заводского блеска",
         },
         {
-          src: "/prochka-2.jpg",
+          src: "/prochka-2.webp",
           alt: "Проточка диска на станке с ЧПУ в Москве",
           caption: "Станок с ЧПУ — точность до микрона",
         },
         {
-          src: "/prochka-3.jpg",
+          src: "/prochka-3.webp",
           alt: "Diamond cut диск после алмазной проточки",
           caption: "Diamond cut — зеркальный блеск после обработки",
         },
         {
-          src: "/prochka-4.jpg",
+          src: "/prochka-4.webp",
           alt: "Алмазная проточка диска — чёрный глянец и серебристые спицы",
           caption: "Чёрный глянец + алмазная проточка спиц",
         },
