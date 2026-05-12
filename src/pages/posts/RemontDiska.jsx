@@ -20,8 +20,8 @@ export default function RemontDiskaPost() {
           "@context": "https://schema.org",
           "@type": "Article",
           "headline": "Сколько стоит ремонт литого диска в Москве: цены, технологии, что влияет на стоимость",
-          "datePublished": "2026-05-12",
-          "dateModified": "2026-05-12",
+          "datePublished": "2026-05-05",
+          "dateModified": "2026-05-05",
           "author": { "@type": "Organization", "name": "BI Color" },
           "publisher": { "@type": "Organization", "name": "BI Color", "url": "https://bi-color.ru" },
           "image": "https://bi-color.ru/work-1.jpg",
@@ -86,7 +86,7 @@ export default function RemontDiskaPost() {
 
         <div style={{ display: "flex", gap: 12, marginBottom: 20, flexWrap: "wrap", alignItems: "center" }}>
           <span style={{ fontFamily: "'Rajdhani'", fontSize: 11, fontWeight: 700, letterSpacing: 1, textTransform: "uppercase", color: "#ff0080", padding: "3px 10px", border: "1px solid #ff008044", borderRadius: 50 }}>Ремонт дисков</span>
-          <span style={{ fontSize: 13, color: "rgba(255,255,255,.25)" }}>12 мая 2026 · 5 мин</span>
+          <span style={{ fontSize: 13, color: "rgba(255,255,255,.25)" }}>5 мая 2026 · 5 мин</span>
         </div>
 
         <h1 style={{ fontFamily: "'Rajdhani'", fontWeight: 700, fontSize: "clamp(30px, 5vw, 52px)", lineHeight: 1.1, marginBottom: 24 }}>

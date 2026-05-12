@@ -21,8 +21,8 @@ export default function AlmaznajaProchkaPost() {
           "@context": "https://schema.org",
           "@type": "Article",
           "headline": "Алмазная проточка дисков: что это, кому подходит и сколько стоит",
-          "datePublished": "2026-05-11",
-          "dateModified": "2026-05-11",
+          "datePublished": "2026-04-28",
+          "dateModified": "2026-04-28",
           "author": { "@type": "Organization", "name": "BI Color" },
           "publisher": { "@type": "Organization", "name": "BI Color", "url": "https://bi-color.ru" },
           "image": "https://bi-color.ru/prochka-1.jpg",
@@ -83,7 +83,7 @@ export default function AlmaznajaProchkaPost() {
 
         <div style={{ display: "flex", gap: 12, marginBottom: 20, flexWrap: "wrap", alignItems: "center" }}>
           <span style={{ fontFamily: "'Rajdhani'", fontSize: 11, fontWeight: 700, letterSpacing: 1, textTransform: "uppercase", color: "#00d4ff", padding: "3px 10px", border: "1px solid #00d4ff44", borderRadius: 50 }}>Алмазная проточка</span>
-          <span style={{ fontSize: 13, color: "rgba(255,255,255,.25)" }}>11 мая 2026 · 5 мин</span>
+          <span style={{ fontSize: 13, color: "rgba(255,255,255,.25)" }}>28 апреля 2026 · 5 мин</span>
         </div>
 
         <h1 style={{ fontFamily: "'Rajdhani'", fontWeight: 700, fontSize: "clamp(30px, 5vw, 52px)", lineHeight: 1.1, marginBottom: 24 }}>
