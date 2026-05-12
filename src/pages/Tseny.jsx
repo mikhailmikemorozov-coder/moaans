@@ -7,12 +7,18 @@ const PHONES = [
   { label: "+7 (925) 110-10-52", href: "tel:+79251101052" },
 ];
 
+const ICON_PAINT = <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" width="32" height="32"><path d="M3 17.25V21h3.75L17.81 9.94l-3.75-3.75L3 17.25z"/><path d="M20.71 7.04a1 1 0 000-1.41l-2.34-2.34a1 1 0 00-1.41 0l-1.83 1.83 3.75 3.75 1.83-1.83z"/></svg>;
+const ICON_DIAMOND = <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" width="32" height="32"><path d="M6 3h12l3.3 5-9.3 13-9.3-13z"/><line x1="3" y1="8" x2="21" y2="8"/><path d="M6 3l6 5 6-5"/></svg>;
+const ICON_WRENCH = <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" width="32" height="32"><path d="M14.7 6.3a1 1 0 000 1.4l1.6 1.6a1 1 0 001.4 0l3.77-3.77a6 6 0 01-7.94 7.94l-6.91 6.91a2.12 2.12 0 01-3-3l6.91-6.91a6 6 0 017.94-7.94l-3.76 3.76z"/></svg>;
+const ICON_FLAME = <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" width="32" height="32"><path d="M12 2C9.5 6.5 7 9 7 13a5 5 0 0010 0c0-3.5-1.5-5.5-3-7 0 1.5-.5 2.5-1 3C12.5 7 12.5 4 12 2z"/></svg>;
+const ICON_CHAT = <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" width="28" height="28"><path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z"/></svg>;
+
 const PRICE_SECTIONS = [
   {
     id: "pokraska",
     title: "Покраска дисков",
     color: "#ff6b00",
-    icon: "🎨",
+    icon: ICON_PAINT,
     href: "/pokraska-diskov-moskva",
     note: "Скидка 15% при сдаче комплекта 4 дисков",
     items: [
@@ -27,7 +33,7 @@ const PRICE_SECTIONS = [
     id: "prochka",
     title: "Алмазная проточка",
     color: "#00d4ff",
-    icon: "💎",
+    icon: ICON_DIAMOND,
     href: "/almaznaya-prochka-diskov",
     note: "Только для литых алюминиевых дисков",
     items: [
@@ -39,7 +45,7 @@ const PRICE_SECTIONS = [
     id: "remont",
     title: "Ремонт и восстановление",
     color: "#ff0080",
-    icon: "🔧",
+    icon: ICON_WRENCH,
     href: "/remont-diskov-moskva",
     note: "Бесплатная диагностика ремонтопригодности",
     items: [
@@ -51,7 +57,7 @@ const PRICE_SECTIONS = [
     id: "supporty",
     title: "Покраска суппортов",
     color: "#39ff14",
-    icon: "🏎️",
+    icon: ICON_FLAME,
     href: "/pokraska-supportov-moskva",
     note: "Термостойкая краска до 300°C",
     items: [
@@ -141,7 +147,7 @@ export default function Tseny() {
                 display: "flex", alignItems: "center", justifyContent: "space-between", flexWrap: "wrap", gap: 12,
               }}>
                 <div style={{ display: "flex", alignItems: "center", gap: 14 }}>
-                  <span style={{ fontSize: 32 }}>{section.icon}</span>
+                  <div style={{ color: section.color, flexShrink: 0 }}>{section.icon}</div>
                   <div>
                     <div style={{ fontFamily: "'Rajdhani'", fontSize: 24, fontWeight: 700 }}>{section.title}</div>
                     <div style={{ fontSize: 13, color: "rgba(255,255,255,.35)", marginTop: 2 }}>{section.note}</div>
@@ -179,7 +185,7 @@ export default function Tseny() {
           background: "rgba(57,255,20,.05)", border: "1px solid rgba(57,255,20,.2)",
           borderRadius: 20, display: "flex", gap: 20, alignItems: "flex-start",
         }}>
-          <span style={{ fontSize: 28, flexShrink: 0 }}>💬</span>
+          <div style={{ color: "#39ff14", flexShrink: 0 }}>{ICON_CHAT}</div>
           <div>
             <div style={{ fontFamily: "'Rajdhani'", fontSize: 18, fontWeight: 700, marginBottom: 6 }}>Точная цена — после осмотра</div>
             <div style={{ fontSize: 14, color: "rgba(255,255,255,.45)", lineHeight: 1.7 }}>
