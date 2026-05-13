@@ -358,7 +358,8 @@ export default function App() {
           "priceRange": "₽₽",
           "sameAs": [
             "https://vk.ru/club41751380",
-            "https://yandex.ru/maps/org/beautiful_iron/229939060915/"
+            "https://yandex.ru/maps/org/beautiful_iron/229939060915/",
+            "https://2gis.ru/moscow/firm/70000001091871156"
           ],
           "hasOfferCatalog": {
             "@type": "OfferCatalog",
@@ -1297,6 +1298,17 @@ export default function App() {
                   </span>
                   <span style={{ fontFamily: "'Rajdhani'", fontSize: 15, fontWeight: 600, color: "#4285F4" }}>Google Maps</span>
                 </a>
+                <a
+                  href="https://2gis.ru/moscow/firm/70000001091871156"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  style={{ textDecoration: "none", display: "flex", alignItems: "center", gap: 10, padding: "12px 20px", background: "rgba(39,174,96,0.06)", border: "1px solid rgba(39,174,96,0.2)", borderRadius: 50, transition: "all .2s" }}
+                >
+                  <span style={{ flexShrink: 0, display: "flex", color: "#27ae60" }}>
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" width="18" height="18"><path d="M21 10c0 7-9 13-9 13S3 17 3 10a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
+                  </span>
+                  <span style={{ fontFamily: "'Rajdhani'", fontSize: 15, fontWeight: 600, color: "#27ae60" }}>2ГИС</span>
+                </a>
               </div>
             </div>
           </div>
@@ -1391,6 +1403,7 @@ export default function App() {
                   { label: "ВКонтакте", color: "#4680c2", href: "https://vk.ru/club41751380" },
                   { label: "Telegram", color: "#00d4ff", href: "https://t.me/+79652130999" },
                   { label: "Авито", color: "#00aaff", href: "https://www.avito.ru/odintsovo/predlozheniya_uslug/poroshkovaya_pokraska_diskov_restavratsiya_oshipovka_4511357658" },
+                  { label: "2ГИС", color: "#27ae60", href: "https://2gis.ru/moscow/firm/70000001091871156" },
                 ].map(({ label, color, href }) => (
                   <a key={label} href={href} target="_blank" rel="noopener noreferrer" style={{ fontSize: 13, fontFamily: "'Rajdhani'", fontWeight: 600, color, letterSpacing: 0.5, textDecoration: "none", padding: "4px 12px", border: `1px solid ${color}33`, borderRadius: 50 }}>{label}</a>
                 ))}
