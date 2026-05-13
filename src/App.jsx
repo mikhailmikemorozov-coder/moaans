@@ -1304,8 +1304,8 @@ export default function App() {
                   rel="noopener noreferrer"
                   style={{ textDecoration: "none", display: "flex", alignItems: "center", gap: 10, padding: "12px 20px", background: "rgba(39,174,96,0.06)", border: "1px solid rgba(39,174,96,0.2)", borderRadius: 50, transition: "all .2s" }}
                 >
-                  <span style={{ flexShrink: 0, display: "flex", color: "#27ae60" }}>
-                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" width="18" height="18"><path d="M21 10c0 7-9 13-9 13S3 17 3 10a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
+                  <span style={{ flexShrink: 0, display: "flex" }}>
+                    <svg viewBox="0 0 20 20" width="18" height="18" fill="none"><rect width="20" height="20" rx="5" fill="#27ae60"/><text x="3" y="15" fontFamily="Arial Black, sans-serif" fontWeight="900" fontSize="13" fill="#fff">2</text></svg>
                   </span>
                   <span style={{ fontFamily: "'Rajdhani'", fontSize: 15, fontWeight: 600, color: "#27ae60" }}>2ГИС</span>
                 </a>
