@@ -45,7 +45,7 @@ const routeMeta = {
   },
   'blog/pokraska-diskov-nissan': {
     title: 'Покраска дисков Nissan: до и после — кейс BI Color',
-    description: 'Реальный кейс: покраска четырёх дисков Nissan R17 в серебристо-графитовый цвет. Фото до и после, видео результата. Сервис BI Color, Москва, Внуково.',
+    description: 'Реальный кейс: покраска четырёх дисков Nissan R17 в алюмохром. Фото до и после, видео результата. Сервис BI Color, Москва, Внуково.',
     canonical: 'https://bi-color.ru/blog/pokraska-diskov-nissan',
   },
   'blog/almaznaya-prochka-video-protsessa': {

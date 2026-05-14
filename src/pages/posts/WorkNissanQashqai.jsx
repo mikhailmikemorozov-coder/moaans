@@ -9,11 +9,11 @@ export default function WorkNissanQashqaiPost() {
     <div style={{ fontFamily: "'Nunito', sans-serif", background: "#08090c", color: "#fff", minHeight: "100vh" }}>
       <Helmet>
         <title>Покраска дисков Nissan: до и после — кейс BI Color | Москва</title>
-        <meta name="description" content="Реальный кейс: покраска четырёх дисков Nissan в серебристо-графитовый цвет. Фото до и после, видео результата. Сервис BI Color, Москва, Внуково." />
+        <meta name="description" content="Реальный кейс: покраска четырёх дисков Nissan в алюмохром цвет. Фото до и после, видео результата. Сервис BI Color, Москва, Внуково." />
         <meta name="keywords" content="покраска дисков Nissan, покраска дисков до после, покраска литых дисков серебристый, порошковая покраска дисков москва" />
         <link rel="canonical" href="https://bi-color.ru/blog/pokraska-diskov-nissan" />
         <meta property="og:title" content="Покраска дисков Nissan: до и после — BI Color" />
-        <meta property="og:description" content="Кейс: четыре диска Nissan — покраска в серебристо-графитовый. Фото и видео результата." />
+        <meta property="og:description" content="Кейс: четыре диска Nissan — покраска в алюмохром. Фото и видео результата." />
         <meta property="og:image" content="https://bi-color.ru/work-nissan-compare.webp" />
         <meta property="og:type" content="article" />
         <script type="application/ld+json">{JSON.stringify({
@@ -88,7 +88,7 @@ export default function WorkNissanQashqaiPost() {
         </h1>
 
         <p style={{ fontSize: 17, color: "rgba(255,255,255,.5)", lineHeight: 1.8 }}>
-          Комплект из четырёх дисков R17 — потёртый заводской серебристый превратился в свежий серебристо-графитовый. Фото, сплит-сравнение и видео результата.
+          Комплект из четырёх дисков R17 — потёртый заводской серебристый превратился в свежий алюмохром. Фото, сплит-сравнение и видео результата.
         </p>
       </section>
 
@@ -103,7 +103,7 @@ export default function WorkNissanQashqaiPost() {
           />
         </div>
         <div style={{ marginTop: 10, fontSize: 12, color: "rgba(255,255,255,.2)", textAlign: "center" }}>
-          Сплит до / после — диск Nissan R17, серебристо-графитовый цвет
+          Сплит до / после — диск Nissan R17, алюмохром цвет
         </div>
       </div>
 
@@ -113,7 +113,7 @@ export default function WorkNissanQashqaiPost() {
           Клиент привёз четыре диска Nissan R17 — заводской серебристый потускнел, появились потёртости и пятна от реагентов. Задача: восстановить внешний вид, сохранив оригинальный двухтонный характер цвета — светлые спицы, тёмные пазухи.
         </p>
         <p>
-          Применили <strong>порошковую покраску в три слоя</strong>: грунт — цветной порошок серебристо-графитового оттенка — прозрачный лак. Цвет подобрали под оригинальный заводской.
+          Применили <strong>порошковую покраску в три слоя</strong>: грунт — цветной порошок алюмохром — прозрачный лак. Цвет подобрали под оригинальный заводской.
         </p>
       </article>
 
@@ -129,7 +129,7 @@ export default function WorkNissanQashqaiPost() {
           </div>
           <div>
             <div style={{ borderRadius: 16, overflow: "hidden", aspectRatio: "1/1" }}>
-              <img src="/work-nissan-after.webp" alt="Диск Nissan после покраски — свежий серебристо-графитовый"
+              <img src="/work-nissan-after.webp" alt="Диск Nissan после покраски — свежий алюмохром"
                 loading="lazy" style={{ width: "100%", height: "100%", objectFit: "cover", display: "block" }} />
             </div>
             <div style={{ marginTop: 8, fontSize: 13, color: "rgba(255,255,255,.3)", textAlign: "center", fontFamily: "'Rajdhani'", letterSpacing: 1 }}>ПОСЛЕ</div>
@@ -174,7 +174,7 @@ export default function WorkNissanQashqaiPost() {
             ["Автомобиль", "Nissan"],
             ["Диски", "R17, литые, заводской дизайн"],
             ["Услуга", "Порошковая покраска"],
-            ["Цвет", "Серебристо-графитовый (оригинальный оттенок)"],
+            ["Цвет", "Алюмохром"],
             ["Покрытие", "Грунт → цветной порошок → прозрачный лак"],
             ["Срок выполнения", "1 день"],
             ["Гарантия", "4 года"],
