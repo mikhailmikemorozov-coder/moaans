@@ -8,24 +8,24 @@ export default function WorkNissanQashqaiPost() {
   return (
     <div style={{ fontFamily: "'Nunito', sans-serif", background: "#08090c", color: "#fff", minHeight: "100vh" }}>
       <Helmet>
-        <title>Покраска дисков Nissan Qashqai: до и после — кейс BI Color | Москва</title>
-        <meta name="description" content="Реальный кейс: покраска четырёх дисков Nissan Qashqai в серебристо-графитовый цвет. Фото до и после, видео результата. Сервис BI Color, Москва, Внуково." />
-        <meta name="keywords" content="покраска дисков Nissan Qashqai, покраска дисков до после, покраска литых дисков серебристый, порошковая покраска дисков москва" />
-        <link rel="canonical" href="https://bi-color.ru/blog/pokraska-diskov-nissan-qashqai" />
-        <meta property="og:title" content="Покраска дисков Nissan Qashqai: до и после — BI Color" />
-        <meta property="og:description" content="Кейс: четыре диска Nissan Qashqai — покраска в серебристо-графитовый. Фото и видео результата." />
+        <title>Покраска дисков Nissan: до и после — кейс BI Color | Москва</title>
+        <meta name="description" content="Реальный кейс: покраска четырёх дисков Nissan в серебристо-графитовый цвет. Фото до и после, видео результата. Сервис BI Color, Москва, Внуково." />
+        <meta name="keywords" content="покраска дисков Nissan, покраска дисков до после, покраска литых дисков серебристый, порошковая покраска дисков москва" />
+        <link rel="canonical" href="https://bi-color.ru/blog/pokraska-diskov-nissan" />
+        <meta property="og:title" content="Покраска дисков Nissan: до и после — BI Color" />
+        <meta property="og:description" content="Кейс: четыре диска Nissan — покраска в серебристо-графитовый. Фото и видео результата." />
         <meta property="og:image" content="https://bi-color.ru/work-nissan-compare.webp" />
         <meta property="og:type" content="article" />
         <script type="application/ld+json">{JSON.stringify({
           "@context": "https://schema.org",
           "@type": "Article",
-          "headline": "Покраска дисков Nissan Qashqai: до и после",
+          "headline": "Покраска дисков Nissan: до и после",
           "datePublished": "2026-05-14",
           "dateModified": "2026-05-14",
           "author": { "@type": "Organization", "name": "BI Color" },
           "publisher": { "@type": "Organization", "name": "BI Color", "url": "https://bi-color.ru" },
           "image": "https://bi-color.ru/work-nissan-compare.webp",
-          "url": "https://bi-color.ru/blog/pokraska-diskov-nissan-qashqai",
+          "url": "https://bi-color.ru/blog/pokraska-diskov-nissan",
         })}</script>
       </Helmet>
 
@@ -84,7 +84,7 @@ export default function WorkNissanQashqaiPost() {
         </div>
 
         <h1 style={{ fontFamily: "'Rajdhani'", fontWeight: 700, fontSize: "clamp(30px, 5vw, 52px)", lineHeight: 1.1, marginBottom: 24 }}>
-          Покраска дисков Nissan Qashqai: до и после
+          Покраска дисков Nissan: до и после
         </h1>
 
         <p style={{ fontSize: 17, color: "rgba(255,255,255,.5)", lineHeight: 1.8 }}>
@@ -97,20 +97,20 @@ export default function WorkNissanQashqaiPost() {
         <div style={{ borderRadius: 20, overflow: "hidden" }}>
           <img
             src="/work-nissan-compare.webp"
-            alt="Покраска дисков Nissan Qashqai — до и после сравнение"
+            alt="Покраска дисков Nissan — до и после сравнение"
             loading="eager"
             style={{ width: "100%", display: "block" }}
           />
         </div>
         <div style={{ marginTop: 10, fontSize: 12, color: "rgba(255,255,255,.2)", textAlign: "center" }}>
-          Сплит до / после — диск Nissan Qashqai R17, серебристо-графитовый цвет
+          Сплит до / после — диск Nissan R17, серебристо-графитовый цвет
         </div>
       </div>
 
       {/* ARTICLE BODY */}
       <article className="article post-body" style={{ maxWidth: 780, margin: "0 auto", padding: "32px 40px 0" }}>
         <p>
-          Клиент привёз четыре диска Nissan Qashqai R17 — заводской серебристый потускнел, появились потёртости и пятна от реагентов. Задача: восстановить внешний вид, сохранив оригинальный двухтонный характер цвета — светлые спицы, тёмные пазухи.
+          Клиент привёз четыре диска Nissan R17 — заводской серебристый потускнел, появились потёртости и пятна от реагентов. Задача: восстановить внешний вид, сохранив оригинальный двухтонный характер цвета — светлые спицы, тёмные пазухи.
         </p>
         <p>
           Применили <strong>порошковую покраску в три слоя</strong>: грунт — цветной порошок серебристо-графитового оттенка — прозрачный лак. Цвет подобрали под оригинальный заводской.
@@ -122,14 +122,14 @@ export default function WorkNissanQashqaiPost() {
         <div className="ba-grid" style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 12 }}>
           <div>
             <div style={{ borderRadius: 16, overflow: "hidden", aspectRatio: "1/1" }}>
-              <img src="/work-nissan-before.webp" alt="Диск Nissan Qashqai до покраски — потёртый серебристый"
+              <img src="/work-nissan-before.webp" alt="Диск Nissan до покраски — потёртый серебристый"
                 loading="lazy" style={{ width: "100%", height: "100%", objectFit: "cover", display: "block" }} />
             </div>
             <div style={{ marginTop: 8, fontSize: 13, color: "rgba(255,255,255,.3)", textAlign: "center", fontFamily: "'Rajdhani'", letterSpacing: 1 }}>ДО</div>
           </div>
           <div>
             <div style={{ borderRadius: 16, overflow: "hidden", aspectRatio: "1/1" }}>
-              <img src="/work-nissan-after.webp" alt="Диск Nissan Qashqai после покраски — свежий серебристо-графитовый"
+              <img src="/work-nissan-after.webp" alt="Диск Nissan после покраски — свежий серебристо-графитовый"
                 loading="lazy" style={{ width: "100%", height: "100%", objectFit: "cover", display: "block" }} />
             </div>
             <div style={{ marginTop: 8, fontSize: 13, color: "rgba(255,255,255,.3)", textAlign: "center", fontFamily: "'Rajdhani'", letterSpacing: 1 }}>ПОСЛЕ</div>
@@ -171,7 +171,7 @@ export default function WorkNissanQashqaiPost() {
       <article className="article post-body" style={{ maxWidth: 780, margin: "0 auto", padding: "40px 40px 0" }}>
         <div style={{ background: "rgba(255,255,255,.03)", border: "1px solid rgba(255,255,255,.07)", borderRadius: 16, overflow: "hidden" }}>
           {[
-            ["Автомобиль", "Nissan Qashqai"],
+            ["Автомобиль", "Nissan"],
             ["Диски", "R17, литые, заводской дизайн"],
             ["Услуга", "Порошковая покраска"],
             ["Цвет", "Серебристо-графитовый (оригинальный оттенок)"],

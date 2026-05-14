@@ -35,7 +35,7 @@ export default function AppRouter() {
         <Route path="/blog/pokraska-diskov-v-chernyy" element={<PokraskaCherniyPost />} />
         <Route path="/blog/remont-litogo-diska-tsena" element={<RemontDiskaPost />} />
         <Route path="/blog/almaznaya-prochka-video-protsessa" element={<AlmaznajaProchkaVideoPost />} />
-        <Route path="/blog/pokraska-diskov-nissan-qashqai" element={<WorkNissanQashqaiPost />} />
+        <Route path="/blog/pokraska-diskov-nissan" element={<WorkNissanQashqaiPost />} />
       </Routes>
     </>
   );

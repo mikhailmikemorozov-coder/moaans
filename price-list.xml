@@ -1,0 +1,134 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<yml_catalog date="2026-05-09">
+  <shop>
+    <name>BI Color</name>
+    <company>BI Color</company>
+    <url>https://bi-color.ru/</url>
+    <currencies>
+      <currency id="RUR" rate="1"/>
+    </currencies>
+    <categories>
+      <category id="1">Покраска дисков</category>
+      <category id="2">Алмазная проточка дисков</category>
+      <category id="3">Ремонт дисков</category>
+      <category id="4">Покраска суппортов</category>
+    </categories>
+    <offers>
+
+      <!-- ===================== ПОКРАСКА ДИСКОВ ===================== -->
+      <offer id="101">
+        <name>Порошковая покраска диска R13–R16</name>
+        <price>2750</price>
+        <currencyId>RUR</currencyId>
+        <categoryId>1</categoryId>
+        <url>https://bi-color.ru/pokraska-diskov-moskva</url>
+        <description>Трёхслойное нанесение: грунт — краска — лак, каждый слой запекается в печи. Любой цвет RAL. Гарантия 4 года. Цена за 1 диск радиуса R13–R16.</description>
+        <shortDescription>Покраска 1 диска R13–R16. Любой цвет RAL, гарантия 4 года.</shortDescription>
+      </offer>
+
+      <offer id="102">
+        <name>Порошковая покраска диска R17–R18</name>
+        <price>3250</price>
+        <currencyId>RUR</currencyId>
+        <categoryId>1</categoryId>
+        <url>https://bi-color.ru/pokraska-diskov-moskva</url>
+        <description>Трёхслойное нанесение: грунт — краска — лак, каждый слой запекается в печи. Любой цвет RAL. Гарантия 4 года. Цена за 1 диск радиуса R17–R18.</description>
+        <shortDescription>Покраска 1 диска R17–R18. Любой цвет RAL, гарантия 4 года.</shortDescription>
+      </offer>
+
+      <offer id="103">
+        <name>Порошковая покраска диска R19 и выше</name>
+        <price>3500</price>
+        <currencyId>RUR</currencyId>
+        <categoryId>1</categoryId>
+        <url>https://bi-color.ru/pokraska-diskov-moskva</url>
+        <description>Трёхслойное нанесение: грунт — краска — лак, каждый слой запекается в печи. Любой цвет RAL. Гарантия 4 года. Цена за 1 диск R19+.</description>
+        <shortDescription>Покраска 1 диска R19+. Любой цвет RAL, гарантия 4 года.</shortDescription>
+      </offer>
+
+      <offer id="104">
+        <name>Порошковая покраска — комплект 4 диска R13–R16</name>
+        <price>11000</price>
+        <currencyId>RUR</currencyId>
+        <categoryId>1</categoryId>
+        <url>https://bi-color.ru/pokraska-diskov-moskva</url>
+        <description>Покраска комплекта из 4 дисков R13–R16. Трёхслойное нанесение, любой цвет RAL, гарантия 4 года.</description>
+        <shortDescription>Комплект 4 диска R13–R16. Любой цвет RAL, гарантия 4 года.</shortDescription>
+      </offer>
+
+      <offer id="105">
+        <name>Порошковая покраска — комплект 4 диска R17–R18</name>
+        <price>13000</price>
+        <currencyId>RUR</currencyId>
+        <categoryId>1</categoryId>
+        <url>https://bi-color.ru/pokraska-diskov-moskva</url>
+        <description>Покраска комплекта из 4 дисков R17–R18. Трёхслойное нанесение, любой цвет RAL, гарантия 4 года.</description>
+        <shortDescription>Комплект 4 диска R17–R18. Любой цвет RAL, гарантия 4 года.</shortDescription>
+      </offer>
+
+      <!-- ===================== АЛМАЗНАЯ ПРОТОЧКА ===================== -->
+      <offer id="201">
+        <name>Алмазная проточка диска (1 диск)</name>
+        <price>5000</price>
+        <currencyId>RUR</currencyId>
+        <categoryId>2</categoryId>
+        <url>https://bi-color.ru/almaznaya-prochka-diskov</url>
+        <description>Обработка лицевой поверхности на токарном станке с ЧПУ. Алмазный резец восстанавливает зеркальный заводской блеск diamond cut. Гарантия 4 года. Цена за 1 диск.</description>
+        <shortDescription>Алмазная проточка 1 диска на станке с ЧПУ. Гарантия 4 года.</shortDescription>
+      </offer>
+
+      <offer id="202">
+        <name>Алмазная проточка + покраска обода (1 диск)</name>
+        <price>7500</price>
+        <currencyId>RUR</currencyId>
+        <categoryId>2</categoryId>
+        <url>https://bi-color.ru/almaznaya-prochka-diskov</url>
+        <description>Комбинированная услуга: лицевая часть протачивается на станке с ЧПУ, обод красится в выбранный цвет (чёрный, антрацит или любой RAL). Гарантия 4 года.</description>
+        <shortDescription>Алмазная проточка лица + покраска обода в контрастный цвет.</shortDescription>
+      </offer>
+
+      <!-- ===================== РЕМОНТ ДИСКОВ ===================== -->
+      <offer id="301">
+        <name>Правка геометрии диска (1 диск)</name>
+        <price>1500</price>
+        <currencyId>RUR</currencyId>
+        <categoryId>3</categoryId>
+        <url>https://bi-color.ru/remont-diskov-moskva</url>
+        <description>Устранение биения и восьмёрки на специальном стенде. После правки — обязательная балансировка. Бесплатная диагностика ремонтопригодности перед работой.</description>
+        <shortDescription>Правка геометрии диска на стенде, балансировка. Диагностика бесплатно.</shortDescription>
+      </offer>
+
+      <offer id="302">
+        <name>Ремонт диска — технология Димет / аргонная сварка TIG</name>
+        <price>2500</price>
+        <currencyId>RUR</currencyId>
+        <categoryId>3</categoryId>
+        <url>https://bi-color.ru/remont-diskov-moskva</url>
+        <description>Устранение сколов, трещин и повреждений обода. Технология Димет (холодное напыление металлического порошка) или аргонная сварка TIG. Гарантия 4 года. Бесплатная диагностика.</description>
+        <shortDescription>Ремонт сколов, трещин, повреждений. Димет или TIG-сварка, гарантия 4 года.</shortDescription>
+      </offer>
+
+      <!-- ===================== ПОКРАСКА СУППОРТОВ ===================== -->
+      <offer id="401">
+        <name>Покраска тормозного суппорта (1 суппорт)</name>
+        <price>2000</price>
+        <currencyId>RUR</currencyId>
+        <categoryId>4</categoryId>
+        <url>https://bi-color.ru/pokraska-supportov-moskva</url>
+        <description>Термостойкая краска, выдерживает нагрев до 300 °C. Любой цвет RAL: красный, жёлтый, синий, чёрный. Полная подготовка поверхности: обезжиривание и грунтование. Цена за 1 суппорт.</description>
+        <shortDescription>Покраска суппорта термостойкой краской. Любой цвет RAL. Цена за 1 шт.</shortDescription>
+      </offer>
+
+      <offer id="402">
+        <name>Покраска тормозных суппортов — комплект 4 шт</name>
+        <price>8000</price>
+        <currencyId>RUR</currencyId>
+        <categoryId>4</categoryId>
+        <url>https://bi-color.ru/pokraska-supportov-moskva</url>
+        <description>Покраска комплекта из 4 суппортов термостойкой краской (до 300 °C). Любой цвет RAL. Полная подготовка поверхности.</description>
+        <shortDescription>Покраска 4 суппортов. Термостойкая краска, любой цвет RAL.</shortDescription>
+      </offer>
+
+    </offers>
+  </shop>
+</yml_catalog>

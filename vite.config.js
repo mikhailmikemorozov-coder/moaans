@@ -43,10 +43,10 @@ const routeMeta = {
     description: 'Как выбрать между матовым чёрным, глянцем и антрацитом для дисков. Разбираем варианты, стойкость покрытий и цены на покраску дисков в чёрный в Москве.',
     canonical: 'https://bi-color.ru/blog/pokraska-diskov-v-chernyy',
   },
-  'blog/pokraska-diskov-nissan-qashqai': {
-    title: 'Покраска дисков Nissan Qashqai: до и после — кейс BI Color',
-    description: 'Реальный кейс: покраска четырёх дисков Nissan Qashqai R17 в серебристо-графитовый цвет. Фото до и после, видео результата. Сервис BI Color, Москва, Внуково.',
-    canonical: 'https://bi-color.ru/blog/pokraska-diskov-nissan-qashqai',
+  'blog/pokraska-diskov-nissan': {
+    title: 'Покраска дисков Nissan: до и после — кейс BI Color',
+    description: 'Реальный кейс: покраска четырёх дисков Nissan R17 в серебристо-графитовый цвет. Фото до и после, видео результата. Сервис BI Color, Москва, Внуково.',
+    canonical: 'https://bi-color.ru/blog/pokraska-diskov-nissan',
   },
   'blog/almaznaya-prochka-video-protsessa': {
     title: 'Алмазная проточка дисков: видео процесса и результат | BI Color',

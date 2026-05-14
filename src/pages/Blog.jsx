@@ -6,8 +6,8 @@ const PHONES = [{ label: "+7 (499) 136-55-00", href: "tel:+74991365500" }];
 
 const POSTS = [
   {
-    slug: "pokraska-diskov-nissan-qashqai",
-    title: "Покраска дисков Nissan Qashqai: до и после — реальный кейс",
+    slug: "pokraska-diskov-nissan",
+    title: "Покраска дисков Nissan: до и после — реальный кейс",
     excerpt: "Четыре диска R17 с потёртым заводским серебристым — восстановили цвет порошковой покраской в три слоя. Сплит-фото, видео готового комплекта.",
     date: "14 мая 2026",
     readTime: "2 мин",
