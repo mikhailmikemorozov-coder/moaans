@@ -15,7 +15,7 @@ const GUARANTEE_ITEMS = [
   { icon: <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" width="20" height="20"><path d="M23 19a2 2 0 01-2 2H3a2 2 0 01-2-2V8a2 2 0 012-2h4l2-3h6l2 3h4a2 2 0 012 2z"/><circle cx="12" cy="13" r="4"/></svg>, text: "Фото-отчёт" },
 ];
 
-export default function ServicePage({ meta, color = "#ff6b00", h1, h1Accent, intro, price, benefits, faqItems, gallery, relatedServices }) {
+export default function ServicePage({ meta, color = "#ff6b00", h1, h1Accent, intro, price, benefits, faqItems, gallery, video, relatedServices }) {
   const [openFaq, setOpenFaq] = useState(null);
 
   return (
@@ -176,6 +176,41 @@ export default function ServicePage({ meta, color = "#ff6b00", h1, h1Accent, int
                   )}
                 </div>
               ))}
+            </div>
+          </div>
+        </section>
+      )}
+
+      {/* ── VIDEO ── */}
+      {video && (
+        <section className="sp-section" style={{ padding: "80px 40px", borderTop: "1px solid rgba(255,255,255,.06)" }}>
+          <div style={{ maxWidth: 1200, margin: "0 auto" }}>
+            <p style={{ fontFamily: "'Rajdhani'", fontSize: 13, fontWeight: 600, letterSpacing: 3, textTransform: "uppercase", color, marginBottom: 12 }}>Процесс работы</p>
+            <h2 style={{ fontFamily: "'Rajdhani'", fontWeight: 700, fontSize: "clamp(28px, 4vw, 48px)", lineHeight: 1.05, marginBottom: 40 }}>
+              Смотри как это <span style={{ background: "linear-gradient(135deg,#00d4ff,#0077ff)", WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent" }}>делается</span>
+            </h2>
+            <div style={{ display: "flex", gap: 48, alignItems: "center", flexWrap: "wrap" }}>
+              <div style={{ flexShrink: 0, width: 260, aspectRatio: "9/16", borderRadius: 20, overflow: "hidden", boxShadow: `0 0 80px ${color}22` }}>
+                <video autoPlay loop muted playsInline style={{ width: "100%", height: "100%", objectFit: "cover", display: "block" }}>
+                  <source src={video.src} type="video/mp4" />
+                </video>
+              </div>
+              <div style={{ flex: 1, minWidth: 260 }}>
+                <div style={{ fontFamily: "'Rajdhani'", fontSize: 24, fontWeight: 700, marginBottom: 16, lineHeight: 1.2 }}>
+                  {video.title}
+                </div>
+                <p style={{ fontSize: 15, color: "rgba(255,255,255,.5)", lineHeight: 1.85, marginBottom: 24 }}>
+                  {video.desc}
+                </p>
+                <div style={{ display: "flex", gap: 28, flexWrap: "wrap" }}>
+                  {video.stats?.map(({ val, label }) => (
+                    <div key={label}>
+                      <div style={{ fontFamily: "'Rajdhani'", fontSize: 28, fontWeight: 700, color }}>{val}</div>
+                      <div style={{ fontSize: 12, color: "rgba(255,255,255,.3)", marginTop: 2 }}>{label}</div>
+                    </div>
+                  ))}
+                </div>
+              </div>
             </div>
           </div>
         </section>
