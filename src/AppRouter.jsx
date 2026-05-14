@@ -11,6 +11,7 @@ import AlmaznajaProchkaPost from "./pages/posts/AlmaznajaProchka";
 import PokraskaCherniyPost from "./pages/posts/PokraskaCherniy";
 import RemontDiskaPost from "./pages/posts/RemontDiska";
 import AlmaznajaProchkaVideoPost from "./pages/posts/AlmaznajaProchkaVideo";
+import WorkNissanQashqaiPost from "./pages/posts/WorkNissanQashqai";
 
 function ScrollToTop() {
   const { pathname } = useLocation();
@@ -34,6 +35,7 @@ export default function AppRouter() {
         <Route path="/blog/pokraska-diskov-v-chernyy" element={<PokraskaCherniyPost />} />
         <Route path="/blog/remont-litogo-diska-tsena" element={<RemontDiskaPost />} />
         <Route path="/blog/almaznaya-prochka-video-protsessa" element={<AlmaznajaProchkaVideoPost />} />
+        <Route path="/blog/pokraska-diskov-nissan-qashqai" element={<WorkNissanQashqaiPost />} />
       </Routes>
     </>
   );
