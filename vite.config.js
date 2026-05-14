@@ -43,6 +43,11 @@ const routeMeta = {
     description: 'Как выбрать между матовым чёрным, глянцем и антрацитом для дисков. Разбираем варианты, стойкость покрытий и цены на покраску дисков в чёрный в Москве.',
     canonical: 'https://bi-color.ru/blog/pokraska-diskov-v-chernyy',
   },
+  'blog/almaznaya-prochka-video-protsessa': {
+    title: 'Алмазная проточка дисков: видео процесса и результат | BI Color',
+    description: 'Смотри как проходит алмазная проточка литых дисков на станке с ЧПУ — видео процесса от сервиса BI Color. Реальный результат diamond cut на многоспицевых дисках.',
+    canonical: 'https://bi-color.ru/blog/almaznaya-prochka-video-protsessa',
+  },
   'blog/remont-litogo-diska-tsena': {
     title: 'Ремонт литого диска: цены и технологии | BI Color',
     description: 'Цены на ремонт литых дисков в Москве — правка, сварка, Димет. Разбираем что влияет на стоимость, когда диск восстановим, а когда нет. Сервис BI Color, Внуково.',
