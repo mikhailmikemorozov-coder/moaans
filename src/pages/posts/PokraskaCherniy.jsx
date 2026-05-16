@@ -58,14 +58,14 @@ export default function PokraskaCherniyPost() {
       }}>
         <Link to="/"><Logo /></Link>
         <div className="post-nav" style={{ display: "flex", gap: 28, alignItems: "center" }}>
-          {[["Главная", "/"], ["Блог", "/blog"], ["Цены", "/tseny"], ["Покраска дисков", "/pokraska-diskov-moskva"]].map(([label, href]) => (
+          {[["Главная", "/"], ["Цены", "/tseny"], ["Блог", "/blog"]].map(([label, href]) => (
             <Link key={href} to={href} style={{ fontFamily: "'Rajdhani'", fontSize: 13, fontWeight: 600, letterSpacing: 2, textTransform: "uppercase", color: "rgba(255,255,255,.45)", transition: "color .2s" }}
               onMouseEnter={e => e.currentTarget.style.color="#fff"} onMouseLeave={e => e.currentTarget.style.color="rgba(255,255,255,.45)"}>{label}</Link>
           ))}
         </div>
         <div style={{ display: "flex", gap: 16, alignItems: "center" }}>
           <a href={PHONES[0].href} style={{ fontFamily: "'Rajdhani'", fontSize: 16, fontWeight: 700, color: "rgba(255,255,255,.75)" }}>{PHONES[0].label}</a>
-          <Link to="/pokraska-diskov-moskva" style={{ display: "inline-flex", alignItems: "center", padding: "10px 24px", background: "linear-gradient(135deg,#ff6b00,#ff0080)", color: "#fff", borderRadius: 50, fontFamily: "'Rajdhani'", fontSize: 14, fontWeight: 700, letterSpacing: 1.5, textTransform: "uppercase" }}>Записаться</Link>
+          <a href="/#contact" style={{ display: "inline-flex", alignItems: "center", padding: "10px 24px", background: "linear-gradient(135deg,#ff6b00,#ff0080)", color: "#fff", borderRadius: 50, fontFamily: "'Rajdhani'", fontSize: 14, fontWeight: 700, letterSpacing: 1.5, textTransform: "uppercase" }}>Записаться</a>
         </div>
       </header>
 

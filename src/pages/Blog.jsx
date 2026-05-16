@@ -101,7 +101,7 @@ export default function Blog() {
       }}>
         <Link to="/"><Logo /></Link>
         <div className="blog-nav" style={{ display: "flex", gap: 28, alignItems: "center" }}>
-          {[["Главная", "/"], ["Цены", "/tseny"], ["Покраска дисков", "/pokraska-diskov-moskva"], ["Алмазная проточка", "/almaznaya-prochka-diskov"]].map(([label, href]) => (
+          {[["Главная", "/"], ["Цены", "/tseny"], ["Блог", "/blog"]].map(([label, href]) => (
             <Link key={href} to={href} style={{ fontFamily: "'Rajdhani'", fontSize: 13, fontWeight: 600, letterSpacing: 2, textTransform: "uppercase", color: "rgba(255,255,255,.45)", transition: "color .2s" }}
               onMouseEnter={e => e.currentTarget.style.color="#fff"} onMouseLeave={e => e.currentTarget.style.color="rgba(255,255,255,.45)"}>{label}</Link>
           ))}
