@@ -68,6 +68,16 @@ const routeMeta = {
     description: 'Цены на ремонт литых дисков в Москве — правка, сварка, Димет. Разбираем что влияет на стоимость, когда диск восстановим, а когда нет. Сервис BI Color, Внуково.',
     canonical: 'https://bi-color.ru/blog/remont-litogo-diska-tsena',
   },
+  'kastomnyy-dizayn-diskov': {
+    title: 'Кастомный дизайн дисков в Москве — двухтоновая покраска | BI Color',
+    description: 'Кастомная покраска дисков в два и более цвета: жидкая краска, точная маскировка, порошковый лак. Уникальный дизайн под ваш стиль. Москва, Внуково, без записи.',
+    canonical: 'https://bi-color.ru/kastomnyy-dizayn-diskov',
+  },
+  'blog/kastomnyy-dizayn-diskov': {
+    title: 'Кастомный дизайн дисков: чёрный + алюмохром — кейс BI Color',
+    description: 'Реальный кейс: двухтоновая покраска дисков — порошковый грунт, алюмохром жидкарь, маскировка, чёрный жидкарь, порошковый лак. Фото до и после, видео результата.',
+    canonical: 'https://bi-color.ru/blog/kastomnyy-dizayn-diskov',
+  },
 }
 
 function injectMeta(html, meta) {
