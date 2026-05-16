@@ -12,6 +12,7 @@
       <category id="2">Алмазная проточка дисков</category>
       <category id="3">Ремонт дисков</category>
       <category id="4">Покраска суппортов</category>
+      <category id="5">Шиномонтаж</category>
     </categories>
     <offers>
 
@@ -127,6 +128,108 @@
         <url>https://bi-color.ru/pokraska-supportov-moskva</url>
         <description>Покраска комплекта из 4 суппортов термостойкой краской (до 300 °C). Любой цвет RAL. Полная подготовка поверхности.</description>
         <shortDescription>Покраска 4 суппортов. Термостойкая краска, любой цвет RAL.</shortDescription>
+      </offer>
+
+
+      <!-- ===================== ШИНОМОНТАЖ ===================== -->
+      <offer id="501">
+        <name>Шиномонтаж легковые — 1 колесо R13–R16</name>
+        <price>700</price>
+        <currencyId>RUR</currencyId>
+        <categoryId>5</categoryId>
+        <url>https://bi-color.ru/shinomontazh-moskva</url>
+        <description>Снятие/установка колеса, монтаж/демонтаж шины, компьютерная балансировка. Легковые автомобили, диаметр R13–R16. Без записи, ежедневно 10:00–19:00.</description>
+        <shortDescription>Шиномонтаж + балансировка, 1 колесо R13–R16 (легковые). Без записи.</shortDescription>
+      </offer>
+
+      <offer id="502">
+        <name>Шиномонтаж легковые — 1 колесо R17–R18</name>
+        <price>875</price>
+        <currencyId>RUR</currencyId>
+        <categoryId>5</categoryId>
+        <url>https://bi-color.ru/shinomontazh-moskva</url>
+        <description>Снятие/установка колеса, монтаж/демонтаж шины, компьютерная балансировка. Легковые автомобили, диаметр R17–R18. Без записи, ежедневно 10:00–19:00.</description>
+        <shortDescription>Шиномонтаж + балансировка, 1 колесо R17–R18 (легковые). Без записи.</shortDescription>
+      </offer>
+
+      <offer id="503">
+        <name>Шиномонтаж легковые — 1 колесо R19–R22</name>
+        <price>1075</price>
+        <currencyId>RUR</currencyId>
+        <categoryId>5</categoryId>
+        <url>https://bi-color.ru/shinomontazh-moskva</url>
+        <description>Снятие/установка колеса, монтаж/демонтаж шины, компьютерная балансировка. Легковые автомобили, диаметр R19–R22. Без записи, ежедневно 10:00–19:00.</description>
+        <shortDescription>Шиномонтаж + балансировка, 1 колесо R19–R22 (легковые). Без записи.</shortDescription>
+      </offer>
+
+      <offer id="504">
+        <name>Шиномонтаж легковые — комплект 4 колеса R13–R16</name>
+        <price>2800</price>
+        <currencyId>RUR</currencyId>
+        <categoryId>5</categoryId>
+        <url>https://bi-color.ru/shinomontazh-moskva</url>
+        <description>Снятие/установка, монтаж/демонтаж и балансировка комплекта из 4 колёс. Легковые R13–R16. Без записи.</description>
+        <shortDescription>Комплект 4 колеса R13–R16 (легковые). Монтаж + балансировка.</shortDescription>
+      </offer>
+
+      <offer id="505">
+        <name>Шиномонтаж легковые — комплект 4 колеса R17–R18</name>
+        <price>3500</price>
+        <currencyId>RUR</currencyId>
+        <categoryId>5</categoryId>
+        <url>https://bi-color.ru/shinomontazh-moskva</url>
+        <description>Снятие/установка, монтаж/демонтаж и балансировка комплекта из 4 колёс. Легковые R17–R18. Без записи.</description>
+        <shortDescription>Комплект 4 колеса R17–R18 (легковые). Монтаж + балансировка.</shortDescription>
+      </offer>
+
+      <offer id="506">
+        <name>Шиномонтаж джипы / паркетники — 1 колесо R17–R18</name>
+        <price>1025</price>
+        <currencyId>RUR</currencyId>
+        <categoryId>5</categoryId>
+        <url>https://bi-color.ru/shinomontazh-moskva</url>
+        <description>Шиномонтаж и балансировка для кроссоверов, паркетников, джипов. Диаметр R17–R18. Без записи, ежедневно 10:00–19:00.</description>
+        <shortDescription>Шиномонтаж + балансировка, 1 колесо R17–R18 (джип/паркетник).</shortDescription>
+      </offer>
+
+      <offer id="507">
+        <name>Шиномонтаж рамные авто (LC, Prado, Lexus) — 1 колесо R17–R18</name>
+        <price>1150</price>
+        <currencyId>RUR</currencyId>
+        <categoryId>5</categoryId>
+        <url>https://bi-color.ru/shinomontazh-moskva</url>
+        <description>Шиномонтаж и балансировка для рамных автомобилей: Toyota Land Cruiser, Prado, Lexus GX/LX и аналогов. Диаметр R17–R18. Без записи.</description>
+        <shortDescription>Шиномонтаж рамные (LC/Prado/Lexus), 1 колесо R17–R18.</shortDescription>
+      </offer>
+
+      <offer id="508">
+        <name>Ремонт прокола шины — жгут</name>
+        <price>350</price>
+        <currencyId>RUR</currencyId>
+        <categoryId>5</categoryId>
+        <url>https://bi-color.ru/shinomontazh-moskva</url>
+        <description>Быстрый ремонт прокола жгутом. Подходит для небольших проколов в протекторной зоне. Цена за 1 ремонт.</description>
+        <shortDescription>Ремонт прокола жгутом. 1 прокол.</shortDescription>
+      </offer>
+
+      <offer id="509">
+        <name>Ремонт прокола — кордовая латка</name>
+        <price>750</price>
+        <currencyId>RUR</currencyId>
+        <categoryId>5</categoryId>
+        <url>https://bi-color.ru/shinomontazh-moskva</url>
+        <description>Ремонт прокола кордовой латкой — надёжнее жгута, восстанавливает целостность корда. Цена от 750 до 1 650 ₽ в зависимости от размера повреждения.</description>
+        <shortDescription>Ремонт прокола кордовой латкой, от 750 ₽.</shortDescription>
+      </offer>
+
+      <offer id="510">
+        <name>Ошиповка шин</name>
+        <price>30</price>
+        <currencyId>RUR</currencyId>
+        <categoryId>5</categoryId>
+        <url>https://bi-color.ru/shinomontazh-moskva</url>
+        <description>Ошиповка зимних шин на месте. Цена 30 ₽ за один шип. Уточняйте наличие шипов по телефону.</description>
+        <shortDescription>Ошиповка шин, 30 ₽/шип. Уточняйте наличие.</shortDescription>
       </offer>
 
     </offers>
