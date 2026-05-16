@@ -97,7 +97,7 @@ const SERVICES = [
   {
     id: 6, emoji: "🎯", title: "Кастомный дизайн",
     short: "Двухцветные схемы со спицами в акцентном цвете, контрастный обод, брендирование под ваш стиль.",
-    price: "от 4 000 ₽", tag: "Эксклюзив", color: "#bf00ff", variant: 1,
+    price: "от 4 000 ₽", tag: "Эксклюзив", color: "#bf00ff", variant: 1, url: "/kastomnyy-dizayn-diskov",
   },
   {
     id: 7, emoji: "🏎️", title: "Покраска суппортов",
