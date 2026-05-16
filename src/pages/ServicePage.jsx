@@ -15,8 +15,9 @@ const GUARANTEE_ITEMS = [
   { icon: <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" width="20" height="20"><path d="M23 19a2 2 0 01-2 2H3a2 2 0 01-2-2V8a2 2 0 012-2h4l2-3h6l2 3h4a2 2 0 012 2z"/><circle cx="12" cy="13" r="4"/></svg>, text: "Фото-отчёт" },
 ];
 
-export default function ServicePage({ meta, color = "#ff6b00", h1, h1Accent, intro, price, benefits, faqItems, gallery, video, relatedServices }) {
+export default function ServicePage({ meta, color = "#ff6b00", h1, h1Accent, intro, price, benefits, faqItems, gallery, video, relatedServices, priceTable }) {
   const [openFaq, setOpenFaq] = useState(null);
+  const [activeTab, setActiveTab] = useState(0);
 
   return (
     <div style={{ fontFamily: "'Nunito', sans-serif", background: "#08090c", color: "#fff", minHeight: "100vh" }}>
@@ -155,6 +156,84 @@ export default function ServicePage({ meta, color = "#ff6b00", h1, h1Accent, int
           ))}
         </div>
       </section>
+
+      {/* ── PRICE TABLE ── */}
+      {priceTable && (
+        <section className="sp-section" style={{ padding: "80px 40px", borderTop: "1px solid rgba(255,255,255,.06)" }}>
+          <div style={{ maxWidth: 1200, margin: "0 auto" }}>
+            <p style={{ fontFamily: "'Rajdhani'", fontSize: 13, fontWeight: 600, letterSpacing: 3, textTransform: "uppercase", color, marginBottom: 12 }}>Прайс-лист</p>
+            <h2 style={{ fontFamily: "'Rajdhani'", fontWeight: 700, fontSize: "clamp(28px, 4vw, 48px)", lineHeight: 1.05, marginBottom: 32 }}>
+              Полные цены по{" "}
+              <span style={{ background: "linear-gradient(135deg,#00d4ff,#0077ff)", WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent" }}>категориям авто</span>
+            </h2>
+            {/* Tabs */}
+            <div style={{ display: "flex", gap: 8, flexWrap: "wrap", marginBottom: 28 }}>
+              {priceTable.tabs.map((tab, i) => (
+                <button key={i} onClick={() => setActiveTab(i)} style={{
+                  fontFamily: "'Rajdhani'", fontSize: 14, fontWeight: 700, letterSpacing: 1,
+                  padding: "8px 20px", borderRadius: 50, cursor: "pointer", border: "none",
+                  background: activeTab === i ? color : "rgba(255,255,255,.07)",
+                  color: activeTab === i ? "#000" : "rgba(255,255,255,.55)",
+                  transition: "all .2s",
+                }}>
+                  {tab.label}
+                </button>
+              ))}
+            </div>
+            {/* Table */}
+            <div style={{ overflowX: "auto", borderRadius: 16, border: "1px solid rgba(255,255,255,.08)" }}>
+              <table style={{ width: "100%", borderCollapse: "collapse", minWidth: 560 }}>
+                <thead>
+                  <tr style={{ background: "rgba(255,255,255,.04)" }}>
+                    {["Диаметр", "Снять / поставить", "Шиномонтаж", "Балансировка", "1 колесо", "Комплект 4 кол."].map((h, i) => (
+                      <th key={i} style={{
+                        fontFamily: "'Rajdhani'", fontSize: 13, fontWeight: 700, letterSpacing: 1,
+                        textTransform: "uppercase", textAlign: i === 0 ? "left" : "center",
+                        padding: "14px 16px", color: "rgba(255,255,255,.5)",
+                        borderBottom: "1px solid rgba(255,255,255,.08)",
+                      }}>{h}</th>
+                    ))}
+                  </tr>
+                </thead>
+                <tbody>
+                  {priceTable.tabs[activeTab].rows.map((row, i) => (
+                    <tr key={i} style={{ borderBottom: i < priceTable.tabs[activeTab].rows.length - 1 ? "1px solid rgba(255,255,255,.05)" : "none" }}>
+                      <td style={{ padding: "13px 16px", fontFamily: "'Rajdhani'", fontSize: 16, fontWeight: 700 }}>{row[0]}</td>
+                      {row.slice(1, 4).map((cell, j) => (
+                        <td key={j} style={{ padding: "13px 16px", textAlign: "center", fontSize: 14, color: "rgba(255,255,255,.55)" }}>{cell}</td>
+                      ))}
+                      <td style={{ padding: "13px 16px", textAlign: "center", fontFamily: "'Rajdhani'", fontSize: 17, fontWeight: 700, color }}>{row[4]}</td>
+                      <td style={{ padding: "13px 16px", textAlign: "center", fontFamily: "'Rajdhani'", fontSize: 17, fontWeight: 700, color: "rgba(255,255,255,.85)" }}>{row[5]}</td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+            </div>
+            {/* Notes */}
+            {priceTable.notes?.length > 0 && (
+              <div style={{ marginTop: 16, display: "flex", flexDirection: "column", gap: 6 }}>
+                {priceTable.notes.map((note, i) => (
+                  <div key={i} style={{ fontSize: 12, color: "rgba(255,255,255,.35)", paddingLeft: 12, borderLeft: "2px solid rgba(255,255,255,.1)" }}>* {note}</div>
+                ))}
+              </div>
+            )}
+            {/* Extra services */}
+            {priceTable.extras?.length > 0 && (
+              <div style={{ marginTop: 40 }}>
+                <div style={{ fontFamily: "'Rajdhani'", fontSize: 18, fontWeight: 700, marginBottom: 16 }}>Дополнительные услуги</div>
+                <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fill, minmax(260px, 1fr))", gap: 10 }}>
+                  {priceTable.extras.map((e, i) => (
+                    <div key={i} style={{ display: "flex", justifyContent: "space-between", alignItems: "center", padding: "12px 16px", background: "rgba(255,255,255,.03)", border: "1px solid rgba(255,255,255,.07)", borderRadius: 12 }}>
+                      <span style={{ fontSize: 13, color: "rgba(255,255,255,.6)" }}>{e.name}</span>
+                      <span style={{ fontFamily: "'Rajdhani'", fontSize: 15, fontWeight: 700, color, flexShrink: 0, marginLeft: 12 }}>{e.price}</span>
+                    </div>
+                  ))}
+                </div>
+              </div>
+            )}
+          </div>
+        </section>
+      )}
 
       {/* ── GALLERY ── */}
       {gallery?.length > 0 && (
