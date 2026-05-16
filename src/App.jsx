@@ -875,11 +875,11 @@ export default function App() {
                     <div style={{ fontSize: 13, color: "rgba(255,255,255,.4)", letterSpacing: 1.5, textTransform: "uppercase", marginBottom: 14 }}>Услуга</div>
                     <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 12 }}>
                       {[
-                        { key: 'paint', label: 'Порошковая покраска', sub: 'Грунт · Краска · Лак', icon: '🎨' },
-                        { key: 'paintLathe', label: 'Покраска + Проточка', sub: 'Алмазная проточка в комплекте', icon: '💎' },
+                        { key: 'paint', label: 'Порошковая покраска', sub: 'Грунт · Краска · Лак', icon: <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" width="24" height="24"><path d="M3 17.25V21h3.75L17.81 9.94l-3.75-3.75L3 17.25z"/><path d="M20.71 7.04a1 1 0 000-1.41l-2.34-2.34a1 1 0 00-1.41 0l-1.83 1.83 3.75 3.75 1.83-1.83z"/></svg> },
+                        { key: 'paintLathe', label: 'Покраска + Проточка', sub: 'Алмазная проточка в комплекте', icon: <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" width="24" height="24"><path d="M6 3h12l3.3 5-9.3 13-9.3-13z"/><line x1="3" y1="8" x2="21" y2="8"/><path d="M6 3l6 5 6-5"/></svg> },
                       ].map(opt => (
                         <button key={opt.key} onClick={() => setCalcService(opt.key)} style={{ background: calcService === opt.key ? "linear-gradient(135deg,rgba(255,107,0,.18),rgba(255,0,128,.1))" : "rgba(255,255,255,.04)", border: `1px solid ${calcService === opt.key ? "rgba(255,107,0,.5)" : "rgba(255,255,255,.1)"}`, borderRadius: 16, padding: "16px 20px", cursor: "pointer", textAlign: "left", transition: "all .2s" }}>
-                          <div style={{ fontSize: 22, marginBottom: 6 }}>{opt.icon}</div>
+                          <div style={{ marginBottom: 6, color: calcService === opt.key ? "#ff6b00" : "rgba(255,255,255,.5)" }}>{opt.icon}</div>
                           <div style={{ fontFamily: "'Rajdhani'", fontWeight: 700, fontSize: 16, color: "#fff", marginBottom: 4 }}>{opt.label}</div>
                           <div style={{ fontSize: 12, color: "rgba(255,255,255,.4)" }}>{opt.sub}</div>
                         </button>
