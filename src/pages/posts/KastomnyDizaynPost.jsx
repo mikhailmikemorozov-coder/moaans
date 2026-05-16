@@ -41,8 +41,7 @@ export default function KastomnyDizaynPost() {
           .post-body { padding: 0 20px 80px !important; }
           .ba-grid { grid-template-columns: 1fr !important; }
           .steps-grid { grid-template-columns: 1fr !important; }
-          .video-row { flex-direction: column !important; }
-          .video-row .v-wrap { width: 100% !important; max-width: 320px !important; margin: 0 auto !important; }
+
         }
       `}</style>
 
@@ -139,32 +138,32 @@ export default function KastomnyDizaynPost() {
       </div>
 
       {/* VIDEO */}
-      <div style={{ maxWidth: 780, margin: "0 auto", padding: "40px 40px 0" }}>
-        <div className="video-row" style={{ display: "flex", gap: 36, alignItems: "center" }}>
-          <div className="v-wrap" style={{ flexShrink: 0, width: 240, aspectRatio: "9/16", borderRadius: 18, overflow: "hidden", boxShadow: "0 0 60px rgba(191,0,255,.15)" }}>
+      <div style={{ padding: "48px 0 0" }}>
+        <div style={{ display: "flex", justifyContent: "center", padding: "0 20px" }}>
+          <div style={{ width: "100%", maxWidth: 420, aspectRatio: "9/16", borderRadius: 24, overflow: "hidden", boxShadow: "0 0 120px rgba(191,0,255,.3)" }}>
             <video autoPlay loop muted playsInline style={{ width: "100%", height: "100%", objectFit: "cover", display: "block" }}>
               <source src="/custom-design.mp4" type="video/mp4" />
             </video>
           </div>
-          <div style={{ flex: 1 }}>
-            <div style={{ fontFamily: "'Rajdhani'", fontSize: 22, fontWeight: 700, marginBottom: 14, lineHeight: 1.2 }}>
-              Готовый комплект — уникальный дизайн
-            </div>
-            <p style={{ fontSize: 15, color: "rgba(255,255,255,.5)", lineHeight: 1.85, marginBottom: 20 }}>
-              Все четыре диска покрашены в одной партии — цвет одинаковый, граница алюмохром/чёрный на каждом диске стоит на одних и тех же спицах.
-            </p>
-            <div style={{ display: "flex", flexWrap: "wrap", gap: 20 }}>
-              {[["4", "слоя нанесения"], ["3–5 дн.", "срок на комплект"], ["4 года", "гарантия"]].map(([v, l]) => (
-                <div key={l}>
-                  <div style={{ fontFamily: "'Rajdhani'", fontSize: 26, fontWeight: 700, color: "#bf00ff" }}>{v}</div>
-                  <div style={{ fontSize: 12, color: "rgba(255,255,255,.3)", marginTop: 2 }}>{l}</div>
-                </div>
-              ))}
-            </div>
-          </div>
         </div>
-        <div style={{ marginTop: 12, fontSize: 12, color: "rgba(255,255,255,.2)", textAlign: "center" }}>
-          Видео готового комплекта — сервис BI Color, Москва, Внуково
+        <div style={{ maxWidth: 780, margin: "0 auto", padding: "28px 40px 0", textAlign: "center" }}>
+          <div style={{ fontFamily: "'Rajdhani'", fontSize: 24, fontWeight: 700, marginBottom: 10 }}>
+            Готовый комплект — уникальный дизайн
+          </div>
+          <p style={{ fontSize: 15, color: "rgba(255,255,255,.5)", lineHeight: 1.85, marginBottom: 24, maxWidth: 520, margin: "0 auto 24px" }}>
+            Все четыре диска покрашены в одной партии — цвет одинаковый, граница алюмохром/чёрный на каждом диске стоит на одних и тех же спицах.
+          </p>
+          <div style={{ display: "flex", justifyContent: "center", gap: 48 }}>
+            {[["4", "слоя нанесения"], ["3–5 дн.", "срок на комплект"], ["4 года", "гарантия"]].map(([v, l]) => (
+              <div key={l}>
+                <div style={{ fontFamily: "'Rajdhani'", fontSize: 30, fontWeight: 700, color: "#bf00ff" }}>{v}</div>
+                <div style={{ fontSize: 12, color: "rgba(255,255,255,.3)", marginTop: 2 }}>{l}</div>
+              </div>
+            ))}
+          </div>
+          <div style={{ marginTop: 16, fontSize: 12, color: "rgba(255,255,255,.2)" }}>
+            Видео готового комплекта — сервис BI Color, Москва, Внуково
+          </div>
         </div>
       </div>
 
