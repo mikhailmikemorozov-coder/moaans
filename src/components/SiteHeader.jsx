@@ -26,12 +26,12 @@ export function SiteHeader() {
       <nav className="site-hdr-nav" style={{ display: "flex", gap: 22, alignItems: "center" }}>
         {NAV.map(([label, href]) => (
           <a key={href} href={href} style={{
-            fontFamily: "'Rajdhani'", fontSize: 13, fontWeight: 600, letterSpacing: 1.5,
-            textTransform: "uppercase", color: "rgba(255,255,255,.45)",
+            fontFamily: "'Nunito', sans-serif", fontSize: 13, fontWeight: 700, letterSpacing: "2px",
+            textTransform: "uppercase", color: "rgba(255,255,255,.65)",
             transition: "color .2s", textDecoration: "none",
           }}
             onMouseEnter={e => e.currentTarget.style.color = "#fff"}
-            onMouseLeave={e => e.currentTarget.style.color = "rgba(255,255,255,.45)"}
+            onMouseLeave={e => e.currentTarget.style.color = "rgba(255,255,255,.65)"}
           >{label}</a>
         ))}
       </nav>
