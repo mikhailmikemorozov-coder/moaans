@@ -28,6 +28,7 @@ export default function PokraskaSupportov() {
         { q: "Можно ли покрасить суппорты вместе с дисками?", a: "Да, и это популярное комплексное решение. Привозите и диски, и суппорты — сделаем всё за один приезд, согласуем цвета и выдадим общую гарантию." },
       ]}
       gallery={[
+        { src: "/support-brembo-red-pair.webp", alt: "Два суппорта Brembo покраска красный глянец", caption: "Два Brembo — красный глянец" },
         { src: "/support-brembo-teal.webp", alt: "Brembo суппорт покраска бирюзовый", caption: "Brembo — бирюзовый" },
         { src: "/support-red.webp", alt: "Суппорт покраска красный глянец", caption: "Красный глянец" },
         { src: "/support-purple-close.webp", alt: "Суппорт покраска фиолетовый крупно", caption: "Фиолетовый металлик" },

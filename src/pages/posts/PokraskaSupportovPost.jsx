@@ -116,19 +116,17 @@ export default function PokraskaSupportovPost() {
         <h2 style={{ fontFamily: "'Rajdhani'", fontSize: "clamp(22px,3vw,34px)", fontWeight: 700, marginBottom: 20 }}>Примеры наших работ</h2>
         <div className="photo-grid" style={{ display: "grid", gridTemplateColumns: "repeat(2,1fr)", gap: 12, marginBottom: 40 }}>
           {[
+            { src: "/support-brembo-red-pair.webp", alt: "Два суппорта Brembo красный глянец", cap: "Два Brembo — красный глянец" },
             { src: "/support-brembo-teal.webp", alt: "Brembo суппорт бирюзовый", cap: "Brembo — бирюзовый" },
             { src: "/support-purple-pair.webp", alt: "Пара суппортов фиолетовый", cap: "Два суппорта — фиолетовый" },
             { src: "/support-purple-close.webp", alt: "Суппорт фиолетовый металлик", cap: "Фиолетовый металлик" },
+            { src: "/support-red.webp", alt: "Суппорт красный глянец", cap: "Красный глянец" },
           ].map(p => (
             <div key={p.src} style={{ borderRadius: 14, overflow: "hidden", position: "relative" }}>
               <img src={p.src} alt={p.alt} loading="lazy" style={{ width: "100%", aspectRatio: "16/9", objectFit: "cover", display: "block" }} />
               <div style={{ position: "absolute", bottom: 0, left: 0, right: 0, padding: "16px 12px 10px", background: "linear-gradient(transparent,rgba(0,0,0,.65))", fontSize: 12, color: "rgba(255,255,255,.7)", fontFamily: "'Rajdhani'", letterSpacing: .5 }}>{p.cap}</div>
             </div>
           ))}
-          <div style={{ borderRadius: 14, overflow: "hidden", position: "relative" }}>
-            <img src="/support-red.webp" alt="Суппорт красный глянец" loading="lazy" style={{ width: "100%", aspectRatio: "16/9", objectFit: "cover", display: "block" }} />
-            <div style={{ position: "absolute", bottom: 0, left: 0, right: 0, padding: "16px 12px 10px", background: "linear-gradient(transparent,rgba(0,0,0,.65))", fontSize: 12, color: "rgba(255,255,255,.7)", fontFamily: "'Rajdhani'", letterSpacing: .5 }}>Красный глянец</div>
-          </div>
         </div>
 
         {/* Популярные цвета */}
