@@ -15,9 +15,13 @@ const GUARANTEE_ITEMS = [
   { icon: <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" width="20" height="20"><path d="M23 19a2 2 0 01-2 2H3a2 2 0 01-2-2V8a2 2 0 012-2h4l2-3h6l2 3h4a2 2 0 012 2z"/><circle cx="12" cy="13" r="4"/></svg>, text: "Фото-отчёт" },
 ];
 
-export default function ServicePage({ meta, color = "#ff6b00", h1, h1Accent, intro, price, benefits, faqItems, gallery, video, relatedServices, priceTable }) {
+export default function ServicePage({ meta, color = "#ff6b00", h1, h1Accent, intro, price, benefits, faqItems, gallery, video, relatedServices, priceTable, wheelCalc }) {
   const [openFaq, setOpenFaq] = useState(null);
   const [activeTab, setActiveTab] = useState(0);
+  const [calcVehicleIdx, setCalcVehicleIdx] = useState(0);
+  const [calcSizeLabel, setCalcSizeLabel] = useState('R17');
+  const [calcCount, setCalcCount] = useState(4);
+  const [calcFixedOpt, setCalcFixedOpt] = useState(0);
 
   return (
     <div style={{ fontFamily: "'Nunito', sans-serif", background: "#08090c", color: "#fff", minHeight: "100vh" }}>
@@ -61,6 +65,8 @@ export default function ServicePage({ meta, color = "#ff6b00", h1, h1Accent, int
           .sp-btns { flex-direction:column; }
           .sp-footer-inner { flex-direction:column; align-items:flex-start !important; gap:16px !important; }
           .sp-nav { display:none !important; }
+          .sp-calc-grid { grid-template-columns:1fr !important; }
+          .sp-calc-vehicle-grid { grid-template-columns:1fr 1fr !important; }
         }
       `}</style>
 
@@ -156,6 +162,114 @@ export default function ServicePage({ meta, color = "#ff6b00", h1, h1Accent, int
           ))}
         </div>
       </section>
+
+      {/* ── WHEEL CALCULATOR ── */}
+      {wheelCalc && (() => {
+        const v = wheelCalc[calcVehicleIdx];
+        const isFixed = !!v.fixedOptions;
+        const sizeIdxRaw = v.sizes ? v.sizes.indexOf(calcSizeLabel) : -1;
+        const sizeIdx = sizeIdxRaw >= 0 ? sizeIdxRaw : (v.defaultSize ?? 0);
+        const perWheel = !isFixed ? v.prices[sizeIdx] : null;
+        const total = isFixed ? v.fixedOptions[calcFixedOpt].price : perWheel * calcCount;
+        const displaySize = !isFixed ? v.sizes[sizeIdx] : null;
+        const pill = (active, onClick, children) => (
+          <button onClick={onClick} style={{
+            fontFamily: "'Rajdhani'", fontWeight: 700, fontSize: 14, letterSpacing: 1,
+            border: "none", borderRadius: 50, cursor: "pointer", padding: "9px 20px",
+            transition: "all .2s",
+            background: active ? color : "rgba(255,255,255,.06)",
+            color: active ? "#000" : "rgba(255,255,255,.55)",
+          }}>{children}</button>
+        );
+        return (
+          <section className="sp-section" style={{ padding: "80px 40px", background: "rgba(0,212,255,.02)", borderTop: "1px solid rgba(255,255,255,.06)" }}>
+            <div style={{ maxWidth: 1200, margin: "0 auto" }}>
+              <p style={{ fontFamily: "'Rajdhani'", fontSize: 13, fontWeight: 600, letterSpacing: 3, textTransform: "uppercase", color, marginBottom: 12 }}>Быстрый расчёт</p>
+              <h2 style={{ fontFamily: "'Rajdhani'", fontWeight: 700, fontSize: "clamp(28px, 4vw, 48px)", lineHeight: 1.05, marginBottom: 40 }}>
+                Рассчитайте <span style={{ background: `linear-gradient(135deg,${color},#0077ff)`, WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent" }}>стоимость</span>
+              </h2>
+              <div style={{ display: "grid", gridTemplateColumns: "1fr auto", gap: 48, alignItems: "start" }} className="sp-calc-grid">
+                <div style={{ display: "flex", flexDirection: "column", gap: 28 }}>
+
+                  {/* Vehicle type */}
+                  <div>
+                    <div style={{ fontSize: 13, color: "rgba(255,255,255,.4)", letterSpacing: 1.5, textTransform: "uppercase", marginBottom: 14, fontFamily: "'Rajdhani'" }}>Тип автомобиля</div>
+                    <div style={{ display: "grid", gridTemplateColumns: "repeat(2, 1fr)", gap: 10 }} className="sp-calc-vehicle-grid">
+                      {wheelCalc.map((vh, i) => (
+                        <button key={i} onClick={() => { setCalcVehicleIdx(i); setCalcFixedOpt(0); }} style={{
+                          fontFamily: "'Rajdhani'", fontWeight: 700, fontSize: 15, letterSpacing: .5,
+                          border: `1px solid ${calcVehicleIdx === i ? color + "99" : "rgba(255,255,255,.1)"}`,
+                          borderRadius: 14, cursor: "pointer", padding: "14px 16px", textAlign: "left",
+                          background: calcVehicleIdx === i ? color + "18" : "rgba(255,255,255,.03)",
+                          color: calcVehicleIdx === i ? "#fff" : "rgba(255,255,255,.5)",
+                          transition: "all .2s",
+                        }}>{vh.label}</button>
+                      ))}
+                    </div>
+                  </div>
+
+                  {/* Size selector — non-fixed vehicles */}
+                  {!isFixed && (
+                    <div>
+                      <div style={{ fontSize: 13, color: "rgba(255,255,255,.4)", letterSpacing: 1.5, textTransform: "uppercase", marginBottom: 14, fontFamily: "'Rajdhani'" }}>Диаметр</div>
+                      <div style={{ display: "flex", gap: 8, flexWrap: "wrap" }}>
+                        {v.sizes.map((s, i) => pill(sizeIdx === i, () => setCalcSizeLabel(s), s))}
+                      </div>
+                    </div>
+                  )}
+
+                  {/* Count — non-fixed vehicles */}
+                  {!isFixed && (
+                    <div>
+                      <div style={{ fontSize: 13, color: "rgba(255,255,255,.4)", letterSpacing: 1.5, textTransform: "uppercase", marginBottom: 14, fontFamily: "'Rajdhani'" }}>Количество колёс</div>
+                      <div style={{ display: "flex", gap: 10 }}>
+                        {[1, 2, 3, 4].map(n => (
+                          <button key={n} onClick={() => setCalcCount(n)} style={{
+                            width: 52, height: 52, border: "none", borderRadius: 14, cursor: "pointer",
+                            fontFamily: "'Rajdhani'", fontWeight: 700, fontSize: 18, transition: "all .2s",
+                            background: calcCount === n ? color : "rgba(255,255,255,.06)",
+                            color: calcCount === n ? "#000" : "rgba(255,255,255,.55)",
+                          }}>{n}</button>
+                        ))}
+                      </div>
+                    </div>
+                  )}
+
+                  {/* Fixed options — С и ЛТ */}
+                  {isFixed && (
+                    <div>
+                      <div style={{ fontSize: 13, color: "rgba(255,255,255,.4)", letterSpacing: 1.5, textTransform: "uppercase", marginBottom: 14, fontFamily: "'Rajdhani'" }}>Количество колёс</div>
+                      <div style={{ display: "flex", gap: 10, flexWrap: "wrap" }}>
+                        {v.fixedOptions.map((opt, i) => pill(calcFixedOpt === i, () => setCalcFixedOpt(i), opt.label))}
+                      </div>
+                    </div>
+                  )}
+
+                  <div style={{ padding: "14px 16px", background: "rgba(255,255,255,.03)", borderRadius: 12, fontSize: 13, color: "rgba(255,255,255,.4)", borderLeft: `3px solid ${color}55` }}>
+                    Низкопрофильная шина и RUN-FLAT — +50% к стоимости шиномонтажных работ
+                  </div>
+                </div>
+
+                {/* Result card */}
+                <div style={{ background: `linear-gradient(135deg,${color}12,rgba(0,119,255,.06))`, border: `1px solid ${color}30`, borderRadius: 28, padding: "40px 36px", minWidth: 280, textAlign: "center", position: "sticky", top: 100 }}>
+                  <div style={{ fontSize: 13, color: "rgba(255,255,255,.4)", letterSpacing: 2, textTransform: "uppercase", marginBottom: 16, fontFamily: "'Rajdhani'" }}>Итого</div>
+                  <div style={{ fontFamily: "'Rajdhani'", fontSize: 54, fontWeight: 700, color, lineHeight: 1, marginBottom: 8 }}>
+                    {total.toLocaleString('ru-RU')} <span style={{ fontSize: 26 }}>₽</span>
+                  </div>
+                  <div style={{ fontSize: 13, color: "rgba(255,255,255,.3)", marginBottom: 28, lineHeight: 1.6 }}>
+                    {isFixed
+                      ? `${v.label} · ${v.fixedOptions[calcFixedOpt].label}`
+                      : `${calcCount} кол. · ${displaySize} · ${v.label}`}
+                  </div>
+                  <a href={PHONES[0].href} className="sp-btn sp-btn-grad" style={{ width: "100%", justifyContent: "center", fontSize: 15 }}>
+                    Позвонить
+                  </a>
+                </div>
+              </div>
+            </div>
+          </section>
+        );
+      })()}
 
       {/* ── PRICE TABLE ── */}
       {priceTable && (

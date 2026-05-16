@@ -132,6 +132,33 @@ export default function Shinomontazh() {
           { name: "Ремонт стального диска", price: "900 ₽/шт + монтаж" },
         ],
       }}
+      wheelCalc={[
+        {
+          label: "Легковые",
+          defaultSize: 4,
+          sizes: ["R13","R14","R15","R16","R17","R18","R19","R20","R21","R22"],
+          prices: [700, 725, 775, 800, 875, 950, 1075, 1250, 1375, 1500],
+        },
+        {
+          label: "Джипы / Паркетники",
+          defaultSize: 4,
+          sizes: ["R13","R14","R15","R16","R17","R18","R19","R20","R21","R22"],
+          prices: [800, 825, 875, 950, 1025, 1075, 1175, 1375, 1500, 1750],
+        },
+        {
+          label: "Рамные (LC, Prado, Lexus)",
+          defaultSize: 2,
+          sizes: ["R16","R17","R18","R19","R20","R21","R22"],
+          prices: [1000, 1150, 1300, 1450, 1600, 1750, 1900],
+        },
+        {
+          label: "С и ЛТ",
+          fixedOptions: [
+            { label: "4 колеса", price: 4400 },
+            { label: "6 колёс",  price: 6600 },
+          ],
+        },
+      ]}
       relatedServices={[
         {
           icon: <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" width="32" height="32"><path d="M3 17.25V21h3.75L17.81 9.94l-3.75-3.75L3 17.25z"/><path d="M20.71 7.04a1 1 0 000-1.41l-2.34-2.34a1 1 0 00-1.41 0l-1.83 1.83 3.75 3.75 1.83-1.83z"/></svg>,
