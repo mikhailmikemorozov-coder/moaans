@@ -131,7 +131,7 @@ export default function PokraskaSupportovPost() {
         <div className="photo-grid" style={{ display: "grid", gridTemplateColumns: "repeat(2,1fr)", gap: 12, marginBottom: 40 }}>
           {[
             { src: "/support-brembo-teal.webp", alt: "Brembo суппорт бирюзовый", cap: "Brembo — бирюзовый" },
-            { src: "/support-purple-chrome.webp", alt: "Суппорт фиолетовый хром-глянец", cap: "Фиолетовый хром-глянец" },
+            { src: "/support-purple-pair.webp", alt: "Пара суппортов фиолетовый", cap: "Два суппорта — фиолетовый" },
             { src: "/support-purple-close.webp", alt: "Суппорт фиолетовый металлик", cap: "Фиолетовый металлик" },
           ].map(p => (
             <div key={p.src} style={{ borderRadius: 14, overflow: "hidden", position: "relative" }}>

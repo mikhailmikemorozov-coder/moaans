@@ -31,7 +31,7 @@ export default function PokraskaSupportov() {
         { src: "/support-brembo-teal.webp", alt: "Brembo суппорт покраска бирюзовый", caption: "Brembo — бирюзовый" },
         { src: "/support-red.webp", alt: "Суппорт покраска красный глянец", caption: "Красный глянец" },
         { src: "/support-purple-close.webp", alt: "Суппорт покраска фиолетовый крупно", caption: "Фиолетовый металлик" },
-        { src: "/support-purple-chrome.webp", alt: "Суппорт покраска фиолетовый хром", caption: "Фиолетовый хром-глянец" },
+        { src: "/support-purple-pair.webp", alt: "Пара суппортов покраска фиолетовый", caption: "Два суппорта — фиолетовый" },
       ]}
       relatedServices={[
         { icon: <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" width="32" height="32"><path d="M3 17.25V21h3.75L17.81 9.94l-3.75-3.75L3 17.25z"/><path d="M20.71 7.04a1 1 0 000-1.41l-2.34-2.34a1 1 0 00-1.41 0l-1.83 1.83 3.75 3.75 1.83-1.83z"/></svg>, title: "Покраска дисков", desc: "Порошковая покраска в любой цвет RAL. Отлично сочетается с покраской суппортов.", price: "от 2 500 ₽", color: "#ff6b00", href: "/pokraska-diskov-moskva" },
