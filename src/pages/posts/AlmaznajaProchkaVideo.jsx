@@ -1,6 +1,7 @@
 import { Helmet } from "react-helmet-async";
 import { Link } from "react-router-dom";
 import { Logo } from "../../components/Logo";
+import { SiteHeader } from "../../components/SiteHeader";
 
 const PHONES = [{ label: "+7 (965) 213-09-99", href: "tel:+79652130999" }];
 
@@ -43,34 +44,16 @@ export default function AlmaznajaProchkaVideoPost() {
         .article a { color: #ff6b00; text-decoration: underline; text-underline-offset: 3px; }
         .video-wrap video { width: 100%; height: 100%; object-fit: cover; display: block; border-radius: 20px; }
         @media (max-width: 768px) {
-          .post-header { padding: 0 20px !important; }
           .post-hero { padding: 110px 20px 40px !important; }
           .post-body { padding: 0 20px 80px !important; }
-          .post-nav { display: none !important; }
+          .site-hdr-nav { display: none !important; }
           .video-col { flex-direction: column !important; }
           .video-col .video-wrap { width: 100% !important; max-width: 340px !important; margin: 0 auto !important; }
         }
       `}</style>
 
       {/* HEADER */}
-      <header className="post-header" style={{
-        position: "fixed", top: 0, left: 0, right: 0, zIndex: 200, height: 70,
-        padding: "0 40px", display: "flex", alignItems: "center", justifyContent: "space-between",
-        background: "rgba(8,9,12,.96)", backdropFilter: "blur(24px)",
-        borderBottom: "1px solid rgba(0,212,255,.12)",
-      }}>
-        <Link to="/"><Logo /></Link>
-        <div className="post-nav" style={{ display: "flex", gap: 28, alignItems: "center" }}>
-          {[["Главная", "/"], ["Цены", "/tseny"], ["Блог", "/blog"]].map(([label, href]) => (
-            <Link key={href} to={href} style={{ fontFamily: "'Rajdhani'", fontSize: 13, fontWeight: 600, letterSpacing: 2, textTransform: "uppercase", color: "rgba(255,255,255,.45)", transition: "color .2s" }}
-              onMouseEnter={e => e.currentTarget.style.color="#fff"} onMouseLeave={e => e.currentTarget.style.color="rgba(255,255,255,.45)"}>{label}</Link>
-          ))}
-        </div>
-        <div style={{ display: "flex", gap: 16, alignItems: "center" }}>
-          <a href={PHONES[0].href} style={{ fontFamily: "'Rajdhani'", fontSize: 16, fontWeight: 700, color: "rgba(255,255,255,.75)" }}>{PHONES[0].label}</a>
-          <a href="/#contact" style={{ display: "inline-flex", alignItems: "center", padding: "10px 24px", background: "linear-gradient(135deg,#00d4ff,#0077ff)", color: "#fff", borderRadius: 50, fontFamily: "'Rajdhani'", fontSize: 14, fontWeight: 700, letterSpacing: 1.5, textTransform: "uppercase" }}>Записаться</a>
-        </div>
-      </header>
+      <SiteHeader />
 
       {/* BREADCRUMB + META */}
       <section className="post-hero" style={{ padding: "130px 40px 40px", maxWidth: 780, margin: "0 auto" }}>

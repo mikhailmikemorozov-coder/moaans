@@ -2,6 +2,7 @@ import { useState } from "react";
 import { Helmet } from "react-helmet-async";
 import { Link } from "react-router-dom";
 import { Logo } from "../components/Logo";
+import { SiteHeader } from "../components/SiteHeader";
 
 const PHONES = [
   { label: "+7 (965) 213-09-99", href: "tel:+79652130999" },
@@ -60,40 +61,17 @@ export default function ServicePage({ meta, color = "#ff6b00", h1, h1Accent, int
         @media (max-width:768px) {
           .sp-hero { padding:100px 20px 60px !important; }
           .sp-section { padding:60px 20px !important; }
-          .sp-header { padding:0 20px !important; }
           .sp-benefits { grid-template-columns:1fr !important; }
           .sp-btns { flex-direction:column; }
           .sp-footer-inner { flex-direction:column; align-items:flex-start !important; gap:16px !important; }
-          .sp-nav { display:none !important; }
+          .site-hdr-nav { display:none !important; }
           .sp-calc-grid { grid-template-columns:1fr !important; }
           .sp-calc-vehicle-grid { grid-template-columns:1fr 1fr !important; }
         }
       `}</style>
 
       {/* ── HEADER ── */}
-      <header className="sp-header" style={{
-        position: "fixed", top: 0, left: 0, right: 0, zIndex: 200, height: 70,
-        padding: "0 40px", display: "flex", alignItems: "center", justifyContent: "space-between",
-        background: "rgba(8,9,12,.96)", backdropFilter: "blur(24px)",
-        borderBottom: "1px solid rgba(255,107,0,.15)",
-      }}>
-        <Link to="/"><Logo /></Link>
-        <div className="sp-nav" style={{ display: "flex", gap: 28, alignItems: "center" }}>
-          <Link to="/" style={{ fontFamily: "'Rajdhani'", fontSize: 13, fontWeight: 600, letterSpacing: 2, textTransform: "uppercase", color: "rgba(255,255,255,.45)", transition: "color .2s" }}
-            onMouseEnter={e => e.currentTarget.style.color="#fff"} onMouseLeave={e => e.currentTarget.style.color="rgba(255,255,255,.45)"}>Главная</Link>
-          <Link to="/tseny" style={{ fontFamily: "'Rajdhani'", fontSize: 13, fontWeight: 600, letterSpacing: 2, textTransform: "uppercase", color: "rgba(255,255,255,.45)", transition: "color .2s" }}
-            onMouseEnter={e => e.currentTarget.style.color="#fff"} onMouseLeave={e => e.currentTarget.style.color="rgba(255,255,255,.45)"}>Цены</Link>
-          <Link to="/blog" style={{ fontFamily: "'Rajdhani'", fontSize: 13, fontWeight: 600, letterSpacing: 2, textTransform: "uppercase", color: "rgba(255,255,255,.45)", transition: "color .2s" }}
-            onMouseEnter={e => e.currentTarget.style.color="#fff"} onMouseLeave={e => e.currentTarget.style.color="rgba(255,255,255,.45)"}>Блог</Link>
-        </div>
-        <div style={{ display: "flex", gap: 16, alignItems: "center" }}>
-          <a href={PHONES[0].href} style={{ fontFamily: "'Rajdhani'", fontSize: 16, fontWeight: 700, color: "rgba(255,255,255,.75)", letterSpacing: 0.5, display: "flex", alignItems: "center", gap: 6 }}>
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" width="16" height="16"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 9.81a19.79 19.79 0 01-3.07-8.7A2 2 0 012.18 0h3a2 2 0 012 1.72 12.84 12.84 0 00.7 2.81 2 2 0 01-.45 2.11L6.91 7.09a16 16 0 006 6l.56-.56a2 2 0 012.11-.45 12.84 12.84 0 002.81.7A2 2 0 0122 14.92v2z"/></svg>
-            {PHONES[0].label}
-          </a>
-          <a href="/#contact" className="sp-btn sp-btn-grad" style={{ padding: "10px 24px", fontSize: 14 }}>Записаться</a>
-        </div>
-      </header>
+      <SiteHeader />
 
       {/* ── HERO ── */}
       <section className="sp-hero" style={{ padding: "130px 40px 80px", maxWidth: 1200, margin: "0 auto", position: "relative", overflow: "hidden" }}>

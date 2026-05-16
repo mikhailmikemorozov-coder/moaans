@@ -1,8 +1,7 @@
 import { Helmet } from "react-helmet-async";
 import { Link } from "react-router-dom";
 import { Logo } from "../components/Logo";
-
-const PHONES = [{ label: "+7 (965) 213-09-99", href: "tel:+79652130999" }];
+import { SiteHeader } from "../components/SiteHeader";
 
 const POSTS = [
   {
@@ -85,31 +84,14 @@ export default function Blog() {
         a { color: inherit; text-decoration: none; }
         .post-card:hover .post-img { transform: scale(1.04); }
         @media (max-width: 768px) {
-          .blog-header { padding: 0 20px !important; }
           .blog-hero { padding: 110px 20px 50px !important; }
           .blog-grid { padding: 0 20px 80px !important; grid-template-columns: 1fr !important; }
-          .blog-nav { display: none !important; }
+          .site-hdr-nav { display: none !important; }
         }
       `}</style>
 
       {/* HEADER */}
-      <header className="blog-header" style={{
-        position: "fixed", top: 0, left: 0, right: 0, zIndex: 200, height: 70,
-        padding: "0 40px", display: "flex", alignItems: "center", justifyContent: "space-between",
-        background: "rgba(8,9,12,.96)", backdropFilter: "blur(24px)",
-        borderBottom: "1px solid rgba(255,107,0,.15)",
-      }}>
-        <Link to="/"><Logo /></Link>
-        <div className="blog-nav" style={{ display: "flex", gap: 28, alignItems: "center" }}>
-          {[["Главная", "/"], ["Цены", "/tseny"], ["Блог", "/blog"]].map(([label, href]) => (
-            <Link key={href} to={href} style={{ fontFamily: "'Rajdhani'", fontSize: 13, fontWeight: 600, letterSpacing: 2, textTransform: "uppercase", color: "rgba(255,255,255,.45)", transition: "color .2s" }}
-              onMouseEnter={e => e.currentTarget.style.color="#fff"} onMouseLeave={e => e.currentTarget.style.color="rgba(255,255,255,.45)"}>{label}</Link>
-          ))}
-        </div>
-        <a href={PHONES[0].href} style={{ fontFamily: "'Rajdhani'", fontSize: 16, fontWeight: 700, color: "rgba(255,255,255,.75)" }}>
-          {PHONES[0].label}
-        </a>
-      </header>
+      <SiteHeader />
 
       {/* HERO */}
       <section className="blog-hero" style={{ padding: "130px 40px 50px", maxWidth: 900, margin: "0 auto" }}>

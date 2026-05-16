@@ -1,6 +1,7 @@
 import { Helmet } from "react-helmet-async";
 import { Link } from "react-router-dom";
 import { Logo } from "../components/Logo";
+import { SiteHeader } from "../components/SiteHeader";
 
 const PHONES = [
   { label: "+7 (965) 213-09-99", href: "tel:+79652130999" },
@@ -111,32 +112,14 @@ export default function Tseny() {
         a { color: inherit; text-decoration: none; }
         @media (max-width: 768px) {
           .tseny-grid { grid-template-columns: 1fr !important; }
-          .tseny-header { padding: 0 20px !important; }
           .tseny-hero { padding: 110px 20px 60px !important; }
           .tseny-main { padding: 40px 20px 80px !important; }
+          .site-hdr-nav { display: none !important; }
         }
       `}</style>
 
       {/* HEADER */}
-      <header className="tseny-header" style={{
-        position: "fixed", top: 0, left: 0, right: 0, zIndex: 200, height: 70,
-        padding: "0 40px", display: "flex", alignItems: "center", justifyContent: "space-between",
-        background: "rgba(8,9,12,.96)", backdropFilter: "blur(24px)",
-        borderBottom: "1px solid rgba(255,107,0,.15)",
-      }}>
-        <Link to="/"><Logo /></Link>
-        <div style={{ display: "flex", gap: 16, alignItems: "center" }}>
-          <a href={PHONES[0].href} style={{ fontFamily: "'Rajdhani'", fontSize: 16, fontWeight: 700, color: "rgba(255,255,255,.75)" }}>
-            {PHONES[0].label}
-          </a>
-          <a href="/#contact" style={{
-            display: "inline-flex", alignItems: "center", padding: "10px 24px",
-            background: "linear-gradient(135deg,#ff6b00,#ff0080)", color: "#fff",
-            borderRadius: 50, fontFamily: "'Rajdhani'", fontSize: 14, fontWeight: 700,
-            letterSpacing: 1.5, textTransform: "uppercase",
-          }}>Записаться</a>
-        </div>
-      </header>
+      <SiteHeader />
 
       {/* HERO */}
       <section className="tseny-hero" style={{ padding: "130px 40px 60px", maxWidth: 900, margin: "0 auto" }}>
