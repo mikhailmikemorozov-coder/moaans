@@ -2,7 +2,7 @@ import { Helmet } from "react-helmet-async";
 import { Link } from "react-router-dom";
 import { Logo } from "../../components/Logo";
 
-const PHONES = [{ label: "+7 (499) 136-55-00", href: "tel:+74991365500" }];
+const PHONES = [{ label: "+7 (965) 213-09-99", href: "tel:+79652130999" }];
 
 export default function AlmaznajaProchkaVideoPost() {
   return (
@@ -219,8 +219,8 @@ export default function AlmaznajaProchkaVideoPost() {
             Привозите диски — сделаем бесплатную диагностику и скажем точную стоимость. Ежедневно 10:00–19:00, Москва, пос. Внуково, Центральная ул., 18с2.
           </p>
           <div style={{ display: "flex", gap: 12, flexWrap: "wrap" }}>
-            <a href="tel:+74991365500" style={{ display: "inline-flex", alignItems: "center", padding: "12px 28px", background: "linear-gradient(135deg,#00d4ff,#0077ff)", color: "#fff", borderRadius: 50, fontFamily: "'Rajdhani'", fontSize: 15, fontWeight: 700, letterSpacing: 1 }}>
-              +7 (499) 136-55-00
+            <a href="tel:+79652130999" style={{ display: "inline-flex", alignItems: "center", padding: "12px 28px", background: "linear-gradient(135deg,#00d4ff,#0077ff)", color: "#fff", borderRadius: 50, fontFamily: "'Rajdhani'", fontSize: 15, fontWeight: 700, letterSpacing: 1 }}>
+              +7 (965) 213-09-99
             </a>
             <Link to="/almaznaya-prochka-diskov" style={{ display: "inline-flex", alignItems: "center", padding: "12px 28px", background: "transparent", color: "#fff", border: "1.5px solid rgba(0,212,255,.4)", borderRadius: 50, fontFamily: "'Rajdhani'", fontSize: 15, fontWeight: 700, letterSpacing: 1 }}>
               Страница услуги →

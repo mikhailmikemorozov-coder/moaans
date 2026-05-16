@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 import { Logo } from "../components/Logo";
 
 const PHONES = [
-  { label: "+7 (499) 136-55-00", href: "tel:+74991365500" },
+  { label: "+7 (965) 213-09-99", href: "tel:+79652130999" },
   { label: "+7 (925) 110-10-52", href: "tel:+79251101052" },
 ];
 

@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import { Logo } from "../components/Logo";
 
 const PHONES = [
-  { label: "+7 (499) 136-55-00", href: "tel:+74991365500" },
+  { label: "+7 (965) 213-09-99", href: "tel:+79652130999" },
   { label: "+7 (925) 110-10-52", href: "tel:+79251101052" },
 ];
 
@@ -72,7 +72,7 @@ export default function Tseny() {
     <div style={{ fontFamily: "'Nunito', sans-serif", background: "#08090c", color: "#fff", minHeight: "100vh" }}>
       <Helmet>
         <title>Прайс-лист — цены на покраску и ремонт дисков в Москве | BI Color</title>
-        <meta name="description" content="Цены на покраску дисков, алмазную проточку, ремонт и восстановление, покраску суппортов в Москве. BI Color, Внуково. +7 (499) 136-55-00" />
+        <meta name="description" content="Цены на покраску дисков, алмазную проточку, ремонт и восстановление, покраску суппортов в Москве. BI Color, Внуково." />
         <link rel="canonical" href="https://bi-color.ru/tseny" />
         <meta property="og:title" content="Прайс-лист — BI Color" />
         <meta property="og:description" content="Цены на все услуги: покраска дисков, алмазная проточка, ремонт, суппорты." />

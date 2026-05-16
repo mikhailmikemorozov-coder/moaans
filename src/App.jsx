@@ -319,7 +319,7 @@ export default function App() {
     <div style={{ fontFamily: "'Nunito', sans-serif", background: "#08090c", color: "#fff", overflowX: "hidden" }}>
       <Helmet>
         <title>Покраска и ремонт дисков в Москве — BI Color | Внуково</title>
-        <meta name="description" content="Порошковая покраска, алмазная проточка, ремонт литых дисков в Москве. Гарантия 4 года. Сервис BI Color — пос. Внуково, ежедневно 10:00–19:00. Звоните: +7 (499) 136-55-00." />
+        <meta name="description" content="Порошковая покраска, алмазная проточка, ремонт литых дисков в Москве. Гарантия 4 года. Сервис BI Color — пос. Внуково, ежедневно 10:00–19:00." />
         <link rel="canonical" href="https://bi-color.ru/" />
         <meta property="og:title" content="BI Color — покраска и ремонт дисков в Москве" />
         <meta property="og:description" content="Порошковая покраска, алмазная проточка, ремонт литых дисков. Гарантия 4 года. Москва, Внуково." />
@@ -335,7 +335,7 @@ export default function App() {
           "logo": "https://bi-color.ru/favicon-192.png",
           "image": "https://bi-color.ru/og-image.png",
           "description": "Порошковая покраска, алмазная проточка и ремонт литых дисков в Москве. Гарантия 4 года.",
-          "telephone": "+74991365500",
+          "telephone": "+79652130999",
           "address": {
             "@type": "PostalAddress",
             "streetAddress": "Центральная ул., 18с2",
@@ -607,7 +607,7 @@ export default function App() {
             </Link>
           </div>
           <div style={{ padding: "24px 32px 48px", borderTop: "1px solid rgba(255,255,255,.06)", display: "flex", flexDirection: "column", gap: 16 }}>
-            <a href="tel:+74991365500" style={{ fontFamily: "'Rajdhani'", fontSize: 22, fontWeight: 700, color: "rgba(255,255,255,.6)", letterSpacing: 1 }}>+7 (499) 136-55-00</a>
+            <a href="tel:+79652130999" style={{ fontFamily: "'Rajdhani'", fontSize: 22, fontWeight: 700, color: "rgba(255,255,255,.6)", letterSpacing: 1 }}>+7 (965) 213-09-99</a>
             <a href="tel:+79251101052" style={{ fontFamily: "'Rajdhani'", fontSize: 20, fontWeight: 700, color: "rgba(255,255,255,.45)", letterSpacing: 1 }}>+7 (925) 110-10-52</a>
             <button className="btn btn-grad" onClick={() => scrollTo("contact")} style={{ justifyContent: "center" }}>Записаться</button>
           </div>
@@ -664,8 +664,8 @@ export default function App() {
         </div>
 
         <div style={{ display: "flex", alignItems: "center", gap: 20 }}>
-          <a className="nav-phone" href="tel:+74991365500" style={{ fontFamily: "'Rajdhani'", fontSize: 17, fontWeight: 700, color: "rgba(255,255,255,.8)", letterSpacing: 0.5 }}>
-            +7 (499) 136-55-00
+          <a className="nav-phone" href="tel:+79652130999" style={{ fontFamily: "'Rajdhani'", fontSize: 17, fontWeight: 700, color: "rgba(255,255,255,.8)", letterSpacing: 0.5 }}>
+            +7 (965) 213-09-99
           </a>
           <button className="btn btn-grad btn-sm nav-cta-btn" onClick={() => scrollTo("contact")}>Записаться</button>
           <button className="hamburger" onClick={() => setMobileMenu(true)} aria-label="Меню">
@@ -1231,10 +1231,6 @@ export default function App() {
             {[
               {
                 icon: <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" width="20" height="20"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 9.81a19.79 19.79 0 01-3.07-8.7A2 2 0 012.18 0h3a2 2 0 012 1.72 12.84 12.84 0 00.7 2.81 2 2 0 01-.45 2.11L6.91 7.09a16 16 0 006 6l.56-.56a2 2 0 012.11-.45 12.84 12.84 0 002.81.7A2 2 0 0122 14.92v2z"/></svg>,
-                label: "+7 (499) 136-55-00", color: "#ff6b00", href: "tel:+74991365500",
-              },
-              {
-                icon: <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" width="20" height="20"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 9.81a19.79 19.79 0 01-3.07-8.7A2 2 0 012.18 0h3a2 2 0 012 1.72 12.84 12.84 0 00.7 2.81 2 2 0 01-.45 2.11L6.91 7.09a16 16 0 006 6l.56-.56a2 2 0 012.11-.45 12.84 12.84 0 002.81.7A2 2 0 0122 14.92v2z"/></svg>,
                 label: "+7 (925) 110-10-52", color: "#ff6b00", href: "tel:+79251101052",
               },
               {
@@ -1338,8 +1334,8 @@ export default function App() {
                 ["4. Передача данных третьим лицам", "Ваши персональные данные не передаются и не продаются третьим лицам. Данные используются исключительно сотрудниками BI Color для обработки вашей заявки."],
                 ["5. Файлы cookie и аналитика", "Сайт использует файлы cookie и инструменты веб-аналитики для улучшения качества обслуживания и анализа посещаемости. Вы можете отказаться от использования cookie в настройках браузера или через баннер на сайте."],
                 ["6. Хранение и удаление данных", "Данные хранятся в течение срока, необходимого для обработки заявки. По вашему запросу мы удалим ваши персональные данные в течение 5 рабочих дней."],
-                ["7. Ваши права", "Вы имеете право:\n• Запросить информацию о хранящихся данных\n• Потребовать исправления или удаления данных\n• Отозвать согласие на обработку данных\n\nДля реализации прав свяжитесь с нами по телефону +7 (499) 136-55-00."],
-                ["8. Контакты", "По всем вопросам, связанным с обработкой персональных данных:\nТелефон: +7 (499) 136-55-00\nАдрес: г. Москва, пос. Внуково, Центральная ул., 18с2"],
+                ["7. Ваши права", "Вы имеете право:\n• Запросить информацию о хранящихся данных\n• Потребовать исправления или удаления данных\n• Отозвать согласие на обработку данных\n\nДля реализации прав свяжитесь с нами по телефону +7 (965) 213-09-99."],
+                ["8. Контакты", "По всем вопросам, связанным с обработкой персональных данных:\nТелефон: +7 (965) 213-09-99\nАдрес: г. Москва, пос. Внуково, Центральная ул., 18с2"],
               ].map(([title, text], i) => (
                 <div key={i} style={{ marginBottom: 24 }}>
                   <div style={{ fontFamily: "'Rajdhani'", fontSize: 16, fontWeight: 700, color: "#fff", marginBottom: 8, letterSpacing: .5 }}>{title}</div>
@@ -1395,7 +1391,7 @@ export default function App() {
             </div>
             <div>
               <div style={{ fontFamily: "'Rajdhani'", fontSize: 13, fontWeight: 600, letterSpacing: 2, color: "rgba(255,255,255,.3)", marginBottom: 16, textTransform: "uppercase" }}>Контакты</div>
-              <div style={{ fontSize: 14, color: "rgba(255,255,255,.45)", marginBottom: 10 }}>+7 (499) 136-55-00</div>
+              <div style={{ fontSize: 14, color: "rgba(255,255,255,.45)", marginBottom: 10 }}>+7 (965) 213-09-99</div>
               <div style={{ fontSize: 14, color: "rgba(255,255,255,.45)", marginBottom: 10 }}>Ежедневно с 10:00 до 19:00</div>
               <div style={{ fontSize: 14, color: "rgba(255,255,255,.45)", marginBottom: 16 }}>г. Москва, пос. Внуково, Центральная ул., 18с2</div>
               <div style={{ display: "flex", gap: 10, flexWrap: "wrap" }}>
