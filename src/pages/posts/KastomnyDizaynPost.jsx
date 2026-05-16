@@ -35,13 +35,9 @@ export default function KastomnyDizaynPost() {
         .article p { font-size: 16px; color: rgba(255,255,255,.6); line-height: 1.85; margin-bottom: 20px; }
         .article strong { color: rgba(255,255,255,.9); font-weight: 700; }
         .article a { color: #bf00ff; text-decoration: underline; text-underline-offset: 3px; }
-        .step-num { font-family: 'Rajdhani', sans-serif; font-size: 40px; font-weight: 700; color: rgba(191,0,255,.2); line-height: 1; margin-bottom: 8px; }
         @media (max-width: 768px) {
           .post-hero { padding: 110px 20px 40px !important; }
           .post-body { padding: 0 20px 80px !important; }
-          .ba-grid { grid-template-columns: 1fr !important; }
-          .steps-grid { grid-template-columns: 1fr !important; }
-
         }
       `}</style>
 
@@ -72,68 +68,44 @@ export default function KastomnyDizaynPost() {
         </p>
       </section>
 
-      {/* HERO — AFTER PHOTO */}
-      <div style={{ maxWidth: 780, margin: "0 auto", padding: "0 40px 16px" }}>
-        <div style={{ borderRadius: 20, overflow: "hidden" }}>
-          <img
-            src="/custom-after.webp"
-            alt="Кастомный дизайн дисков — результат: чёрный глянец и алюмохром"
-            loading="eager"
-            style={{ width: "100%", display: "block" }}
-          />
+      {/* БЫЛО */}
+      <div style={{ padding: "0 20px 0" }}>
+        <div style={{ display: "flex", justifyContent: "center" }}>
+          <div style={{ width: "100%", maxWidth: 500, borderRadius: 20, overflow: "hidden" }}>
+            <img
+              src="/custom-before.webp"
+              alt="Диск в процессе работы — алюмохром нанесён, зоны замаскированы лентой"
+              loading="eager"
+              style={{ width: "100%", display: "block" }}
+            />
+          </div>
         </div>
-        <div style={{ marginTop: 10, fontSize: 12, color: "rgba(255,255,255,.2)", textAlign: "center" }}>
-          Готовый диск — чёрный глянец + алюмохром, финишный порошковый лак
+        <div style={{ marginTop: 10, fontSize: 12, color: "rgba(255,255,255,.2)", textAlign: "center", fontFamily: "'Rajdhani'", letterSpacing: 1.5, textTransform: "uppercase" }}>
+          Было — алюмохром нанесён, маскировка на месте
         </div>
       </div>
 
-      {/* ARTICLE BODY */}
-      <article className="article post-body" style={{ maxWidth: 780, margin: "0 auto", padding: "32px 40px 0" }}>
-        <p>
-          Клиент хотел уникальный комплект — не просто покраску в один цвет, а двухтоновый дизайн с металлическим алюмохромом на спицах и матово-глянцевым чёрным на остальных зонах. Задача решается только через жидкие краски: порошок не позволяет точно замаскировать зоны.
+      {/* PROCESS TEXT */}
+      <div style={{ maxWidth: 620, margin: "0 auto", padding: "36px 40px" }}>
+        <p style={{ fontSize: 16, color: "rgba(255,255,255,.55)", lineHeight: 1.9, textAlign: "center", margin: 0 }}>
+          Порошковый грунт, алюмохром жидкой краской, маскировка спиц — и чёрный жидкой краской поверх. После снятия маскировки граница чёткая. Финиш — порошковый лак при 200°C.
         </p>
-        <p>
-          Технологически это четыре отдельных этапа на каждом диске. Расскажем, как это работает.
-        </p>
-      </article>
-
-      {/* PROCESS STEPS */}
-      <div style={{ maxWidth: 780, margin: "0 auto", padding: "32px 40px 0" }}>
-        <div style={{ fontFamily: "'Rajdhani'", fontSize: 20, fontWeight: 700, marginBottom: 24, color: "rgba(255,255,255,.5)", letterSpacing: 1, textTransform: "uppercase" }}>Процесс — 4 этапа</div>
-        <div className="steps-grid" style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 16 }}>
-          {[
-            { n: "01", title: "Порошковый грунт", desc: "Диск очищается, дробеструится. Наносится порошковый грунт и запекается при 200°C. Создаёт адгезионную основу и защищает металл от коррозии." },
-            { n: "02", title: "Алюмохром — жидкая краска", desc: "Краска с алюминиевым пигментом распыляется поверх грунта. Только жидкий способ нанесения даёт холодный металлический блеск с алюминиевым отливом." },
-            { n: "03", title: "Маскировка + чёрный", desc: "Алюмохромные зоны закрываются маскировочной лентой. Чёрная жидкая краска наносится поверх. После снятия маскировки — чёткая граница цветов." },
-            { n: "04", title: "Порошковый лак", desc: "Финишный прозрачный лак — порошковый, запекается при 200°C. Принципиально прочнее жидкого: не желтеет, не трескается, выдерживает реагенты." },
-          ].map(({ n, title, desc }) => (
-            <div key={n} style={{ background: "rgba(255,255,255,.03)", border: "1px solid rgba(191,0,255,.12)", borderRadius: 16, padding: "24px 22px" }}>
-              <div className="step-num">{n}</div>
-              <div style={{ fontFamily: "'Rajdhani'", fontSize: 17, fontWeight: 700, marginBottom: 10, color: "#fff" }}>{title}</div>
-              <div style={{ fontSize: 14, color: "rgba(255,255,255,.5)", lineHeight: 1.75 }}>{desc}</div>
-            </div>
-          ))}
-        </div>
       </div>
 
-      {/* BEFORE / AFTER */}
-      <div style={{ maxWidth: 780, margin: "0 auto", padding: "40px 40px 0" }}>
-        <div style={{ fontFamily: "'Rajdhani'", fontSize: 20, fontWeight: 700, marginBottom: 20, color: "rgba(255,255,255,.5)", letterSpacing: 1, textTransform: "uppercase" }}>До и после</div>
-        <div className="ba-grid" style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 12 }}>
-          <div>
-            <div style={{ borderRadius: 16, overflow: "hidden", aspectRatio: "1/1" }}>
-              <img src="/custom-before.webp" alt="Диск на этапе маскировки — алюмохром нанесён, зоны закрыты лентой"
-                loading="lazy" style={{ width: "100%", height: "100%", objectFit: "cover", display: "block" }} />
-            </div>
-            <div style={{ marginTop: 8, fontSize: 13, color: "rgba(255,255,255,.3)", textAlign: "center", fontFamily: "'Rajdhani'", letterSpacing: 1 }}>ПРОЦЕСС — маскировка</div>
+      {/* СТАЛО */}
+      <div style={{ padding: "0 20px 0" }}>
+        <div style={{ display: "flex", justifyContent: "center" }}>
+          <div style={{ width: "100%", maxWidth: 500, borderRadius: 20, overflow: "hidden" }}>
+            <img
+              src="/custom-after.webp"
+              alt="Готовый диск — чёрный глянец и алюмохром на спицах"
+              loading="lazy"
+              style={{ width: "100%", display: "block" }}
+            />
           </div>
-          <div>
-            <div style={{ borderRadius: 16, overflow: "hidden", aspectRatio: "1/1" }}>
-              <img src="/custom-after.webp" alt="Готовый диск — чёрный глянец и алюмохром, финальный вид"
-                loading="lazy" style={{ width: "100%", height: "100%", objectFit: "cover", display: "block" }} />
-            </div>
-            <div style={{ marginTop: 8, fontSize: 13, color: "rgba(255,255,255,.3)", textAlign: "center", fontFamily: "'Rajdhani'", letterSpacing: 1 }}>РЕЗУЛЬТАТ</div>
-          </div>
+        </div>
+        <div style={{ marginTop: 10, fontSize: 12, color: "rgba(255,255,255,.2)", textAlign: "center", fontFamily: "'Rajdhani'", letterSpacing: 1.5, textTransform: "uppercase" }}>
+          Стало — чёрный глянец + алюмохром, финишный порошковый лак
         </div>
       </div>
 
