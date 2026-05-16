@@ -27,6 +27,12 @@ export default function PokraskaSupportov() {
         { q: "Какие цвета самые популярные?", a: "Красный — классика спортивного стиля. Жёлтый и синий — яркий акцент. Чёрный — строго и дорого, особенно с глянцем. Можем покрасить в любой цвет RAL по вашему выбору." },
         { q: "Можно ли покрасить суппорты вместе с дисками?", a: "Да, и это популярное комплексное решение. Привозите и диски, и суппорты — сделаем всё за один приезд, согласуем цвета и выдадим общую гарантию." },
       ]}
+      gallery={[
+        { src: "/support-brembo-teal.webp", alt: "Brembo суппорт покраска бирюзовый", caption: "Brembo — бирюзовый" },
+        { src: "/support-red.webp", alt: "Суппорт покраска красный глянец", caption: "Красный глянец" },
+        { src: "/support-purple-close.webp", alt: "Суппорт покраска фиолетовый крупно", caption: "Фиолетовый металлик" },
+        { src: "/support-purple-chrome.webp", alt: "Суппорт покраска фиолетовый хром", caption: "Фиолетовый хром-глянец" },
+      ]}
       relatedServices={[
         { icon: <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" width="32" height="32"><path d="M3 17.25V21h3.75L17.81 9.94l-3.75-3.75L3 17.25z"/><path d="M20.71 7.04a1 1 0 000-1.41l-2.34-2.34a1 1 0 00-1.41 0l-1.83 1.83 3.75 3.75 1.83-1.83z"/></svg>, title: "Покраска дисков", desc: "Порошковая покраска в любой цвет RAL. Отлично сочетается с покраской суппортов.", price: "от 2 500 ₽", color: "#ff6b00", href: "/pokraska-diskov-moskva" },
         { icon: <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" width="32" height="32"><path d="M6 3h12l3.3 5-9.3 13-9.3-13z"/><line x1="3" y1="8" x2="21" y2="8"/><path d="M6 3l6 5 6-5"/></svg>, title: "Алмазная проточка", desc: "Восстанавливаем заводской блеск diamond cut на станке с ЧПУ.", price: "от 5 000 ₽", color: "#00d4ff", href: "/almaznaya-prochka-diskov" },

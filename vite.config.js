@@ -53,6 +53,11 @@ const routeMeta = {
     description: 'Смотри как проходит алмазная проточка литых дисков на станке с ЧПУ — видео процесса от сервиса BI Color. Реальный результат diamond cut на многоспицевых дисках.',
     canonical: 'https://bi-color.ru/blog/almaznaya-prochka-video-protsessa',
   },
+  'blog/pokraska-supportov': {
+    title: 'Покраска суппортов: зачем, как и сколько стоит | BI Color',
+    description: 'Зачем красят тормозные суппорты, как выглядит процесс и что даёт термостойкая краска до 300°C. Разбор от мастеров BI Color в Москве.',
+    canonical: 'https://bi-color.ru/blog/pokraska-supportov',
+  },
   'blog/remont-litogo-diska-tsena': {
     title: 'Ремонт литого диска: цены и технологии | BI Color',
     description: 'Цены на ремонт литых дисков в Москве — правка, сварка, Димет. Разбираем что влияет на стоимость, когда диск восстановим, а когда нет. Сервис BI Color, Внуково.',
