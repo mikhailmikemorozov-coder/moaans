@@ -5,7 +5,7 @@ const PHONE = { label: "+7 (965) 213-09-99", href: "tel:+79652130999" };
 const NAV = [
   ["Услуги",   "/#services"],
   ["Акции",    "/#promos"],
-  ["Цены",     "/#prices"],
+  ["Цены",     "/tseny"],
   ["О нас",    "/#about"],
   ["Отзывы",   "/#reviews"],
   ["FAQ",      "/#faq"],

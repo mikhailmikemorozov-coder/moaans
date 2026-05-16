@@ -242,6 +242,11 @@ export default function ServicePage({ meta, color = "#ff6b00", h1, h1Accent, int
                   <a href={PHONES[0].href} className="sp-btn sp-btn-grad" style={{ width: "100%", justifyContent: "center", fontSize: 15 }}>
                     Позвонить
                   </a>
+                  <a href="/tseny" style={{ display: "block", marginTop: 16, fontSize: 13, color: "rgba(255,255,255,.35)", textAlign: "center", textDecoration: "none", transition: "color .2s" }}
+                    onMouseEnter={e => e.currentTarget.style.color = "rgba(255,255,255,.7)"}
+                    onMouseLeave={e => e.currentTarget.style.color = "rgba(255,255,255,.35)"}>
+                    Полный прайс-лист →
+                  </a>
                 </div>
               </div>
             </div>
