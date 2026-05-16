@@ -62,9 +62,10 @@ export default function ServicePage({ meta, color = "#ff6b00", h1, h1Accent, int
           .sp-hero { padding:100px 20px 60px !important; }
           .sp-section { padding:60px 20px !important; }
           .sp-benefits { grid-template-columns:1fr !important; }
+          .sp-trust { grid-template-columns:1fr 1fr !important; }
+          .sp-related { grid-template-columns:1fr !important; }
           .sp-btns { flex-direction:column; }
           .sp-footer-inner { flex-direction:column; align-items:flex-start !important; gap:16px !important; }
-          .site-hdr-nav { display:none !important; }
           .sp-calc-grid { grid-template-columns:1fr !important; }
           .sp-calc-vehicle-grid { grid-template-columns:1fr 1fr !important; }
         }
@@ -131,7 +132,7 @@ export default function ServicePage({ meta, color = "#ff6b00", h1, h1Accent, int
 
       {/* ── TRUST STRIP ── */}
       <section className="sp-section" style={{ padding: "48px 40px" }}>
-        <div style={{ maxWidth: 1200, margin: "0 auto", display: "grid", gridTemplateColumns: "repeat(4, 1fr)", gap: 20 }}>
+        <div className="sp-trust" style={{ maxWidth: 1200, margin: "0 auto", display: "grid", gridTemplateColumns: "repeat(4, 1fr)", gap: 20 }}>
           {GUARANTEE_ITEMS.map((g, i) => (
             <div key={i} style={{ display: "flex", alignItems: "center", gap: 10, padding: "16px 20px", background: "rgba(255,255,255,.03)", border: "1px solid rgba(255,107,0,.12)", borderRadius: 14 }}>
               <span style={{ fontSize: 22 }}>{g.icon}</span>
@@ -400,7 +401,7 @@ export default function ServicePage({ meta, color = "#ff6b00", h1, h1Accent, int
             <h2 style={{ fontFamily: "'Rajdhani'", fontWeight: 700, fontSize: "clamp(28px, 4vw, 48px)", lineHeight: 1.05, marginBottom: 40 }}>
               Другие <span style={{ background: "linear-gradient(135deg,#ff6b00,#ff0080)", WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent" }}>услуги</span>
             </h2>
-            <div style={{ display: "grid", gridTemplateColumns: "repeat(3,1fr)", gap: 20 }}>
+            <div className="sp-related" style={{ display: "grid", gridTemplateColumns: "repeat(3,1fr)", gap: 20 }}>
               {relatedServices.map((s, i) => (
                 <Link key={i} to={s.href} style={{
                   display: "block", padding: "28px 24px", borderRadius: 20,
