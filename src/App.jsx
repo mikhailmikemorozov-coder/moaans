@@ -107,7 +107,7 @@ const SERVICES = [
   {
     id: 8, emoji: "🔩", title: "Шиномонтаж",
     short: "Монтаж, демонтаж, балансировка. Работаем с любыми размерами.",
-    price: "от 300 ₽", tag: null, color: "#00d4ff", variant: 3,
+    price: "от 700 ₽", tag: null, color: "#00d4ff", variant: 3, url: "/shinomontazh-moskva",
   },
 ];
 

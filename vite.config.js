@@ -3,6 +3,11 @@ import react from '@vitejs/plugin-react'
 import { mkdirSync, readFileSync, writeFileSync } from 'fs'
 
 const routeMeta = {
+  'shinomontazh-moskva': {
+    title: 'Шиномонтаж в Москве — балансировка, монтаж шин | BI Color',
+    description: 'Шиномонтаж и балансировка в Москве: легковые от 700 ₽/колесо, джипы, рамные авто. Без записи, ежедневно 10:00–19:00. Внуково, Центральная ул. 18с2.',
+    canonical: 'https://bi-color.ru/shinomontazh-moskva',
+  },
   'pokraska-diskov-moskva': {
     title: 'Покраска дисков в Москве — порошковая покраска литых дисков | BI Color',
     description: 'Порошковая покраска литых дисков в Москве. Любой цвет RAL, трёхслойное покрытие, гарантия 4 года. Цена от 2 750 руб./диск. Сервис BI Color, Внуково.',

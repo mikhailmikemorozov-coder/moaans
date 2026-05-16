@@ -7,7 +7,8 @@ const PHONES = [
   { label: "+7 (925) 110-10-52", href: "tel:+79251101052" },
 ];
 
-const ICON_PAINT = <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" width="32" height="32"><path d="M3 17.25V21h3.75L17.81 9.94l-3.75-3.75L3 17.25z"/><path d="M20.71 7.04a1 1 0 000-1.41l-2.34-2.34a1 1 0 00-1.41 0l-1.83 1.83 3.75 3.75 1.83-1.83z"/></svg>;
+const ICON_TIRE = <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" width="32" height="32"><circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="3"/><line x1="12" y1="2" x2="12" y2="9"/><line x1="12" y1="15" x2="12" y2="22"/><line x1="2" y1="12" x2="9" y2="12"/><line x1="15" y1="12" x2="22" y2="12"/></svg>;
+const ICON_PAINT =<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" width="32" height="32"><path d="M3 17.25V21h3.75L17.81 9.94l-3.75-3.75L3 17.25z"/><path d="M20.71 7.04a1 1 0 000-1.41l-2.34-2.34a1 1 0 00-1.41 0l-1.83 1.83 3.75 3.75 1.83-1.83z"/></svg>;
 const ICON_DIAMOND = <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" width="32" height="32"><path d="M6 3h12l3.3 5-9.3 13-9.3-13z"/><line x1="3" y1="8" x2="21" y2="8"/><path d="M6 3l6 5 6-5"/></svg>;
 const ICON_WRENCH = <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" width="32" height="32"><path d="M14.7 6.3a1 1 0 000 1.4l1.6 1.6a1 1 0 001.4 0l3.77-3.77a6 6 0 01-7.94 7.94l-6.91 6.91a2.12 2.12 0 01-3-3l6.91-6.91a6 6 0 017.94-7.94l-3.76 3.76z"/></svg>;
 const ICON_FLAME = <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" width="32" height="32"><path d="M12 2C9.5 6.5 7 9 7 13a5 5 0 0010 0c0-3.5-1.5-5.5-3-7 0 1.5-.5 2.5-1 3C12.5 7 12.5 4 12 2z"/></svg>;
@@ -47,10 +48,33 @@ const PRICE_SECTIONS = [
     color: "#ff0080",
     icon: ICON_WRENCH,
     href: "/remont-diskov-moskva",
-    note: "Бесплатная диагностика ремонтопригодности",
+    note: "Бесплатная диагностика · цена зависит от степени повреждения",
     items: [
-      { name: "Правка геометрии (1 диск)", price: "от 1 500 ₽" },
-      { name: "Ремонт — Димет / сварка TIG (1 диск)", price: "от 2 500 ₽" },
+      { name: "Ремонт диска R13–R14", price: "от 1 300 ₽" },
+      { name: "Ремонт диска R15", price: "от 1 400 ₽" },
+      { name: "Ремонт диска R16", price: "от 1 600 ₽" },
+      { name: "Ремонт диска R17", price: "от 2 000 ₽" },
+      { name: "Ремонт диска R18", price: "от 2 100 ₽" },
+      { name: "Ремонт диска R19", price: "от 2 400 ₽" },
+      { name: "Ремонт диска R20", price: "от 2 700 ₽" },
+      { name: "Ремонт диска R21", price: "от 3 300 ₽" },
+      { name: "Ремонт диска R22", price: "от 3 800 ₽" },
+    ],
+  },
+  {
+    id: "shinomontazh",
+    title: "Шиномонтаж",
+    color: "#00d4ff",
+    icon: ICON_TIRE,
+    href: "/shinomontazh-moskva",
+    note: "Легковые, джипы, паркетники, рамные авто · без записи",
+    items: [
+      { name: "1 колесо R13–R16 (монтаж + балансировка)", price: "от 700 ₽" },
+      { name: "1 колесо R17–R18", price: "от 875 ₽" },
+      { name: "1 колесо R19–R22", price: "от 1 075 ₽" },
+      { name: "Комплект 4 колеса R13–R16", price: "от 2 800 ₽" },
+      { name: "Комплект 4 колеса R17–R18", price: "от 3 500 ₽" },
+      { name: "Джипы / паркетники / рамные авто", price: "цена выше — уточнять" },
     ],
   },
   {
