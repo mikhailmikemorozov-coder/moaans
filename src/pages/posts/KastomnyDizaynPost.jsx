@@ -171,8 +171,8 @@ export default function KastomnyDizaynPost() {
             Расскажите идею или принесите референс — согласуем дизайн до начала работ. Ежедневно 10:00–19:00, Москва, пос. Внуково, Центральная ул., 18с2.
           </p>
           <div style={{ display: "flex", gap: 12, flexWrap: "wrap" }}>
-            <a href="tel:+79652130999" style={{ display: "inline-flex", alignItems: "center", padding: "12px 28px", background: "linear-gradient(135deg,#bf00ff,#ff0080)", color: "#fff", borderRadius: 50, fontFamily: "'Rajdhani'", fontSize: 15, fontWeight: 700, letterSpacing: 1 }}>
-              +7 (965) 213-09-99
+            <a href="tel:+79251101052" style={{ display: "inline-flex", alignItems: "center", padding: "12px 28px", background: "linear-gradient(135deg,#bf00ff,#ff0080)", color: "#fff", borderRadius: 50, fontFamily: "'Rajdhani'", fontSize: 15, fontWeight: 700, letterSpacing: 1 }}>
+              +7 (925) 110-10-52
             </a>
             <Link to="/kastomnyy-dizayn-diskov" style={{ display: "inline-flex", alignItems: "center", padding: "12px 28px", background: "transparent", color: "#fff", border: "1.5px solid rgba(191,0,255,.4)", borderRadius: 50, fontFamily: "'Rajdhani'", fontSize: 15, fontWeight: 700, letterSpacing: 1 }}>
               Кастомный дизайн →

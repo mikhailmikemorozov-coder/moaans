@@ -5,7 +5,7 @@ import { Logo } from "../components/Logo";
 import { SiteHeader } from "../components/SiteHeader";
 
 const PHONES = [
-  { label: "+7 (965) 213-09-99", href: "tel:+79652130999" },
+  { label: "+7 (925) 110-10-52", href: "tel:+79251101052" },
   { label: "+7 (925) 110-10-52", href: "tel:+79251101052" },
 ];
 
@@ -450,7 +450,7 @@ export default function ServicePage({ meta, color = "#ff6b00", h1, h1Accent, int
           <p style={{ color: "rgba(255,255,255,.45)", marginBottom: 40, lineHeight: 1.7 }}>Бесплатная диагностика и расчёт стоимости. Ежедневно с 10:00 до 19:00.<br />Москва, пос. Внуково, Центральная ул., 18с2</p>
           <div className="sp-btns" style={{ display: "flex", gap: 16, justifyContent: "center", flexWrap: "wrap" }}>
             <a href={PHONES[0].href} className="sp-btn sp-btn-grad">{PHONES[0].label}</a>
-            <a href="https://t.me/+79652130999" target="_blank" rel="noopener noreferrer" className="sp-btn sp-btn-outline">Telegram</a>
+            <a href="tel:+79858691106" className="sp-btn sp-btn-outline">+7 (985) 869-11-06</a>
           </div>
         </div>
       </section>
