@@ -319,7 +319,8 @@ export default function App() {
     <div style={{ fontFamily: "'Nunito', sans-serif", background: "#08090c", color: "#fff", overflowX: "hidden" }}>
       <Helmet>
         <title>Покраска и ремонт дисков в Москве — BI Color | Внуково</title>
-        <meta name="description" content="Порошковая покраска, алмазная проточка, ремонт литых дисков в Москве. Гарантия 4 года. Сервис BI Color — пос. Внуково, ежедневно 10:00–19:00." />
+        <meta name="description" content="Порошковая покраска, алмазная проточка, ремонт литых дисков в Москве. Гарантия 4 года. Сервис Би Колор (BI Color) — пос. Внуково, ежедневно 10:00–19:00." />
+        <meta name="keywords" content="покраска дисков москва, би колор, Би Колор, BI Color, ремонт дисков москва, алмазная проточка, порошковая покраска дисков, реставрация дисков внуково" />
         <link rel="canonical" href="https://bi-color.ru/" />
         <meta property="og:title" content="BI Color — покраска и ремонт дисков в Москве" />
         <meta property="og:description" content="Порошковая покраска, алмазная проточка, ремонт литых дисков. Гарантия 4 года. Москва, Внуково." />
@@ -330,7 +331,7 @@ export default function App() {
           "@context": "https://schema.org",
           "@type": "AutoRepair",
           "name": "BI Color",
-          "alternateName": "Beautiful Iron Color",
+          "alternateName": ["Би Колор", "Beautiful Iron Color"],
           "url": "https://bi-color.ru",
           "logo": "https://bi-color.ru/favicon-192.png",
           "image": "https://bi-color.ru/og-image.png",
