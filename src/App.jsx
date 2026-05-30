@@ -1392,6 +1392,7 @@ export default function App() {
               <div style={{ display: "flex", gap: 10, flexWrap: "wrap" }}>
                 {[
                   { label: "ВКонтакте", color: "#4680c2", href: "https://vk.ru/club41751380" },
+                  { label: "Telegram", color: "#00d4ff", href: "https://t.me/+79652130999" },
                   { label: "Авито", color: "#00aaff", href: "https://www.avito.ru/odintsovo/predlozheniya_uslug/poroshkovaya_pokraska_diskov_restavratsiya_oshipovka_4511357658" },
                   { label: "2ГИС", color: "#27ae60", href: "https://2gis.ru/moscow/firm/70000001091871156" },
                 ].map(({ label, color, href }) => (
