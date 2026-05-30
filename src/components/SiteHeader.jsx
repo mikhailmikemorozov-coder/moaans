@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { Logo } from "./Logo";
 
-const PHONE = { label: "+7 (925) 110-10-52", href: "tel:+79251101052" };
+const PHONE = { label: "+7 (965) 213-09-99", href: "tel:+79652130999" };
 
 const NAV = [
   ["Услуги",   "/#services"],
