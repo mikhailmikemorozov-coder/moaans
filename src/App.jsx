@@ -608,7 +608,7 @@ export default function App() {
             </Link>
           </div>
           <div style={{ padding: "24px 32px 48px", borderTop: "1px solid rgba(255,255,255,.06)", display: "flex", flexDirection: "column", gap: 16 }}>
-            <a href="tel:+79251101052" style={{ fontFamily: "'Rajdhani'", fontSize: 22, fontWeight: 700, color: "rgba(255,255,255,.6)", letterSpacing: 1 }}>+7 (925) 110-10-52</a>
+            <a href="tel:+79652130999" style={{ fontFamily: "'Rajdhani'", fontSize: 22, fontWeight: 700, color: "rgba(255,255,255,.6)", letterSpacing: 1 }}>+7 (965) 213-09-99</a>
             <a href="tel:+79251101052" style={{ fontFamily: "'Rajdhani'", fontSize: 20, fontWeight: 700, color: "rgba(255,255,255,.45)", letterSpacing: 1 }}>+7 (925) 110-10-52</a>
             <button className="btn btn-grad" onClick={() => scrollTo("contact")} style={{ justifyContent: "center" }}>Записаться</button>
           </div>
@@ -665,8 +665,8 @@ export default function App() {
         </div>
 
         <div style={{ display: "flex", alignItems: "center", gap: 20 }}>
-          <a className="nav-phone" href="tel:+79251101052" style={{ fontFamily: "'Rajdhani'", fontSize: 17, fontWeight: 700, color: "rgba(255,255,255,.8)", letterSpacing: 0.5 }}>
-            +7 (925) 110-10-52
+          <a className="nav-phone" href="tel:+79652130999" style={{ fontFamily: "'Rajdhani'", fontSize: 17, fontWeight: 700, color: "rgba(255,255,255,.8)", letterSpacing: 0.5 }}>
+            +7 (965) 213-09-99
           </a>
           <button className="btn btn-grad btn-sm nav-cta-btn" onClick={() => scrollTo("contact")}>Записаться</button>
           <button className="hamburger" onClick={() => setMobileMenu(true)} aria-label="Меню">
