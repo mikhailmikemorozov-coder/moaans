@@ -16,6 +16,7 @@ import PokraskaSupportovPost from "./pages/posts/PokraskaSupportovPost";
 import Shinomontazh from "./pages/Shinomontazh";
 import KastomnyDizayn from "./pages/KastomnyDizayn";
 import KastomnyDizaynPost from "./pages/posts/KastomnyDizaynPost";
+import KastomnyDizayn2Post from "./pages/posts/KastomnyDizayn2Post";
 
 function ScrollToTop() {
   const { pathname } = useLocation();
@@ -44,6 +45,7 @@ export default function AppRouter() {
         <Route path="/shinomontazh-moskva" element={<Shinomontazh />} />
         <Route path="/kastomnyy-dizayn-diskov" element={<KastomnyDizayn />} />
         <Route path="/blog/kastomnyy-dizayn-diskov" element={<KastomnyDizaynPost />} />
+        <Route path="/blog/kastomnyy-dizayn-grafit-chernyy" element={<KastomnyDizayn2Post />} />
       </Routes>
     </>
   );

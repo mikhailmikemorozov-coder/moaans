@@ -78,6 +78,11 @@ const routeMeta = {
     description: 'Реальный кейс: двухтоновая покраска дисков — порошковый грунт, алюмохром жидкарь, маскировка, чёрный жидкарь, порошковый лак. Фото до и после, видео результата.',
     canonical: 'https://bi-color.ru/blog/kastomnyy-dizayn-diskov',
   },
+  'blog/kastomnyy-dizayn-grafit-chernyy': {
+    title: 'Кастомный дизайн дисков: графит + чёрный мат — BI Color',
+    description: 'Реальный результат: двухтоновая покраска дисков — графитовые спицы и чёрный матовый хаб. Пять фото комплекта под разными ракурсами. Кастомный дизайн BI Color, Москва.',
+    canonical: 'https://bi-color.ru/blog/kastomnyy-dizayn-grafit-chernyy',
+  },
 }
 
 function injectMeta(html, meta) {
