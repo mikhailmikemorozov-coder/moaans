@@ -79,8 +79,8 @@ const routeMeta = {
     canonical: 'https://bi-color.ru/blog/kastomnyy-dizayn-diskov',
   },
   'blog/kastomnyy-dizayn-grafit-chernyy': {
-    title: 'Кастомный дизайн дисков: графит + чёрный мат — BI Color',
-    description: 'Реальный результат: двухтоновая покраска дисков — графитовые спицы и чёрный матовый хаб. Пять фото комплекта под разными ракурсами. Кастомный дизайн BI Color, Москва.',
+    title: 'Кастомный дизайн дисков: покраска + алмазная проточка — BI Color',
+    description: 'Трёхслойная порошковая покраска разными цветами и алмазная проточка на станке с ЧПУ. Графитовые спицы и чёрный мат. Пять фото готового комплекта. BI Color, Москва.',
     canonical: 'https://bi-color.ru/blog/kastomnyy-dizayn-grafit-chernyy',
   },
 }
