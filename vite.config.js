@@ -19,8 +19,8 @@ const routeMeta = {
     canonical: 'https://bi-color.ru/almaznaya-prochka-diskov',
   },
   'remont-diskov-moskva': {
-    title: 'Ремонт дисков в Москве — правка и сварка литых дисков | BI Color',
-    description: 'Ремонт литых дисков в Москве: правка геометрии, аргонная сварка TIG, технология Димет. Бесплатная диагностика. Гарантия. Сервис BI Color, Внуково.',
+    title: 'Реставрация и ремонт дисков в Москве — правка, сварка, восстановление | BI Color',
+    description: 'Реставрация и ремонт литых дисков в Москве: правка геометрии, аргонная сварка TIG, технология Димет. Бесплатная диагностика. Гарантия 4 года. Сервис BI Color, Внуково.',
     canonical: 'https://bi-color.ru/remont-diskov-moskva',
   },
   'pokraska-supportov-moskva': {
