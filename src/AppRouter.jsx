@@ -17,6 +17,9 @@ import Shinomontazh from "./pages/Shinomontazh";
 import KastomnyDizayn from "./pages/KastomnyDizayn";
 import KastomnyDizaynPost from "./pages/posts/KastomnyDizaynPost";
 import KastomnyDizayn2Post from "./pages/posts/KastomnyDizayn2Post";
+import Polirovka from "./pages/Polirovka";
+import Himchistka from "./pages/Himchistka";
+import PolirovkaPost from "./pages/posts/PolirovkaPost";
 
 function ScrollToTop() {
   const { pathname } = useLocation();
@@ -46,6 +49,9 @@ export default function AppRouter() {
         <Route path="/kastomnyy-dizayn-diskov" element={<KastomnyDizayn />} />
         <Route path="/blog/kastomnyy-dizayn-diskov" element={<KastomnyDizaynPost />} />
         <Route path="/blog/kastomnyy-dizayn-grafit-chernyy" element={<KastomnyDizayn2Post />} />
+        <Route path="/polirovka-kuzova-moskva" element={<Polirovka />} />
+        <Route path="/himchistka-avtomobilya-moskva" element={<Himchistka />} />
+        <Route path="/blog/polirovka-kuzova-honda-crz" element={<PolirovkaPost />} />
       </Routes>
     </>
   );

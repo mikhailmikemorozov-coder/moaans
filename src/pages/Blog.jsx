@@ -5,6 +5,16 @@ import { SiteHeader } from "../components/SiteHeader";
 
 const POSTS = [
   {
+    slug: "polirovka-kuzova-honda-crz",
+    title: "Полировка кузова Honda CR-Z: убираем царапины и свили",
+    excerpt: "Чёрный кузов весь в свилях и царапинах — смотрим как проходит процесс от мойки до зеркального финиша. Фото до и после, видео процесса.",
+    date: "5 июня 2026",
+    readTime: "3 мин",
+    image: "/polish-after.webp",
+    tag: "Наши работы",
+    tagColor: "#ffd700",
+  },
+  {
     slug: "kastomnyy-dizayn-grafit-chernyy",
     title: "Кастомный дизайн: графит + чёрный мат",
     excerpt: "Три слоя порошковой краски разных цветов и алмазная проточка на станке с ЧПУ — так получается этот двухтоновый кастом. Пять ракурсов готового комплекта.",

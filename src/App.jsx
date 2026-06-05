@@ -109,6 +109,16 @@ const SERVICES = [
     short: "Монтаж, демонтаж, балансировка. Работаем с любыми размерами.",
     price: "от 700 ₽", tag: null, color: "#00d4ff", variant: 3, url: "/shinomontazh-moskva",
   },
+  {
+    id: 9, emoji: "🪞", title: "Полировка кузова",
+    short: "Устраняем царапины, свили и потёртости. Машинная полировка — кузов снова как зеркало.",
+    price: "по запросу", tag: "Новое", color: "#ffd700", variant: 0, url: "/polirovka-kuzova-moskva",
+  },
+  {
+    id: 10, emoji: "🧼", title: "Химчистка",
+    short: "Профессиональная химчистка салона и кузова. Удаляем пятна, запахи, восстанавливаем пластик.",
+    price: "по запросу", tag: "Новое", color: "#00d4ff", variant: 1, url: "/himchistka-avtomobilya-moskva",
+  },
 ];
 
 const PROMOS = [

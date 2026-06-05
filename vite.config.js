@@ -78,6 +78,21 @@ const routeMeta = {
     description: 'Реальный кейс: двухтоновая покраска дисков — порошковый грунт, алюмохром жидкарь, маскировка, чёрный жидкарь, порошковый лак. Фото до и после, видео результата.',
     canonical: 'https://bi-color.ru/blog/kastomnyy-dizayn-diskov',
   },
+  'polirovka-kuzova-moskva': {
+    title: 'Полировка кузова автомобиля в Москве | BI Color',
+    description: 'Полировка кузова в Москве: машинная полировка, устранение царапин и свилей, защитный состав. Сервис BI Color, Внуково.',
+    canonical: 'https://bi-color.ru/polirovka-kuzova-moskva',
+  },
+  'himchistka-avtomobilya-moskva': {
+    title: 'Химчистка автомобиля в Москве | BI Color',
+    description: 'Профессиональная химчистка салона и кузова автомобиля в Москве. Удаление пятен, запахов, восстановление пластика. Сервис BI Color, Внуково.',
+    canonical: 'https://bi-color.ru/himchistka-avtomobilya-moskva',
+  },
+  'blog/polirovka-kuzova-honda-crz': {
+    title: 'Полировка кузова Honda CR-Z: до и после | BI Color',
+    description: 'Реальный кейс: полировка чёрного кузова Honda CR-Z — устранение царапин, свилей и потёртостей. Фото процесса, до и после. BI Color, Москва.',
+    canonical: 'https://bi-color.ru/blog/polirovka-kuzova-honda-crz',
+  },
   'blog/kastomnyy-dizayn-grafit-chernyy': {
     title: 'Кастомный дизайн дисков: покраска + алмазная проточка — BI Color',
     description: 'Трёхслойная порошковая покраска разными цветами и алмазная проточка на станке с ЧПУ. Графитовые спицы и чёрный мат. Пять фото готового комплекта. BI Color, Москва.',
