@@ -22,7 +22,6 @@ const PRICE_SECTIONS = [
     color: "#ff6b00",
     icon: ICON_PAINT,
     href: "/pokraska-diskov-moskva",
-    note: "Скидка 15% при сдаче комплекта 4 дисков",
     items: [
       { name: "1 диск R13–R16", price: "2 750 ₽" },
       { name: "1 диск R17–R18", price: "3 250 ₽" },
@@ -159,7 +158,7 @@ export default function Tseny() {
                   <div style={{ color: section.color, flexShrink: 0 }}>{section.icon}</div>
                   <div>
                     <div style={{ fontFamily: "'Rajdhani'", fontSize: 24, fontWeight: 700 }}>{section.title}</div>
-                    <div style={{ fontSize: 13, color: "rgba(255,255,255,.35)", marginTop: 2 }}>{section.note}</div>
+                    {section.note && <div style={{ fontSize: 13, color: "rgba(255,255,255,.35)", marginTop: 2 }}>{section.note}</div>}
                   </div>
                 </div>
                 <Link to={section.href} style={{
