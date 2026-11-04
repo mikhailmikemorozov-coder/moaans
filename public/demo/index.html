@@ -222,7 +222,24 @@ table.t .by{display:block;color:var(--muted);font-size:12px}
   .sheet{padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px))}
   .log div{grid-template-columns:minmax(0,1fr)}
 }
+/* MAX: подписка по QR и переписка бота */
+.tag.max{background:color-mix(in srgb,var(--s-new) 18%,transparent);color:var(--s-new)}
+.maxq{display:flex;gap:14px;align-items:center;flex-wrap:wrap}
+.maxq>div{flex:1 1 220px;display:flex;flex-direction:column;gap:8px}
+.qr{background:#fff;border-radius:12px;padding:8px;width:128px;height:128px;flex:none;display:grid;place-items:center;color:#111;font-size:11px;text-align:center}
+.qr svg{width:100%;height:100%;display:block}
+.qr.big{width:min(280px,68vw);height:min(280px,68vw);padding:14px;margin:0 auto}
+.chat{background:var(--panel2);border-radius:16px;padding:12px;display:flex;flex-direction:column;gap:8px;max-height:360px;overflow-y:auto}
+.chat .hd{display:flex;align-items:center;gap:9px;font-weight:600;font-size:14px;padding-bottom:9px;border-bottom:1px solid var(--line)}
+.chat .hd small{display:block;font-weight:400;color:var(--muted);font-size:12px}
+.chat .av{width:30px;height:30px;border-radius:50%;background:var(--accent);color:var(--accent-ink);display:grid;place-items:center;font:800 10px var(--f-disp);flex:none}
+.bub{align-self:flex-start;max-width:90%;background:var(--panel);border:1px solid var(--line);border-radius:4px 14px 14px 14px;padding:8px 11px;font-size:14px;white-space:pre-line;overflow-wrap:anywhere}
+.bub.me{align-self:flex-end;background:var(--accent-soft);border-color:transparent;border-radius:14px 4px 14px 14px}
+.bub .t{display:block;text-align:right;font-size:11px;color:var(--muted);margin-top:4px}
+.bub .lnk{color:var(--accent);font-weight:600}
+.center{text-align:center}
 </style>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/qrcode-generator/1.4.4/qrcode.min.js"></script>
 
 </head>
 <body>
@@ -282,7 +299,7 @@ const wheelLabel=(i,q)=>q===4?POS4[i]:'Диск '+(i+1);
 
 /* ---------- данные ---------- */
 let db, user='Хозяин', view='today', sheet=null, modal=null, draft;
-const KEY='bicolor-proto-v1';
+const KEY='bicolor-proto-v2';
 const base=o=>o.lines.reduce((s,l)=>s+l.unit*l.qty,0);
 const total=o=>Math.round(base(o)*(o.express?1.5:1));
 const paid=o=>o.pays.reduce((s,p)=>s+p.amount,0);
@@ -293,15 +310,15 @@ const L=(sid,r,qty,by,at,extra,unit)=>{const s=svcById(sid);return{sid,name:s.na
 
 function seed(){
   const C=[
-    {id:'c1',name:'Сергей Волков',phone:'+79161234567',cars:['BMW X5','Toyota Camry'],note:'Постоянный. Платит переводом.'},
+    {id:'c1',name:'Сергей Волков',phone:'+79161234567',cars:['BMW X5','Toyota Camry'],note:'Постоянный. Платит переводом.',max:true},
     {id:'c2',name:'Артём',phone:'+79035550112',cars:['Kia K5'],note:''},
-    {id:'c3',name:'Ильдар',phone:'+79267771020',cars:['Mercedes E-класс'],note:'Торгуется на выдаче — цену фиксировать при приёмке.'},
-    {id:'c4',name:'Олег (перекуп)',phone:'+79859990011',cars:['Kia Rio','Hyundai Solaris'],note:'Привозит 2–3 комплекта в месяц.'},
+    {id:'c3',name:'Ильдар',phone:'+79267771020',cars:['Mercedes E-класс'],note:'Торгуется на выдаче — цену фиксировать при приёмке.',max:true},
+    {id:'c4',name:'Олег (перекуп)',phone:'+79859990011',cars:['Kia Rio','Hyundai Solaris'],note:'Привозит 2–3 комплекта в месяц.',max:true},
     {id:'c5',name:'Наталья',phone:'+79154443322',cars:['Mazda CX-5'],note:''},
     {id:'c6',name:'Денис',phone:'+79998887766',cars:['VW Tiguan'],note:''},
   ];
   const O=[];
-  const mk=(o)=>{O.push(Object.assign({express:false,kit:['Без резины'],defects:[],photos:{},stage:[],pays:[],log:[],type:'Литые',color:'',comment:'',notified:false},o))};
+  const mk=(o)=>{O.push(Object.assign({express:false,kit:['Без резины'],defects:[],photos:{},stage:[],pays:[],log:[],type:'Литые',color:'',comment:'',notified:false,msgs:[]},o))};
   mk({id:'o1030',num:1030,clientId:'c1',car:'Toyota Camry',radius:'R17',qty:4,color:'Графит',status:'done',due:dayOff(-62),created:ts(-65,11),
       lines:[L('paint','R17',4,'Хозяин',ts(-65,11))],pays:[{amount:13000,method:'Перевод',at:ts(-62,17),by:'Хозяин'}],log:[{at:ts(-65,11),by:'Хозяин',text:'Принят'},{at:ts(-62,17),by:'Хозяин',text:'Выдан, оплата 13 000 ₽ переводом'}]});
   mk({id:'o1034',num:1034,clientId:'c1',car:'BMW X5',radius:'R20',qty:4,status:'done',due:dayOff(-30),created:ts(-32,12),
@@ -329,10 +346,59 @@ function seed(){
       log:[{at:ts(-5,11),by:'Хозяин',text:'Принят'},{at:ts(-4,10),by:'Напарник',text:'В работе'}]});
   mk({id:'o1046',num:1046,clientId:'c6',car:'VW Tiguan',radius:'R18',qty:4,status:'ready',due:dayOff(-1),created:ts(-6,15),
       lines:[L('lathe','R18',4,'Напарник',ts(-6,15))],log:[{at:ts(-6,15),by:'Напарник',text:'Принят'},{at:ts(-1,17),by:'Напарник',text:'Готово'}]});
+  // переписка бота по заказам подписанных клиентов
+  for(const o of O){const c=C.find(x=>x.id===o.clientId);if(!c.max||o.status==='done')continue;
+    const ex=o.lines.filter(l=>l.extra);o.lines=o.lines.filter(l=>!l.extra);
+    o.msgs.push({at:o.created,text:botText('new',o,null,C)});o.lines.push(...ex);
+    if(['work','ready'].includes(o.status))o.msgs.push({at:o.created+86400000,text:botText('work',o,null,C)});
+    const x=o.lines.find(l=>l.extra);if(x)o.msgs.push({at:x.at,text:botText('extra',o,x,C)});
+    if(o.status==='ready')o.msgs.push({at:o.log[o.log.length-1].at,text:botText('ready',o,null,C)});
+    o.msgs.sort((a,b)=>a.at-b.at)}
   return{clients:C,orders:O,seq:1047,visits:[
     {time:'14:30',name:'Новый клиент',phone:'+79261112233',what:'Покраска R17, звонил вчера'},
     {time:'17:00',name:'Артём',phone:'+79035550112',what:'Второй комплект, проточка R18'},
   ]};
+}
+/* ---------- MAX: тексты бота ---------- */
+const BOT='bicolor_bot', ADDR='Внуково, Центральная ул. 18с2';
+const maxLink=o=>`https://max.ru/${BOT}?start=z${o.num}`;
+function botText(kind,o,x,cl){
+  const c=(cl||db.clients).find(k=>k.id===o.clientId);const nm=c.name==='Клиент'?'':c.name.split(' ')[0].replace(/[()]/g,'');const car=o.car&&o.car!=='—'?o.car:'';
+  const tot=total(o), lf=left(o), paid=tot-lf;
+  switch(kind){
+    case 'new':return`${nm?nm+', з':'З'}дравствуйте! Заказ №${o.num} принят.\n${car?car+' · ':''}${o.radius} × ${o.qty}\nСумма: ${rub(tot)}${paid?`, предоплата ${rub(paid)}`:''}\nГотовность: ${+o.due.slice(8)} ${MONTHS[+o.due.slice(5,7)-1]}\nАкт приёмки с фото: bi-color.ru/z/${o.num}`;
+    case 'work':return`Заказ №${o.num} взяли в работу. Напишем, как только будет готово.`;
+    case 'wait':return`Заказ №${o.num}: ждём материал${o.comment?` (${o.comment})`:''}. Срок может сдвинуться — предупредим.`;
+    case 'extra':return`По заказу №${o.num} нашли дополнительную работу: ${x.name}, +${rub(x.unit*x.qty)}.\nНовый итог: ${rub(tot)}. Если есть вопросы — просто ответьте здесь.`;
+    case 'ready':return`Готово! Диски ${o.radius}${car?` (${car})`:''} можно забирать.\nК оплате: ${rub(lf)}\nЕжедневно 10:00–19:00, ${ADDR}\nФото «было / стало»: bi-color.ru/z/${o.num}`;
+    case 'done':return`Спасибо, что выбрали BI Color! Если что-то будет не так — просто ответьте на это сообщение.`;
+    case 'hello':return`Здравствуйте! Это бот мастерской BI Color. Сюда будут приходить статусы заказа №${o.num} и фото.`;
+  }
+}
+const ST_MSG={work:'work',wait:'wait',ready:'ready'};
+function notify(o,kind,x){const c=client(o.clientId);if(!c.max)return false;
+  const text=botText(kind,o,x);o.msgs=o.msgs||[];o.msgs.push({at:Date.now(),text});logTo(o,'MAX: '+text.split('\n')[0]);return true}
+function qrSvg(text){
+  try{if(window.qrcode){const q=qrcode(0,'M');q.addData(text);q.make();return q.createSvgTag({cellSize:4,margin:0,scalable:true})}}catch(e){}
+  return'QR-код не загрузился — проверьте интернет'}
+function chatHtml(o){
+  const c=client(o.clientId);const ms=o.msgs||[];
+  return`<div class="chat"><div class="hd"><span class="av">BI</span><div>BI Color — мастерская<small>бот в MAX · так видит ${esc(c.name.split(' ')[0])}</small></div></div>
+    ${ms.length?ms.map(m=>`<div class="bub${m.me?' me':''}">${esc(m.text).replace(/(bi-color\.ru\/z\/\d+)/g,'<span class="lnk">$1</span>')}<span class="t">${when(m.at)}</span></div>`).join(''):'<p class="hint">По этому заказу бот ещё ничего не отправлял.</p>'}</div>`;
+}
+function maxCard(o,msg){
+  const c=client(o.clientId);
+  if(c.max)return`<div class="card"><h3>Клиенту в MAX <span class="tag max" style="text-transform:none;letter-spacing:0;margin-left:4px">подписан</span></h3>
+    ${chatHtml(o)}
+    ${o.status!=='done'?`<textarea class="msg" id="msg" rows="3">${esc(msg)}</textarea>
+    <div class="actions"><button class="btn sm primary" data-act="sendmax">Отправить в MAX</button><button class="btn sm" data-act="copymsg">Скопировать текст</button></div>`:''}
+    <p class="hint">Статусы «Принят», «В работе», «Ждём материал», «Готово», доплаты и выдача уходят клиенту сами — кнопку нажимать не нужно.</p></div>`;
+  return`<div class="card"><h3>Клиенту в MAX <span class="tag" style="text-transform:none;letter-spacing:0;margin-left:4px">не подписан</span></h3>
+    <div class="maxq"><div class="qr">${qrSvg(maxLink(o))}</div><div>
+      <b>Пусть клиент наведёт камеру на QR</b><span class="hint">Откроется бот BI Color в MAX. Клиент нажимает «Начать» — бот сам привяжется к заказу №${o.num} и пришлёт акт приёмки. В следующий раз QR не понадобится.</span>
+      <div class="actions"><button class="btn sm" data-act="qr" data-v="${o.id}">Показать QR крупно</button><button class="btn sm" data-act="subscribe" data-v="${o.id}">Демо: клиент отсканировал</button></div></div></div>
+    ${o.status==='ready'||o.status==='work'?`<div class="lbl">Нет MAX — по старинке</div><textarea class="msg" id="msg" rows="3">${esc(msg)}</textarea>
+    <div class="actions"><button class="btn sm" data-act="copymsg">Скопировать текст</button>${o.notified?'<span class="tag" style="color:var(--s-ready)">клиенту сообщили</span>':`<button class="btn sm" data-act="notified">Отметить: позвонил / написал</button>`}</div>`:''}</div>`;
 }
 function load(){try{const s=localStorage.getItem(KEY);if(s){db=JSON.parse(s);return}}catch(e){}db=seed()}
 function save(){try{localStorage.setItem(KEY,JSON.stringify(db))}catch(e){}}
@@ -546,8 +612,10 @@ function acceptDraft(){
   db.orders.push(o);
   const secs=d.started?Math.round((now-d.started)/1000):0;
   db.visits=db.visits.filter(v=>digits(v.phone)!==digits(c.phone));
+  const sent=notify(o,'new');
   draft=newDraft();save();view='board';sheet={type:'order',id:o.id};render();
-  toast(`Заказ №${o.num} принят${secs?` за ${Math.floor(secs/60)}:${pad(secs%60)}`:''}. Сумма зафиксирована: ${rub(total(o))}`);
+  if(!sent){modal={kind:'qr',id:o.id};renderModal()}
+  toast(`Заказ №${o.num} принят${secs?` за ${Math.floor(secs/60)}:${pad(secs%60)}`:''}. Сумма ${rub(total(o))}`+(sent?' · акт ушёл клиенту в MAX':''));
 }
 
 /* ---------- карточка заказа / клиента ---------- */
@@ -555,11 +623,12 @@ function renderLayer(){
   const el=$('#layer');
   if(!sheet){el.innerHTML='';return}
   el.innerHTML=`<div class="back" data-act="close"></div><div class="sheet" role="dialog" aria-modal="true">${sheet.type==='order'?sOrder(order(sheet.id)):sClient(client(sheet.id))}</div>`;
+  const ch=el.querySelector('.chat');if(ch)ch.scrollTop=ch.scrollHeight;
 }
 function sOrder(o){
   const c=client(o.clientId);const st=o.status;const idx=STATUSES.findIndex(s=>s.id===st);const lf=left(o);
   const late=st!=='done'&&o.due<TODAY;
-  const msg=`Здравствуйте, ${c.name.split(' ')[0]}! Ваши диски ${o.radius} (${o.car}) готовы. К оплате: ${rub(lf)}. Ждём вас ежедневно 10:00–19:00, Внуково, Центральная ул. 18с2. Фото работы: bi-color.ru/z/${o.num}`;
+  const msg=st==='ready'?`Здравствуйте, ${c.name.split(' ')[0]}! Ваши диски ${o.radius} (${o.car}) готовы. К оплате: ${rub(lf)}. Ждём вас ежедневно 10:00–19:00, ${ADDR}. Фото работы: bi-color.ru/z/${o.num}`:'';
   return`<div class="sh-top"><div><h2>№${o.num} · ${esc(c.name)}</h2><div style="display:flex;gap:6px;margin-top:6px;flex-wrap:wrap"><span class="tag st s-${st}"><i class="dot"></i>${stName(st)}</span>
     <span class="tag ${late?'late':o.due===TODAY?'today':''}">${st==='done'?'выдан':(late?'просрочен, срок ':'срок ')+fmtDay(o.due)}</span>${o.express?'<span class="tag today">экспресс +50%</span>':''}</div></div><button class="x" data-act="close" aria-label="Закрыть">×</button></div>
 
@@ -585,10 +654,7 @@ function sOrder(o){
     <div class="actions">${['Наличные','Перевод'].map(m=>chip(m,'paym',m,(sheet.pm||'Наличные')===m)).join('')}</div>
     <button class="btn ok big" data-act="issue">Получил ${rub(lf)} и выдал</button></div>`:''}
 
-  ${st==='ready'||st==='work'?`<div class="card"><h3>Сообщение клиенту</h3>
-    <textarea class="msg" id="msg" rows="3">${esc(msg)}</textarea>
-    <div class="actions"><button class="btn sm" data-act="copymsg">Скопировать текст</button>${o.notified?'<span class="tag" style="color:var(--s-ready)">клиенту сообщили</span>':`<button class="btn sm" data-act="notified">Отметить: позвонил / написал</button>`}</div>
-    <p class="hint">В рабочей версии это уйдёт в мессенджер одной кнопкой, а ссылка откроет фото «было / стало».</p></div>`:''}
+  ${maxCard(o,msg)}
 
   <div class="card"><h3>Приёмка: комплектность и дефекты</h3>
     <div class="chips">${o.kit.map(k=>`<span class="tag">${esc(k)}</span>`).join('')||'<span style="color:var(--muted)">не отмечено</span>'}</div>
@@ -611,7 +677,7 @@ function addxForm(){
 }
 function sClient(c){
   const os=db.orders.filter(o=>o.clientId===c.id).sort((a,b)=>b.created-a.created);
-  return`<div class="sh-top"><div><h2>${esc(c.name)}</h2><div class="phone num" style="margin-top:6px">${fmtPhone(c.phone)}</div></div><button class="x" data-act="close" aria-label="Закрыть">×</button></div>
+  return`<div class="sh-top"><div><h2>${esc(c.name)}</h2><div style="display:flex;gap:8px;align-items:center;margin-top:6px;flex-wrap:wrap"><span class="phone num">${fmtPhone(c.phone)}</span>${c.max?'<span class="tag max">MAX: подписан</span>':'<span class="tag">MAX: не подписан</span>'}</div></div><button class="x" data-act="close" aria-label="Закрыть">×</button></div>
   <div class="stats" style="grid-template-columns:repeat(3,minmax(0,1fr))">
     <div class="stat"><div class="k">Заказов</div><div class="v num">${os.length}</div></div>
     <div class="stat"><div class="k">Всего</div><div class="v num">${rub(os.reduce((s,o)=>s+total(o),0))}</div></div>
@@ -624,6 +690,14 @@ function sClient(c){
 function mTarget(){return modal.kind==='draft'?draft:order(modal.id)}
 function renderModal(){
   const el=$('#modal');if(!modal){el.innerHTML='';return}
+  if(modal.kind==='qr'){const o=order(modal.id);
+    el.innerHTML=`<div class="modal" data-act="mclose-bg"><div class="mbox" role="dialog" aria-modal="true">
+      <div class="mtop"><h3>№${o.num} · уведомления в MAX</h3><button class="x" data-act="mclose" aria-label="Закрыть">×</button></div>
+      <div class="qr big">${qrSvg(maxLink(o))}</div>
+      <p class="center" style="margin:0;font-weight:600;font-size:17px">Наведите камеру телефона на код<br>и нажмите «Начать»</p>
+      <p class="hint center">Бот BI Color пришлёт акт приёмки с фото, а потом напишет, когда диски будут готовы.</p>
+      <div class="actions" style="justify-content:center"><button class="btn" data-act="subscribe" data-v="${o.id}">Демо: клиент отсканировал</button><button class="btn primary" data-act="mclose">Клиент без MAX</button></div>
+    </div></div>`;return}
   const t=mTarget();const w=modal.w;const list=t.defects.map((d,i)=>({...d,i})).filter(d=>d.w===w);
   el.innerHTML=`<div class="modal" data-act="mclose-bg"><div class="mbox" role="dialog" aria-modal="true">
     <div class="mtop"><h3>${wheelLabel(w,t.qty)} · ${t.radius}</h3><button class="x" data-act="mclose" aria-label="Закрыть">×</button></div>
@@ -656,17 +730,24 @@ const A={
   order:(v)=>{sheet={type:'order',id:v};renderLayer()},
   client:(v)=>{sheet={type:'client',id:v};renderLayer()},
   close:()=>{sheet=null;render()},
-  next:(v)=>{const o=order(v);o.status=nextSt(o.status);logTo(o,stName(o.status));save();render();toast(`№${o.num} → ${stName(o.status)}`)},
-  status:(v)=>{const o=order(sheet.id);if(v==='done'){toast('Выдача — кнопкой «Получил и выдал»: так деньги точно запишутся');return}if(o.status===v)return;o.status=v;logTo(o,stName(v));save();render()},
+  next:(v)=>{const o=order(v);o.status=nextSt(o.status);logTo(o,stName(o.status));const s=ST_MSG[o.status]&&notify(o,ST_MSG[o.status]);save();render();toast(`№${o.num} → ${stName(o.status)}`+(s?' · клиенту ушло в MAX':''))},
+  status:(v)=>{const o=order(sheet.id);if(v==='done'){toast('Выдача — кнопкой «Получил и выдал»: так деньги точно запишутся');return}if(o.status===v)return;o.status=v;logTo(o,stName(v));const s=ST_MSG[v]&&notify(o,ST_MSG[v]);save();render();if(s)toast(`${stName(v)} · клиенту ушло сообщение в MAX`)},
   paym:(v)=>{sheet.pm=v;renderLayer()},
-  issue:()=>{const o=order(sheet.id);const lf=left(o);const m=sheet.pm||'Наличные';if(lf>0)o.pays.push({amount:lf,method:m,at:Date.now(),by:user});o.status='done';logTo(o,`Выдан${lf?`, оплата ${rub(lf)} (${m.toLowerCase()})`:''}`);save();render();toast(`№${o.num} выдан, деньги записаны в «Получено сегодня»`)},
+  issue:()=>{const o=order(sheet.id);const lf=left(o);const m=sheet.pm||'Наличные';if(lf>0)o.pays.push({amount:lf,method:m,at:Date.now(),by:user});o.status='done';logTo(o,`Выдан${lf?`, оплата ${rub(lf)} (${m.toLowerCase()})`:''}`);notify(o,'done');save();render();toast(`№${o.num} выдан, деньги записаны в «Получено сегодня»`)},
   addx:()=>{$('#addx').innerHTML=addxForm()},
   xsvc:(v)=>{sheet.xs=v;$('#addx').innerHTML=addxForm()},
   xcancel:()=>{sheet.xs=null;$('#addx').innerHTML=`<button class="btn sm" data-act="addx">+ Добавить работу (доплата)</button>`},
   xsave:()=>{const o=order(sheet.id);const name=$('#x-name').value.trim();const p=+$('#x-price').value.replace(/\D/g,'');if(!name||!p){toast('Укажите, что сделали, и сумму');return}
-    o.lines.push({sid:sheet.xs||'other',name,unit:p,qty:1,by:user,at:Date.now(),extra:true});logTo(o,`Доплата: ${name} — +${rub(p)}`);sheet.xs=null;save();render();toast(`Доплата добавлена. Новый итог: ${rub(total(o))}`)},
+    const x={sid:sheet.xs||'other',name,unit:p,qty:1,by:user,at:Date.now(),extra:true};o.lines.push(x);logTo(o,`Доплата: ${name} — +${rub(p)}`);const s=notify(o,'extra',x);sheet.xs=null;save();render();toast(`Доплата добавлена. Новый итог: ${rub(total(o))}`+(s?' · клиент увидит в MAX':''))},
   notified:()=>{const o=order(sheet.id);o.notified=true;logTo(o,'Клиенту сообщили');save();renderLayer()},
   copymsg:()=>copy($('#msg').value),
+  sendmax:()=>{const o=order(sheet.id);const t=$('#msg').value.trim();if(!t){toast('Напишите текст сообщения');return}
+    o.msgs.push({at:Date.now(),text:t});o.notified=true;logTo(o,'MAX: '+t.split('\n')[0]);save();renderLayer();toast('Отправлено в MAX')},
+  qr:(v)=>{modal={kind:'qr',id:v};renderModal()},
+  subscribe:(v)=>{const o=order(v);const c=client(o.clientId);c.max=true;o.msgs=o.msgs||[];
+    o.msgs.push({at:Date.now(),text:'Начать',me:true});o.msgs.push({at:Date.now(),text:botText('hello',o)});
+    o.msgs.push({at:Date.now(),text:botText(o.status==='ready'?'ready':'new',o)});logTo(o,'Клиент подписался на уведомления в MAX');
+    modal=null;renderModal();save();if(sheet)renderLayer();else render();toast(`${c.name.split(' ')[0]} подписан — бот прислал ${o.status==='ready'?'сообщение о готовности':'акт приёмки'}`)},
   copy:(v)=>copy(v),
   savenote:(v)=>{client(v).note=$('#cnote').value.trim();save();toast('Заметка сохранена')},
   intakefor:(v)=>{const c=client(v);draft=newDraft();draft.clientId=c.id;draft.phone=fmtPhone(c.phone);draft.name=c.name;draft.car=c.cars[0]||'';view='intake';sheet=null;render()},
