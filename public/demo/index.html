@@ -506,7 +506,10 @@ function vBook(){
   <div class="days">${days.map(d=>{const n=db.visits.filter(v=>v.day===d&&!v.orderNum).length;return`<button class="day ${d===bookDay?'on':''}" data-act="bday" data-v="${d}"><b>${dayLbl(d)}</b><span>${n?n+' '+(n===1?'запись':n<5?'записи':'записей'):'свободно'}</span></button>`}).join('')}</div>
   <div class="list">${rows||'<div class="empty">На сегодня время уже прошло — выберите другой день</div>'}</div>`;
 }
-function bkClient(v){const c=byPhone(v.phone);if(!c)return'';const n=db.orders.filter(o=>o.clientId===c.id).length;
+function bkClient(v){const c=byPhone(v.phone);
+  if(!c){const dq=digits(v.phone),lq=v.name.trim().toLowerCase();if(dq.length<3&&lq.length<2)return'';
+    const m=db.clients.filter(k=>(dq.length>=3&&digits(k.phone).includes(dq))||(lq.length>=2&&k.name.toLowerCase().includes(lq))).slice(0,4);
+    return m.length?`<div class="sugg">${m.map(k=>`<button data-act="bkpick" data-v="${k.id}"><span><b>${esc(k.name)}</b>${k.cars.length?' · '+esc(k.cars.join(', ')):''}</span><span class="num">${fmtPhone(k.phone)}</span></button>`).join('')}</div>`:''}const n=db.orders.filter(o=>o.clientId===c.id).length;
   return`<p class="hint">Уже был у нас: ${n} ${n===1?'заказ':n<5?'заказа':'заказов'}${c.cars.length?' · '+esc(c.cars.join(', ')):''}${c.max?' · напоминание придёт в MAX накануне':''}</p>`}
 function bookForm(){const v=modal.v;const busy=db.visits.filter(x=>x.day===v.day&&x.id!==v.id).map(x=>x.time);
   const days=Array.from({length:10},(_,i)=>dayOff(i));if(!days.includes(v.day))days.push(v.day);
@@ -815,6 +818,7 @@ const A={
   bday:(v)=>{bookDay=v;render()},
   bnew:(v)=>{modal={kind:'book',v:{id:null,day:bookDay,time:v||'',phone:'',name:'',car:'',svc:[],note:'',orderNum:null}};renderModal();setTimeout(()=>$('#bk-phone')?.focus(),50)},
   bedit:(v)=>{const x=db.visits.find(k=>k.id===v);modal={kind:'book',v:{...x,svc:[...(x.svc||[])]}};renderModal()},
+  bkpick:(v)=>{const c=client(v),b=modal.v;b.phone=c.phone;b.name=c.name;if(c.cars[0])b.car=c.cars[0];renderModal()},
   bkday:(v)=>{modal.v.day=v;renderModal()},
   bktime:(v)=>{modal.v.time=v;renderModal()},
   bksvc:(v)=>{const a=modal.v.svc;const i=a.indexOf(v);if(i>=0)a.splice(i,1);else a.push(v);renderModal()},
@@ -863,7 +867,8 @@ document.addEventListener('input',e=>{
   const el=e.target;
   if(el.id==='csearch'){$('#clist').innerHTML=clientRows(el.value);return}
   if(el.dataset.bk&&modal&&modal.kind==='book'){const v=modal.v;v[el.dataset.bk]=el.value;
-    if(el.dataset.bk==='phone'){el.classList.remove('err');const c=byPhone(el.value);if(c){if(!v.name){v.name=c.name;$('#bk-name').value=c.name}if(!v.car&&c.cars[0]){v.car=c.cars[0];$('#bk-car').value=v.car}}$('#bk-c').innerHTML=bkClient(v)}
+    if(el.dataset.bk==='phone'){el.classList.remove('err');const c=byPhone(el.value);if(c){if(!v.name){v.name=c.name;$('#bk-name').value=c.name}if(!v.car&&c.cars[0]){v.car=c.cars[0];$('#bk-car').value=v.car}}}
+    if(el.dataset.bk==='phone'||el.dataset.bk==='name')$('#bk-c').innerHTML=bkClient(v)
     return}
   const k=el.dataset.in;if(!k)return;touch();
   if(k==='unit'){const l=draft.lines[+el.dataset.i];l.unit=+el.value.replace(/\D/g,'')||0;l.edited=true;el.closest('.ln').querySelector('.s').textContent=rub(l.unit*l.qty);fillTotal();return}
