@@ -233,7 +233,7 @@ table.t .by{display:block;color:var(--muted);font-size:12px}
 .visit button.i{background:none;border:0;padding:0;text-align:left}
 .visit.gone{opacity:.55}
 .vh .btn{flex:none}
-/* MAX: подписка по QR и переписка бота */
+/* Telegram: подписка по QR и переписка бота */
 .tag.max{background:color-mix(in srgb,var(--s-new) 18%,transparent);color:var(--s-new)}
 .maxq{display:flex;gap:14px;align-items:center;flex-wrap:wrap}
 .maxq>div{flex:1 1 220px;display:flex;flex-direction:column;gap:8px}
@@ -375,9 +375,9 @@ function seed(){
     V('v6',4,'10:30','Лиза','+79160001122','Audi Q5',['lathe'],''),
   ]};
 }
-/* ---------- MAX: тексты бота ---------- */
-const BOT='bicolor_bot', ADDR='Внуково, Центральная ул. 18с2';
-const maxLink=o=>`https://max.ru/${BOT}?start=z${o.num}`;
+/* ---------- Telegram: тексты бота ---------- */
+const BOT='bi_color_bot', ADDR='Внуково, Центральная ул. 18с2';
+const maxLink=o=>`https://t.me/${BOT}?start=z${o.num}`;
 function botText(kind,o,x,cl){
   const c=(cl||db.clients).find(k=>k.id===o.clientId);const nm=c.name==='Клиент'?'':c.name.split(' ')[0].replace(/[()]/g,'');const car=o.car&&o.car!=='—'?o.car:'';
   const tot=total(o), lf=left(o), paid=tot-lf;
@@ -393,27 +393,27 @@ function botText(kind,o,x,cl){
 }
 const ST_MSG={work:'work',wait:'wait',ready:'ready'};
 function notify(o,kind,x){const c=client(o.clientId);if(!c.max)return false;
-  const text=botText(kind,o,x);o.msgs=o.msgs||[];o.msgs.push({at:Date.now(),text});logTo(o,'MAX: '+text.split('\n')[0]);return true}
+  const text=botText(kind,o,x);o.msgs=o.msgs||[];o.msgs.push({at:Date.now(),text});logTo(o,'Telegram: '+text.split('\n')[0]);return true}
 function qrSvg(text){
   try{if(window.qrcode){const q=qrcode(0,'M');q.addData(text);q.make();return q.createSvgTag({cellSize:4,margin:0,scalable:true})}}catch(e){}
   return'QR-код не загрузился — проверьте интернет'}
 function chatHtml(o){
   const c=client(o.clientId);const ms=o.msgs||[];
-  return`<div class="chat"><div class="hd"><span class="av">BI</span><div>BI Color — мастерская<small>бот в MAX · так видит ${esc(c.name.split(' ')[0])}</small></div></div>
+  return`<div class="chat"><div class="hd"><span class="av">BI</span><div>BI Color — мастерская<small>бот в Telegram · так видит ${esc(c.name.split(' ')[0])}</small></div></div>
     ${ms.length?ms.map(m=>`<div class="bub${m.me?' me':''}">${esc(m.text).replace(/(bi-color\.ru\/z\/\d+)/g,'<span class="lnk">$1</span>')}<span class="t">${when(m.at)}</span></div>`).join(''):'<p class="hint">По этому заказу бот ещё ничего не отправлял.</p>'}</div>`;
 }
 function maxCard(o,msg){
   const c=client(o.clientId);
-  if(c.max)return`<div class="card"><h3>Клиенту в MAX <span class="tag max" style="text-transform:none;letter-spacing:0;margin-left:4px">подписан</span></h3>
+  if(c.max)return`<div class="card"><h3>Клиенту в Telegram <span class="tag max" style="text-transform:none;letter-spacing:0;margin-left:4px">подписан</span></h3>
     ${chatHtml(o)}
     ${o.status!=='done'?`<textarea class="msg" id="msg" rows="3">${esc(msg)}</textarea>
-    <div class="actions"><button class="btn sm primary" data-act="sendmax">Отправить в MAX</button><button class="btn sm" data-act="copymsg">Скопировать текст</button></div>`:''}
+    <div class="actions"><button class="btn sm primary" data-act="sendmax">Отправить в Telegram</button><button class="btn sm" data-act="copymsg">Скопировать текст</button></div>`:''}
     <p class="hint">Статусы «Принят», «В работе», «Ждём материал», «Готово», доплаты и выдача уходят клиенту сами — кнопку нажимать не нужно.</p></div>`;
-  return`<div class="card"><h3>Клиенту в MAX <span class="tag" style="text-transform:none;letter-spacing:0;margin-left:4px">не подписан</span></h3>
+  return`<div class="card"><h3>Клиенту в Telegram <span class="tag" style="text-transform:none;letter-spacing:0;margin-left:4px">не подписан</span></h3>
     <div class="maxq"><div class="qr">${qrSvg(maxLink(o))}</div><div>
-      <b>Пусть клиент наведёт камеру на QR</b><span class="hint">Откроется бот BI Color в MAX. Клиент нажимает «Начать» — бот сам привяжется к заказу №${o.num} и пришлёт акт приёмки. В следующий раз QR не понадобится.</span>
+      <b>Пусть клиент наведёт камеру на QR</b><span class="hint">Откроется бот BI Color в Telegram. Клиент нажимает «Запустить» — бот сам привяжется к заказу №${o.num} и пришлёт акт приёмки. В следующий раз QR не понадобится.</span>
       <div class="actions"><button class="btn sm" data-act="qr" data-v="${o.id}">Показать QR крупно</button><button class="btn sm" data-act="subscribe" data-v="${o.id}">Демо: клиент отсканировал</button></div></div></div>
-    ${o.status==='ready'||o.status==='work'?`<div class="lbl">Нет MAX — по старинке</div><textarea class="msg" id="msg" rows="3">${esc(msg)}</textarea>
+    ${o.status==='ready'||o.status==='work'?`<div class="lbl">Нет Telegram — по старинке</div><textarea class="msg" id="msg" rows="3">${esc(msg)}</textarea>
     <div class="actions"><button class="btn sm" data-act="copymsg">Скопировать текст</button>${o.notified?'<span class="tag" style="color:var(--s-ready)">клиенту сообщили</span>':`<button class="btn sm" data-act="notified">Отметить: позвонил / написал</button>`}</div>`:''}</div>`;
 }
 function load(){try{const s=localStorage.getItem(KEY);if(s){db=JSON.parse(s);return}}catch(e){}db=seed()}
@@ -510,7 +510,7 @@ function bkClient(v){const c=byPhone(v.phone);
   if(!c){const dq=digits(v.phone),lq=v.name.trim().toLowerCase();if(dq.length<3&&lq.length<2)return'';
     const m=db.clients.filter(k=>(dq.length>=3&&digits(k.phone).includes(dq))||(lq.length>=2&&k.name.toLowerCase().includes(lq))).slice(0,4);
     return m.length?`<div class="sugg">${m.map(k=>`<button data-act="bkpick" data-v="${k.id}"><span><b>${esc(k.name)}</b>${k.cars.length?' · '+esc(k.cars.join(', ')):''}</span><span class="num">${fmtPhone(k.phone)}</span></button>`).join('')}</div>`:''}const n=db.orders.filter(o=>o.clientId===c.id).length;
-  return`<p class="hint">Уже был у нас: ${n} ${n===1?'заказ':n<5?'заказа':'заказов'}${c.cars.length?' · '+esc(c.cars.join(', ')):''}${c.max?' · напоминание придёт в MAX накануне':''}</p>`}
+  return`<p class="hint">Уже был у нас: ${n} ${n===1?'заказ':n<5?'заказа':'заказов'}${c.cars.length?' · '+esc(c.cars.join(', ')):''}${c.max?' · напоминание придёт в Telegram накануне':''}</p>`}
 function bookForm(){const v=modal.v;const busy=db.visits.filter(x=>x.day===v.day&&x.id!==v.id).map(x=>x.time);
   const days=Array.from({length:10},(_,i)=>dayOff(i));if(!days.includes(v.day))days.push(v.day);
   return`<div class="modal" data-act="mclose-bg"><div class="mbox" role="dialog" aria-modal="true">
@@ -674,7 +674,7 @@ function acceptDraft(){
   const sent=notify(o,'new');
   draft=newDraft();save();view='board';sheet={type:'order',id:o.id};render();
   if(!sent){modal={kind:'qr',id:o.id};renderModal()}
-  toast(`Заказ №${o.num} принят${secs?` за ${Math.floor(secs/60)}:${pad(secs%60)}`:''}. Сумма ${rub(total(o))}`+(sent?' · акт ушёл клиенту в MAX':''));
+  toast(`Заказ №${o.num} принят${secs?` за ${Math.floor(secs/60)}:${pad(secs%60)}`:''}. Сумма ${rub(total(o))}`+(sent?' · акт ушёл клиенту в Telegram':''));
 }
 
 /* ---------- карточка заказа / клиента ---------- */
@@ -736,7 +736,7 @@ function addxForm(){
 }
 function sClient(c){
   const os=db.orders.filter(o=>o.clientId===c.id).sort((a,b)=>b.created-a.created);
-  return`<div class="sh-top"><div><h2>${esc(c.name)}</h2><div style="display:flex;gap:8px;align-items:center;margin-top:6px;flex-wrap:wrap"><span class="phone num">${fmtPhone(c.phone)}</span>${c.max?'<span class="tag max">MAX: подписан</span>':'<span class="tag">MAX: не подписан</span>'}</div></div><button class="x" data-act="close" aria-label="Закрыть">×</button></div>
+  return`<div class="sh-top"><div><h2>${esc(c.name)}</h2><div style="display:flex;gap:8px;align-items:center;margin-top:6px;flex-wrap:wrap"><span class="phone num">${fmtPhone(c.phone)}</span>${c.max?'<span class="tag max">Telegram: подписан</span>':'<span class="tag">Telegram: не подписан</span>'}</div></div><button class="x" data-act="close" aria-label="Закрыть">×</button></div>
   <div class="stats" style="grid-template-columns:repeat(3,minmax(0,1fr))">
     <div class="stat"><div class="k">Заказов</div><div class="v num">${os.length}</div></div>
     <div class="stat"><div class="k">Всего</div><div class="v num">${rub(os.reduce((s,o)=>s+total(o),0))}</div></div>
@@ -752,11 +752,11 @@ function renderModal(){
   if(modal.kind==='book'){const sc=el.querySelector('.mbox')?.scrollTop||0;el.innerHTML=bookForm();el.querySelector('.mbox').scrollTop=sc;return}
   if(modal.kind==='qr'){const o=order(modal.id);
     el.innerHTML=`<div class="modal" data-act="mclose-bg"><div class="mbox" role="dialog" aria-modal="true">
-      <div class="mtop"><h3>№${o.num} · уведомления в MAX</h3><button class="x" data-act="mclose" aria-label="Закрыть">×</button></div>
+      <div class="mtop"><h3>№${o.num} · уведомления в Telegram</h3><button class="x" data-act="mclose" aria-label="Закрыть">×</button></div>
       <div class="qr big">${qrSvg(maxLink(o))}</div>
-      <p class="center" style="margin:0;font-weight:600;font-size:17px">Наведите камеру телефона на код<br>и нажмите «Начать»</p>
+      <p class="center" style="margin:0;font-weight:600;font-size:17px">Наведите камеру телефона на код<br>и нажмите «Запустить»</p>
       <p class="hint center">Бот BI Color пришлёт акт приёмки с фото, а потом напишет, когда диски будут готовы.</p>
-      <div class="actions" style="justify-content:center"><button class="btn" data-act="subscribe" data-v="${o.id}">Демо: клиент отсканировал</button><button class="btn primary" data-act="mclose">Клиент без MAX</button></div>
+      <div class="actions" style="justify-content:center"><button class="btn" data-act="subscribe" data-v="${o.id}">Демо: клиент отсканировал</button><button class="btn primary" data-act="mclose">Клиент без Telegram</button></div>
     </div></div>`;return}
   const t=mTarget();const w=modal.w;const list=t.defects.map((d,i)=>({...d,i})).filter(d=>d.w===w);
   el.innerHTML=`<div class="modal" data-act="mclose-bg"><div class="mbox" role="dialog" aria-modal="true">
@@ -790,23 +790,23 @@ const A={
   order:(v)=>{sheet={type:'order',id:v};renderLayer()},
   client:(v)=>{sheet={type:'client',id:v};renderLayer()},
   close:()=>{sheet=null;render()},
-  next:(v)=>{const o=order(v);o.status=nextSt(o.status);logTo(o,stName(o.status));const s=ST_MSG[o.status]&&notify(o,ST_MSG[o.status]);save();render();toast(`№${o.num} → ${stName(o.status)}`+(s?' · клиенту ушло в MAX':''))},
-  status:(v)=>{const o=order(sheet.id);if(v==='done'){toast('Выдача — кнопкой «Получил и выдал»: так деньги точно запишутся');return}if(o.status===v)return;o.status=v;logTo(o,stName(v));const s=ST_MSG[v]&&notify(o,ST_MSG[v]);save();render();if(s)toast(`${stName(v)} · клиенту ушло сообщение в MAX`)},
+  next:(v)=>{const o=order(v);o.status=nextSt(o.status);logTo(o,stName(o.status));const s=ST_MSG[o.status]&&notify(o,ST_MSG[o.status]);save();render();toast(`№${o.num} → ${stName(o.status)}`+(s?' · клиенту ушло в Telegram':''))},
+  status:(v)=>{const o=order(sheet.id);if(v==='done'){toast('Выдача — кнопкой «Получил и выдал»: так деньги точно запишутся');return}if(o.status===v)return;o.status=v;logTo(o,stName(v));const s=ST_MSG[v]&&notify(o,ST_MSG[v]);save();render();if(s)toast(`${stName(v)} · клиенту ушло сообщение в Telegram`)},
   paym:(v)=>{sheet.pm=v;renderLayer()},
   issue:()=>{const o=order(sheet.id);const lf=left(o);const m=sheet.pm||'Наличные';if(lf>0)o.pays.push({amount:lf,method:m,at:Date.now(),by:user});o.status='done';logTo(o,`Выдан${lf?`, оплата ${rub(lf)} (${m.toLowerCase()})`:''}`);notify(o,'done');save();render();toast(`№${o.num} выдан, деньги записаны в «Получено сегодня»`)},
   addx:()=>{$('#addx').innerHTML=addxForm()},
   xsvc:(v)=>{sheet.xs=v;$('#addx').innerHTML=addxForm()},
   xcancel:()=>{sheet.xs=null;$('#addx').innerHTML=`<button class="btn sm" data-act="addx">+ Добавить работу (доплата)</button>`},
   xsave:()=>{const o=order(sheet.id);const name=$('#x-name').value.trim();const p=+$('#x-price').value.replace(/\D/g,'');if(!name||!p){toast('Укажите, что сделали, и сумму');return}
-    const x={sid:sheet.xs||'other',name,unit:p,qty:1,by:user,at:Date.now(),extra:true};o.lines.push(x);logTo(o,`Доплата: ${name} — +${rub(p)}`);const s=notify(o,'extra',x);sheet.xs=null;save();render();toast(`Доплата добавлена. Новый итог: ${rub(total(o))}`+(s?' · клиент увидит в MAX':''))},
+    const x={sid:sheet.xs||'other',name,unit:p,qty:1,by:user,at:Date.now(),extra:true};o.lines.push(x);logTo(o,`Доплата: ${name} — +${rub(p)}`);const s=notify(o,'extra',x);sheet.xs=null;save();render();toast(`Доплата добавлена. Новый итог: ${rub(total(o))}`+(s?' · клиент увидит в Telegram':''))},
   notified:()=>{const o=order(sheet.id);o.notified=true;logTo(o,'Клиенту сообщили');save();renderLayer()},
   copymsg:()=>copy($('#msg').value),
   sendmax:()=>{const o=order(sheet.id);const t=$('#msg').value.trim();if(!t){toast('Напишите текст сообщения');return}
-    o.msgs.push({at:Date.now(),text:t});o.notified=true;logTo(o,'MAX: '+t.split('\n')[0]);save();renderLayer();toast('Отправлено в MAX')},
+    o.msgs.push({at:Date.now(),text:t});o.notified=true;logTo(o,'Telegram: '+t.split('\n')[0]);save();renderLayer();toast('Отправлено в Telegram')},
   qr:(v)=>{modal={kind:'qr',id:v};renderModal()},
   subscribe:(v)=>{const o=order(v);const c=client(o.clientId);c.max=true;o.msgs=o.msgs||[];
-    o.msgs.push({at:Date.now(),text:'Начать',me:true});o.msgs.push({at:Date.now(),text:botText('hello',o)});
-    o.msgs.push({at:Date.now(),text:botText(o.status==='ready'?'ready':'new',o)});logTo(o,'Клиент подписался на уведомления в MAX');
+    o.msgs.push({at:Date.now(),text:'/start',me:true});o.msgs.push({at:Date.now(),text:botText('hello',o)});
+    o.msgs.push({at:Date.now(),text:botText(o.status==='ready'?'ready':'new',o)});logTo(o,'Клиент подписался на уведомления в Telegram');
     modal=null;renderModal();save();if(sheet)renderLayer();else render();toast(`${c.name.split(' ')[0]} подписан — бот прислал ${o.status==='ready'?'сообщение о готовности':'акт приёмки'}`)},
   copy:(v)=>copy(v),
   savenote:(v)=>{client(v).note=$('#cnote').value.trim();save();toast('Заметка сохранена')},
@@ -827,7 +827,7 @@ const A={
     const c=byPhone(v.phone);v.phone='+7'+digits(v.phone);v.name=v.name.trim()||(c?c.name:'Клиент');
     if(v.id){Object.assign(db.visits.find(k=>k.id===v.id),v)}else{v.id='v'+Date.now();db.visits.push(v)}
     bookDay=v.day;modal=null;renderModal();save();if(view!=='today')view='book';render();
-    toast(`Записал: ${dayLbl(v.day).toLowerCase()}, ${v.time} — ${v.name}`+(c&&c.max?' · напомним в MAX накануне':''))},
+    toast(`Записал: ${dayLbl(v.day).toLowerCase()}, ${v.time} — ${v.name}`+(c&&c.max?' · напомним в Telegram накануне':''))},
   bdel:()=>{const v=modal.v;db.visits=db.visits.filter(k=>k.id!==v.id);modal=null;renderModal();save();render();toast('Запись удалена')},
   reset:()=>{db=seed();save();draft=newDraft();render();toast('Демо-данные сброшены')},
   // приёмка
