@@ -222,6 +222,17 @@ table.t .by{display:block;color:var(--muted);font-size:12px}
   .sheet{padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px))}
   .log div{grid-template-columns:minmax(0,1fr)}
 }
+/* Запись: лента дней, слоты, «приехал» */
+.days{display:flex;gap:8px;overflow-x:auto;padding-bottom:4px;margin-bottom:14px;scrollbar-width:none}
+.day{flex:none;border:1px solid var(--line);background:var(--panel);border-radius:14px;padding:8px 12px;display:flex;flex-direction:column;align-items:flex-start;gap:2px;min-width:92px;text-align:left}
+.day b{font-size:14px;font-weight:600}.day span{font-size:12px;color:var(--muted)}
+.day.on{background:var(--accent);border-color:var(--accent);color:var(--accent-ink)}.day.on span{color:inherit;opacity:.8}
+.slot{display:flex;gap:12px;align-items:center;border:1px dashed var(--line);background:none;border-radius:14px;padding:9px 12px;color:var(--muted);text-align:left;width:100%}
+.slot .t{font-family:var(--f-disp);font-weight:600;font-size:15px;min-width:56px}
+.slot .plus{margin-left:auto;color:var(--accent);font-weight:600;font-size:13px}
+.visit button.i{background:none;border:0;padding:0;text-align:left}
+.visit.gone{opacity:.55}
+.vh .btn{flex:none}
 /* MAX: подписка по QR и переписка бота */
 .tag.max{background:color-mix(in srgb,var(--s-new) 18%,transparent);color:var(--s-new)}
 .maxq{display:flex;gap:14px;align-items:center;flex-wrap:wrap}
@@ -299,7 +310,7 @@ const wheelLabel=(i,q)=>q===4?POS4[i]:'Диск '+(i+1);
 
 /* ---------- данные ---------- */
 let db, user='Хозяин', view='today', sheet=null, modal=null, draft;
-const KEY='bicolor-proto-v2';
+const KEY='bicolor-proto-v3';
 const base=o=>o.lines.reduce((s,l)=>s+l.unit*l.qty,0);
 const total=o=>Math.round(base(o)*(o.express?1.5:1));
 const paid=o=>o.pays.reduce((s,p)=>s+p.amount,0);
@@ -354,9 +365,14 @@ function seed(){
     const x=o.lines.find(l=>l.extra);if(x)o.msgs.push({at:x.at,text:botText('extra',o,x,C)});
     if(o.status==='ready')o.msgs.push({at:o.log[o.log.length-1].at,text:botText('ready',o,null,C)});
     o.msgs.sort((a,b)=>a.at-b.at)}
+  const V=(id,day,time,name,phone,car,svc,note)=>({id,day:dayOff(day),time,name,phone,car,svc,note,orderNum:null});
   return{clients:C,orders:O,seq:1047,visits:[
-    {time:'14:30',name:'Новый клиент',phone:'+79261112233',what:'Покраска R17, звонил вчера'},
-    {time:'17:00',name:'Артём',phone:'+79035550112',what:'Второй комплект, проточка R18'},
+    V('v1',0,'14:30','Максим','+79261112233','Skoda Octavia',['paint'],'R17, звонил вчера'),
+    V('v2',0,'17:00','Артём','+79035550112','Kia K5',['paintlathe'],'Второй комплект'),
+    V('v3',1,'11:00','Руслан','+79037778899','Lexus RX',['repair'],'Бордюрка на двух дисках'),
+    V('v4',1,'15:00','Сергей Волков','+79161234567','Toyota Camry',['paint'],'Зимний комплект'),
+    V('v5',2,'12:00','Олег (перекуп)','+79859990011','Kia Rio',['paint'],'Два комплекта'),
+    V('v6',4,'10:30','Лиза','+79160001122','Audi Q5',['lathe'],''),
   ]};
 }
 /* ---------- MAX: тексты бота ---------- */
@@ -402,7 +418,7 @@ function maxCard(o,msg){
 }
 function load(){try{const s=localStorage.getItem(KEY);if(s){db=JSON.parse(s);return}}catch(e){}db=seed()}
 function save(){try{localStorage.setItem(KEY,JSON.stringify(db))}catch(e){}}
-function newDraft(){return{phone:'',name:'',car:'',clientId:null,radius:'R17',qty:4,type:'Литые',lines:[],color:'',express:false,kit:['Без резины'],defects:[],photos:{},due:dayOff(3),prepay:'',prepayMethod:'Наличные',comment:'',started:null}}
+function newDraft(){return{visitId:null,phone:'',name:'',car:'',clientId:null,radius:'R17',qty:4,type:'Литые',lines:[],color:'',express:false,kit:['Без резины'],defects:[],photos:{},due:dayOff(3),prepay:'',prepayMethod:'Наличные',comment:'',started:null}}
 
 /* ---------- иконки ---------- */
 const I={
@@ -410,9 +426,10 @@ const I={
   board:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><rect x="3" y="4" width="5" height="16" rx="1.5"/><rect x="10" y="4" width="5" height="11" rx="1.5"/><rect x="17" y="4" width="4" height="7" rx="1.5"/></svg>',
   intake:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><circle cx="12" cy="12" r="9"/><path d="M12 8v8M8 12h8"/></svg>',
   clients:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="8" r="4"/><path d="M4 21c1-4 4.5-6 8-6s7 2 8 6"/></svg>',
+  book:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="13" r="8"/><path d="M12 9v4l3 2M9 2h6"/></svg>',
   price:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 12V4h8l10 10-8 8z"/><circle cx="7.5" cy="8.5" r="1.5"/></svg>',
 };
-const VIEWS=[['today','Сегодня'],['board','Заказы'],['intake','Приёмка'],['clients','Клиенты'],['price','Прайс']];
+const VIEWS=[['today','Сегодня'],['book','Запись'],['board','Заказы'],['intake','Приёмка'],['clients','Клиенты'],['price','Прайс']];
 
 function wheelSVG(){
   let sp='';for(let i=0;i<5;i++){const a=i*72;sp+=`<path d="M100 100 L92 36 Q100 30 108 36 Z" transform="rotate(${a} 100 100)" fill="var(--rim)"/>`}
@@ -422,7 +439,7 @@ function wheelSVG(){
 /* ---------- рендер ---------- */
 function render(){
   $('#nav').innerHTML=`<div class="logo">BI<b>·</b>Color</div>`+VIEWS.map(([id,n])=>`<button class="${view===id?'on':''} ${id==='intake'?'plus':''}" data-act="go" data-v="${id}">${I[id]}<span>${n}</span></button>`).join('');
-  $('#main').innerHTML=`<div class="wrap">${({today:vToday,board:vBoard,intake:vIntake,clients:vClients,price:vPrice})[view]()}</div>`;
+  $('#main').innerHTML=`<div class="wrap">${({today:vToday,book:vBook,board:vBoard,intake:vIntake,clients:vClients,price:vPrice})[view]()}</div>`;
   if(view==='intake')intakeFill();
   renderLayer();
 }
@@ -447,6 +464,7 @@ function vToday(){
   const dueToday=act.filter(o=>o.status!=='ready'&&o.due===TODAY);
   const got=db.orders.flatMap(o=>o.pays).filter(p=>iso(new Date(p.at))===TODAY).reduce((s,p)=>s+p.amount,0);
   const waiting=ready.reduce((s,o)=>s+left(o),0);
+  const vsToday=db.visits.filter(v=>v.day===TODAY).sort((a,b)=>a.time.localeCompare(b.time));
   const d=new Date();const dn=d.toLocaleDateString('ru-RU',{weekday:'long',day:'numeric',month:'long'});
   const list=(arr,empty)=>arr.length?`<div class="list">${arr.map(orderCard).join('')}</div>`:`<div class="empty">${empty}</div>`;
   return head('Сегодня',dn.charAt(0).toUpperCase()+dn.slice(1))+`
@@ -459,13 +477,51 @@ function vToday(){
   <div class="cols2">
     <div class="sec"><h2>Готово, ждут клиента <span class="cnt">${ready.length}</span></h2>${list(ready,'Готовых заказов нет')}</div>
     <div style="display:flex;flex-direction:column;gap:22px">
-      <div class="sec"><h2>Записаны на сегодня <span class="cnt">${db.visits.length}</span></h2>
-        <div class="list">${db.visits.length?db.visits.map((v,i)=>`<div class="visit"><div class="t">${v.time}</div><div class="i"><div><b>${esc(v.name)}</b> · <span class="num">${fmtPhone(v.phone)}</span></div><div>${esc(v.what)}</div></div><button class="btn sm primary" data-act="visit" data-v="${i}">Принять</button></div>`).join(''):'<div class="empty">Никто не записан</div>'}</div></div>
+      <div class="sec"><h2>Записаны на сегодня <span class="cnt">${vsToday.filter(v=>!v.orderNum).length}</span><button class="btn sm ghost" style="margin-left:auto;text-transform:none;letter-spacing:0" data-act="go" data-v="book">Вся запись →</button></h2>
+        <div class="list">${vsToday.length?vsToday.map(visitRow).join(''):'<div class="empty">Никто не записан</div>'}</div></div>
       <div class="sec"><h2>Просрочено <span class="cnt">${late.length}</span></h2>${list(late,'Ничего не просрочено')}</div>
       ${dueToday.length?`<div class="sec"><h2>Срок сегодня, ещё в работе <span class="cnt">${dueToday.length}</span></h2>${list(dueToday,'')}</div>`:''}
     </div>
   </div>`;
 }
+
+/* ---------- запись ---------- */
+let bookDay=TODAY;
+const SLOTS=['10:00','11:00','12:00','13:00','14:00','15:00','16:00','17:00','18:00'];
+const TIMES=SLOTS.flatMap(t=>t==='18:00'?[t]:[t,t.slice(0,3)+'30']);
+function dayLbl(s){if(s===TODAY)return'Сегодня';if(s===dayOff(1))return'Завтра';const d=new Date(s+'T12:00');const w=d.toLocaleDateString('ru-RU',{weekday:'short'});return w.charAt(0).toUpperCase()+w.slice(1)+', '+d.getDate()+' '+MONTHS[d.getMonth()]}
+const byPhone=p=>digits(p).length===10?db.clients.find(c=>digits(c.phone)===digits(p)):null;
+const vWhat=v=>[v.car,...(v.svc||[]).map(id=>svcById(id).name),v.note].filter(Boolean).join(' · ');
+function visitRow(v){const c=byPhone(v.phone);
+  return`<div class="visit${v.orderNum?' gone':''}"><div class="t">${v.time}</div><button class="i" data-act="bedit" data-v="${v.id}"><div><b>${esc(c?c.name:v.name)}</b> · <span class="num">${fmtPhone(v.phone)}</span></div><div>${esc(vWhat(v)||'—')}</div></button>
+  ${v.orderNum?`<span class="tag">приехал · №${v.orderNum}</span>`:v.day===TODAY?`<button class="btn sm primary" data-act="visit" data-v="${v.id}">Приехал → приёмка</button>`:''}</div>`}
+function vBook(){
+  const days=Array.from({length:14},(_,i)=>dayOff(i));
+  const vs=db.visits.filter(v=>v.day===bookDay);
+  const now=new Date();const nowHM=pad(now.getHours())+':'+pad(now.getMinutes());
+  const times=[...new Set([...SLOTS,...vs.map(v=>v.time)])].sort();
+  const rows=times.map(t=>{const at=vs.filter(v=>v.time===t);if(at.length)return at.map(visitRow).join('');
+    if(bookDay===TODAY&&t<nowHM)return'';return`<button class="slot" data-act="bnew" data-v="${t}"><span class="t">${t}</span><span>свободно</span><span class="plus">+ записать</span></button>`}).join('');
+  return`<header class="vh"><div><h1>Запись</h1><p class="sub">Кто и когда приедет. Нажмите на свободное время, чтобы записать.</p></div><button class="btn primary" data-act="bnew">+ Записать</button></header>
+  <div class="days">${days.map(d=>{const n=db.visits.filter(v=>v.day===d&&!v.orderNum).length;return`<button class="day ${d===bookDay?'on':''}" data-act="bday" data-v="${d}"><b>${dayLbl(d)}</b><span>${n?n+' '+(n===1?'запись':n<5?'записи':'записей'):'свободно'}</span></button>`}).join('')}</div>
+  <div class="list">${rows||'<div class="empty">На сегодня время уже прошло — выберите другой день</div>'}</div>`;
+}
+function bkClient(v){const c=byPhone(v.phone);if(!c)return'';const n=db.orders.filter(o=>o.clientId===c.id).length;
+  return`<p class="hint">Уже был у нас: ${n} ${n===1?'заказ':n<5?'заказа':'заказов'}${c.cars.length?' · '+esc(c.cars.join(', ')):''}${c.max?' · напоминание придёт в MAX накануне':''}</p>`}
+function bookForm(){const v=modal.v;const busy=db.visits.filter(x=>x.day===v.day&&x.id!==v.id).map(x=>x.time);
+  const days=Array.from({length:10},(_,i)=>dayOff(i));if(!days.includes(v.day))days.push(v.day);
+  return`<div class="modal" data-act="mclose-bg"><div class="mbox" role="dialog" aria-modal="true">
+    <div class="mtop"><h3>${v.id?'Изменить запись':'Записать клиента'}</h3><button class="x" data-act="mclose" aria-label="Закрыть">×</button></div>
+    <div class="row2"><label class="fld"><span>Телефон</span><input id="bk-phone" data-bk="phone" inputmode="tel" placeholder="+7 916…" value="${esc(v.phone?fmtPhone(v.phone):'')}" autocomplete="off"></label>
+    <label class="fld"><span>Имя</span><input id="bk-name" data-bk="name" placeholder="Как обращаться" value="${esc(v.name)}" autocomplete="off"></label></div>
+    <div id="bk-c">${bkClient(v)}</div>
+    <div class="lbl">День</div><div class="chips">${days.map(d=>chip(dayLbl(d),'bkday',d,v.day===d)).join('')}</div>
+    <div class="lbl">Время</div><div class="chips">${TIMES.map(t=>chip(t,'bktime',t,v.time===t,busy.includes(t)?'<small>занято</small>':'')).join('')}</div>
+    <div class="lbl">Что делать <span style="opacity:.7">— можно не выбирать</span></div><div class="chips">${SERVICES.map(x=>chip(x.name,'bksvc',x.id,v.svc.includes(x.id))).join('')}</div>
+    <div class="row2"><label class="fld"><span>Машина</span><input id="bk-car" data-bk="car" placeholder="Марка и модель" value="${esc(v.car)}" autocomplete="off"></label>
+    <label class="fld"><span>Комментарий</span><input data-bk="note" placeholder="Например: бордюрка" value="${esc(v.note)}" autocomplete="off"></label></div>
+    <div class="actions"><button class="btn primary big" data-act="bsave">${v.id?'Сохранить':'Записать'}</button>${v.id&&!v.orderNum?'<button class="btn ghost" data-act="bdel">Удалить запись</button>':''}</div>
+  </div></div>`}
 
 function vBoard(){
   const cols=STATUSES.filter(s=>s.id!=='done');
@@ -611,7 +667,7 @@ function acceptDraft(){
   o.log.push({at:now,by:user,text:'Принят'+(pp?`, предоплата ${rub(pp)} (${d.prepayMethod.toLowerCase()})`:'')+(o.defects.length?`, отмечено дефектов: ${o.defects.length}`:'')});
   db.orders.push(o);
   const secs=d.started?Math.round((now-d.started)/1000):0;
-  db.visits=db.visits.filter(v=>digits(v.phone)!==digits(c.phone));
+  db.visits.forEach(v=>{if(!v.orderNum&&(v.id===d.visitId||(v.day===TODAY&&digits(v.phone)===digits(c.phone))))v.orderNum=o.num});
   const sent=notify(o,'new');
   draft=newDraft();save();view='board';sheet={type:'order',id:o.id};render();
   if(!sent){modal={kind:'qr',id:o.id};renderModal()}
@@ -690,6 +746,7 @@ function sClient(c){
 function mTarget(){return modal.kind==='draft'?draft:order(modal.id)}
 function renderModal(){
   const el=$('#modal');if(!modal){el.innerHTML='';return}
+  if(modal.kind==='book'){const sc=el.querySelector('.mbox')?.scrollTop||0;el.innerHTML=bookForm();el.querySelector('.mbox').scrollTop=sc;return}
   if(modal.kind==='qr'){const o=order(modal.id);
     el.innerHTML=`<div class="modal" data-act="mclose-bg"><div class="mbox" role="dialog" aria-modal="true">
       <div class="mtop"><h3>№${o.num} · уведомления в MAX</h3><button class="x" data-act="mclose" aria-label="Закрыть">×</button></div>
@@ -751,7 +808,23 @@ const A={
   copy:(v)=>copy(v),
   savenote:(v)=>{client(v).note=$('#cnote').value.trim();save();toast('Заметка сохранена')},
   intakefor:(v)=>{const c=client(v);draft=newDraft();draft.clientId=c.id;draft.phone=fmtPhone(c.phone);draft.name=c.name;draft.car=c.cars[0]||'';view='intake';sheet=null;render()},
-  visit:(v)=>{const vs=db.visits[+v];draft=newDraft();const c=db.clients.find(x=>digits(x.phone)===digits(vs.phone));draft.phone=fmtPhone(vs.phone);if(c){draft.clientId=c.id;draft.name=c.name;draft.car=c.cars[0]||''}else draft.name='';draft.comment=vs.what;view='intake';render()},
+  visit:(v)=>{const vs=db.visits.find(x=>x.id===v);draft=newDraft();draft.visitId=vs.id;const c=byPhone(vs.phone);draft.phone=fmtPhone(vs.phone);
+    if(c){draft.clientId=c.id;draft.name=c.name;const last=db.orders.filter(o=>o.clientId===c.id).sort((a,b)=>b.created-a.created)[0];if(last){draft.radius=last.radius;draft.qty=last.qty;draft.type=last.type||'Литые'}}else draft.name=vs.name;
+    draft.car=vs.car||(c&&c.cars[0])||'';draft.lines=(vs.svc||[]).map(id=>L(id,draft.radius,svcById(id).per==='disk'?draft.qty:1));draft.comment=vs.note||'';draft.started=Date.now();
+    view='intake';sheet=null;render();$('#main').scrollTop=0;toast(`Заполнил по записи на ${vs.time}. Проверьте радиус и сфотографируйте диски`)},
+  bday:(v)=>{bookDay=v;render()},
+  bnew:(v)=>{modal={kind:'book',v:{id:null,day:bookDay,time:v||'',phone:'',name:'',car:'',svc:[],note:'',orderNum:null}};renderModal();setTimeout(()=>$('#bk-phone')?.focus(),50)},
+  bedit:(v)=>{const x=db.visits.find(k=>k.id===v);modal={kind:'book',v:{...x,svc:[...(x.svc||[])]}};renderModal()},
+  bkday:(v)=>{modal.v.day=v;renderModal()},
+  bktime:(v)=>{modal.v.time=v;renderModal()},
+  bksvc:(v)=>{const a=modal.v.svc;const i=a.indexOf(v);if(i>=0)a.splice(i,1);else a.push(v);renderModal()},
+  bsave:()=>{const v=modal.v;if(digits(v.phone).length<10){$('#bk-phone').classList.add('err');toast('Введите телефон полностью');return}
+    if(!v.time){toast('Выберите время');return}
+    const c=byPhone(v.phone);v.phone='+7'+digits(v.phone);v.name=v.name.trim()||(c?c.name:'Клиент');
+    if(v.id){Object.assign(db.visits.find(k=>k.id===v.id),v)}else{v.id='v'+Date.now();db.visits.push(v)}
+    bookDay=v.day;modal=null;renderModal();save();if(view!=='today')view='book';render();
+    toast(`Записал: ${dayLbl(v.day).toLowerCase()}, ${v.time} — ${v.name}`+(c&&c.max?' · напомним в MAX накануне':''))},
+  bdel:()=>{const v=modal.v;db.visits=db.visits.filter(k=>k.id!==v.id);modal=null;renderModal();save();render();toast('Запись удалена')},
   reset:()=>{db=seed();save();draft=newDraft();render();toast('Демо-данные сброшены')},
   // приёмка
   pick:(v)=>{touch();const c=client(v);draft.clientId=c.id;draft.phone=fmtPhone(c.phone);draft.name=c.name;if(!draft.car)draft.car=c.cars[0]||'';$('#in-phone').value=draft.phone;$('#in-name').value=draft.name;$('#in-car').value=draft.car;$('#in-phone').classList.remove('err');fillSugg();fillCars()},
@@ -789,6 +862,9 @@ document.addEventListener('click',e=>{
 document.addEventListener('input',e=>{
   const el=e.target;
   if(el.id==='csearch'){$('#clist').innerHTML=clientRows(el.value);return}
+  if(el.dataset.bk&&modal&&modal.kind==='book'){const v=modal.v;v[el.dataset.bk]=el.value;
+    if(el.dataset.bk==='phone'){el.classList.remove('err');const c=byPhone(el.value);if(c){if(!v.name){v.name=c.name;$('#bk-name').value=c.name}if(!v.car&&c.cars[0]){v.car=c.cars[0];$('#bk-car').value=v.car}}$('#bk-c').innerHTML=bkClient(v)}
+    return}
   const k=el.dataset.in;if(!k)return;touch();
   if(k==='unit'){const l=draft.lines[+el.dataset.i];l.unit=+el.value.replace(/\D/g,'')||0;l.edited=true;el.closest('.ln').querySelector('.s').textContent=rub(l.unit*l.qty);fillTotal();return}
   if(k==='express'){draft.express=el.checked;fillTotal();return}
