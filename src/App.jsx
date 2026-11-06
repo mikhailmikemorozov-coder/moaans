@@ -71,7 +71,7 @@ const SERVICES = [
     id: 1, emoji: "🎨", title: "Порошковая покраска дисков",
     short: "Порошковая покраска любого цвета — матовый или глянцевый финиш.",
     long: "Трёхслойное нанесение: грунт — краска — лак. Каждый слой запекается в печи при высокой температуре, что даёт покрытие прочнее заводского. Устойчиво к сколам, реагентам и мойке высокого давления.",
-    price: "от 2 500 ₽", tag: "Хит", color: "#ff6b00", variant: 0, url: "/pokraska-diskov-moskva",
+    price: "от 2 750 ₽", tag: "Хит", color: "#ff6b00", variant: 0, url: "/pokraska-diskov-moskva",
   },
   {
     id: 2, emoji: "💎", title: "Алмазная проточка",
@@ -267,7 +267,7 @@ export default function App() {
   const [sending, setSending] = useState(false);
   const [activeTab, setActiveTab] = useState(0);
   const nameInputRef = useRef(null);
-  const [calcSize, setCalcSize] = useState('R17–18');
+  const [calcSize, setCalcSize] = useState('R17');
   const [openFaq, setOpenFaq] = useState(null);
   const [shopOpen] = useState(getMoscowIsOpen);
   const [calcService, setCalcService] = useState('paint');
@@ -840,11 +840,12 @@ export default function App() {
       {/* ── PRICE CALCULATOR ── */}
       {(() => {
         const CALC_PRICES = {
-          'R13–16': { paint: 11000, paintLathe: 20000 },
-          'R17–18': { paint: 13000, paintLathe: 22000 },
-          'R19':    { paint: 14000, paintLathe: 24000 },
-          'R20':    { paint: 16000, paintLathe: 26000 },
-          'R21–22': { paint: 18000, paintLathe: 30000 },
+          'R13–16': { paint: 11000, paintLathe: 21000 },
+          'R17':    { paint: 14000, paintLathe: 23000 },
+          'R18':    { paint: 15000, paintLathe: 23000 },
+          'R19':    { paint: 16000, paintLathe: 25000 },
+          'R20':    { paint: 17000, paintLathe: 27000 },
+          'R21–22': { paint: 19000, paintLathe: 31000 },
         };
         const sizes = Object.keys(CALC_PRICES);
         const priceSet = CALC_PRICES[calcSize][calcService === 'paint' ? 'paint' : 'paintLathe'];
