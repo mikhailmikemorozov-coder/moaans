@@ -1,7 +1,7 @@
 {
   "version": "1.0.0",
-  "build": 2,
-  "notes": "Первая рабочая версия: приёмка, запись, выдача, резервная копия",
-  "sha256": "db24521fc6eeeca862cdd1efc707017a8c6d1c54b643c2e1d640297904d19f07",
+  "build": 3,
+  "notes": "Долги, контроль скидок, заказ-наряд PDF",
+  "sha256": "4b762313b8b24f7acb77d7ff955fc20b4a17927324053228f96edfc76b437b9b",
   "url": "https://bi-color.ru/app/bicolor.apk"
 }
