@@ -24,6 +24,7 @@ export const ALLOWED_METHODS = new Set([
   'sendMessage',
   'sendPhoto',
   'sendMediaGroup',
+  'sendDocument',
   'answerCallbackQuery',
 ])
 

@@ -49,7 +49,7 @@ test('only POST', async () => {
 })
 
 test('methods outside the allow-list are rejected', async () => {
-  for (const m of ['setWebhook', 'logOut', 'close', 'sendDocument', 'getFile', 'deleteMessage', '', '../getMe', 'getMe/x']) {
+  for (const m of ['setWebhook', 'logOut', 'close', 'sendVideo', 'getFile', 'deleteMessage', '', '../getMe', 'getMe/x']) {
     const tg = fakeTelegram()
     const res = await handle(post(m), ENV, tg.impl)
     assert.equal(res.status, 400, m)
@@ -105,6 +105,25 @@ test('Telegram errors come back with their status; the token never leaks', async
 test('allow-list is what the server needs', () => {
   assert.deepEqual([...ALLOWED_METHODS].sort(), [
     'answerCallbackQuery', 'deleteWebhook', 'getMe', 'getUpdates', 'getWebhookInfo',
-    'sendMediaGroup', 'sendMessage', 'sendPhoto',
+    'sendDocument', 'sendMediaGroup', 'sendMessage', 'sendPhoto',
   ])
+})
+
+test('sendDocument (the order PDF) is passed through as multipart', async () => {
+  let seen
+  const fd = new FormData()
+  fd.append('chat_id', '42')
+  fd.append('document', new Blob([new Uint8Array([37, 80, 68, 70])], { type: 'application/pdf' }), 'zakaz-naryad-1.pdf')
+  const req = new Request('https://x.test/api/tg?m=sendDocument', {
+    method: 'POST',
+    headers: { 'X-Relay-Key': ENV.BC_RELAY_KEY },
+    body: fd,
+  })
+  const res = await handle(req, ENV, async (url, init) => {
+    seen = { url, type: init.headers['Content-Type'] }
+    return new Response('{"ok":true,"result":{}}', { status: 200 })
+  })
+  assert.equal(res.status, 200)
+  assert.ok(seen.url.endsWith('/sendDocument'))
+  assert.match(seen.type, /^multipart\/form-data/)
 })
