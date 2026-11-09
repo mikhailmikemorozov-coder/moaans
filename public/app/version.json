@@ -1,7 +1,7 @@
 {
-  "version": "2.0.5",
-  "build": 10,
-  "notes": "Сезонное хранение; запоминание пароля; фото из галереи; исправления",
-  "sha256": "824efbab1dc1797050ed338a8dbc8379cdf3eef872fe0fe6f85aeec6eb897eb2",
+  "version": "2.0.6",
+  "build": 11,
+  "notes": "Зарплата мастерам; исправления",
+  "sha256": "05c61379a54455a2cd73cb2163f279c5fdef7e5105305d402e9db2c745e7792d",
   "url": "https://bi-color.ru/app/bicolor.apk"
 }
