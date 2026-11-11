@@ -1,7 +1,7 @@
 {
-  "version": "2.0.8",
-  "build": 13,
-  "notes": "Быстрая галерея фото; последний вход сотрудников",
-  "sha256": "7448898a7a0a682e6f0c31b0f62ccc5bfb66b2e5739e622c30f6bf0ea713dc38",
+  "version": "2.0.9",
+  "build": 14,
+  "notes": "Миниатюры дисков на карточках заказов",
+  "sha256": "55f241aac4d93ee6d9aa76e0ef45c7405f80ced55c09ca905ce770c46cbedb9b",
   "url": "https://bi-color.ru/app/bicolor.apk"
 }
