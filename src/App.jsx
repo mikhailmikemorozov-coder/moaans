@@ -1,6 +1,9 @@
 import { useState, useEffect, useRef } from "react";
 import { useNavigate, Link } from "react-router-dom";
 import { Helmet } from "react-helmet-async";
+import { bcEnabled, sendLead } from "./lib/bcApi";
+import SmartCaptcha from "./components/SmartCaptcha";
+import OrderStatusModal from "./components/OrderStatusModal";
 
 /* ─── DATA ─────────────────────────────────────────── */
 /* ── SVG illustrations for each service card ── */
@@ -265,6 +268,11 @@ export default function App() {
   const [formData, setFormData] = useState({ name: "", phone: "", service: "", comment: "" });
   const [submitted, setSubmitted] = useState(false);
   const [sending, setSending] = useState(false);
+  const [sendFailed, setSendFailed] = useState(false);
+  const [honeypot, setHoneypot] = useState("");
+  const [leadCaptcha, setLeadCaptcha] = useState("");
+  const leadCaptchaRef = useRef(null);
+  const [statusOpen, setStatusOpen] = useState(false);
   const [activeTab, setActiveTab] = useState(0);
   const nameInputRef = useRef(null);
   const [calcSize, setCalcSize] = useState('R17');
@@ -297,16 +305,23 @@ export default function App() {
   const handleSubmit = async () => {
     if (!formData.name || !formData.phone) return;
     setSending(true);
-    try {
-      await fetch("https://script.google.com/macros/s/AKfycbzHSP19AM38PtjnEELHNG1qsRwFyMENA6gb0vW-D5k0jZmgA4lKpNRlUpvkHHNOv36I1A/exec", {
-        method: "POST",
-        mode: "no-cors",
-        headers: { "Content-Type": "text/plain" },
-        body: JSON.stringify(formData),
-      });
-    } catch (_) {}
+    setSendFailed(false);
+    // Путь 1 (как раньше): Google Apps Script → почта. Остаётся, пока не проверен путь в CRM.
+    const googlePath = honeypot ? Promise.resolve() : fetch("https://script.google.com/macros/s/AKfycbzHSP19AM38PtjnEELHNG1qsRwFyMENA6gb0vW-D5k0jZmgA4lKpNRlUpvkHHNOv36I1A/exec", {
+      method: "POST",
+      mode: "no-cors",
+      headers: { "Content-Type": "text/plain" },
+      body: JSON.stringify(formData),
+    });
+    // Путь 2: заявка в CRM (только если задан VITE_BC_SITE_KEY).
+    const crmPath = bcEnabled
+      ? sendLead({ ...formData, website: honeypot, captcha: leadCaptcha }).then(r => { if (!r.ok) throw new Error(r.error); })
+      : Promise.reject(new Error("disabled"));
+    const [g, c] = await Promise.allSettled([googlePath, crmPath]);
+    leadCaptchaRef.current?.reset();
     setSending(false);
-    setSubmitted(true);
+    if (g.status === "fulfilled" || c.status === "fulfilled") setSubmitted(true);
+    else setSendFailed(true);
   };
 
   const scrollTo = (id) => {
@@ -613,6 +628,9 @@ export default function App() {
             <a href="tel:+79652130999" style={{ fontFamily: "'Rajdhani'", fontSize: 22, fontWeight: 700, color: "rgba(255,255,255,.6)", letterSpacing: 1 }}>+7 (965) 213-09-99</a>
             <a href="tel:+79251101052" style={{ fontFamily: "'Rajdhani'", fontSize: 20, fontWeight: 700, color: "rgba(255,255,255,.45)", letterSpacing: 1 }}>+7 (925) 110-10-52</a>
             <button className="btn btn-grad" onClick={() => scrollTo("contact")} style={{ justifyContent: "center" }}>Записаться</button>
+            {bcEnabled && (
+              <button className="btn btn-outline" onClick={() => { setMobileMenu(false); setStatusOpen(true); }} style={{ justifyContent: "center" }}>Статус заказа</button>
+            )}
           </div>
         </div>
       )}
@@ -723,6 +741,16 @@ export default function App() {
               </button>
               <button className="btn btn-outline" onClick={() => scrollTo("services")}>Наши услуги</button>
             </div>
+            {bcEnabled && (
+              <div className="fade-up d4" style={{ marginTop: -44, marginBottom: 56 }}>
+                <span onClick={() => setStatusOpen(true)} role="button" tabIndex={0}
+                  onKeyDown={e => { if (e.key === "Enter" || e.key === " ") { e.preventDefault(); setStatusOpen(true); } }}
+                  style={{ display: "inline-flex", alignItems: "center", gap: 8, cursor: "pointer", fontSize: 15, fontWeight: 700, color: "var(--blue)", borderBottom: "1px dashed rgba(0,212,255,.5)", paddingBottom: 2 }}>
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" width="16" height="16"><circle cx="11" cy="11" r="7"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+                  Узнать статус заказа
+                </span>
+              </div>
+            )}
 
             {/* Stats row */}
             <div className="stats-row" style={{ display: "grid", gridTemplateColumns: "repeat(4,1fr)", gap: 24 }}>
@@ -1217,6 +1245,12 @@ export default function App() {
                 <label style={{ fontSize: 13, color: "rgba(255,255,255,.4)", display: "block", marginBottom: 8, letterSpacing: .5 }}>Комментарий (необязательно)</label>
                 <textarea className="input-field" rows={3} placeholder="Опишите задачу, марку авто, размер дисков..." value={formData.comment} onChange={e => setFormData({ ...formData, comment: e.target.value })} style={{ resize: "vertical" }} />
               </div>
+              {bcEnabled && (
+                <input type="text" name="website" value={honeypot} onChange={e => setHoneypot(e.target.value)}
+                  tabIndex={-1} autoComplete="off" aria-hidden="true"
+                  style={{ position: "absolute", left: "-10000px", width: 1, height: 1, opacity: 0, overflow: "hidden" }} />
+              )}
+              {bcEnabled && <SmartCaptcha ref={leadCaptchaRef} onToken={setLeadCaptcha} />}
               <button className="btn btn-grad" onClick={handleSubmit} disabled={sending || !formData.name || !phoneComplete} style={{ width: "100%", justifyContent: "center", marginTop: 8, padding: "18px", fontSize: 18, opacity: (sending || !formData.name || !phoneComplete) ? 0.5 : 1, cursor: (!formData.name || !phoneComplete) ? "not-allowed" : "pointer" }}>
                 {sending ? (
                   <><svg style={{ animation: "spin 0.8s linear infinite", flexShrink: 0 }} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" width="18" height="18"><circle cx="12" cy="12" r="10" strokeOpacity="0.25"/><path d="M22 12A10 10 0 0012 2"/></svg> Отправка…</>
@@ -1224,6 +1258,11 @@ export default function App() {
                   <><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" width="18" height="18"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg> Отправить заявку</>
                 )}
               </button>
+              {sendFailed && (
+                <p role="alert" style={{ fontSize: 14, color: "#ff9a9a", textAlign: "center" }}>
+                  Не удалось отправить заявку. Проверьте интернет или позвоните нам: +7 (965) 213-09-99
+                </p>
+              )}
               <p style={{ fontSize: 12, color: "rgba(255,255,255,.25)", textAlign: "center" }}>
                 Нажимая кнопку, вы соглашаетесь с обработкой персональных данных
               </p>
@@ -1306,6 +1345,9 @@ export default function App() {
           </div>
         </div>
       </section>
+
+      {/* ── ORDER STATUS MODAL ── */}
+      {statusOpen && <OrderStatusModal onClose={() => setStatusOpen(false)} />}
 
       {/* ── PRIVACY MODAL ── */}
       {privacyOpen && (
