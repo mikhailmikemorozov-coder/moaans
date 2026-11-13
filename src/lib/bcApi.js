@@ -36,6 +36,7 @@ export async function checkStatus({ order, phone4, captcha }) {
     const r = await post("status", { order, phone4, captcha: captcha || "" });
     if (r.status === 429) return { kind: "rate" };
     if (r.status === 400 && r.data.error === "captcha") return { kind: "captcha" };
+    if (r.status === 400 && r.data.error === "input") return { kind: "input" };
     if (!r.ok) return { kind: "server" };
     if (r.data.found) return { kind: "found", ...r.data };
     return { kind: "notfound" };
