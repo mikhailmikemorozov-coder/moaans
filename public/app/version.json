@@ -1,7 +1,7 @@
 {
-  "version": "2.1.5",
-  "build": 20,
-  "notes": "Заявки с сайта; уведомление о новой заявке",
-  "sha256": "d982ffca56db52c44ac7b2c34c61124b4034a9bbc20c36c95091462eab72d7c6",
+  "version": "2.1.6",
+  "build": 21,
+  "notes": "Отчёты о сбоях приложения",
+  "sha256": "98ebf63f71b4d14bc304954d83373a4222b0e98b68dcbc5ccd5fe1c8a3d7e88e",
   "url": "https://bi-color.ru/app/bicolor.apk"
 }
