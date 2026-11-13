@@ -1,7 +1,7 @@
 {
-  "version": "2.1.4",
-  "build": 19,
-  "notes": "Телефон с «+7»; подсказки клиентов только без полного телефона",
-  "sha256": "7a55f039a7f090188a07085c5013baa8e1a4ba186e6d0e758aead581642ba97d",
+  "version": "2.1.5",
+  "build": 20,
+  "notes": "Заявки с сайта; уведомление о новой заявке",
+  "sha256": "d982ffca56db52c44ac7b2c34c61124b4034a9bbc20c36c95091462eab72d7c6",
   "url": "https://bi-color.ru/app/bicolor.apk"
 }
