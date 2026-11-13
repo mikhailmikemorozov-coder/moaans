@@ -1,7 +1,7 @@
 {
-  "version": "2.1.2",
-  "build": 17,
-  "notes": "Отчёт «Деньги»; зарплата только малярам",
-  "sha256": "5b7fd27fa5fa42d21e31bd4bbec038d038b7548c66ac289dfc7ba08e285d78a2",
+  "version": "2.1.3",
+  "build": 18,
+  "notes": "Смена клиента в «Исправить заказ»; отчёт «Деньги» с переходами к заказам",
+  "sha256": "e89c0764cfb298f00d03094e1eec5330e26556db396f5b8f1fc3c70640b741a6",
   "url": "https://bi-color.ru/app/bicolor.apk"
 }
