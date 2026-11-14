@@ -1,7 +1,7 @@
 {
-  "version": "2.1.6",
-  "build": 21,
-  "notes": "Отчёты о сбоях приложения",
-  "sha256": "98ebf63f71b4d14bc304954d83373a4222b0e98b68dcbc5ccd5fe1c8a3d7e88e",
+  "version": "2.1.7",
+  "build": 22,
+  "notes": "Пуш-уведомления: назначение на заказ, «Заказ готов», новая заявка; фото открывается на просмотр",
+  "sha256": "e5f988c7083dcf7f5934d2dff3b9dab92d60f1690b69a37ff510592ffb29ecd7",
   "url": "https://bi-color.ru/app/bicolor.apk"
 }
