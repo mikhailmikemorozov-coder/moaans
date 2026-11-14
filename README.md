@@ -20,3 +20,7 @@ If you are developing a production application, we recommend using TypeScript wi
 ## BI Color: связь с CRM
 Заявки в CRM, «Статус заказа» и SmartCaptcha включаются переменными `VITE_BC_SITE_KEY`, `VITE_BC_API`, `VITE_SMARTCAPTCHA_KEY`.
 Подробно — [docs/crm-site.md](docs/crm-site.md).
+
+## BI Color: посредники для сервера CRM (`api/`)
+- `api/tg.js` — Telegram Bot API (env `TELEGRAM_BOT_TOKEN`, `BC_RELAY_KEY`), тест `node scripts/tg-relay.test.mjs`.
+- `api/push.js` — Web Push в браузеры сотрудников: сервер присылает подписку и короткий текст без персональных данных, функция шифрует (пакет `web-push`, VAPID) и отправляет в Chrome / Firefox / Safari. Env: `BC_RELAY_KEY` (тот же), `VAPID_PUBLIC`, `VAPID_PRIVATE`, `VAPID_SUBJECT` (из `~/.bicolor/vapid.env`, см. server/DEPLOY.md CRM «Notifications and Web Push»). Без них отвечает 503. Тест `node scripts/push-relay.test.mjs`.
