@@ -5,7 +5,7 @@ import assert from 'node:assert/strict'
 import crypto from 'node:crypto'
 import { test } from 'node:test'
 import webpush from 'web-push'
-import { handle, knownEndpoint } from '../api/push.js'
+import { handle, knownEndpoint, resetFcmCache, serviceJwt } from '../api/push.js'
 
 const keys = webpush.generateVAPIDKeys()
 const ENV = {
@@ -152,4 +152,79 @@ test('keys from the CRM script gen-vapid.mjs (uncompressed point / d) are accept
   })
   assert.equal(res.status, 200)
   assert.ok(details.headers.Authorization.includes('k=' + env.VAPID_PUBLIC))
+})
+
+// ---------- FCM ----------
+
+const rsa = crypto.generateKeyPairSync('rsa', { modulusLength: 2048 })
+const SA = {
+  type: 'service_account', project_id: 'bicolor-test', client_email: 'push@bicolor-test.iam.gserviceaccount.com',
+  private_key: rsa.privateKey.export({ type: 'pkcs8', format: 'pem' }), token_uri: 'https://oauth2.googleapis.com/token',
+}
+const FENV = { BC_RELAY_KEY: ENV.BC_RELAY_KEY, FCM_SERVICE_ACCOUNT: JSON.stringify(SA) }
+const TOKEN = 'dGVzdA:APA91b' + 'x'.repeat(60)
+const fcmPost = (body = { fcm: { token: TOKEN }, payload: PAYLOAD, ttl: 600 }) => post({ body })
+
+function fakeGoogle({ sendStatus = 200, sendBody = { name: 'projects/x/messages/1' } } = {}) {
+  const calls = []
+  const impl = async (url, init) => {
+    calls.push({ url: String(url), init })
+    if (String(url).startsWith('https://oauth2.googleapis.com/')) {
+      return new Response(JSON.stringify({ access_token: 'ya29.test', expires_in: 3599 }), { status: 200 })
+    }
+    return new Response(JSON.stringify(sendBody), { status: sendStatus })
+  }
+  return { calls, impl }
+}
+
+test('FCM: the JWT is RS256, signed by the service account, for the messaging scope', () => {
+  const jwt = serviceJwt(SA, 1000)
+  const [h, c, sig] = jwt.split('.')
+  assert.deepEqual(JSON.parse(Buffer.from(h, 'base64url')), { alg: 'RS256', typ: 'JWT' })
+  const claims = JSON.parse(Buffer.from(c, 'base64url'))
+  assert.equal(claims.iss, SA.client_email)
+  assert.equal(claims.scope, 'https://www.googleapis.com/auth/firebase.messaging')
+  assert.equal(claims.exp, 4600)
+  assert.ok(crypto.createVerify('RSA-SHA256').update(`${h}.${c}`).verify(rsa.publicKey, Buffer.from(sig, 'base64url')))
+})
+
+test('FCM: token → OAuth (cached) → messages:send with notification, data, channel', async () => {
+  resetFcmCache()
+  const g = fakeGoogle()
+  let res = await handle(fcmPost(), FENV, undefined, g.impl)
+  assert.equal(res.status, 200)
+  res = await handle(fcmPost(), FENV, undefined, g.impl)
+  assert.equal(res.status, 200)
+  const oauth = g.calls.filter((c) => c.url.startsWith('https://oauth2'))
+  const sends = g.calls.filter((c) => c.url.includes('/messages:send'))
+  assert.equal(oauth.length, 1, 'access token cached')
+  assert.equal(sends.length, 2)
+  assert.equal(sends[0].url, 'https://fcm.googleapis.com/v1/projects/bicolor-test/messages:send')
+  assert.equal(sends[0].init.headers.Authorization, 'Bearer ya29.test')
+  const m = JSON.parse(sends[0].init.body).message
+  assert.equal(m.token, TOKEN)
+  assert.deepEqual(m.notification, { title: PAYLOAD.title, body: PAYLOAD.body })
+  assert.equal(m.data.url, '/?order=x')
+  assert.equal(m.android.notification.channel_id, 'bc_events')
+  assert.equal(m.android.ttl, '600s')
+  assert.equal(m.android.priority, 'HIGH')
+})
+
+test('FCM: UNREGISTERED / 404 → 410 gone; 500 → 502; no service account → 503; bad token → 400', async () => {
+  resetFcmCache()
+  const gone = fakeGoogle({ sendStatus: 404, sendBody: { error: { status: 'NOT_FOUND', details: [{ errorCode: 'UNREGISTERED' }] } } })
+  let res = await handle(fcmPost(), FENV, undefined, gone.impl)
+  assert.equal(res.status, 410)
+  assert.equal((await res.json()).gone, true)
+  res = await handle(fcmPost(), FENV, undefined, fakeGoogle({ sendStatus: 500, sendBody: {} }).impl)
+  assert.equal(res.status, 502)
+  assert.ok(!(await res.text()).includes(TOKEN))
+  const g = fakeGoogle()
+  res = await handle(fcmPost(), { BC_RELAY_KEY: ENV.BC_RELAY_KEY }, undefined, g.impl)
+  assert.equal(res.status, 503)
+  res = await handle(fcmPost({ fcm: { token: 'bad token' }, payload: PAYLOAD }), FENV, undefined, g.impl)
+  assert.equal(res.status, 400)
+  res = await handle(post({ key: 'wrong', body: { fcm: { token: TOKEN }, payload: PAYLOAD } }), FENV, undefined, g.impl)
+  assert.equal(res.status, 401)
+  assert.equal(g.calls.length, 0)
 })
