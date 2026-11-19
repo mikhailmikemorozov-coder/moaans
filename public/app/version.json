@@ -1,7 +1,7 @@
 {
-  "version": "2.1.12",
-  "build": 27,
-  "notes": "Исправлен редкий сбой при запуске приложения",
-  "sha256": "770eca4f585c8c55e4f4e783744bc455019ae476b30c5c7d5fac35561332d053",
+  "version": "2.1.13",
+  "build": 28,
+  "notes": "Исправлен сбой приложения при проверке обновлений",
+  "sha256": "45742a3898c6b73fca3ad86d251b52e5a4ff719c127d3cac063e3eac75b22679",
   "url": "https://bi-color.ru/app/bicolor.apk"
 }
